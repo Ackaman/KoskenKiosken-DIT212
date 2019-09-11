@@ -1,0 +1,44 @@
+# Meeting Agenda
+
+Group: KlassFörakt
+Date: 2019-09-09
+Chair: Albin Otterhäll
+Participants: Albin Otterhäll, Gustav Pihlquist, Morgan Thowsen, David Persson, Johan Almroth
+
+
+## Objectives (5 min) 
+
+ - Vi måste sätta igång med domändiagrammet, deadline tisdag 17/09.
+ - Vi måste påbörja RAD snarast. 
+ - Vi behöver strukturera upp och delegera arbete.
+ - Vi behöver fler och mer finslipade user stories
+ - Vi behöver en pitch till seminariet nästa vecka
+ - Vi behöver fixa ett UML-diagram till RAD:en
+
+
+
+
+## Reports (15 min) from previous meeting
+
+ - Samtliga har varit delaktiga med att skriva och formulera User Stories.
+
+
+
+## Discussion items (35 min)
+
+ - Diskuterade domändiagrammet och RAD
+ - Diskuterade hur vi skall strukturera upp och delegera arbetet, genom att göra klart user stories
+ - Introduktionen till RAD skriver vi senare i veckan
+ - UML-diagram blir en extension av domändiagrammet
+
+
+## Outcomes and assignments (5 min)
+
+ - Domändiagrammet påbörjas imorgon, huvudsakligen av Johan och Morgan, men även av resterande av oss om vi är tillgängliga.
+ - Vi beslutar oss för att använda Trello.
+ - Gustav och Albin står huvudsakligen för att formulera mer user stories. 
+
+
+## Wrap up
+
+ - Nästa möte blir Onsdag 11/9 13:00

@@ -1,0 +1,39 @@
+# Meeting Agenda
+
+Group: KlassFörakt
+Date: 2019-09-11
+Chair: Gustav Pihlquist
+Participants: Gustav Pihlquist, Johan Almroth, Morgan Thowsen, David Persson, Albin Otterhäll
+
+
+## Objectives (5 min) 
+
+ - Vi måste skriva tasks till alla user stories.
+ - Därefter måste vi skriva acceptance criterias till alla user stories.
+ - Finslipa domändiagrammet
+
+
+## Reports (15 min) from previous meeting
+
+ - Johan och Morgan har gjort ett första utkast på domändiagrammet.
+ - Johan har migrerat user stories till Trello. 
+ - Vi har fyllt på med mer user stories.
+
+
+## Discussion items (35 min)
+
+ - Vi tar tid efter mötet och går igenom vad som är bra och dåliga user stories, så att vi får samma visioner.
+ - Vi har tillräckligt med user stories
+ - I domändiagrammet behöver vi skriva en förklaring till varje komponent, till RAD:en. Annars är strukturen på domändiagrammet bra.
+
+## Outcomes and assignments (5 min)
+
+ - Vi ska gå igenom user stories/acceptance criterias/tasks tillsammans, så att alla har samma vision om hur en bra user story skall formuleras.
+ - Vi beslutar också att börja delegera arbetet bättre, så att vi alla kan jobba självständigt och inte nödvändigtvis tillsammans hela tiden. 
+ - Gustav, Albin och David slutför acceptance criterias och tasks innan mötet med Robert på fredag. Johan och Morgan hjälper till i mån av tid.
+ - Johan och Morgan slutför förklaringarna till domändiagrammet.
+
+
+## Wrap up
+
+ - Nästa möte måndag 16/11 kl. 15:00
