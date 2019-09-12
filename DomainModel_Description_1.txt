@@ -1,0 +1,42 @@
+Affär
+centralt nav för Appen.
+Binder samman alla delar av affären.
+
+Ads
+Reklam som visas i appen.
+
+Inventarie
+Kioskens samlade produkter.
+
+Produkt
+En representation av en produkt med förteckning, pris och kategori(er).
+
+ProduktKategori
+ex. en nocco hör till drycker. Användaren kan i flödet välja att filtrera produktkategorier.
+Varje produkt tillhör minst en produktkategori.
+
+Förteckning
+ev. allergener och övrig information om produkten.
+
+Varukorg
+varukorgen består av produkter som kunden ämnas köpa. I varukorgen ta bort eller öka/minska antal på valda varor. 
+Vid köp så omvandlas varukorgen till en order.
+
+Kundregister 
+Här sparas samtliga inloggningsuppg, tillhörande credits & Transaktionshistorik för respektive account.
+
+Användare
+Består av inloggningsID, antal krediter och transaktionshistorik.
+
+Credits
+Används som valuta i appen. Varje användare har ett antal credits.
+
+Transaktionshistorik
+En lista av tidigare transaktioner tillhörande ett account.
+
+Transaktion
+En enskild transaktion bestående av summa för köpet, datum och vilka produkter som köptes och vilket account som gjorde ordern.
+Lagras i Transaktionshistorik.
+
+Order
+En användares Kundvagn omvanldas till en transaktionsförfrågan. 
