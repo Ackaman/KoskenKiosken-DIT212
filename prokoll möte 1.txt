@@ -1,0 +1,51 @@
+# Meeting Agenda 1
+
+Group: KlassFörakt
+Date: 2019-09-05
+Chair: 
+Participants: David, Gustav, Morgan, Albin, Johan (100% närvaro)
+
+
+## Objectives (5 min) 
+
+- Bestämma kommunikationskanaler.
+- Fastställa vilken typ av app vi vill utveckla och lägga ut grunderna för denna.
+- Komma överens om hur vi går vidare och vilken metod vi ska använda för att utveckla.
+- Morgan går igenom grunderna med Android-utveckling.
+
+
+## Reports (15 min) from previous meeting
+
+- Första mötet!
+
+
+## Discussion items (35 min)
+
+Kommunikation:
+Scrum-Trello/Github. Rådfråga Robert om vad han anser vara smidigast.
+Pusha Github med kommentarer för tydlighet.
+Facebook används för att fastställa mötestider och dylikt men inte för kod.
+
+Appen:
+En Kiosk-app för att kunna köpa grejer i en öppen kiosk med Credits.
+I appen kommer det finnas en lista med produkter som går att köpa med fiktiva credits.
+Credits lagras i en extern databas som kan administreras av de som skapat appen.
+Varje användare ska ha ett eget konto som de kan logga in med, vars uppgifter ligger i databasen.
+
+Vi börjar med att fokusera på de grundliga delarna med produkter och en köp knapp.
+Vid senare skede kommer vi att implementera användarkonton, credits, kundvagn och en databas.
+
+
+## Outcomes and assignments (5 min)
+- Skapa en Alpha med Products, RecyclerAdapter och ProductViewActivity.
+Målet är att skapa ett skelett för att se produkter i appen.
+Sedan följer vi upp med att skapa en användar-sida där man kan se credits, som är hårdkodade.
+
+
+
+## Wrap up
+
+
+
+
+
