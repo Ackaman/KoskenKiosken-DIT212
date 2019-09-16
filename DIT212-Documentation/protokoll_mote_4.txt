@@ -1,0 +1,36 @@
+# Meeting Agenda
+
+Group: KlassFörakt
+Date: 2019-09-16
+Chair: Gustav Pihlquist
+Participants: Gustav Pihlquist, Johan Almroth, Morgan Thowsen, David Persson, Albin Otterhäll
+
+
+## Objectives (5 min) 
+
+ - Sätta upp Git ordentligt, och sätta igång med kodningen
+ - Ha någonting som är testbart i slutet av veckan
+ - Förbereda inför seminariet imorgon
+
+## Reports (15 min) from previous meeting
+
+ - User Stories är nu kompletta med acceptance criterias och tasks.
+ - Domändiagrammet är finslipat och klart.
+ - Morgan har satt upp skalprogrammet i Git och konfigurerat Gradle
+
+
+## Discussion items (35 min)
+
+ - Vi bör börja delegera User Stories
+ - Vi skriver tester till ALLT.
+ - 
+
+## Outcomes and assignments (5 min)
+
+ - Alla tar tag i varsin User Story till mötet i nästa onsdag.
+ - Morgan tar tag i att fixa Travis CI
+
+
+## Wrap up
+
+ - Nästa möte onsdag 18/09 kl. 13:00
