@@ -23,4 +23,9 @@ public class ExampleInstrumentedTest {
 
         assertEquals("com.dit212.group1.koskenkiosken", appContext.getPackageName());
     }
+
+    @Test
+    public void thisTestShallFail(){
+        assertEquals(2, 3);
+    }
 }
