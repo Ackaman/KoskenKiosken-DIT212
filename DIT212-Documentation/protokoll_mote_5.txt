@@ -1,0 +1,35 @@
+# Meeting Agenda
+
+Group: KlassFörakt
+Date: 2019-09-18
+Chair: Gustav Pihlquist	
+Participants: Gustav Pihlquist, Morgan Thowsen, Johan Almroth, Albin Otterhäll, David Persson
+
+
+## Objectives (5 min) 
+
+ - Slutföra åtminstone en User Story till fredag.
+ - Alla skall komma igång med sina User Stories, och utvecklingsmiljön.
+
+
+## Reports (15 min) from previous meeting
+
+ - Alla är assignade till varsin User Story nu.
+ - Travis är konfigurerat i Githuben
+
+
+## Discussion items (35 min)
+
+ - Diskuterar om bästa möjliga sätt att skapa en gitmiljö med stubbklasser, för att undvika merge conflicts.
+
+
+## Outcomes and assignments (5 min)
+
+ - Gustav och David hårdkodar produktkortet, med mockdata som lagersaldo etc idag.
+ - Albin och Johan hårdkodar användarklassen, med mockdata som namn etc.
+ - Morgan skapar en recyclerview till på fredag.
+
+
+## Wrap up
+
+ - Nästa möte måndag 23/9 13:00
