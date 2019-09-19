@@ -6,9 +6,9 @@ public class User {
     private String password;
     private String mail;
     private int userID;
-    private double credits;
+    private int credits;
 
-    public User(String userName, String password, String mail, int userID, double credits) {
+    public User(String userName, String password, String mail, int userID, int credits) {
         this.userName = userName;
         this.password = password;
         this.mail = mail;
@@ -16,11 +16,11 @@ public class User {
         this.credits = credits;
     }
 
-    public double getCredits() {
+    public int getCredits() {
         return credits;
     }
 
-    public void setCredits(double credits) {
+    public void setCredits(int credits) {
         this.credits = credits;
     }
 
