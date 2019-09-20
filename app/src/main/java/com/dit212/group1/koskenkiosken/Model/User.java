@@ -32,7 +32,7 @@ public class User {
         this.password = "hemligt";
         this.mail     = "Ackaman11@gmail.com";
         this.userID   = 0;
-        this.credits  = 100;
+        this.credits  = 10;
     }
 
     public String getUserName() {
