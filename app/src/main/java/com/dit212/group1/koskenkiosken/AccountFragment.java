@@ -6,14 +6,12 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
 import com.dit212.group1.koskenkiosken.Model.User;
-import com.google.android.material.snackbar.Snackbar;
 
 
 /**
@@ -31,13 +29,13 @@ public class AccountFragment extends Fragment {
     }
 
 
-    public AccountFragment(User currentUser){
+    AccountFragment(User currentUser){
         this.userID = currentUser;
     }
 
 
     @Override
-    public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
+    public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         if (savedInstanceState != null){
             userID = new User();
@@ -49,8 +47,8 @@ public class AccountFragment extends Fragment {
 
     /**
      * references to text fields
-     * @param view
-     * @param savedInstanceState
+     * @param view view of which to attach fragment to.
+     * @param savedInstanceState information and flags from previous activites/fragments.
      */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
@@ -71,9 +69,11 @@ public class AccountFragment extends Fragment {
     super.onStart();
     View view = getView();
     if (view != null){
-        user.setText("Username: ");
+        String usernameLine = getResources().getString(R.string.username,getUserName());
+        user.setText(usernameLine);
         user.append(getUserName());
-        credits.setText("Credits: " + Integer.toString(getCredits()));
+        String creditsLine = getResources().getString(R.string.credits,getCredits());
+        credits.setText(creditsLine);
         }
 
     }

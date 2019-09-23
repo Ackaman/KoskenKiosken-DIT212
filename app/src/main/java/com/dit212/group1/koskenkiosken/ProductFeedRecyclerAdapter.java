@@ -1,10 +1,15 @@
 package com.dit212.group1.koskenkiosken;
 
+import android.content.Context;
+import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
+import com.dit212.group1.koskenkiosken.Model.Product;
 
 import java.util.List;
 
@@ -14,13 +19,13 @@ import java.util.List;
  */
 public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeedRecyclerAdapter.ViewHolder> {
 
-    private final List<Object> products;
+    private final List<Product> products;
 
     /**
      * Constructor
      * @param products list of items to be shown in RecyclerView.
      */
-    ProductFeedRecyclerAdapter(List<Object> products){
+    ProductFeedRecyclerAdapter(List<Product> products){
         this.products = products;
     }
 
@@ -34,7 +39,18 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
     @NonNull
     @Override
     public ViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-        return null;
+        Context context = parent.getContext();
+
+        LayoutInflater inflater = LayoutInflater.from(context);
+
+        // Inflate the custom layout
+        View productView = inflater.inflate(R.layout.productcard, parent, false);
+        RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(
+                RecyclerView.LayoutParams.MATCH_PARENT,
+                RecyclerView.LayoutParams.WRAP_CONTENT);
+        productView.setLayoutParams(lp);
+
+        return new ViewHolder(productView);
     }
 
     /**
@@ -45,7 +61,9 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-
+        Product pr = products.get(position);
+        holder.setProductName(pr.getName());
+        holder.setProductPrice(Integer.toString(pr.getPrice()));
     }
 
     /**
@@ -54,16 +72,29 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
      */
     @Override
     public int getItemCount() {
-        return 0;
+        return products.size();
     }
 
     /**
      * class that represents an item in the RecyclerView.
      */
-    public class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder{
 
-        public ViewHolder(@NonNull View itemView) {
+        TextView productName;
+        TextView productPrice;
+
+        ViewHolder(@NonNull View itemView) {
             super(itemView);
+            productName = itemView.findViewById(R.id.product_name);
+            productPrice = itemView.findViewById(R.id.product_price);
+        }
+
+        void setProductName(String productName) {
+            this.productName.setText(productName);
+        }
+
+        void setProductPrice(String productPrice) {
+            this.productPrice.setText(productPrice);
         }
     }
 }
