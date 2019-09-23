@@ -1,3 +1,13 @@
 <resources>
     <string name="app_name">KoskenKiosken</string>
+    <string name="actionbar_store">Store</string>
+    <string name="actionbar_account">Account</string>
+
+    <!-- TODO: Remove or change this placeholder text -->
+    <string name="hello_blank_fragment">Hello blank fragment</string>
+
+    <string name="placeholder_product_price">Produktpris</string>
+    <string name="placeholder_product_name">Produktnamn</string>
+    <string name="username">Användarnamn: %1$s</string>
+    <string name="credits">Credits: %1$d</string>
 </resources>
