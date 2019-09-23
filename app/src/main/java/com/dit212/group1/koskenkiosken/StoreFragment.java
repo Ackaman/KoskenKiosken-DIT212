@@ -6,11 +6,12 @@ import android.os.Bundle;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.recyclerview.widget.LinearLayoutManager;
+import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.TextView;
 
 import com.dit212.group1.koskenkiosken.Model.Product;
 
@@ -22,10 +23,6 @@ import java.util.ArrayList;
  */
 public class StoreFragment extends Fragment {
     private ArrayList<Product> products;
-    private TextView productName;
-    private TextView productPrice;
-    private View rootView;
-    private Product singleProduct;
 
     public StoreFragment() {
         // Required empty public constructor
@@ -34,12 +31,10 @@ public class StoreFragment extends Fragment {
     /**
      * constructor takes a list of products as argument.
      * As of now we only use one product hence we only take the first element in the list.
-     * @param productsinstore
+     * @param productsinstore list of products to be displayed in fragment
      */
-    public StoreFragment(ArrayList<Product> productsinstore){
+    StoreFragment(ArrayList<Product> productsinstore){
         this.products = productsinstore;
-        this.singleProduct = products.get(0);
-
     }
 
 
@@ -54,15 +49,20 @@ public class StoreFragment extends Fragment {
 
     /**
      * References for the Text in this view.
-     * @param view
-     * @param savedInstanceState
+     * @param view view to attach fragment to.
+     * @param savedInstanceState settings from previous activites/fragments
      */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        rootView = view;
-        productName  = rootView.findViewById(R.id.product_name);
-        productPrice = rootView.findViewById(R.id.product_price);
+
+        RecyclerView rv = view.findViewById(R.id.recyclerview);
+
+        RecyclerView.LayoutManager llm = new LinearLayoutManager(getContext());
+
+        rv.setAdapter(new ProductFeedRecyclerAdapter(products));
+
+        rv.setLayoutManager(llm);
     }
 
 
@@ -72,15 +72,7 @@ public class StoreFragment extends Fragment {
     @Override
     public void onStart(){
         super.onStart();
-        View view = getView();
-        if (view != null){
-            String price = "Price: " + Integer.toString(singleProduct.getPrice());
-            productPrice.setText(price);
-            String name = "Produkt" + singleProduct.getName();
-            productName.setText(name);
-            }
-        }
 
-    }
+    }}
 
 

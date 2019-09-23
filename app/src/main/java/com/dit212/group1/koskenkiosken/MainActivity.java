@@ -2,8 +2,6 @@ package com.dit212.group1.koskenkiosken;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.view.View;
-import android.widget.FrameLayout;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -14,14 +12,11 @@ import androidx.fragment.app.FragmentTransaction;
 import com.dit212.group1.koskenkiosken.Model.Product;
 import com.dit212.group1.koskenkiosken.Model.User;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import com.google.android.material.snackbar.Snackbar;
-
 import java.util.ArrayList;
 
 
 public class MainActivity extends AppCompatActivity {
 
-    private FrameLayout mMainFrame;
     private AccountFragment accountFragment;
     private StoreFragment storeFragment;
     private User currentUser;
@@ -42,18 +37,12 @@ public class MainActivity extends AppCompatActivity {
         setContentView(R.layout.activity_main);
         generateProducts();
         generateUser();
-        mMainFrame = findViewById(R.id.main_frame);
 
         accountFragment = new AccountFragment(currentUser);
         storeFragment = new StoreFragment(productsList);
         setStartFragment();
 
 
-        /**
-         * Initiates a listener for our bottom navigation bar.
-         * account,store refers to account button in the toolbar.
-         * There are currently Toasts to ensure the listener is working when running the emulator.
-         */
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
             @Override
@@ -85,10 +74,12 @@ public class MainActivity extends AppCompatActivity {
      * Method to generate a list of products that will be passed to Store fragment
      */
     private void generateProducts(){
-        this.productsList = new ArrayList<Product>();
-        for(int i = 0; i<10; i++){
-            productsList.add(new Product("Nocco", i, (10+i), 10));
-        }
+        this.productsList = new ArrayList<>();
+
+        productsList.add(new Product("Chokladboll", 2, 5, 10));
+        productsList.add(new Product("Nocco", 1, 15, 10));
+        productsList.add(new Product("HariboNallar", 3, 2, 10));
+        productsList.add(new Product("Kaffepaket", 4, 20, 10));
     }
 
     /**
