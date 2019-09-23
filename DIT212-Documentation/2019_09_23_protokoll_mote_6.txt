@@ -1,0 +1,42 @@
+# Meeting Agenda
+
+Group: KlassFörakt
+Date: 2019-09-23
+Chair: Albin Otterhäll
+Participants: Albin Otterhäll, Gustav Pihlquist, Johan Almroth, Morgan Thowsen, David Persson
+
+
+## Objectives (5 min) 
+ 
+ - Morgan väntar på att User Story 7 skall pushas upp till Github.
+
+
+## Reports (15 min) from previous meeting
+
+ - Morgan är klar med User Story 6
+ - Johan och Albin är klar med User Story 10
+ - Gustav, David och Johan har tillsammans slutfört User Story 7
+
+
+## Discussion items (35 min)
+
+ - Vi skall inte vara rädda för att dela upp en större User Stories i flera mindre små, för att underlätta arbetet och minska dependencies etc.
+ - Att jobba flera på samma User Story har varit svårt, men kan numera assigna oss varsin story. Om inte - bryt hellre upp en story i två, och dela upp den i så fall.
+ - 1 kodvecka har gått, och vi har 3 kvar. Vi måste lägga på ett kol med kodningen.
+
+
+## Outcomes and assignments (5 min)
+
+ - Morgan skall mocka en databas.
+ - Morgan tar User Story 15
+ - Albin skall slutföra User Story 10 och refaktorisera koden.
+ - David tar User Story 8
+ - Gustav tar User Story 4
+ - Johan och Morgan pushar upp User Story 7 respektive 6 till Github
+ - Johan pushar upp User Story 10 till Github
+ - Johan tar User Story 14
+
+
+## Wrap up
+ 
+ - Nästa möte Onsdag 25/09 13:00
