@@ -13,17 +13,6 @@
         android:layout_height="1000dp"
         android:orientation="vertical">
 
-        <Button
-            android:id="@+id/donate_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
-            android:layout_marginEnd="44dp"
-            android:text="Donate"
-            app:layout_constraintEnd_toStartOf="@+id/purchase_button"
-            app:layout_constraintStart_toStartOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/current_credits" />
-
         <TextView
 
             android:id="@+id/current_credits"
@@ -54,14 +43,5 @@
             app:layout_constraintStart_toStartOf="parent"
             app:layout_constraintTop_toTopOf="parent" />
 
-        <Button
-            android:id="@+id/purchase_button"
-            android:layout_width="wrap_content"
-            android:layout_height="wrap_content"
-            android:layout_marginTop="72dp"
-            android:layout_marginEnd="64dp"
-            android:text="Purchase"
-            app:layout_constraintEnd_toEndOf="parent"
-            app:layout_constraintTop_toBottomOf="@+id/current_credits" />
     </androidx.constraintlayout.widget.ConstraintLayout>
 </ScrollView >
