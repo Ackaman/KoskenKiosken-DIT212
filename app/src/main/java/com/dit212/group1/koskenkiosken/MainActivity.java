@@ -9,8 +9,10 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.dit212.group1.koskenkiosken.Model.Product;
-import com.dit212.group1.koskenkiosken.Model.User;
+import com.dit212.group1.koskenkiosken.Model.IProduct;
+import com.dit212.group1.koskenkiosken.Model.IUser;
+import com.dit212.group1.koskenkiosken.Model.ProductFactory;
+import com.dit212.group1.koskenkiosken.Model.UserFactory;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 
@@ -19,8 +21,8 @@ public class MainActivity extends AppCompatActivity {
 
     private AccountFragment accountFragment;
     private StoreFragment storeFragment;
-    private User currentUser;
-    private ArrayList<Product> productsList;
+    private IUser currentUser;
+    private ArrayList<IProduct> productsList;
 
 
 
@@ -76,17 +78,17 @@ public class MainActivity extends AppCompatActivity {
     private void generateProducts(){
         this.productsList = new ArrayList<>();
 
-        productsList.add(new Product("Chokladboll", 2, 5, 10));
-        productsList.add(new Product("Nocco", 1, 15, 10));
-        productsList.add(new Product("HariboNallar", 3, 2, 10));
-        productsList.add(new Product("Kaffepaket", 4, 20, 10));
+        productsList.add(ProductFactory.create("Chokladboll", 2));
+        productsList.add(ProductFactory.create("Nocco", 1));
+        productsList.add(ProductFactory.create("HariboNallar", 3));
+        productsList.add(ProductFactory.create("Kaffepaket", 4));
     }
 
     /**
      * Generate mock user until database is implemented that will be passed to User fragment
      * */
     private void generateUser(){
-        this.currentUser = new User();
+        this.currentUser = UserFactory.createMock();
     }
 
     /**

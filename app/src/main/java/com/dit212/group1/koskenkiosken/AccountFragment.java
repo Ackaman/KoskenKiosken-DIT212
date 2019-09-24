@@ -11,7 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.dit212.group1.koskenkiosken.Model.User;
+import com.dit212.group1.koskenkiosken.Model.IUser;
+import com.dit212.group1.koskenkiosken.Model.UserFactory;
 
 
 /**
@@ -19,7 +20,7 @@ import com.dit212.group1.koskenkiosken.Model.User;
  */
 public class AccountFragment extends Fragment {
 
-    private User userID;
+    private IUser userID;
     private TextView credits;
     private TextView user;
     private View rootView;
@@ -29,7 +30,7 @@ public class AccountFragment extends Fragment {
     }
 
 
-    AccountFragment(User currentUser){
+    AccountFragment(IUser currentUser){
         this.userID = currentUser;
     }
 
@@ -38,7 +39,7 @@ public class AccountFragment extends Fragment {
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         if (savedInstanceState != null){
-            userID = new User();
+            userID = UserFactory.createMock();
         }
 
         return inflater.inflate(R.layout.fragment_account, container, false);

@@ -1,55 +1,58 @@
 package com.dit212.group1.koskenkiosken.Model;
 
-public class Product {
+/**
+ * Description: representation of a product.
+ */
+
+class Product implements IProduct {
 
     private String name;
-    private int pid;
     private int price;
-    private int stock; //Should this really be in Product class?
 
-    public Product(){
-        this.name = "Nocoo";
-        this.pid = 0;
-        this.price = 10;
-        this.stock = 10;
-    }
+    /**
+     * constructor.
+     * @param name the name of the product being constructed
+     * @param price the price of the product being constructed
+     */
 
-    public Product(String name, int pid, int price, int stock){
+    Product(String name, int price){
         this.name = name;
-        this.pid = pid;
         this.price = price;
-        this.stock = stock;
     }
+
+    /**
+     * get the name of a given product.
+     * @return the name of a given product
+     */
 
     public String getName() {
         return name;
     }
 
-    public void setName(String name) {
+    /**
+     * set the name of a given product
+     * @param name the name to set of a given product
+     */
+
+    void setName(String name) {
         this.name = name;
     }
 
-    public int getPid() {
-        return pid;
-    }
-
-    public void setPid(int pid) {
-        this.pid = pid;
-    }
+    /**
+     * get the price of a given product
+     * @return the price of a given product
+     */
 
     public int getPrice() {
         return price;
     }
 
-    public void setPrice(int price) {
+    /**
+     * set the price of a given product
+     * @param price the price to set of a given product
+     */
+
+    void setPrice(int price) {
         this.price = price;
-    }
-
-    public int getStock() {
-        return stock;
-    }
-
-    public void setStock(int stock) {
-        this.stock = stock;
     }
 }

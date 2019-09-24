@@ -13,7 +13,7 @@ import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
 
-import com.dit212.group1.koskenkiosken.Model.Product;
+import com.dit212.group1.koskenkiosken.Model.IProduct;
 
 import java.util.ArrayList;
 
@@ -22,7 +22,7 @@ import java.util.ArrayList;
  * A simple {@link Fragment} subclass.
  */
 public class StoreFragment extends Fragment {
-    private ArrayList<Product> products;
+    private ArrayList<IProduct> products;
 
     public StoreFragment() {
         // Required empty public constructor
@@ -33,7 +33,7 @@ public class StoreFragment extends Fragment {
      * As of now we only use one product hence we only take the first element in the list.
      * @param productsinstore list of products to be displayed in fragment
      */
-    StoreFragment(ArrayList<Product> productsinstore){
+    StoreFragment(ArrayList<IProduct> productsinstore){
         this.products = productsinstore;
     }
 

@@ -9,7 +9,7 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.dit212.group1.koskenkiosken.Model.Product;
+import com.dit212.group1.koskenkiosken.Model.IProduct;
 
 import java.util.List;
 
@@ -19,13 +19,13 @@ import java.util.List;
  */
 public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeedRecyclerAdapter.ViewHolder> {
 
-    private final List<Product> products;
+    private final List<IProduct> products;
 
     /**
      * Constructor
      * @param products list of items to be shown in RecyclerView.
      */
-    ProductFeedRecyclerAdapter(List<Product> products){
+    ProductFeedRecyclerAdapter(List<IProduct> products){
         this.products = products;
     }
 
@@ -61,7 +61,7 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        Product pr = products.get(position);
+        IProduct pr = products.get(position);
         holder.setProductName(pr.getName());
         holder.setProductPrice(Integer.toString(pr.getPrice()));
     }
