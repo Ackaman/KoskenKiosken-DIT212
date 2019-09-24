@@ -9,9 +9,11 @@ import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.dit212.group1.koskenkiosken.DB.DatabaseHelper;
+import com.dit212.group1.koskenkiosken.Model.IDatabase;
 import com.dit212.group1.koskenkiosken.Model.IProduct;
 import com.dit212.group1.koskenkiosken.Model.IUser;
-import com.dit212.group1.koskenkiosken.Model.ProductFactory;
+import com.dit212.group1.koskenkiosken.Model.Model;
 import com.dit212.group1.koskenkiosken.Model.UserFactory;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
@@ -37,13 +39,15 @@ public class MainActivity extends AppCompatActivity {
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        generateProducts();
+
+        IDatabase db = DatabaseHelper.getDatabaseHelper();
+        Model model = new Model(db);
+
         generateUser();
 
         accountFragment = new AccountFragment(currentUser);
-        storeFragment = new StoreFragment(productsList);
+        storeFragment = new StoreFragment(model.listOfProducts());
         setStartFragment();
-
 
         BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
         bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
@@ -70,18 +74,6 @@ public class MainActivity extends AppCompatActivity {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.main_frame, fragment);
         fragmentTransaction.commit();
-    }
-
-    /**
-     * Method to generate a list of products that will be passed to Store fragment
-     */
-    private void generateProducts(){
-        this.productsList = new ArrayList<>();
-
-        productsList.add(ProductFactory.create("Chokladboll", 2));
-        productsList.add(ProductFactory.create("Nocco", 1));
-        productsList.add(ProductFactory.create("HariboNallar", 3));
-        productsList.add(ProductFactory.create("Kaffepaket", 4));
     }
 
     /**

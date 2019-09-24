@@ -15,14 +15,14 @@ import android.view.ViewGroup;
 
 import com.dit212.group1.koskenkiosken.Model.IProduct;
 
-import java.util.ArrayList;
+import java.util.List;
 
 
 /**
  * A simple {@link Fragment} subclass.
  */
 public class StoreFragment extends Fragment {
-    private ArrayList<IProduct> products;
+    private List<IProduct> products;
 
     public StoreFragment() {
         // Required empty public constructor
@@ -33,7 +33,7 @@ public class StoreFragment extends Fragment {
      * As of now we only use one product hence we only take the first element in the list.
      * @param productsinstore list of products to be displayed in fragment
      */
-    StoreFragment(ArrayList<IProduct> productsinstore){
+    StoreFragment(List<IProduct> productsinstore){
         this.products = productsinstore;
     }
 
