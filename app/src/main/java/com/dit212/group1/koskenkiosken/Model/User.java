@@ -3,7 +3,7 @@ package com.dit212.group1.koskenkiosken.Model;
 /**
  * representation of a user.
  */
-public class User implements IUser {
+class User implements IUser {
 
     private String userName;
     private int credits;
@@ -13,7 +13,7 @@ public class User implements IUser {
      * @param userName the name to set of the constructed user.
      * @param credits the number of credits to give the contructed user.
      */
-    public User(String userName, int credits) {
+    User(String userName, int credits) {
         this.userName = userName;
         this.credits = credits;
     }
@@ -21,7 +21,7 @@ public class User implements IUser {
     /**
      * Constructor for mock-user.
      */
-    public User(){
+    User(){
         this.userName = "FirstUser";
         this.credits  = 10;
     }

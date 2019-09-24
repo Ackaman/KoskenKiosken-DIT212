@@ -10,8 +10,9 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.dit212.group1.koskenkiosken.Model.IProduct;
+import com.dit212.group1.koskenkiosken.Model.IUser;
 import com.dit212.group1.koskenkiosken.Model.ProductFactory;
-import com.dit212.group1.koskenkiosken.Model.User;
+import com.dit212.group1.koskenkiosken.Model.UserFactory;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.ArrayList;
 
@@ -20,7 +21,7 @@ public class MainActivity extends AppCompatActivity {
 
     private AccountFragment accountFragment;
     private StoreFragment storeFragment;
-    private User currentUser;
+    private IUser currentUser;
     private ArrayList<IProduct> productsList;
 
 
@@ -87,7 +88,7 @@ public class MainActivity extends AppCompatActivity {
      * Generate mock user until database is implemented that will be passed to User fragment
      * */
     private void generateUser(){
-        this.currentUser = new User();
+        this.currentUser = UserFactory.createMock();
     }
 
     /**

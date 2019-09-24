@@ -10,7 +10,6 @@ import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dit212.group1.koskenkiosken.Model.IProduct;
-import com.dit212.group1.koskenkiosken.Model.Product;
 
 import java.util.List;
 

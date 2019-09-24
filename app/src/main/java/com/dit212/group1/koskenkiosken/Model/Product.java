@@ -4,7 +4,7 @@ package com.dit212.group1.koskenkiosken.Model;
  * Description: representation of a product.
  */
 
-public class Product implements IProduct {
+class Product implements IProduct {
 
     private String name;
     private int price;
