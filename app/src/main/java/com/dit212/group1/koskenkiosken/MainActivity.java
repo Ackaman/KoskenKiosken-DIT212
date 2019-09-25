@@ -25,11 +25,12 @@ import java.util.ArrayList;
  * Description: main controller switching between fragments and binding non-fragment specific buttons.
  * also delegates pieces of the model to fragments.
  */
-
+// TODO check this implementation
 public class MainActivity extends AppCompatActivity implements StoreFragment.FragmentStoreLitsener {
 
     private AccountFragment accountFragment;
     private StoreFragment storeFragment;
+    // TODO check these 3
     private IAccount currentUser;
     private ArrayList<IProduct> productsList;
     private CartFragment cartFragment;
@@ -56,11 +57,10 @@ public class MainActivity extends AppCompatActivity implements StoreFragment.Fra
         setModel(savedInstanceState);
         initFragments(m);
 
-
         setFragment(storeFragment);
         setBottomNavigationBarListener();
     }
-
+    // TODO check this
     private void initFragments(Model m){
         if (accountFragment == null) accountFragment = new AccountFragment(m.getLoggedInUser());
         if (storeFragment == null) storeFragment = new StoreFragment(new ArrayList<>(m.listOfProducts()), m.getCart());
@@ -114,21 +114,6 @@ public class MainActivity extends AppCompatActivity implements StoreFragment.Fra
      * sets the model. creates a new if a previous model isnt stored in saved instance state.
      * @param savedInstanceState the bundle of which to look for a prior model.
      */
-    private void generateProducts(){
-        this.productsList = new ArrayList<>();
-
-        productsList.add(ProductFactory.create("Chokladboll", 2, "Placeholder"));
-        productsList.add(ProductFactory.create("Nocco", 1, "Placeholder"));
-        productsList.add(ProductFactory.create("HariboNallar", 3, "Placeholder"));
-        productsList.add(ProductFactory.create("Kaffepaket", 4, "Placeholder"));
-    }
-
-    /**
-     * Generate mock user until database is implemented that will be passed to User fragment
-     * */
-    private void generateUser(){
-        this.currentUser = UserFactory.createMockUser();
-    }
 
     private void setModel(Bundle savedInstanceState){
         if (m != null) return;
