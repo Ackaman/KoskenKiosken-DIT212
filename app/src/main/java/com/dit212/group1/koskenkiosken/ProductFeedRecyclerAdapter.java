@@ -4,6 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -20,13 +21,15 @@ import java.util.List;
 public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeedRecyclerAdapter.ViewHolder> {
 
     private final List<IProduct> products;
+    private ProductClickListener productClickListener;
 
     /**
      * Constructor
      * @param products list of items to be shown in RecyclerView.
      */
-    ProductFeedRecyclerAdapter(List<IProduct> products){
+    ProductFeedRecyclerAdapter(List<IProduct> products, ProductClickListener productClickListener){
         this.products = products;
+        this.productClickListener = productClickListener;
     }
 
     /**
@@ -48,7 +51,7 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
                 RecyclerView.LayoutParams.WRAP_CONTENT);
         productView.setLayoutParams(lp);
 
-        return new ViewHolder(productView);
+        return new ViewHolder(productView, productClickListener);
     }
 
     /**
@@ -62,6 +65,15 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         IProduct pr = products.get(position);
         holder.setProductName(pr.getName());
         holder.setProductPrice(Integer.toString(pr.getPrice()));
+
+
+        holder.addToCart_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+
+            }
+
+        });
     }
 
     /**
@@ -76,19 +88,20 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
     /**
      * class that represents an item in the RecyclerView.
      */
-    class ViewHolder extends RecyclerView.ViewHolder{
+    class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView productName;
         TextView productPrice;
+        Button addToCart_button;
+        ProductClickListener productClickListener;
 
-        /**
-         * constructor.
-         * @param itemView container view.
-         */
-        ViewHolder(@NonNull View itemView) {
+        ViewHolder(@NonNull View itemView, ProductClickListener productClickListener) {
             super(itemView);
             productName = itemView.findViewById(R.id.product_name);
             productPrice = itemView.findViewById(R.id.product_price);
+            addToCart_button = itemView.findViewById(R.id.addtoCart_button);
+            this.productClickListener = productClickListener;
+            itemView.setOnClickListener(this);
         }
 
         /**
@@ -106,5 +119,17 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         void setProductPrice(String productPrice) {
             this.productPrice.setText(productPrice);
         }
+
+
+        @Override
+        public void onClick(View v) {
+            productClickListener.onNoteClick(getAdapterPosition());
+
+        }
+
+    }
+
+    public interface ProductClickListener {
+    void onNoteClick(int position);
     }
 }

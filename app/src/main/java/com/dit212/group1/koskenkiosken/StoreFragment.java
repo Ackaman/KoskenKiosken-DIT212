@@ -2,6 +2,10 @@ package com.dit212.group1.koskenkiosken;
 
 
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -9,13 +13,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.dit212.group1.koskenkiosken.Model.IProduct;
 
-import java.util.List;
+import java.util.ArrayList;
 
 
 /**
@@ -23,8 +23,8 @@ import java.util.List;
  * Description: Store page "controller". feeds product-specific textfields and/or buttons of the
  * view to data and functions from a list of products.
  */
-public class StoreFragment extends Fragment {
-    private List<IProduct> products;
+public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapter.ProductClickListener {
+    private ArrayList<IProduct> products;
 
     public StoreFragment() {
         // Required empty public constructor
@@ -35,7 +35,7 @@ public class StoreFragment extends Fragment {
      * As of now we only use one product hence we only take the first element in the list.
      * @param productsinstore list of products to be displayed in fragment
      */
-    StoreFragment(List<IProduct> productsinstore){
+    StoreFragment(ArrayList<IProduct> productsinstore){
         this.products = productsinstore;
     }
 
@@ -62,7 +62,7 @@ public class StoreFragment extends Fragment {
 
         RecyclerView.LayoutManager llm = new LinearLayoutManager(getContext());
 
-        rv.setAdapter(new ProductFeedRecyclerAdapter(products));
+        rv.setAdapter(new ProductFeedRecyclerAdapter(products, this));
 
         rv.setLayoutManager(llm);
     }
@@ -75,6 +75,13 @@ public class StoreFragment extends Fragment {
     public void onStart(){
         super.onStart();
 
-    }}
+    }
+
+    @Override
+    public void onNoteClick(int position) {
+        String test = products.get(position).getName();
+        Toast.makeText(this.getContext(), test, Toast.LENGTH_SHORT).show();
+    }
+}
 
 
