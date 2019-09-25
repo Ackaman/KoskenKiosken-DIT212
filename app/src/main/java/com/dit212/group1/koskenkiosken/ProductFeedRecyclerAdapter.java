@@ -4,14 +4,14 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ImageButton;
+import android.widget.Button;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.dit212.group1.koskenkiosken.Model.IProduct;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -20,23 +20,16 @@ import java.util.List;
  */
 public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeedRecyclerAdapter.ViewHolder> {
 
-
-    private List<IProduct> products;
+    private final List<IProduct> products;
     private ProductClickListener productClickListener;
-    private PurchaseClickListener purchaseClickListener;
 
     /**
      * Constructor
      * @param products list of items to be shown in RecyclerView.
      */
-    ProductFeedRecyclerAdapter(List<IProduct> products, ProductClickListener productClickListener, PurchaseClickListener purchaseClickListener){
+    ProductFeedRecyclerAdapter(List<IProduct> products, ProductClickListener productClickListener){
         this.products = products;
         this.productClickListener = productClickListener;
-        this.purchaseClickListener = purchaseClickListener;
-    }
-
-    ProductFeedRecyclerAdapter(List<IProduct> products){
-        this.products = products;
     }
 
     /**
@@ -58,8 +51,7 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
                 RecyclerView.LayoutParams.WRAP_CONTENT);
         productView.setLayoutParams(lp);
 
-
-        return new ViewHolder(productView, productClickListener, purchaseClickListener);
+        return new ViewHolder(productView, productClickListener);
     }
 
     /**
@@ -70,9 +62,18 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
 
     @Override
     public void onBindViewHolder(@NonNull ViewHolder holder, int position) {
-        final IProduct pr = products.get(position);
+        IProduct pr = products.get(position);
         holder.setProductName(pr.getName());
         holder.setProductPrice(Integer.toString(pr.getPrice()));
+
+
+        holder.addToCart_button.setOnClickListener(new View.OnClickListener(){
+            @Override
+            public void onClick(View view){
+
+            }
+
+        });
     }
 
     /**
@@ -85,48 +86,22 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
     }
 
     /**
-     * Updates the current list of sorted products in the adapter
-     * @param sortedProducts        The list of sorted products from method sortString in StoreFragment
-     */
-    public void sortString(ArrayList<IProduct> sortedProducts){
-        products = sortedProducts;
-        notifyDataSetChanged();
-
-    }
-
-    /**
      * class that represents an item in the RecyclerView.
      */
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
         TextView productName;
         TextView productPrice;
-        ImageButton addToCart_button;
-
+        Button addToCart_button;
         ProductClickListener productClickListener;
-        PurchaseClickListener purchaseClickListener;
 
-        /**
-         *
-         * @param itemView
-         * @param productClickListener listens for clicks on product card
-         * @param buttonListener listens for clicks on purchase button in each card
-         */
-        ViewHolder(@NonNull View itemView, ProductClickListener productClickListener, PurchaseClickListener buttonListener) {
+        ViewHolder(@NonNull View itemView, ProductClickListener productClickListener) {
             super(itemView);
             productName = itemView.findViewById(R.id.product_name);
             productPrice = itemView.findViewById(R.id.product_price);
             addToCart_button = itemView.findViewById(R.id.addtoCart_button);
-
-
             this.productClickListener = productClickListener;
             itemView.setOnClickListener(this);
-
-            this.purchaseClickListener  = buttonListener;
-            addToCart_button.setOnClickListener(this);
-
-
-
         }
 
         /**
@@ -146,39 +121,15 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         }
 
 
-        /**
-         * This method checks wheter the view is our button(view) or the productcard itsel.
-         * Will be expanded with a "-" button later.
-         * @param v
-         */
         @Override
         public void onClick(View v) {
-            if(v.getId() == addToCart_button.getId()){
-                purchaseClickListener.onPurchaseClick(getAdapterPosition());
-            }
-            else productClickListener.onProductClick(getAdapterPosition());
+            productClickListener.onNoteClick(getAdapterPosition());
+
         }
 
-
-
-
     }
 
-    /**
-     * Interface for OnClickListener for each product view.
-     */
-    public interface ProductClickListener{
-        void onProductClick(int position);
+    public interface ProductClickListener {
+    void onNoteClick(int position);
     }
-
-    /**
-     * Interface for OnClickListener for each "+"-button in each product view.
-     */
-    public interface PurchaseClickListener{
-        void onPurchaseClick(int position);
-
-    }
-
-
-
 }
