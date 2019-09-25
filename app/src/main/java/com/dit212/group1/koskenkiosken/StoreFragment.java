@@ -1,6 +1,7 @@
 package com.dit212.group1.koskenkiosken;
 
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -77,10 +78,19 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
 
     }
 
+
+    /**
+     * When a product is pressed this function will handle modle blabbla
+     * Change second argument in intent to whatever, need a parser to parse object (produkt)
+     * @param position Objects position in list
+     */
     @Override
-    public void onNoteClick(int position) {
+    public void onProductClick(int position) {
         String test = products.get(position).getName();
         Toast.makeText(this.getContext(), test, Toast.LENGTH_SHORT).show();
+        Intent intent = new Intent(getActivity(), ProductPressedView.class);
+         //intent.putExtra(products.get(position).getName());
+        startActivity(intent);
     }
 }
 
