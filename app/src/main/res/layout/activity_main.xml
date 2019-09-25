@@ -14,7 +14,7 @@
         android:layout_height="wrap_content"
         android:layout_alignParentBottom="true"
         android:layout_alignParentStart="true"
-        app:menu = "@menu/menu_actionbar"
+        app:menu = "@menu/menu_bottom_bar"
         />
 
 

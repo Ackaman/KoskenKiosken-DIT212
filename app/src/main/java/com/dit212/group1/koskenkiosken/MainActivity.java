@@ -1,6 +1,7 @@
 package com.dit212.group1.koskenkiosken;
 
 import android.os.Bundle;
+import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -34,6 +35,7 @@ public class MainActivity extends AppCompatActivity implements StoreFragment.Fra
     private CartFragment cartFragment;
     private BottomNavigationView bnv;
     private Model m;
+    private ActionBar ab;
 
 
     /**
@@ -46,6 +48,8 @@ public class MainActivity extends AppCompatActivity implements StoreFragment.Fra
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
+
+        ab = getSupportActionBar();
 
         bnv = findViewById(R.id.bottom_navigation);
 
@@ -131,5 +135,17 @@ public class MainActivity extends AppCompatActivity implements StoreFragment.Fra
         if (savedInstanceState != null) m = savedInstanceState.getParcelable("Model");
         if (m == null) m = new Model(DatabaseHelper.getDatabaseHelper(), UserFactory.createMockUser());
     }
+
+    /**
+     * method ran by android platform to populate and inflate actionbar entries.
+     * @param menu actionbar menu given by android platform
+     * @return bool depending on if the inflate was successful.
+     */
+    @Override
+    public boolean onCreateOptionsMenu(Menu menu) {
+        getMenuInflater().inflate(R.menu.menu_actionbar, menu);
+        return false;
+    }
+
 
 }
