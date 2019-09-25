@@ -42,8 +42,6 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         Context context = parent.getContext();
 
         LayoutInflater inflater = LayoutInflater.from(context);
-
-        // Inflate the custom layout
         View productView = inflater.inflate(R.layout.productcard, parent, false);
         RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(
                 RecyclerView.LayoutParams.MATCH_PARENT,
@@ -83,16 +81,28 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         TextView productName;
         TextView productPrice;
 
+        /**
+         * constructor.
+         * @param itemView container view.
+         */
         ViewHolder(@NonNull View itemView) {
             super(itemView);
             productName = itemView.findViewById(R.id.product_name);
             productPrice = itemView.findViewById(R.id.product_price);
         }
 
+        /**
+         * set the name textview field to a string.
+         * @param productName the name to display in the text field.
+         */
         void setProductName(String productName) {
             this.productName.setText(productName);
         }
 
+        /**
+         * set the price textview field to a int(string).
+         * @param productPrice the price to display in the text field.
+         */
         void setProductPrice(String productPrice) {
             this.productPrice.setText(productPrice);
         }

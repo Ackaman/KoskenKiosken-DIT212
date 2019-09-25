@@ -13,11 +13,11 @@ public class Model {
      * @param loggedInUser the user which is logged in.
      */
 
-    public Model(IDatabase persistentStorage, User loggedInUser){
+    public Model(IDatabase persistentStorage, IUser loggedInUser){
         productList = new ArrayList<>();
         readFromStorage(persistentStorage);
 
-        this.loggedInUser = loggedInUser;
+        this.loggedInUser = (User) loggedInUser;
     }
 
     /**

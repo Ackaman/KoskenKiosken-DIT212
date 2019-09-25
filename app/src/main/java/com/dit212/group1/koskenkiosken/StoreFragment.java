@@ -19,7 +19,9 @@ import java.util.List;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * Author: created by -, on -
+ * Description: Store page "controller". feeds product-specific textfields and/or buttons of the
+ * view to data and functions from a list of products.
  */
 public class StoreFragment extends Fragment {
     private List<IProduct> products;
