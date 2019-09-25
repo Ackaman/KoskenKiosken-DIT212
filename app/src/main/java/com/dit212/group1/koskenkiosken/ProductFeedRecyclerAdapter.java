@@ -100,8 +100,10 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
             productName = itemView.findViewById(R.id.product_name);
             productPrice = itemView.findViewById(R.id.product_price);
             addToCart_button = itemView.findViewById(R.id.addtoCart_button);
+
             this.productClickListener = productClickListener;
             itemView.setOnClickListener(this);
+
         }
 
         /**
@@ -123,13 +125,13 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
 
         @Override
         public void onClick(View v) {
-            productClickListener.onNoteClick(getAdapterPosition());
+            productClickListener.onProductClick(getAdapterPosition());
 
         }
 
     }
 
     public interface ProductClickListener {
-    void onNoteClick(int position);
+    void onProductClick(int position);
     }
 }
