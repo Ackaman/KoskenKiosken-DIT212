@@ -1,17 +1,18 @@
 package com.dit212.group1.koskenkiosken;
 
 
+import android.content.Intent;
 import android.os.Bundle;
+import android.view.LayoutInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
 
 import com.dit212.group1.koskenkiosken.Model.IProduct;
 
@@ -21,7 +22,7 @@ import java.util.ArrayList;
 /**
  * A simple {@link Fragment} subclass.
  */
-public class StoreFragment extends Fragment {
+public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapter.ProductClickListener {
     private ArrayList<IProduct> products;
 
     public StoreFragment() {
@@ -60,7 +61,7 @@ public class StoreFragment extends Fragment {
 
         RecyclerView.LayoutManager llm = new LinearLayoutManager(getContext());
 
-        rv.setAdapter(new ProductFeedRecyclerAdapter(products));
+        rv.setAdapter(new ProductFeedRecyclerAdapter(products, this));
 
         rv.setLayoutManager(llm);
     }
@@ -72,7 +73,20 @@ public class StoreFragment extends Fragment {
     @Override
     public void onStart(){
         super.onStart();
+    }
 
-    }}
+
+    /**
+     * When a product is pressed this function will handle modle blabbla
+     * Change second argument in intent to whatever, need a parser to parse object (produkt)
+     * @param position Objects position in list
+     */
+    @Override
+    public void onProductClick(int position) {
+        Intent intent = new Intent(getActivity(), ProductPressedView.class);
+        intent.putExtra("test", products.get(position));
+        startActivity(intent);
+    }
+}
 
 

@@ -78,10 +78,10 @@ public class MainActivity extends AppCompatActivity {
     private void generateProducts(){
         this.productsList = new ArrayList<>();
 
-        productsList.add(ProductFactory.create("Chokladboll", 2));
-        productsList.add(ProductFactory.create("Nocco", 1));
-        productsList.add(ProductFactory.create("HariboNallar", 3));
-        productsList.add(ProductFactory.create("Kaffepaket", 4));
+        productsList.add(ProductFactory.create("Chokladboll", 2, "Top teir snack"));
+        productsList.add(ProductFactory.create("Nocco", 1,"Don't drink more than two of them"));
+        productsList.add(ProductFactory.create("HariboNallar", 3,"For babies"));
+        productsList.add(ProductFactory.create("Kaffepaket", 4,"The only reason i wake up in the morning"));
     }
 
     /**
@@ -98,6 +98,4 @@ public class MainActivity extends AppCompatActivity {
     private void setStartFragment(){
         setFragment(storeFragment);
     }
-
-
 }

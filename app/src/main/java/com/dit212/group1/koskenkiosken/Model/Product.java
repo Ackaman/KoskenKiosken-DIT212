@@ -1,13 +1,26 @@
 package com.dit212.group1.koskenkiosken.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+import android.transition.AutoTransition;
+import android.transition.TransitionManager;
+import android.view.View;
+import android.widget.Button;
+
+import androidx.constraintlayout.widget.ConstraintLayout;
+
+import com.dit212.group1.koskenkiosken.MainActivity;
+import com.dit212.group1.koskenkiosken.R;
+
 /**
  * Description: representation of a product.
  */
 
-class Product implements IProduct {
+class Product implements IProduct, Parcelable {
 
     private String name;
     private int price;
+    private String description;
 
     /**
      * constructor.
@@ -15,10 +28,29 @@ class Product implements IProduct {
      * @param price the price of the product being constructed
      */
 
-    Product(String name, int price){
+    Product(String name, int price, String description){
         this.name = name;
         this.price = price;
+        this.description = description;
     }
+
+    protected Product(Parcel in) {
+        name = in.readString();
+        price = in.readInt();
+        description = in.readString();
+    }
+
+    public static final Creator<Product> CREATOR = new Creator<Product>() {
+        @Override
+        public Product createFromParcel(Parcel in) {
+            return new Product(in);
+        }
+
+        @Override
+        public Product[] newArray(int size) {
+            return new Product[size];
+        }
+    };
 
     /**
      * get the name of a given product.
@@ -54,5 +86,25 @@ class Product implements IProduct {
 
     void setPrice(int price) {
         this.price = price;
+    }
+
+    public String getDescription() {
+        return description;
+    }
+
+    public void setDescription(String description) {
+        this.description = description;
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeString(name);
+        dest.writeInt(price);
+        dest.writeString(description);
     }
 }
