@@ -1,0 +1,49 @@
+# Meeting Agenda
+
+Group: KlassFörakt
+Date: 2019-09-25
+Chair: Morgan Thowsen	
+Participants: Gustav Pihlquist, Morgan Thowsen, Johan Almroth, Albin Otterhäll, David Persson
+
+
+## Objectives (5 min) 
+
+ - Måste göra många tester! (finns inga!)
+ - Städa upp activites/fragments
+ - Behöver prata mer om generell design
+
+
+## Reports (15 min) from previous meeting
+
+ - allt verkar löst och tuffar på i bra takt.
+
+
+## Discussion items (35 min)
+
+ - Alla måste börja göra tester löpande.
+ - All kod, Class headers och metoder skall vara kommenterat!
+ - Vi behöver alla diskutera närmare vad var klass har för ansvar och vad som bör förväntas av var.
+	exempel. vart skall varukorgen vara? skall user hålla i den eller modellen (aggregatet)?.
+- 
+
+
+
+## Outcomes and assignments (5 min)
+
+ - alla skall göra tester på alla metoder de skriver. bortsett från instrumentet tests.
+ - albin skall skriva tester till den kodbas som redan finns. Modellen skall vara testad till 100% med 100% row coverage.
+ - Morgan slutför databasen.
+ - Morgan är nästan klar med sin databas och kommer hoppa på sin userstory.
+ - Morgan försöker städa upp i fragments/activity
+ - David skall göra klart sin userstory, deadline fredag.
+ - David skall försöka påbörja en ny userstory redan nu inför nästa vecka.
+ - Johan kör vidare på sin userstory. kommer antagligen styckas up då den var för omfattande.
+ - Gustav fortsätter med sin Userstory.
+ - Albin skall slutföra refaktoriseringen av modellen.
+ - Albin abstraherar modellen.
+ - Albin skall överväga att lägga in eventuella permissions för olika users i modellen(bestämmer själv).
+
+## Wrap up
+
+ - nästa möte är med Robert 27/9 -19
+ - nästa interna möte är på Måndag 30/9 -19 kl13:00 
