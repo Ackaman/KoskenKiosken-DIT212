@@ -22,4 +22,10 @@ public class MockUserFactoryTest {
         String mockUserName = mockUser.getUserName();
         assertThat(mockUserName, equalTo("FirstUser"));
     }
+
+    @Test
+    public void defaultAmountOfCredits() {
+        int mockUserCredits = mockUser.getCredits();
+        assertThat(mockUserCredits, equalTo(10));
+    }
 }
