@@ -32,8 +32,6 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     private String test;
 
     public StoreFragment() {
-        this.cart = new ArrayList<>();
-        // Required empty public constructor
     }
 
     /**
@@ -78,11 +76,6 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
 
     }
 
-    @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_topbar, menu) ;
-    }
-
 
     /**
      * Changes the text placeholders to actualy product name and price.
@@ -112,26 +105,23 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     }
 
 
-
-
+    /**
+     * Purchaseclick = "+" nect to each product.
+     * This method handles what we do when a user press "+"
+     * position is the position in recycleview-list and will correspond to a product in our productlist.
+     * As of now this just Toasts all the objects we have added to our cart.
+     * @param position
+     */
     @Override
     public void onPurchaseClick(int position) {
         cart.add(products.get(position));
         test = "";
-
         for (IProduct p : cart){
             test = test + p.getName() + " ";
         }
-
         Toast.makeText(this.getContext(), test , Toast.LENGTH_LONG).show();
     }
 
-
-
-    //@Override
-    //public void onPurchaseclick(int position) {
-    //    Toast.makeText(this.getContext(), "PRODUKTEN TRYCKTES PÅ", Toast.LENGTH_LONG).show();
-    // }
 }
 
 
