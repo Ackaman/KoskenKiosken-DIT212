@@ -6,9 +6,8 @@
     <androidx.cardview.widget.CardView
         android:id="@+id/cardView"
         android:layout_width="match_parent"
-        android:layout_height="wrap_content"
+        android:layout_height="52dp"
         android:layout_marginTop="1dp"
-        android:layout_marginBottom="1dp"
         >
 
         <RelativeLayout
@@ -24,8 +23,7 @@
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
                 android:layout_centerVertical="true"
-                android:layout_marginEnd="1dp"
-                android:padding="16dp"
+                android:layout_marginEnd="16dp"
                 android:src="@drawable/ic_add_shopping_cart_24dp"/>
 
             <TextView
@@ -33,20 +31,19 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_centerVertical="true"
-                android:padding="16dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="16dp"
                 android:text="@string/placeholder_product_name" />
 
             <TextView
                 android:id="@+id/product_price"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_alignParentTop="true"
-                android:layout_marginStart="62dp"
-                android:layout_marginTop="17dp"
-                android:layout_marginEnd="63dp"
-                android:layout_toStartOf="@+id/addtoCart_button"
-                android:layout_toEndOf="@+id/product_name"
                 android:layout_centerVertical="true"
+                android:textAlignment="textEnd"
+                android:layout_toEndOf="@id/product_name"
+                android:layout_marginEnd="64dp"
+                android:layout_toStartOf="@id/addtoCart_button"
                 android:text="@string/placeholder_product_price" />
 
         </RelativeLayout>
