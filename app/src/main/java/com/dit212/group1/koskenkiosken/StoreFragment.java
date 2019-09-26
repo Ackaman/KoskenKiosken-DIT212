@@ -95,13 +95,6 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
      */
     @Override
     public void onProductClick(int position) {
-        String test = products.get(position).getName();
-        Toast.makeText(this.getContext(), test, Toast.LENGTH_SHORT).show();
-        Intent intent = new Intent(getActivity(), ProductPressedView.class);
-        String doubleTest = test + test;
-        intent.putExtra("DataKey", doubleTest);
-         //intent.putExtra(products.get(position).getName());
-        startActivity(intent);
     }
 
 
