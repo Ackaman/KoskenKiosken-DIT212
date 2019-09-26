@@ -6,6 +6,10 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
+/**
+ * Primary author: Albin Otterhäll <gusalbiot@student.gu.se>
+ */
+
 public class MockUserFactoryTest {
     private IAccount mockUser;
 

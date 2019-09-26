@@ -7,7 +7,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.*;
 
 /**
- * Author: Albin Otterhäll <gusalbiot@student.gu.se>
+ * Primary author: Albin Otterhäll <gusalbiot@student.gu.se>
  */
 
 public class UserFactoryTest {
