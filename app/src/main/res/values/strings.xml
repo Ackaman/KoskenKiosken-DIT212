@@ -9,8 +9,10 @@
     <string name="placeholder_user_credits">Credits: 30</string>
     <string name="username">Användarnamn: %1$s</string>
     <string name="credits">Credits: %1$d</string>
+    <string name="sort_button_title">sort</string>
+    <string name="username_placeholder">Username: Test123</string>
+    <string name="credits_placeholder">Credits: Test123</string>
     <string name="search">Sök</string>
-    <string name="sort_button_title">Sort</string>
     <string name="cart_button">Cart</string>
     <string name="add_to_cart_button_content_desc">Add to cart</string>
 </resources>
