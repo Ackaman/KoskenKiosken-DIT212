@@ -55,4 +55,9 @@ class Product implements IProduct {
     void setPrice(int price) {
         this.price = price;
     }
+
+
+    public Product getObject() {
+        return this;
+    }
 }

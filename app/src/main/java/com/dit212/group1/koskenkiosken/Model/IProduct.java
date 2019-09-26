@@ -7,4 +7,5 @@ package com.dit212.group1.koskenkiosken.Model;
 public interface IProduct {
     String getName();
     int getPrice();
+    Product getObject();
 }
