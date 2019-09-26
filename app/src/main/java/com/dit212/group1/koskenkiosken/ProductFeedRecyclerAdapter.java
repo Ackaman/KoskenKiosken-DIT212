@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Button;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -69,7 +68,6 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         holder.setProductName(pr.getName());
         holder.setProductPrice(Integer.toString(pr.getPrice()));
 
-        final String tester = pr.getName() + " added to Cart";
 /**
         holder.addToCart_button.setOnClickListener(new Button.OnClickListener(){
             @Override
@@ -103,6 +101,12 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         ProductClickListener productClickListener;
         PurchaseClickListener purchaseClickListener;
 
+        /**
+         *
+         * @param itemView
+         * @param productClickListener listens for clicks on product card
+         * @param buttonListener listens for clicks on purchase button in each card
+         */
         ViewHolder(@NonNull View itemView, ProductClickListener productClickListener, PurchaseClickListener buttonListener) {
             super(itemView);
             productName = itemView.findViewById(R.id.product_name);
@@ -137,6 +141,11 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         }
 
 
+        /**
+         * This method checks wheter the view is our button(view) or the productcard itsel.
+         * Will be expanded with a "-" button later.
+         * @param v
+         */
         @Override
         public void onClick(View v) {
             if(v.getId() == addToCart_button.getId()){
@@ -150,10 +159,16 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
 
     }
 
+    /**
+     * Interface for OnClickListener for each product view.
+     */
     public interface ProductClickListener{
         void onProductClick(int position);
     }
 
+    /**
+     * Interface for OnClickListener for each "+"-button in each product view.
+     */
     public interface PurchaseClickListener{
         void onPurchaseClick(int position);
     }
