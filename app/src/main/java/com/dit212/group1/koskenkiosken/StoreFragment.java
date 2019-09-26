@@ -4,18 +4,17 @@ package com.dit212.group1.koskenkiosken;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.dit212.group1.koskenkiosken.Model.IProduct;
-
 import java.util.ArrayList;
 
 
@@ -24,7 +23,7 @@ import java.util.ArrayList;
  * Description: Store page "controller". feeds product-specific textfields and/or buttons of the
  * view to data and functions from a list of products.
  */
-public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapter.ProductClickListener {
+public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapter.ProductClickListener, ProductFeedRecyclerAdapter.PurchaseClickListener {
     private ArrayList<IProduct> products;
 
     public StoreFragment() {
@@ -45,7 +44,9 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //getParentFragment().setMenuVisibility(false);
         // Inflate the layout for this fragment
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_store, container, false);
 
     }
@@ -63,9 +64,16 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
 
         RecyclerView.LayoutManager llm = new LinearLayoutManager(getContext());
 
-        rv.setAdapter(new ProductFeedRecyclerAdapter(products, this));
+        rv.setAdapter(new ProductFeedRecyclerAdapter(products, this,this ));
 
         rv.setLayoutManager(llm);
+
+
+    }
+
+    @Override
+    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+        inflater.inflate(R.menu.menu_topbar, menu) ;
     }
 
 
@@ -89,9 +97,26 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         String test = products.get(position).getName();
         Toast.makeText(this.getContext(), test, Toast.LENGTH_SHORT).show();
         Intent intent = new Intent(getActivity(), ProductPressedView.class);
+        String doubleTest = test + test;
+        intent.putExtra("DataKey", doubleTest);
          //intent.putExtra(products.get(position).getName());
         startActivity(intent);
     }
+
+
+
+
+    @Override
+    public void onPurchaseClick(int position) {
+        String test = products.get(position).getName();
+        Toast.makeText(this.getContext(), "PURCHASE PRESSED" + test, Toast.LENGTH_LONG).show();
+    }
+
+
+    //@Override
+    //public void onPurchaseclick(int position) {
+    //    Toast.makeText(this.getContext(), "PRODUKTEN TRYCKTES PÅ", Toast.LENGTH_LONG).show();
+    // }
 }
 
 
