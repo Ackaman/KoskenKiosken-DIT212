@@ -4,7 +4,7 @@ import android.content.Context;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Button;
+import android.widget.ImageButton;
 import android.widget.TextView;
 
 import androidx.annotation.NonNull;
@@ -71,17 +71,6 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         final IProduct pr = products.get(position);
         holder.setProductName(pr.getName());
         holder.setProductPrice(Integer.toString(pr.getPrice()));
-
-/**
-        holder.addToCart_button.setOnClickListener(new Button.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Toast.makeText(view.getContext(), tester, Toast.LENGTH_SHORT).show();
-
-            }
-
-        });
- */
     }
 
     /**
@@ -100,7 +89,7 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
 
         TextView productName;
         TextView productPrice;
-        Button addToCart_button;
+        ImageButton addToCart_button;
 
         ProductClickListener productClickListener;
         PurchaseClickListener purchaseClickListener;
