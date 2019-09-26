@@ -9,9 +9,12 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.dit212.group1.koskenkiosken.DB.DatabaseHelper;
+import com.dit212.group1.koskenkiosken.Model.IProduct;
 import com.dit212.group1.koskenkiosken.Model.Model;
 import com.dit212.group1.koskenkiosken.Model.UserFactory;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
+import java.util.ArrayList;
 
 /**
  * Author: created by -, on -
@@ -49,7 +52,7 @@ public class MainActivity extends AppCompatActivity {
 
     private void initFragments(Model m){
         if (accountFragment == null) accountFragment = new AccountFragment(m.getLoggedInUser());
-        if (storeFragment == null) storeFragment = new StoreFragment(m.listOfProducts());
+        if (storeFragment == null) storeFragment = new StoreFragment(new ArrayList<>(m.listOfProducts()), m.getCart());
     }
 
     /**

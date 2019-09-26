@@ -5,6 +5,7 @@ import java.util.List;
 
 public class Model {
     private final ArrayList<Product> productList;
+    private final ArrayList<Product> cart;
     private final User loggedInUser;
 
     /**
@@ -16,6 +17,7 @@ public class Model {
     public Model(IDatabase persistentStorage, IUser loggedInUser){
         productList = new ArrayList<>();
         readFromStorage(persistentStorage);
+        cart = new ArrayList<>();
 
         this.loggedInUser = (User) loggedInUser;
     }
@@ -49,9 +51,11 @@ public class Model {
         return loggedInUser;
     }
 
-
-
-
-
-
+    /**
+     * get the cart from the model
+     * @return the shopping cart in the model.
+     */
+    public ArrayList<IProduct> getCart() {
+        return new ArrayList<IProduct>(cart);
+    }
 }
