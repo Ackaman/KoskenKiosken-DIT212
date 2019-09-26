@@ -6,12 +6,7 @@
         android:id="@+id/sort_by_button"
         android:title="@string/sort_button_title"
         android:icon="@drawable/ic_filter_list_black_24dp"
-        app:showAsAction="always"/>
-
-    <item
-        android:id="@+id/account"
-        android:icon="@drawable/ic_action_accounticon"
-        android:title="@string/actionbar_account"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom"
+        />
 
 </menu>
