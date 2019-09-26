@@ -11,7 +11,7 @@ import static org.junit.Assert.*;
  */
 
 public class UserFactoryTest {
-    private IUser user;
+    private IAccount user;
 
     @Before
     public void setUp() throws Exception {

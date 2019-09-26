@@ -8,5 +8,4 @@ public interface IAccount {
 
     String getUserName();
     int getCredits();
-
 }
