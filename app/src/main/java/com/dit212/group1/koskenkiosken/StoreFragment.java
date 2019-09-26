@@ -1,20 +1,23 @@
 package com.dit212.group1.koskenkiosken;
 
 
+import android.content.Intent;
 import android.os.Bundle;
-
+import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.view.View;
+import android.view.ViewGroup;
+import android.widget.Toast;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.LayoutInflater;
-import android.view.View;
-import android.view.ViewGroup;
-
 import com.dit212.group1.koskenkiosken.Model.IProduct;
-
+import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
 import java.util.List;
 
 
@@ -23,11 +26,12 @@ import java.util.List;
  * Description: Store page "controller". feeds product-specific textfields and/or buttons of the
  * view to data and functions from a list of products.
  */
-public class StoreFragment extends Fragment {
-    private List<IProduct> products;
+public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapter.ProductClickListener, ProductFeedRecyclerAdapter.PurchaseClickListener {
+    private ArrayList<IProduct> products;
+    private ArrayList<IProduct> cart;
+    private String test;
 
     public StoreFragment() {
-        // Required empty public constructor
     }
 
     /**
@@ -35,8 +39,9 @@ public class StoreFragment extends Fragment {
      * As of now we only use one product hence we only take the first element in the list.
      * @param productsinstore list of products to be displayed in fragment
      */
-    StoreFragment(List<IProduct> productsinstore){
+    StoreFragment(ArrayList<IProduct> productsinstore, ArrayList<IProduct> cart){
         this.products = productsinstore;
+        this.cart = cart;
     }
 
 
@@ -44,7 +49,9 @@ public class StoreFragment extends Fragment {
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
+        //getParentFragment().setMenuVisibility(false);
         // Inflate the layout for this fragment
+        setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_store, container, false);
 
     }
@@ -62,9 +69,11 @@ public class StoreFragment extends Fragment {
 
         RecyclerView.LayoutManager llm = new LinearLayoutManager(getContext());
 
-        rv.setAdapter(new ProductFeedRecyclerAdapter(products));
+        rv.setAdapter(new ProductFeedRecyclerAdapter(products, this,this ));
 
         rv.setLayoutManager(llm);
+
+
     }
 
 
@@ -74,7 +83,38 @@ public class StoreFragment extends Fragment {
     @Override
     public void onStart(){
         super.onStart();
+        this.test = "";
 
-    }}
+    }
+
+
+    /**
+     * When a product is pressed this function will handle modle blabbla
+     * Change second argument in intent to whatever, need a parser to parse object (produkt)
+     * @param position Objects position in list
+     */
+    @Override
+    public void onProductClick(int position) {
+    }
+
+
+    /**
+     * Purchaseclick = "+" nect to each product.
+     * This method handles what we do when a user press "+"
+     * position is the position in recycleview-list and will correspond to a product in our productlist.
+     * As of now this just Toasts all the objects we have added to our cart.
+     * @param position
+     */
+    @Override
+    public void onPurchaseClick(int position) {
+        cart.add(products.get(position));
+        test = "";
+        for (IProduct p : cart){
+            test = test + p.getName() + " ";
+        }
+        Toast.makeText(this.getContext(), test , Toast.LENGTH_LONG).show();
+    }
+
+}
 
 
