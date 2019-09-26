@@ -16,6 +16,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.dit212.group1.koskenkiosken.Model.IProduct;
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.List;
 
 
 /**
@@ -25,8 +28,11 @@ import java.util.ArrayList;
  */
 public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapter.ProductClickListener, ProductFeedRecyclerAdapter.PurchaseClickListener {
     private ArrayList<IProduct> products;
+    private ArrayList<IProduct> cart;
+    private String test;
 
     public StoreFragment() {
+        this.cart = new ArrayList<>();
         // Required empty public constructor
     }
 
@@ -35,8 +41,9 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
      * As of now we only use one product hence we only take the first element in the list.
      * @param productsinstore list of products to be displayed in fragment
      */
-    StoreFragment(ArrayList<IProduct> productsinstore){
+    StoreFragment(ArrayList<IProduct> productsinstore, ArrayList<IProduct> cart){
         this.products = productsinstore;
+        this.cart = cart;
     }
 
 
@@ -83,6 +90,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     @Override
     public void onStart(){
         super.onStart();
+        this.test = "";
 
     }
 
@@ -108,9 +116,16 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
 
     @Override
     public void onPurchaseClick(int position) {
-        String test = products.get(position).getName();
-        Toast.makeText(this.getContext(), "PURCHASE PRESSED" + test, Toast.LENGTH_LONG).show();
+        cart.add(products.get(position));
+        test = "";
+
+        for (IProduct p : cart){
+            test = test + p.getName() + " ";
+        }
+
+        Toast.makeText(this.getContext(), test , Toast.LENGTH_LONG).show();
     }
+
 
 
     //@Override
