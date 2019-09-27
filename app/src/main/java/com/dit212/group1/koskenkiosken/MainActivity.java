@@ -22,10 +22,11 @@ import java.util.ArrayList;
  * also delegates pieces of the model to fragments.
  */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements StoreFragment.FragmentStoreLitsener {
 
     private AccountFragment accountFragment;
     private StoreFragment storeFragment;
+    private CartFragment cartFragment;
     private BottomNavigationView bnv;
     private Model m;
 
@@ -46,6 +47,7 @@ public class MainActivity extends AppCompatActivity {
         setModel(savedInstanceState);
         initFragments(m);
 
+
         setFragment(storeFragment);
         setBottomNavigationBarListener();
     }
@@ -53,6 +55,16 @@ public class MainActivity extends AppCompatActivity {
     private void initFragments(Model m){
         if (accountFragment == null) accountFragment = new AccountFragment(m.getLoggedInUser());
         if (storeFragment == null) storeFragment = new StoreFragment(new ArrayList<>(m.listOfProducts()), m.getCart());
+        if (cartFragment == null) cartFragment = new CartFragment(m.getCart());
+    }
+
+    /**
+     * Updates the cart in cartfragment and updates the cart in Model.
+     * @param input
+     */
+    @Override
+    public void onInputStoreSent(ArrayList<IProduct> input) {
+        cartFragment.updateCart(input);
     }
 
     /**
@@ -79,6 +91,9 @@ public class MainActivity extends AppCompatActivity {
                         break;
                     case R.id.store:
                         setFragment(storeFragment);
+                        break;
+                    case R.id.cart_bottom:
+                        setFragment(cartFragment);
                         break;
                 }
                 return true;

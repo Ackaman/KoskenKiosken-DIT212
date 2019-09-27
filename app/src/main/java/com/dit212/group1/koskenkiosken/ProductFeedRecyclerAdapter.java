@@ -21,7 +21,7 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
 
     private final List<IProduct> products;
     private ProductClickListener productClickListener;
-    private PurchaseClickListener purchaseClickListener;;
+    private PurchaseClickListener purchaseClickListener;
 
     /**
      * Constructor
@@ -31,6 +31,10 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         this.products = products;
         this.productClickListener = productClickListener;
         this.purchaseClickListener = purchaseClickListener;
+    }
+
+    ProductFeedRecyclerAdapter(List<IProduct> products){
+        this.products = products;
     }
 
     /**
@@ -171,6 +175,7 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
      */
     public interface PurchaseClickListener{
         void onPurchaseClick(int position);
+
     }
 
 

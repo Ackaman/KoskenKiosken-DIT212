@@ -1,11 +1,13 @@
 package com.dit212.group1.koskenkiosken.Model;
 
+import com.dit212.group1.koskenkiosken.StoreFragment;
+
 import java.util.ArrayList;
 import java.util.List;
 
-public class Model {
+public class Model{
     private final ArrayList<Product> productList;
-    private final ArrayList<Product> cart;
+    private ArrayList<Product> cart;
     private final User loggedInUser;
 
     /**
@@ -58,4 +60,9 @@ public class Model {
     public ArrayList<IProduct> getCart() {
         return new ArrayList<IProduct>(cart);
     }
+
+    /*public void setCart(ArrayList<IProduct> newCart) {
+        //cart = newCart;
+    }*/
+
 }

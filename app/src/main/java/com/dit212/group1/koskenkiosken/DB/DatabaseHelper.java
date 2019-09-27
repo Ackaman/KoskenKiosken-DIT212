@@ -28,10 +28,10 @@ public class DatabaseHelper implements IDatabase {
     @Override
     public List<IProduct> readProducts() {
         ArrayList<IProduct> productsList = new ArrayList<>();
-        productsList.add(ProductFactory.create("Chokladboll", 2));
-        productsList.add(ProductFactory.create("Nocco", 1));
-        productsList.add(ProductFactory.create("HariboNallar", 3));
-        productsList.add(ProductFactory.create("Kaffepaket", 4));
+        productsList.add(ProductFactory.create("Chokladboll", 2, "description 1"));
+        productsList.add(ProductFactory.create("Nocco", 1,"description 2"));
+        productsList.add(ProductFactory.create("HariboNallar", 3,"description 3"));
+        productsList.add(ProductFactory.create("Kaffepaket", 4,"description 4"));
         return productsList;
     }
 
