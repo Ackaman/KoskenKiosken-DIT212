@@ -91,6 +91,7 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
     public void sortString(ArrayList<IProduct> sortedProducts){
         products = sortedProducts;
         notifyDataSetChanged();
+
     }
 
     /**

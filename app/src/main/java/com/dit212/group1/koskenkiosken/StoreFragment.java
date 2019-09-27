@@ -45,7 +45,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     private String test;
     private FragmentStoreLitsener listener;
     private ProductFeedRecyclerAdapter pAdapter;
-    //private EditText search;
+    private ArrayList<IProduct> originalProductList;
 
     public StoreFragment() {
     }
@@ -59,6 +59,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     StoreFragment(ArrayList<IProduct> productsinstore, ArrayList<IProduct> cart){
         this.products = productsinstore;
         this.cart = cart;
+        originalProductList = products;
     }
 
     /**
@@ -88,7 +89,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         super.onViewCreated(view, savedInstanceState);
         RecyclerView rv = view.findViewById(R.id.recyclerview);
         RecyclerView.LayoutManager llm = new LinearLayoutManager(getContext());
-        pAdapter = new ProductFeedRecyclerAdapter(products);
+        pAdapter = new ProductFeedRecyclerAdapter(products, this, this);
         rv.setAdapter(pAdapter);
         rv.setLayoutManager(llm);
 
@@ -98,7 +99,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
      * Adds all the products that is a substring of the search string in a new list.
      * @param search        The input string from the ActionBar in StoreFragment
      */
-    private void sortString(String search) {
+    private ArrayList<IProduct> sortString(String search) {
         ArrayList<IProduct> sortedProduct = new ArrayList<>();
 
         for (IProduct product : products) {
@@ -108,6 +109,8 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
             }
         }
         pAdapter.sortString(sortedProduct);
+        return sortedProduct;
+
     }
 
     /**
@@ -128,7 +131,8 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                sortString(newText);
+                products = originalProductList;
+                products = sortString(newText);
                 return false;
             }
         });
@@ -154,6 +158,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     public void onProductClick(int position) {
         Intent intent = new Intent(getActivity(), ProductPressedView.class);
         intent.putExtra("product",products.get(position));
+        System.out.println("onClick: " + products.toString());
         startActivity(intent);
     }
 

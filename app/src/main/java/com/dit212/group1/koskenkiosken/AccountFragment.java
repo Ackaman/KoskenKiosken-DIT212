@@ -1,6 +1,7 @@
 package com.dit212.group1.koskenkiosken;
 
 
+import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -62,8 +63,6 @@ public class AccountFragment extends Fragment {
         super.onViewCreated(view, savedInstanceState);
         credits = view.findViewById(R.id.current_credits);
         user  = view.findViewById(R.id.current_user);
-
-
 
     }
 
