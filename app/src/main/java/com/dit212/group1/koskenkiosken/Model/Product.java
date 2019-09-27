@@ -26,7 +26,7 @@ class Product implements IProduct, Parcelable {
         this.description = description;
     }
 
-    protected Product(Parcel in) {
+    private Product(Parcel in) {
         name = in.readString();
         price = in.readInt();
         description = in.readString();
@@ -77,20 +77,6 @@ class Product implements IProduct, Parcelable {
 
     public void setDescription(String description) {
         this.description = description;
-    }
-
-    /**
-     * set the price of a given product
-     * @param price the price to set of a given product
-     */
-
-    void setPrice(int price) {
-        this.price = price;
-    }
-
-
-    public Product getObject() {
-        return this;
     }
 
     @Override

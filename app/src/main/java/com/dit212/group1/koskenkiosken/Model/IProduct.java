@@ -9,6 +9,5 @@ import android.os.Parcelable;
 public interface IProduct extends Parcelable {
     String getName();
     int getPrice();
-    Product getObject();
     String getDescription();
 }
