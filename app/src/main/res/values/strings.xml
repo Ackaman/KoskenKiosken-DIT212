@@ -10,4 +10,6 @@
     <string name="placeholder_product_name">Produktnamn</string>
     <string name="username">Användarnamn: %1$s</string>
     <string name="credits">Credits: %1$d</string>
+    <string name="search">Sök</string>
+
 </resources>

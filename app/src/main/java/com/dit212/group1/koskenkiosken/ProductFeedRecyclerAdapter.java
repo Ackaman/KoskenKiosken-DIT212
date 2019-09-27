@@ -10,6 +10,8 @@ import android.widget.TextView;
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.dit212.group1.koskenkiosken.Model.IProduct;
+
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +21,7 @@ import java.util.List;
 public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeedRecyclerAdapter.ViewHolder> {
 
 
-    private final List<IProduct> products;
+    private List<IProduct> products;
     private ProductClickListener productClickListener;
     private PurchaseClickListener purchaseClickListener;
 
@@ -71,17 +73,6 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         final IProduct pr = products.get(position);
         holder.setProductName(pr.getName());
         holder.setProductPrice(Integer.toString(pr.getPrice()));
-
-/**
-        holder.addToCart_button.setOnClickListener(new Button.OnClickListener(){
-            @Override
-            public void onClick(View view){
-                Toast.makeText(view.getContext(), tester, Toast.LENGTH_SHORT).show();
-
-            }
-
-        });
- */
     }
 
     /**
@@ -91,6 +82,15 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
     @Override
     public int getItemCount() {
         return products.size();
+    }
+
+    /**
+     * Updates the current list of sorted products in the adapter
+     * @param sortedProducts        The list of sorted products from method sortString in StoreFragment
+     */
+    public void sortString(ArrayList<IProduct> sortedProducts){
+        products = sortedProducts;
+        notifyDataSetChanged();
     }
 
     /**
