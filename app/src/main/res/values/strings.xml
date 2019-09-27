@@ -5,8 +5,12 @@
     <string name="hello_blank_fragment">Hello blank fragment</string>
     <string name="placeholder_product_price">Produktpris</string>
     <string name="placeholder_product_name">Produktnamn</string>
+    <string name="placeholder_user_name">Användarnamn: John Doe</string>
+    <string name="placeholder_user_credits">Credits: 30</string>
     <string name="username">Användarnamn: %1$s</string>
     <string name="credits">Credits: %1$d</string>
     <string name="search">Sök</string>
     <string name="sort_button_title">Sort</string>
+    <string name="cart_button">Cart</string>
+    <string name="add_to_cart_button_content_desc">Add to cart</string>
 </resources>
