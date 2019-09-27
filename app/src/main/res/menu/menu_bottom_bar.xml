@@ -9,7 +9,7 @@
         app:showAsAction="always"/>
     <item
         android:id="@+id/account"
-        android:icon="@drawable/ic_action_accounticon"
+        android:icon="@drawable/ic_action_account_icon"
         android:title="@string/actionbar_account"
         app:showAsAction="ifRoom"/>
 
