@@ -5,15 +5,12 @@ import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
-import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.dit212.group1.koskenkiosken.DB.DatabaseHelper;
 import com.dit212.group1.koskenkiosken.Model.IProduct;
-import com.dit212.group1.koskenkiosken.Model.IAccount;
-import com.dit212.group1.koskenkiosken.Model.ProductFactory;
 import com.dit212.group1.koskenkiosken.Model.Model;
 import com.dit212.group1.koskenkiosken.Model.UserFactory;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -25,18 +22,14 @@ import java.util.ArrayList;
  * Description: main controller switching between fragments and binding non-fragment specific buttons.
  * also delegates pieces of the model to fragments.
  */
-// TODO check this implementation
-public class MainActivity extends AppCompatActivity implements StoreFragment.FragmentStoreLitsener {
+
+public class MainActivity extends AppCompatActivity implements StoreFragment.FragmentStoreListener {
 
     private AccountFragment accountFragment;
     private StoreFragment storeFragment;
-    // TODO check these 3
-    private IAccount currentUser;
-    private ArrayList<IProduct> productsList;
     private CartFragment cartFragment;
     private BottomNavigationView bnv;
     private Model m;
-    private ActionBar ab;
 
 
     /**
@@ -50,8 +43,6 @@ public class MainActivity extends AppCompatActivity implements StoreFragment.Fra
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
 
-        ab = getSupportActionBar();
-
         bnv = findViewById(R.id.bottom_navigation);
 
         setModel(savedInstanceState);
@@ -60,20 +51,20 @@ public class MainActivity extends AppCompatActivity implements StoreFragment.Fra
         setFragment(storeFragment);
         setBottomNavigationBarListener();
     }
-    // TODO check this
+
     private void initFragments(Model m){
         if (accountFragment == null) accountFragment = new AccountFragment(m.getLoggedInUser());
-        if (storeFragment == null) storeFragment = new StoreFragment(new ArrayList<>(m.listOfProducts()), m.getCart());
+        if (storeFragment == null) storeFragment = new StoreFragment(m);
         if (cartFragment == null) cartFragment = new CartFragment(m.getCart());
     }
 
     /**
-     * Updates the cart in cartfragment and updates the cart in Model.
-     * @param input
+     * Updates the cart in Model.
+     * @param input products in cart.
      */
     @Override
     public void onInputStoreSent(ArrayList<IProduct> input) {
-        cartFragment.updateCart(input);
+        m.getCart().setCart(input);
     }
 
     /**

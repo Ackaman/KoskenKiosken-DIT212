@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
 import com.dit212.group1.koskenkiosken.Model.IProduct;
@@ -19,7 +18,7 @@ import java.util.List;
 public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeedRecyclerAdapter.ViewHolder> {
 
 
-    private final List<IProduct> products;
+    private List<IProduct> products;
     private ProductClickListener productClickListener;
     private PurchaseClickListener purchaseClickListener;
 
@@ -83,6 +82,16 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
     }
 
     /**
+     * Updates the current list of sorted products in the adapter
+     * @param products        The list of sorted products from method sortString in StoreFragment
+     */
+    void updateList(List<IProduct> products){
+        this.products = products;
+        notifyDataSetChanged();
+
+    }
+
+    /**
      * class that represents an item in the RecyclerView.
      */
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
@@ -95,8 +104,8 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         PurchaseClickListener purchaseClickListener;
 
         /**
-         *
-         * @param itemView
+         * constructor for a viewholder card object.
+         * @param itemView view of which to place the viewholder.
          * @param productClickListener listens for clicks on product card
          * @param buttonListener listens for clicks on purchase button in each card
          */
@@ -137,7 +146,7 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         /**
          * This method checks wheter the view is our button(view) or the productcard itsel.
          * Will be expanded with a "-" button later.
-         * @param v
+         * @param v view in which the click occurred.
          */
         @Override
         public void onClick(View v) {

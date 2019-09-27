@@ -1,13 +1,11 @@
 package com.dit212.group1.koskenkiosken.Model;
 
-import com.dit212.group1.koskenkiosken.StoreFragment;
-
 import java.util.ArrayList;
 import java.util.List;
 
-public class Model{
+public class Model {
     private final ArrayList<Product> productList;
-    private ArrayList<Product> cart;
+    private Cart cart;
     private final User loggedInUser;
 
     /**
@@ -19,7 +17,7 @@ public class Model{
     public Model(IDatabase persistentStorage, IAccount loggedInUser){
         productList = new ArrayList<>();
         readFromStorage(persistentStorage);
-        cart = new ArrayList<>();
+        cart = new Cart();
 
         this.loggedInUser = (User) loggedInUser;
     }
@@ -57,12 +55,31 @@ public class Model{
      * get the cart from the model
      * @return the shopping cart in the model.
      */
-    public ArrayList<IProduct> getCart() {
-        return new ArrayList<IProduct>(cart);
+    public ICart getCart() {
+        return cart;
     }
 
-    /*public void setCart(ArrayList<IProduct> newCart) {
-        //cart = newCart;
-    }*/
+    /**
+     * add product to cart.
+     * @param product product to add to cart.
+     */
+    public void addToCart(IProduct product){
+        cart.addToCart(product);
+    }
 
+    /**
+     * returns a filtered version of the inventory.
+     * @param filter the string filter of which to filter.
+     * @return the filtered list.
+     */
+
+    public List<IProduct> filterListByString(String filter){
+        ArrayList<IProduct> sortedProduct = new ArrayList<>();
+        for (IProduct product : productList) {
+            if (product.getName().toLowerCase().contains(filter.toLowerCase())) {
+                sortedProduct.add(product);
+            }
+        }
+        return sortedProduct;
+    }
 }
