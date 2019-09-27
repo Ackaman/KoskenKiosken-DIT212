@@ -11,6 +11,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dit212.group1.koskenkiosken.Model.IProduct;
 
+import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +20,7 @@ import java.util.List;
  */
 public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeedRecyclerAdapter.ViewHolder> {
 
-    private final List<IProduct> products;
+    private List<IProduct> products;
 
     /**
      * Constructor
@@ -73,6 +74,15 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
     @Override
     public int getItemCount() {
         return products.size();
+    }
+
+    /**
+     * Updates the current list of sorted products in the adapter
+     * @param sortedProducts        The list of sorted products from method sortString in StoreFragment
+     */
+    public void sortString(ArrayList<IProduct> sortedProducts){
+        products = sortedProducts;
+        notifyDataSetChanged();
     }
 
     /**
