@@ -1,14 +1,13 @@
 package com.dit212.group1.koskenkiosken;
 
 
+import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
@@ -16,9 +15,6 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import com.dit212.group1.koskenkiosken.Model.IProduct;
 import java.util.ArrayList;
-import java.util.Collection;
-import java.util.Collections;
-import java.util.List;
 
 
 /**
@@ -30,6 +26,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     private ArrayList<IProduct> products;
     private ArrayList<IProduct> cart;
     private String test;
+    private FragmentStoreLitsener listener;
 
     public StoreFragment() {
     }
@@ -44,6 +41,12 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         this.cart = cart;
     }
 
+    /**
+     * Listener interface that will handle notify all classes that implements this interface.
+     */
+    public interface FragmentStoreLitsener {
+        void onInputStoreSent(ArrayList<IProduct> input);
+    }
 
 
     @Override
@@ -89,12 +92,14 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
 
 
     /**
-     * When a product is pressed this function will handle modle blabbla
-     * Change second argument in intent to whatever, need a parser to parse object (produkt)
+     * When a product is pressed this function will start a new activity and pass the product.
      * @param position Objects position in list
      */
     @Override
     public void onProductClick(int position) {
+        Intent intent = new Intent(getActivity(), ProductPressedView.class);
+        intent.putExtra("product",products.get(position));
+        startActivity(intent);
     }
 
 
@@ -102,7 +107,6 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
      * Purchaseclick = "+" nect to each product.
      * This method handles what we do when a user press "+"
      * position is the position in recycleview-list and will correspond to a product in our productlist.
-     * As of now this just Toasts all the objects we have added to our cart.
      * @param position
      */
     @Override
@@ -112,9 +116,24 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         for (IProduct p : cart){
             test = test + p.getName() + " ";
         }
-        Toast.makeText(this.getContext(), test , Toast.LENGTH_LONG).show();
+        listener.onInputStoreSent(cart);
     }
 
+    @Override
+    public void onAttach(@NonNull Context context) {
+        super.onAttach(context);
+        if(context instanceof FragmentStoreLitsener){
+            listener = (FragmentStoreLitsener) context;
+        } else {
+            throw new RuntimeException(context.toString() +" must implement FragmentStoreLitsener");
+        }
+    }
+
+    @Override
+    public void onDetach() {
+        super.onDetach();
+        listener = null;
+    }
 }
 
 
