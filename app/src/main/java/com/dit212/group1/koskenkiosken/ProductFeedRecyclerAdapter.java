@@ -30,11 +30,11 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
      * Constructor
      * @param products list of items to be shown in RecyclerView.
      */
-    ProductFeedRecyclerAdapter(List<IProduct> products, ProductClickListener productClickListener, ProductClickListener purchaseClickListener, ProductClickListener removeFromCartClickListener){
+    ProductFeedRecyclerAdapter(List<IProduct> products, ProductClickListener productClickListener){
         this.products = products;
         this.productClickListener = productClickListener;
-        this.addToCartClickListener = purchaseClickListener;
-        this.removeFromCartClickListener = removeFromCartClickListener;
+        this.addToCartClickListener = productClickListener;
+        this.removeFromCartClickListener = productClickListener;
     }
 
     ProductFeedRecyclerAdapter(List<IProduct> products){
@@ -98,6 +98,7 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
 
     /**
      * class that represents an item in the RecyclerView.
+     * Each item view has 3 unique clickable areas, two buttons and the surrounding view.
      */
     class ViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
 
@@ -174,7 +175,7 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
     }
 
     /**
-     * Interface for OnClickListener for each product view.
+     * Interface for OnClickListeners for each product view and its buttons.
      */
     public interface ProductClickListener{
         void onProductClick(int position);

@@ -78,7 +78,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         super.onViewCreated(view, savedInstanceState);
         RecyclerView rv = view.findViewById(R.id.recyclerview);
         RecyclerView.LayoutManager llm = new LinearLayoutManager(getContext());
-        pAdapter = new ProductFeedRecyclerAdapter(products, this, this,this);
+        pAdapter = new ProductFeedRecyclerAdapter(products, this);
         rv.setAdapter(pAdapter);
         rv.setLayoutManager(llm);
 
@@ -153,7 +153,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
 
 
     /**
-     * Purchaseclick = "+" nect to each product.
+     * "+" next to each product.
      * This method handles what we do when a user press "+"
      * position is the position in recycleview-list and will correspond to a product in our productlist.
      * @param position
@@ -168,6 +168,12 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         listener.onInputStoreSent(cart);
     }
 
+    /**
+     * "+" next to each product.
+     * This method handles what we do when a user press "-"
+     * position is the position in recycleview-list and will correspond to a product in our productlist.
+     * @param position
+     */
     @Override
     public void onRemoveFromCartClick(int position) {
         if(cart.contains(products.get(position))) {

@@ -16,7 +16,7 @@ import com.dit212.group1.koskenkiosken.Model.IProduct;
 import java.util.ArrayList;
 
 
-public class CartFragment extends Fragment {
+public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter.ProductClickListener {
 
     private ArrayList<IProduct> cart;
 
@@ -49,7 +49,7 @@ public class CartFragment extends Fragment {
 
         RecyclerView.LayoutManager llm = new LinearLayoutManager(getContext());
 
-        rv.setAdapter(new ProductFeedRecyclerAdapter(cart));
+        rv.setAdapter(new ProductFeedRecyclerAdapter(cart,this));
 
         rv.setLayoutManager(llm);
     }
@@ -60,5 +60,20 @@ public class CartFragment extends Fragment {
      */
     public void updateCart (ArrayList<IProduct> newCart){
         cart = newCart;
+    }
+
+    @Override
+    public void onProductClick(int position) {
+
+    }
+
+    @Override
+    public void onAddToCartClick(int position) {
+
+    }
+
+    @Override
+    public void onRemoveFromCartClick(int position) {
+            cart.remove(cart.get(position));
     }
 }
