@@ -6,31 +6,20 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.SearchEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
-import android.widget.SearchView;
-import android.widget.Toast;
-
 import com.dit212.group1.koskenkiosken.Model.IProduct;
+
 import java.util.ArrayList;
 
 
@@ -39,7 +28,7 @@ import java.util.ArrayList;
  * Description: Store page "controller". feeds product-specific textfields and/or buttons of the
  * view to data and functions from a list of products.
  */
-public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapter.ProductClickListener, ProductFeedRecyclerAdapter.PurchaseClickListener {
+public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapter.ProductClickListener {
     private ArrayList<IProduct> products;
     private ArrayList<IProduct> cart;
     private String test;
@@ -89,7 +78,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         super.onViewCreated(view, savedInstanceState);
         RecyclerView rv = view.findViewById(R.id.recyclerview);
         RecyclerView.LayoutManager llm = new LinearLayoutManager(getContext());
-        pAdapter = new ProductFeedRecyclerAdapter(products, this, this);
+        pAdapter = new ProductFeedRecyclerAdapter(products, this, this,this);
         rv.setAdapter(pAdapter);
         rv.setLayoutManager(llm);
 
@@ -170,8 +159,20 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
      * @param position
      */
     @Override
-    public void onPurchaseClick(int position) {
+    public void onAddToCartClick(int position) {
         cart.add(products.get(position));
+        test = "";
+        for (IProduct p : cart){
+            test = test + p.getName() + " ";
+        }
+        listener.onInputStoreSent(cart);
+    }
+
+    @Override
+    public void onRemoveFromCartClick(int position) {
+        if(cart.contains(products.get(position))) {
+            cart.remove(products.get(position));
+        }
         test = "";
         for (IProduct p : cart){
             test = test + p.getName() + " ";

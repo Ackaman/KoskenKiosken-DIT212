@@ -23,16 +23,18 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
 
     private List<IProduct> products;
     private ProductClickListener productClickListener;
-    private PurchaseClickListener purchaseClickListener;
+    private ProductClickListener addToCartClickListener;
+    private ProductClickListener removeFromCartClickListener;
 
     /**
      * Constructor
      * @param products list of items to be shown in RecyclerView.
      */
-    ProductFeedRecyclerAdapter(List<IProduct> products, ProductClickListener productClickListener, PurchaseClickListener purchaseClickListener){
+    ProductFeedRecyclerAdapter(List<IProduct> products, ProductClickListener productClickListener, ProductClickListener purchaseClickListener, ProductClickListener removeFromCartClickListener){
         this.products = products;
         this.productClickListener = productClickListener;
-        this.purchaseClickListener = purchaseClickListener;
+        this.addToCartClickListener = purchaseClickListener;
+        this.removeFromCartClickListener = removeFromCartClickListener;
     }
 
     ProductFeedRecyclerAdapter(List<IProduct> products){
@@ -59,7 +61,7 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         productView.setLayoutParams(lp);
 
 
-        return new ViewHolder(productView, productClickListener, purchaseClickListener);
+        return new ViewHolder(productView, productClickListener, addToCartClickListener, removeFromCartClickListener);
     }
 
     /**
@@ -102,30 +104,34 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         TextView productName;
         TextView productPrice;
         Button addToCart_button;
+        Button removeFromCart_button;
 
         ProductClickListener productClickListener;
-        PurchaseClickListener purchaseClickListener;
+        ProductClickListener addToCartClickListener;
+        ProductClickListener removeFromCartClickListener;
 
         /**
          *
          * @param itemView
          * @param productClickListener listens for clicks on product card
-         * @param buttonListener listens for clicks on purchase button in each card
+         * @param plusButtonListener listens for clicks on purchase button in each card
          */
-        ViewHolder(@NonNull View itemView, ProductClickListener productClickListener, PurchaseClickListener buttonListener) {
+        ViewHolder(@NonNull View itemView, ProductClickListener productClickListener, ProductClickListener plusButtonListener, ProductClickListener minusbuttonListener) {
             super(itemView);
             productName = itemView.findViewById(R.id.product_name);
             productPrice = itemView.findViewById(R.id.product_price);
             addToCart_button = itemView.findViewById(R.id.addtoCart_button);
+            removeFromCart_button = itemView.findViewById(R.id.removeFromCart_button);
 
 
             this.productClickListener = productClickListener;
             itemView.setOnClickListener(this);
 
-            this.purchaseClickListener  = buttonListener;
+            this.addToCartClickListener = plusButtonListener;
             addToCart_button.setOnClickListener(this);
 
-
+            this.removeFromCartClickListener = minusbuttonListener;
+            removeFromCart_button.setOnClickListener(this);
 
         }
 
@@ -154,7 +160,10 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         @Override
         public void onClick(View v) {
             if(v.getId() == addToCart_button.getId()){
-                purchaseClickListener.onPurchaseClick(getAdapterPosition());
+                addToCartClickListener.onAddToCartClick(getAdapterPosition());
+            }
+            else if (v.getId() == removeFromCart_button.getId()){
+                removeFromCartClickListener.onRemoveFromCartClick(getAdapterPosition());
             }
             else productClickListener.onProductClick(getAdapterPosition());
         }
@@ -169,14 +178,8 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
      */
     public interface ProductClickListener{
         void onProductClick(int position);
-    }
-
-    /**
-     * Interface for OnClickListener for each "+"-button in each product view.
-     */
-    public interface PurchaseClickListener{
-        void onPurchaseClick(int position);
-
+        void onAddToCartClick(int position);
+        void onRemoveFromCartClick(int position);
     }
 
 

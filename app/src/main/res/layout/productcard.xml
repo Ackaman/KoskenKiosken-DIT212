@@ -16,18 +16,25 @@
             android:layout_height="match_parent">
 
             <Button
+                android:id="@+id/removeFromCart_button"
+                android:layout_width="39dp"
+                android:layout_height="wrap_content"
+                android:layout_marginEnd="3dp"
+                android:layout_toStartOf="@+id/addtoCart_button"
+                android:text="-" />
+
+            <Button
                 android:id="@+id/addtoCart_button"
-                android:layout_width="wrap_content"
+                android:layout_width="39dp"
                 android:layout_height="wrap_content"
                 android:layout_alignParentEnd="true"
-                android:layout_marginEnd="1dp"
+                android:layout_marginEnd="3dp"
                 android:text="+" />
 
             <TextView
                 android:id="@+id/product_name"
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
-                android:layout_centerVertical="true"
                 android:padding="16dp"
                 android:text="@string/placeholder_product_name" />
 
@@ -36,10 +43,10 @@
                 android:layout_width="wrap_content"
                 android:layout_height="wrap_content"
                 android:layout_alignParentTop="true"
-                android:layout_marginStart="62dp"
-                android:layout_marginTop="17dp"
-                android:layout_marginEnd="63dp"
-                android:layout_toStartOf="@+id/addtoCart_button"
+                android:layout_marginStart="29dp"
+                android:layout_marginTop="14dp"
+                android:layout_marginEnd="91dp"
+                android:layout_toStartOf="@+id/button"
                 android:layout_toEndOf="@+id/product_name"
                 android:text="@string/placeholder_product_price" />
 
