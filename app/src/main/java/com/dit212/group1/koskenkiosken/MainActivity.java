@@ -11,6 +11,8 @@ import androidx.fragment.app.FragmentTransaction;
 
 import com.dit212.group1.koskenkiosken.DB.DatabaseHelper;
 import com.dit212.group1.koskenkiosken.Model.IProduct;
+import com.dit212.group1.koskenkiosken.Model.IAccount;
+import com.dit212.group1.koskenkiosken.Model.ProductFactory;
 import com.dit212.group1.koskenkiosken.Model.Model;
 import com.dit212.group1.koskenkiosken.Model.UserFactory;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
@@ -27,6 +29,8 @@ public class MainActivity extends AppCompatActivity implements StoreFragment.Fra
 
     private AccountFragment accountFragment;
     private StoreFragment storeFragment;
+    private IAccount currentUser;
+    private ArrayList<IProduct> productsList;
     private CartFragment cartFragment;
     private BottomNavigationView bnv;
     private Model m;
@@ -106,11 +110,26 @@ public class MainActivity extends AppCompatActivity implements StoreFragment.Fra
      * sets the model. creates a new if a previous model isnt stored in saved instance state.
      * @param savedInstanceState the bundle of which to look for a prior model.
      */
+    private void generateProducts(){
+        this.productsList = new ArrayList<>();
+
+        productsList.add(ProductFactory.create("Chokladboll", 2, "Placeholder"));
+        productsList.add(ProductFactory.create("Nocco", 1, "Placeholder"));
+        productsList.add(ProductFactory.create("HariboNallar", 3, "Placeholder"));
+        productsList.add(ProductFactory.create("Kaffepaket", 4, "Placeholder"));
+    }
+
+    /**
+     * Generate mock user until database is implemented that will be passed to User fragment
+     * */
+    private void generateUser(){
+        this.currentUser = UserFactory.createMockUser();
+    }
 
     private void setModel(Bundle savedInstanceState){
         if (m != null) return;
         if (savedInstanceState != null) m = savedInstanceState.getParcelable("Model");
-        if (m == null) m = new Model(DatabaseHelper.getDatabaseHelper(), UserFactory.createMock());
+        if (m == null) m = new Model(DatabaseHelper.getDatabaseHelper(), UserFactory.createMockUser());
     }
 
 }

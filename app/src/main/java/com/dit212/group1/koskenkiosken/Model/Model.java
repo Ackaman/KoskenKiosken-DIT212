@@ -16,7 +16,7 @@ public class Model{
      * @param loggedInUser the user which is logged in.
      */
 
-    public Model(IDatabase persistentStorage, IUser loggedInUser){
+    public Model(IDatabase persistentStorage, IAccount loggedInUser){
         productList = new ArrayList<>();
         readFromStorage(persistentStorage);
         cart = new ArrayList<>();
@@ -49,7 +49,7 @@ public class Model{
      * returns the currently logged in User.
      * @return the logged in user.
      */
-    public IUser getLoggedInUser(){
+    public IAccount getLoggedInUser(){
         return loggedInUser;
     }
 
