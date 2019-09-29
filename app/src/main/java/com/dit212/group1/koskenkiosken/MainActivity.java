@@ -2,70 +2,80 @@ package com.dit212.group1.koskenkiosken;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
+import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
+import com.dit212.group1.koskenkiosken.DB.DatabaseHelper;
 import com.dit212.group1.koskenkiosken.Model.IProduct;
 import com.dit212.group1.koskenkiosken.Model.IAccount;
 import com.dit212.group1.koskenkiosken.Model.ProductFactory;
+import com.dit212.group1.koskenkiosken.Model.Model;
 import com.dit212.group1.koskenkiosken.Model.UserFactory;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
+
 import java.util.ArrayList;
 
+/**
+ * Author: created by -, on -
+ * Description: main controller switching between fragments and binding non-fragment specific buttons.
+ * also delegates pieces of the model to fragments.
+ */
 
-public class MainActivity extends AppCompatActivity {
+public class MainActivity extends AppCompatActivity implements StoreFragment.FragmentStoreLitsener {
 
     private AccountFragment accountFragment;
     private StoreFragment storeFragment;
     private IAccount currentUser;
     private ArrayList<IProduct> productsList;
-
+    private CartFragment cartFragment;
+    private BottomNavigationView bnv;
+    private Model m;
 
 
     /**
+     * runs when activity is started.
+     * checks for previous model before creating a new.
      *
-     * @param savedInstanceState standard definition of onCreate.
-     * Initiates a user that will act as logged in user until login is implemented.
-     * Also creating the fragments for store and account.
-     *
+     * @param savedInstanceState saved objects and flags from previous activities. not used.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        generateProducts();
-        generateUser();
 
-        accountFragment = new AccountFragment(currentUser);
-        storeFragment = new StoreFragment(productsList);
-        setStartFragment();
+        bnv = findViewById(R.id.bottom_navigation);
 
-
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.account:
-                        Toast.makeText(MainActivity.this, "Logged in as: " + currentUser.getUserName(), Toast.LENGTH_SHORT).show();
-                        setFragment(accountFragment);
-                        break;
-                    case R.id.store:
-                        setFragment(storeFragment);
-                        break;
-                }
-                return true;
-            }
+        setModel(savedInstanceState);
+        initFragments(m);
 
 
+        setFragment(storeFragment);
+        setBottomNavigationBarListener();
+    }
 
-        });
-        }
+    private void initFragments(Model m){
+        if (accountFragment == null) accountFragment = new AccountFragment(m.getLoggedInUser());
+        if (storeFragment == null) storeFragment = new StoreFragment(new ArrayList<>(m.listOfProducts()), m.getCart());
+        if (cartFragment == null) cartFragment = new CartFragment(m.getCart());
+    }
 
+    /**
+     * Updates the cart in cartfragment and updates the cart in Model.
+     * @param input
+     */
+    @Override
+    public void onInputStoreSent(ArrayList<IProduct> input) {
+        cartFragment.updateCart(input);
+    }
+
+    /**
+     * switches the fragment in activity view.
+     * @param fragment the fragment to switch to.
+     */
     private void setFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.main_frame, fragment);
@@ -73,7 +83,32 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Method to generate a list of products that will be passed to Store fragment
+     * binds buttons for bottom navigation bar
+     */
+
+    private void setBottomNavigationBarListener(){
+        bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.account:
+                        setFragment(accountFragment);
+                        break;
+                    case R.id.store:
+                        setFragment(storeFragment);
+                        break;
+                    case R.id.cart_bottom:
+                        setFragment(cartFragment);
+                        break;
+                }
+                return true;
+            }
+        });
+    }
+
+    /**
+     * sets the model. creates a new if a previous model isnt stored in saved instance state.
+     * @param savedInstanceState the bundle of which to look for a prior model.
      */
     private void generateProducts(){
         this.productsList = new ArrayList<>();
@@ -91,13 +126,10 @@ public class MainActivity extends AppCompatActivity {
         this.currentUser = UserFactory.createMockUser();
     }
 
-    /**
-     * Helper method to set start fragment in MainActivity.
-     * Change this to desired fragment, it is called by onCreate
-     */
-    private void setStartFragment(){
-        setFragment(storeFragment);
+    private void setModel(Bundle savedInstanceState){
+        if (m != null) return;
+        if (savedInstanceState != null) m = savedInstanceState.getParcelable("Model");
+        if (m == null) m = new Model(DatabaseHelper.getDatabaseHelper(), UserFactory.createMock());
     }
-
 
 }

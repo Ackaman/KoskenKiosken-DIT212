@@ -6,7 +6,7 @@ package com.dit212.group1.koskenkiosken.Model;
  */
 public class ProductFactory {
 
-    public static IProduct create(String name, int price){
-        return new Product(name, price);
+    public static IProduct create(String name, int price, String description){
+        return new Product(name, price, description);
     }
 }
