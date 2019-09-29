@@ -10,7 +10,7 @@ import static org.junit.Assert.*;
  * Primary author: Albin Otterhäll <gusalbiot@student.gu.se>
  */
 
-public class UserTest {
+public class NormalUserTest {
     private IAccount user;
 
     @Before
