@@ -113,10 +113,10 @@ public class MainActivity extends AppCompatActivity implements StoreFragment.Fra
     private void generateProducts(){
         this.productsList = new ArrayList<>();
 
-        productsList.add(ProductFactory.create("Chokladboll", 2));
-        productsList.add(ProductFactory.create("Nocco", 1));
-        productsList.add(ProductFactory.create("HariboNallar", 3));
-        productsList.add(ProductFactory.create("Kaffepaket", 4));
+        productsList.add(ProductFactory.create("Chokladboll", 2, "Placeholder"));
+        productsList.add(ProductFactory.create("Nocco", 1, "Placeholder"));
+        productsList.add(ProductFactory.create("HariboNallar", 3, "Placeholder"));
+        productsList.add(ProductFactory.create("Kaffepaket", 4, "Placeholder"));
     }
 
     /**

@@ -12,7 +12,7 @@ public class ProductFactoryTest {
 
     @Before
     public void setUp() throws Exception {
-        product = ProductFactory.create("Product 1", 50);
+        product = ProductFactory.create("Product 1", 50, "Placeholder");
     }
 
     @Test

@@ -11,7 +11,7 @@ public class ProductTest {
 
     @Before
     public void setUp() throws Exception {
-        product = new Product("Produkt 1", 20);
+        product = new Product("Produkt 1", 20, "Placeholder");
     }
 
     @Test
