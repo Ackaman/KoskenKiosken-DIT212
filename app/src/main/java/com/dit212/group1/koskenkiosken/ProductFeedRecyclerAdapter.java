@@ -1,6 +1,7 @@
 package com.dit212.group1.koskenkiosken;
 
 import android.content.Context;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -89,6 +90,7 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
      */
     void updateList(List<IProduct> products){
         this.products = products;
+        Log.i("RECYCLERADAPTER", products.toString());
         notifyDataSetChanged();
 
     }

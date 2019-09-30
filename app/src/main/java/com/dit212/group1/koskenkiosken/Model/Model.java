@@ -1,6 +1,9 @@
 package com.dit212.group1.koskenkiosken.Model;
 
 import java.util.ArrayList;
+import java.util.Collection;
+import java.util.Collections;
+import java.util.Comparator;
 import java.util.List;
 
 public class Model {
@@ -81,5 +84,16 @@ public class Model {
             }
         }
         return sortedProduct;
+    }
+
+    /**
+     * returns a sorted product list.
+     * @param comp the comparator of which to use to sort.
+     * @return a sorted list.
+     */
+    public List<IProduct> sortProducts(Comparator<IProduct> comp){
+        List<IProduct> products = new ArrayList<IProduct>(productList);
+        Collections.sort(products,comp);
+        return products;
     }
 }

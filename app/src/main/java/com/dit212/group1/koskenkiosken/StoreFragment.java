@@ -22,14 +22,16 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.widget.Button;
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
 import android.widget.ListView;
 import android.widget.SearchView;
+import android.widget.Toast;
 
+import com.dit212.group1.koskenkiosken.Model.ComparatorIProduct;
 import com.dit212.group1.koskenkiosken.Model.IProduct;
 import com.dit212.group1.koskenkiosken.Model.Model;
 
-import java.util.ArrayList;
 import java.util.List;
 
 
@@ -43,6 +45,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     private Model m;
     private FragmentStoreListener listener;
     private ProductFeedRecyclerAdapter pAdapter;
+    private View parentView;
 
     public StoreFragment() {
     }
@@ -61,7 +64,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
      * Listener interface that will handle notify all classes that implements this interface.
      */
     public interface FragmentStoreListener {
-        void onInputStoreSent(ArrayList<IProduct> input);
+        void onInputStoreSent(List<IProduct> input);
     }
 
     @Override
@@ -70,8 +73,6 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         // Inflate the layout for this fragment
         setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_store, container, false);
-
-
     }
 
     /**
@@ -87,7 +88,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         pAdapter = new ProductFeedRecyclerAdapter(products, this);
         rv.setAdapter(pAdapter);
         rv.setLayoutManager(llm);
-
+        parentView = view;
     }
 
     /**
@@ -134,21 +135,50 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
      * binds the behaviour of the Sort-By button
      * @param menu the menu of which the Sort-By button lies.
      */
-    private void bindSortByButton(@NonNull Menu menu){
+    private void bindSortByButton(@NonNull Menu menu) {
         MenuItem button = menu.findItem(R.id.sort_button);
+        final Dialog dialog = new Dialog(getContext());
+        ListView listview = new ListView(getContext());
+        String[] strArr = getResources().getStringArray(R.array.sorting_option);
+        ArrayAdapter<String> modeAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, strArr);
+        listview.setAdapter(modeAdapter);
+        dialog.setContentView(listview);
+
         button.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
-                Context context = getContext();
-                if (context == null) return false;
-                Dialog dialog = new Dialog(context);
-                dialog.setContentView(R.layout.fragment_store_sorting_popup_card);
                 dialog.show();
                 return false;
             }
         });
+        bindDialogueListOptions(listview);
     }
 
+    private void bindDialogueListOptions(ListView lv) {
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i) {
+                    case 0: {
+                        pAdapter.updateList(m.sortProducts(ComparatorIProduct.nameAscendingOrder()));
+                        break;
+                    }
+                    case 1: {
+                        pAdapter.updateList(m.sortProducts(ComparatorIProduct.nameDescendingOrder()));
+                        break;
+                    }
+                    case 2: {
+                        pAdapter.updateList(m.sortProducts(ComparatorIProduct.priceAscendingOrder()));
+                        break;
+                    }
+                    case 3: {
+                        pAdapter.updateList(m.sortProducts(ComparatorIProduct.priceDescendingOrder()));
+                        break;
+                    }
+                }
+            }
+        });
+    }
 
     /**
      * When a product is pressed this function will start a new activity and pass the product.
@@ -157,7 +187,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     @Override
     public void onProductClick(int position) {
         Intent intent = new Intent(getActivity(), ProductPressedView.class);
-        intent.putExtra("product",products.get(position));
+        intent.putExtra("product", products.get(position));
         startActivity(intent);
     }
 
@@ -170,7 +200,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     @Override
     public void onAddToCartClick(int position) {
         m.addToCart(products.get(position));
-        listener.onInputStoreSent(new ArrayList<>(m.getCart().viewCart()));
+        listener.onInputStoreSent(m.getCart().viewCart());
     }
 
     //TODO currently unused method and there is no button for this in the design.

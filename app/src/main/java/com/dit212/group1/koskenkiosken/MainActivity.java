@@ -16,6 +16,7 @@ import com.dit212.group1.koskenkiosken.Model.UserFactory;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Author: created by -, on -
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements StoreFragment.Fra
      * @param input products in cart.
      */
     @Override
-    public void onInputStoreSent(ArrayList<IProduct> input) {
+    public void onInputStoreSent(List<IProduct> input) {
         m.getCart().setCart(input);
     }
 
