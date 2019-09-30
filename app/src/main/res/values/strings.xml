@@ -15,4 +15,11 @@
     <string name="search">Sök</string>
     <string name="cart_button">Cart</string>
     <string name="add_to_cart_button_content_desc">Add to cart</string>
+
+    <string-array name="sorting_option">
+        <item>Name - ascending</item>
+        <item>Name - descending</item>
+        <item>Price - ascending</item>
+        <item>Price - descending</item>
+    </string-array>
 </resources>

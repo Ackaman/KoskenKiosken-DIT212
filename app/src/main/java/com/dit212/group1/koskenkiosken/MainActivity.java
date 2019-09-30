@@ -112,16 +112,5 @@ public class MainActivity extends AppCompatActivity implements StoreFragment.Fra
         if (m == null) m = new Model(DatabaseHelper.getDatabaseHelper(), UserFactory.createMockUser());
     }
 
-    /**
-     * method ran by android platform to populate and inflate actionbar entries.
-     * @param menu actionbar menu given by android platform
-     * @return bool depending on if the inflate was successful.
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_actionbar, menu);
-        return false;
-    }
-
 
 }

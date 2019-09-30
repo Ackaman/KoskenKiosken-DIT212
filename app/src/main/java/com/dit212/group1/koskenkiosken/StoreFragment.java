@@ -2,10 +2,12 @@ package com.dit212.group1.koskenkiosken;
 
 
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -17,6 +19,12 @@ import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
+
+import android.view.Menu;
+import android.view.MenuInflater;
+import android.widget.Button;
+import android.widget.ListView;
+import android.widget.SearchView;
 
 import com.dit212.group1.koskenkiosken.Model.IProduct;
 import com.dit212.group1.koskenkiosken.Model.Model;
@@ -97,9 +105,17 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
      */
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_topbar_store, menu);
-        SearchView search = (SearchView) menu.findItem(R.id.search).getActionView();
+        inflater.inflate(R.menu.menu_actionbar, menu);
+        bindSearchButton(menu);
+        bindSortByButton(menu);
+    }
 
+    /**
+     * binds behaviour of the search button
+     * @param menu the menu of which the search button lies.
+     */
+    private void bindSearchButton(@NonNull Menu menu){
+        SearchView search = (SearchView) menu.findItem(R.id.search).getActionView();
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -114,9 +130,23 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         });
     }
 
-    @Override
-    public void onStart(){
-        super.onStart();
+    /**
+     * binds the behaviour of the Sort-By button
+     * @param menu the menu of which the Sort-By button lies.
+     */
+    private void bindSortByButton(@NonNull Menu menu){
+        MenuItem button = menu.findItem(R.id.sort_button);
+        button.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                Context context = getContext();
+                if (context == null) return false;
+                Dialog dialog = new Dialog(context);
+                dialog.setContentView(R.layout.fragment_store_sorting_popup_card);
+                dialog.show();
+                return false;
+            }
+        });
     }
 
 
