@@ -12,26 +12,19 @@ import android.view.ViewGroup;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
-import androidx.appcompat.app.ActionBar;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.text.Editable;
-import android.text.TextWatcher;
-import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
-import android.view.MenuItem;
-import android.view.SearchEvent;
-import android.view.View;
-import android.view.ViewGroup;
-import android.widget.EditText;
 import android.widget.SearchView;
-import android.widget.Toast;
 
 import com.dit212.group1.koskenkiosken.Model.IProduct;
+import com.dit212.group1.koskenkiosken.Model.Model;
+
 import java.util.ArrayList;
+import java.util.List;
 
 
 /**
@@ -40,12 +33,10 @@ import java.util.ArrayList;
  * view to data and functions from a list of products.
  */
 public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapter.ProductClickListener, ProductFeedRecyclerAdapter.PurchaseClickListener {
-    private ArrayList<IProduct> products;
-    private ArrayList<IProduct> cart;
-    private String test;
-    private FragmentStoreLitsener listener;
+    private List<IProduct> products;
+    private Model m;
+    private FragmentStoreListener listener;
     private ProductFeedRecyclerAdapter pAdapter;
-    private ArrayList<IProduct> originalProductList;
 
     public StoreFragment() {
     }
@@ -53,19 +44,17 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     /**
      * constructor takes a list of products as argument.
      * As of now we only use one product hence we only take the first element in the list.
-     *
-     * @param productsinstore list of products to be displayed in fragment
+     * @param m the model.
      */
-    StoreFragment(ArrayList<IProduct> productsinstore, ArrayList<IProduct> cart){
-        this.products = productsinstore;
-        this.cart = cart;
-        originalProductList = products;
+    StoreFragment(Model m){
+        this.m = m;
+        this.products = m.listOfProducts();
     }
 
     /**
      * Listener interface that will handle notify all classes that implements this interface.
      */
-    public interface FragmentStoreLitsener {
+    public interface FragmentStoreListener {
         void onInputStoreSent(ArrayList<IProduct> input);
     }
 
@@ -99,18 +88,8 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
      * Adds all the products that is a substring of the search string in a new list.
      * @param search        The input string from the ActionBar in StoreFragment
      */
-    private ArrayList<IProduct> sortString(String search) {
-        ArrayList<IProduct> sortedProduct = new ArrayList<>();
-
-        for (IProduct product : products) {
-            if (product.getName().toLowerCase().contains(search.toLowerCase())) {
-                sortedProduct.add(product);
-
-            }
-        }
-        pAdapter.sortString(sortedProduct);
-        return sortedProduct;
-
+    private void sortString(String search) {
+        pAdapter.updateList(m.filterListByString(search));
     }
 
     /**
@@ -119,7 +98,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
      * @param inflater      inflater
      */
     @Override
-    public void onCreateOptionsMenu(Menu menu, MenuInflater inflater) {
+    public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_topbar_store, menu);
         SearchView search = (SearchView) menu.findItem(R.id.search).getActionView();
 
@@ -131,22 +110,15 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                products = originalProductList;
-                products = sortString(newText);
+                sortString(newText);
                 return false;
             }
         });
     }
 
-
-    /**
-     * Changes the text placeholders to actualy product name and price.
-     */
     @Override
     public void onStart(){
         super.onStart();
-        this.test = "";
-
     }
 
 
@@ -158,34 +130,28 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     public void onProductClick(int position) {
         Intent intent = new Intent(getActivity(), ProductPressedView.class);
         intent.putExtra("product",products.get(position));
-        System.out.println("onClick: " + products.toString());
         startActivity(intent);
     }
 
 
     /**
-     * Purchaseclick = "+" nect to each product.
-     * This method handles what we do when a user press "+"
-     * position is the position in recycleview-list and will correspond to a product in our productlist.
-     * @param position
+     * add to cart button.
+     * This method handles what we do when a product is to be added to the cart.
+     * @param position the position in recycleview-list and will correspond to a product in our product list.
      */
     @Override
     public void onPurchaseClick(int position) {
-        cart.add(products.get(position));
-        test = "";
-        for (IProduct p : cart){
-            test = test + p.getName() + " ";
-        }
-        listener.onInputStoreSent(cart);
+        m.addToCart(products.get(position));
+        listener.onInputStoreSent(new ArrayList<>(m.getCart().viewCart()));
     }
 
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if(context instanceof FragmentStoreLitsener){
-            listener = (FragmentStoreLitsener) context;
+        if(context instanceof FragmentStoreListener){
+            listener = (FragmentStoreListener) context;
         } else {
-            throw new RuntimeException(context.toString() +" must implement FragmentStoreLitsener");
+            throw new RuntimeException(context.toString() +" must implement FragmentStoreListener");
         }
     }
 

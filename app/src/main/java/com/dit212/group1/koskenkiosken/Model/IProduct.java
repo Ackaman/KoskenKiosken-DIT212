@@ -7,8 +7,21 @@ import android.os.Parcelable;
  * Description: simple product abstraction. Outside actors should not have access to methods they don't use.
  */
 public interface IProduct extends Parcelable {
+    /**
+     * get the name of the product
+     * @return the name of the product
+     */
     String getName();
+
+    /**
+     * returns the price of a given product
+     * @return the price of a given product.
+     */
     int getPrice();
-    Product getObject();
+
+    /**
+     * the description of a given product.
+     * @return the description of a given product.
+     */
     String getDescription();
 }

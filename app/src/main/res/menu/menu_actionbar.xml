@@ -3,21 +3,9 @@
     xmlns:android="http://schemas.android.com/apk/res/android">
 
     <item
-        android:id="@+id/store"
-        android:icon="@drawable/bottom_bar_shop"
-        android:title="@string/actionbar_store"
+        android:id="@+id/sort_button"
+        android:icon="@drawable/ic_filter_list_black_24dp"
+        android:title="@string/sort_button_title"
         app:showAsAction="always"/>
-    <item
-        android:id="@+id/account"
-        android:icon="@drawable/ic_action_accounticon"
-        android:title="@string/actionbar_account"
-        app:showAsAction="ifRoom"/>
-
-    <item
-        android:id="@+id/cart_bottom"
-        android:icon="@drawable/bottom_bar_checkout"
-        android:title="Cart"
-        app:showAsAction="ifRoom"/>
-
 
 </menu>

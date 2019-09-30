@@ -7,6 +7,14 @@ import java.util.List;
  * Description: simplified persistant storage solution. used for looser coupling between model and storage implementation.
  */
 public interface IDatabase {
+    /**
+     * reads products from the persistent storage.
+     * @return a list of products.
+     */
     List<IProduct> readProducts();
+
+    /**
+     * writes products to persistent storage.
+     */
     void writeProducts();
 }
