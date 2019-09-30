@@ -1,11 +1,14 @@
 package com.dit212.group1.koskenkiosken.Model;
 
+import android.os.Parcel;
+import android.os.Parcelable;
+
 import com.dit212.group1.koskenkiosken.StoreFragment;
 
 import java.util.ArrayList;
 import java.util.List;
 
-public class Model{
+public class Model implements Parcelable {
     private final ArrayList<Product> productList;
     private ArrayList<Product> cart;
     private final User loggedInUser;
@@ -23,6 +26,24 @@ public class Model{
 
         this.loggedInUser = (User) loggedInUser;
     }
+
+    protected Model(Parcel in) {
+        productList = in.createTypedArrayList(Product.CREATOR);
+        cart = in.createTypedArrayList(Product.CREATOR);
+        loggedInUser = in.readParcelable(User.class.getClassLoader());
+    }
+
+    public static final Creator<Model> CREATOR = new Creator<Model>() {
+        @Override
+        public Model createFromParcel(Parcel in) {
+            return new Model(in);
+        }
+
+        @Override
+        public Model[] newArray(int size) {
+            return new Model[size];
+        }
+    };
 
     /**
      * parses a list provided by IDatabase to internal list and hard casts them to Product.
@@ -59,6 +80,18 @@ public class Model{
      */
     public ArrayList<IProduct> getCart() {
         return new ArrayList<IProduct>(cart);
+    }
+
+    @Override
+    public int describeContents() {
+        return 0;
+    }
+
+    @Override
+    public void writeToParcel(Parcel dest, int flags) {
+        dest.writeTypedList(productList);
+        dest.writeTypedList(cart);
+        dest.writeParcelable(loggedInUser, flags);
     }
 
     /*public void setCart(ArrayList<IProduct> newCart) {
