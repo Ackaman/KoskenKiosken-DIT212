@@ -1,0 +1,80 @@
+# Meeting Agenda
+
+Group: KlassFörakt
+Date: 2019-09-30
+Chair: Morgan Thowsen	
+Participants: Gustav Pihlquist, Morgan Thowsen, Johan Almroth, Albin Otterhäll, David Persson
+
+
+## Objectives (5 min) 
+
+vi behöver implementa userstories.
+    - vi ligger nog ok till men det är mycket jobb som går åt för saker som inte är bundna till userstories. 
+    - ex tester, kommentarer, refaktorisering.
+vi behöver särkoppla recyclerview
+    - så denna kan återanvändas för cart på ett snyggare sätt.
+    - bör abstraheras.
+vi behöver åtgärda buggar introducerade i förra sprinten.
+    - produktsökningen fungerar inte som den skall.
+
+
+## Reports (15 min) from previous meeting
+
+- David har fixat så cart uppdateras när produkter hamnar i cart (modellen).
+- David har fixat så man kommer till en produktspecifik sida när man trycker på en produkt.
+- Albin har gjort flera tester för modelllen.
+- Albin har refaktoriserat User.
+- Johan har hjälp David.
+- Johan har fixat köpknappar i produktflöded.
+- Johan har fixat kundvagn.
+- Morgan har refaktoriserat fragment/main activity. men koden ligger inte uppe ännu pga hur omfattande det blivit.
+- Morgan har försökt implementera sorteringsknapp men fastnat i hur det skall fungera grafiskt pga hur begränsat
+drop-down-menu är från actionview.
+- Gustav implementerade en filtreringsfunktion och slutförde userstory4.
+
+## Discussion items (35 min)
+
+vi måste alla bli bättre comments. Vi har till exempel inte kommenterat alla metoder vi skall kommentera
+tester har blivit bättre. 
+
+inga intet-sägande kommentarer framöver. Det finns t.ex. kommentarer som ligger som placeholders, och då
+blir det svårt att veta vilka metoder som faktiskt är kommenterade när man skrollar igenom koden
+
+vi börjar få ett bra skall så nu handlar det om att göra det väldigt helhjärtat. Innan har vi t.ex.
+hårdkodat mycket i User Stories, men nu kan vi i fortsättningen göra de mer dynamiska och färdiga.
+
+## Outcomes and assignments (5 min)
+
+- albin skall ta en userstory.
+    - "som användare vill jag kunna logga in". (UserStory 36)
+    - lägga in checks för att inte kunna skapa användare som har tomt namn
+    - lägga in checks för att inte kunna skapa användare som har tomt pwd.
+- Johan "särkopplar" store & cart fragment
+    - som det ser ut nu så använder cartfragment exact samma layout.
+    - städa upp vår recyclerview så den kan återanvändas för både cart och productfeed.
+    - kanske ta ett kort i konstruktorn som listan sen byggs av. 
+
+- Gustav tar upp en ny Userstory.
+    - gustav bestämmer sig för en userstory.
+
+- Gustav skall fixa buggar introducerade i tidigare userstory
+    - kan först ordnas efter att Morgan skickat upp den refaktoriserade koden.
+
+- Gustav skall implementera en kundvagnsklass m. tillhörande interface.
+
+- Morgan skall fortsätta refaktorisera alla fragment och activity
+    - uppgiften blev mer omfattande än vad "jag" först väntade mig.
+    - räknar mer att kunna lägga upp detta tidigt under veckan.
+    
+- Morgan skall göra klart sin userstory från förra veckan.
+    - pga. ovanstående har det varit problematiskt att ordna sorteringsknapp. (se reports)
+
+- David skall fixa hela modellen parcellable
+
+- David skall fixa kommenterarer
+    - fixa alla kommenterarer i modellen & de tester som är knutna till den.
+
+
+## Wrap up
+
+ - nästa interna möte är på Onsdag 2/10 -19 kl13:00 
