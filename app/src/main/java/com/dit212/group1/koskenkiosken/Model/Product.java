@@ -32,6 +32,10 @@ class Product implements IProduct, Parcelable {
         description = in.readString();
     }
 
+    /**
+     * parcelable constructor
+     */
+
     public static final Creator<Product> CREATOR = new Creator<Product>() {
         @Override
         public Product createFromParcel(Parcel in) {
@@ -71,19 +75,36 @@ class Product implements IProduct, Parcelable {
         return price;
     }
 
+    /**
+     * gets the description of the product. (ex. kolsyrad energidryck).
+     * @return the description of the product.
+     */
     public String getDescription() {
         return description;
     }
 
+    /**
+     * updated the description of a product.
+     * @param description the description ot give the product (ex. kolsyrad dryck)
+     */
     public void setDescription(String description) {
         this.description = description;
     }
 
+    /**
+     * not used
+     * @return not used.
+     */
     @Override
     public int describeContents() {
         return 0;
     }
 
+    /**
+     * flattening a product to a serialized object.
+     * @param dest the container of which to put the flattened product.
+     * @param flags not used.
+     */
     @Override
     public void writeToParcel(Parcel dest, int flags) {
         dest.writeString(name);
@@ -91,5 +112,9 @@ class Product implements IProduct, Parcelable {
         dest.writeString(description);
     }
 
+    /**
+     * updates the price of a product
+     * @param price the price of which to give the product.
+     */
     void setPrice(int price){ this.price = price;}
 }

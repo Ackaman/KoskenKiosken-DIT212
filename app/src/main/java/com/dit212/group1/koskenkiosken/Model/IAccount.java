@@ -6,6 +6,15 @@ package com.dit212.group1.koskenkiosken.Model;
  */
 public interface IAccount {
 
+    /**
+     * the name of the user
+     * @return the name of the user.
+     */
     String getUserName();
+
+    /**
+     * the number of credits the user has
+     * @return the number of credits the user has
+     */
     int getCredits();
 }
