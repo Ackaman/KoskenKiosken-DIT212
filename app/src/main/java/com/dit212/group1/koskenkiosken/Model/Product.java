@@ -90,4 +90,6 @@ class Product implements IProduct, Parcelable {
         dest.writeInt(price);
         dest.writeString(description);
     }
+
+    void setPrice(int price){ this.price = price;}
 }
