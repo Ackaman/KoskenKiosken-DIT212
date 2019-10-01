@@ -6,19 +6,17 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.Menu;
+import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
-
+import android.widget.SearchView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
-
-import android.view.Menu;
-import android.view.MenuInflater;
-import android.widget.SearchView;
 
 import com.dit212.group1.koskenkiosken.Model.IProduct;
 import com.dit212.group1.koskenkiosken.Model.Model;
@@ -32,7 +30,7 @@ import java.util.List;
  * Description: Store page "controller". feeds product-specific textfields and/or buttons of the
  * view to data and functions from a list of products.
  */
-public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapter.ProductClickListener, ProductFeedRecyclerAdapter.PurchaseClickListener {
+public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapter.ProductClickListener {
     private List<IProduct> products;
     private Model m;
     private FragmentStoreListener listener;
@@ -78,7 +76,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         super.onViewCreated(view, savedInstanceState);
         RecyclerView rv = view.findViewById(R.id.recyclerview);
         RecyclerView.LayoutManager llm = new LinearLayoutManager(getContext());
-        pAdapter = new ProductFeedRecyclerAdapter(products, this, this);
+        pAdapter = new ProductFeedRecyclerAdapter(products, this);
         rv.setAdapter(pAdapter);
         rv.setLayoutManager(llm);
 
@@ -140,8 +138,15 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
      * @param position the position in recycleview-list and will correspond to a product in our product list.
      */
     @Override
-    public void onPurchaseClick(int position) {
+    public void onAddToCartClick(int position) {
         m.addToCart(products.get(position));
+        listener.onInputStoreSent(new ArrayList<>(m.getCart().viewCart()));
+    }
+
+    //TODO currently unused method and there is no button for this in the design.
+    @Override
+    public void onRemoveFromCartClick(int position) {
+
         listener.onInputStoreSent(new ArrayList<>(m.getCart().viewCart()));
     }
 
