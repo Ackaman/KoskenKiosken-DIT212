@@ -20,6 +20,10 @@ public class ComparatorIProductTest {
 
     private List<IProduct> products;
 
+    /**
+     * creates a mock List of IProduct. with mocks we can eliminate bugs from IProduct to affect
+     * our tests.
+     */
     @Before
     public void init(){
         products = new ArrayList<>();
