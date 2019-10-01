@@ -98,6 +98,15 @@ class Product implements IProduct, Parcelable {
      * @return not used.
      */
     @Override
+    public IProduct setPrice(int price) {
+        return ProductFactory.create(this.name, price, this.description);
+    }
+
+    public Product getObject() {
+        return this;
+    }
+
+    @Override
     public int describeContents() {
         return 0;
     }

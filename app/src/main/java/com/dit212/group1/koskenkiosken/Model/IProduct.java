@@ -25,4 +25,5 @@ public interface IProduct extends Parcelable {
      */
     String getDescription();
     IProduct setName(String name);
+    IProduct setPrice(int price);
 }

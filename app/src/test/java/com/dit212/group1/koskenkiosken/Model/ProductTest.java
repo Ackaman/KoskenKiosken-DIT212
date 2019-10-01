@@ -32,7 +32,7 @@ public class ProductTest {
 
     @Test
     public void setPrice() {
-        product.setPrice(15);
+        product = product.setPrice(15);
         assertThat(product.getPrice(), equalTo(15));
     }
 }
