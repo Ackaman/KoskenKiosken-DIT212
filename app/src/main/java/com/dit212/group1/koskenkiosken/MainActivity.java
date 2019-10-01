@@ -16,6 +16,7 @@ import com.dit212.group1.koskenkiosken.Model.UserFactory;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.ArrayList;
+import java.util.List;
 
 /**
  * Author: created by -, on -
@@ -63,7 +64,7 @@ public class MainActivity extends AppCompatActivity implements StoreFragment.Fra
      * @param input products in cart.
      */
     @Override
-    public void onInputStoreSent(ArrayList<IProduct> input) {
+    public void onInputStoreSent(List<IProduct> input) {
         m.getCart().setCart(input);
     }
 
@@ -110,17 +111,6 @@ public class MainActivity extends AppCompatActivity implements StoreFragment.Fra
         if (m != null) return;
         if (savedInstanceState != null) m = savedInstanceState.getParcelable("Model");
         if (m == null) m = new Model(DatabaseHelper.getDatabaseHelper(), UserFactory.createMockUser());
-    }
-
-    /**
-     * method ran by android platform to populate and inflate actionbar entries.
-     * @param menu actionbar menu given by android platform
-     * @return bool depending on if the inflate was successful.
-     */
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        getMenuInflater().inflate(R.menu.menu_actionbar, menu);
-        return false;
     }
 
 

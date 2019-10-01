@@ -3,6 +3,8 @@ package com.dit212.group1.koskenkiosken.Model;
 import android.os.Parcel;
 import android.os.Parcelable;
 
+import androidx.annotation.NonNull;
+
 /**
  * Description: representation of a product.
  */
@@ -117,4 +119,14 @@ class Product implements IProduct, Parcelable {
      * @param price the price of which to give the product.
      */
     void setPrice(int price){ this.price = price;}
+
+    /**
+     * simple to string.
+     * @return to string.
+     */
+    @NonNull
+    @Override
+    public String toString() {
+        return getName();
+    }
 }
