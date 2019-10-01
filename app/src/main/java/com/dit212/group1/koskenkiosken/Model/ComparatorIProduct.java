@@ -52,7 +52,7 @@ public class ComparatorIProduct {
                 return Integer.valueOf(p1.getPrice()).compareTo(p2.getPrice());
             }
         };
-        return nameDescendingOrder;
+        return priceDescendingOrder;
     }
 
     public static Comparator<IProduct> priceAscendingOrder() {
@@ -65,7 +65,7 @@ public class ComparatorIProduct {
                 }
             }
         };
-        return nameAscendingOrder;
+        return priceAscendingOrder;
     }
 }
 
