@@ -20,13 +20,9 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import android.view.Menu;
-import android.view.MenuInflater;
 import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
-import android.widget.SearchView;
-import android.widget.Toast;
 
 import com.dit212.group1.koskenkiosken.Model.ComparatorIProduct;
 import com.dit212.group1.koskenkiosken.Model.IProduct;
@@ -207,7 +203,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     @Override
     public void onRemoveFromCartClick(int position) {
 
-        listener.onInputStoreSent(new ArrayList<>(m.getCart().viewCart()));
+        listener.onInputStoreSent(m.getCart().viewCart());
     }
 
     @Override
