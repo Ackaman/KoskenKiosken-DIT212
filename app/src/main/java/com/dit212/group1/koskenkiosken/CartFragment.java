@@ -13,11 +13,9 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
 import com.dit212.group1.koskenkiosken.Model.ICart;
-import com.dit212.group1.koskenkiosken.Model.IProduct;
-import java.util.ArrayList;
 
 
-public class CartFragment extends Fragment {
+public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter.ProductClickListener {
 
     private ICart cart;
 
@@ -50,8 +48,22 @@ public class CartFragment extends Fragment {
 
         RecyclerView.LayoutManager llm = new LinearLayoutManager(getContext());
 
-        rv.setAdapter(new ProductFeedRecyclerAdapter(cart.viewCart()));
+        rv.setAdapter(new ProductFeedRecyclerAdapter(cart.viewCart(), this));
 
         rv.setLayoutManager(llm);
+    }
+
+    @Override
+    public void onProductClick(int position) {
+
+    }
+
+    @Override
+    public void onAddToCartClick(int position) {
+
+    }
+
+    @Override
+    public void onRemoveFromCartClick(int position) {
     }
 }
