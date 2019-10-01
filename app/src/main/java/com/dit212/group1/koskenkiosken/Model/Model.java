@@ -1,7 +1,8 @@
 package com.dit212.group1.koskenkiosken.Model;
 
+import android.util.Log;
+
 import java.util.ArrayList;
-import java.util.Collection;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
@@ -92,8 +93,9 @@ public class Model {
      * @return a sorted list.
      */
     public List<IProduct> sortProducts(Comparator<IProduct> comp){
-        List<IProduct> products = new ArrayList<IProduct>(productList);
+        List<IProduct> products = new ArrayList<>(listOfProducts());
         Collections.sort(products,comp);
+        Log.i("MODEL",products.toString());
         return products;
     }
 }
