@@ -110,7 +110,11 @@ public class MainActivity extends AppCompatActivity implements StoreFragment.Fra
     private void setModel(Bundle savedInstanceState){
         if (m != null) return;
         if (savedInstanceState != null) m = savedInstanceState.getParcelable("Model");
-        if (m == null) m = new Model(DatabaseHelper.getDatabaseHelper(), UserFactory.createMockUser());
+        if (m == null){
+            m = new Model();
+            m.setLoggedInUser(UserFactory.createMockUser());
+            m.parseFromIDatabase(DatabaseHelper.getDatabaseHelper());
+        }
     }
 
 
