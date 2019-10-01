@@ -64,8 +64,8 @@ class Product implements IProduct, Parcelable {
      * @param name the name to set of a given product
      */
 
-    void setName(String name) {
-        this.name = name;
+    public IProduct setName(String name) {
+        return ProductFactory.create(name, this.price, this.description);
     }
 
     /**

@@ -24,4 +24,5 @@ public interface IProduct extends Parcelable {
      * @return the description of a given product.
      */
     String getDescription();
+    IProduct setName(String name);
 }
