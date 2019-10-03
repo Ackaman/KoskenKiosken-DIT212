@@ -11,9 +11,9 @@ import androidx.annotation.NonNull;
 
 class Product implements IProduct, Parcelable {
 
-    private String name;
-    private int price;
-    private String description;
+    final private String name;
+    final private int price;
+    final private String description;
 
     /**
      * constructor.
@@ -89,8 +89,8 @@ class Product implements IProduct, Parcelable {
      * updated the description of a product.
      * @param description the description ot give the product (ex. kolsyrad dryck)
      */
-    public void setDescription(String description) {
-        this.description = description;
+    public IProduct setDescription(String description) {
+        return ProductFactory.create(this.name, this.price, description);
     }
 
     /**
