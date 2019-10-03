@@ -18,7 +18,6 @@ public class Model {
         productList = new ArrayList<>();
         readFromStorage(persistentStorage);
         cart = new Cart();
-
         this.loggedInUser = (User) loggedInUser;
     }
 
@@ -65,6 +64,10 @@ public class Model {
      */
     public void addToCart(IProduct product){
         cart.addToCart(product);
+    }
+
+    public int getSizeOfCart(){
+        return cart.getSizeofCart();
     }
 
     /**

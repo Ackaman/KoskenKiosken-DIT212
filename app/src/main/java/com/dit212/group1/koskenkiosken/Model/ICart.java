@@ -37,4 +37,10 @@ public interface ICart {
      * @param list the list of products of which to replace the cart with.
      */
     void setCart(List<IProduct> list);
+
+    /**
+     * gives the number of products in the cart
+     * @return the number of elements in the cart
+     */
+    int getSizeofCart();
 }

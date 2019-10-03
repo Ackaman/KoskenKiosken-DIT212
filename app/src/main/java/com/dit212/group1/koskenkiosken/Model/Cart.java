@@ -67,4 +67,15 @@ public class Cart implements ICart {
     public void setCart(List<IProduct> products) {
         this.products = new ArrayList<>(products);
     }
+
+    /**
+     * Gives the total size of the cart.
+     * @return the number of elements in the cart
+     */
+    @Override
+    public int getSizeofCart() {
+        return products.size();
+    }
+
+
 }
