@@ -5,8 +5,8 @@ package com.dit212.group1.koskenkiosken.Model;
  */
 class User implements IAccount {
 
-    private String userName;
-    private int credits;
+    final private String userName;
+    final private int credits;
 
     /**
      * constructor

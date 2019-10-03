@@ -94,8 +94,8 @@ class Product implements IProduct, Parcelable {
     }
 
     /**
-     * not used
-     * @return not used.
+     * updates the price of a product
+     * @param price the price of which to give the product.
      */
     @Override
     public IProduct setPrice(int price) {
@@ -122,13 +122,7 @@ class Product implements IProduct, Parcelable {
         dest.writeInt(price);
         dest.writeString(description);
     }
-
-    /**
-     * updates the price of a product
-     * @param price the price of which to give the product.
-     */
-    void setPrice(int price){ this.price = price;}
-
+    
     /**
      * simple to string.
      * @return to string.
