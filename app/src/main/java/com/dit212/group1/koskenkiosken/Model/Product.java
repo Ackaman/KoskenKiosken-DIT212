@@ -11,9 +11,9 @@ import androidx.annotation.NonNull;
 
 class Product implements IProduct, Parcelable {
 
-    private String name;
-    private int price;
-    private String description;
+    final private String name;
+    final private int price;
+    final private String description;
 
     /**
      * constructor.
@@ -64,8 +64,8 @@ class Product implements IProduct, Parcelable {
      * @param name the name to set of a given product
      */
 
-    void setName(String name) {
-        this.name = name;
+    public IProduct setName(String name) {
+        return ProductFactory.create(name, this.price, this.description);
     }
 
     /**
@@ -89,14 +89,23 @@ class Product implements IProduct, Parcelable {
      * updated the description of a product.
      * @param description the description ot give the product (ex. kolsyrad dryck)
      */
-    public void setDescription(String description) {
-        this.description = description;
+    public IProduct setDescription(String description) {
+        return ProductFactory.create(this.name, this.price, description);
     }
 
     /**
-     * not used
-     * @return not used.
+     * updates the price of a product
+     * @param price the price of which to give the product.
      */
+    @Override
+    public IProduct setPrice(int price) {
+        return ProductFactory.create(this.name, price, this.description);
+    }
+
+    public Product getObject() {
+        return this;
+    }
+
     @Override
     public int describeContents() {
         return 0;
@@ -113,13 +122,7 @@ class Product implements IProduct, Parcelable {
         dest.writeInt(price);
         dest.writeString(description);
     }
-
-    /**
-     * updates the price of a product
-     * @param price the price of which to give the product.
-     */
-    void setPrice(int price){ this.price = price;}
-
+    
     /**
      * simple to string.
      * @return to string.

@@ -7,7 +7,7 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.*;
 
 public class ProductTest {
-    Product product;
+    IProduct product;
 
     @Before
     public void setUp() throws Exception {
@@ -21,7 +21,7 @@ public class ProductTest {
 
     @Test
     public void setName() {
-        product.setName("New Product Name");
+        product = product.setName("New Product Name");
         assertThat(product.getName(), equalTo("New Product Name"));
     }
 
@@ -32,7 +32,7 @@ public class ProductTest {
 
     @Test
     public void setPrice() {
-        product.setPrice(15);
+        product = product.setPrice(15);
         assertThat(product.getPrice(), equalTo(15));
     }
 }
