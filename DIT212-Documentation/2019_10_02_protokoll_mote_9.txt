@@ -1,0 +1,57 @@
+# Meeting Agenda
+
+Group: KlassFörakt
+Date: 2019-10-02
+Chair: Gustav Pihlquist
+Participants: Morgan Thowsen, Albin Otterhäll, Johan Almroth, David Persson, Gustav Pihlquist
+
+
+## Objectives (5 min) 
+
+ - Prata med Robert angående hur vi skall göra med switch och if-satser.
+ - Kolla igenom befintliga User Stories och rensa dubbletter, samt skapa nya vid behov.
+ - Skriva tester till allt som tillhör modellen.
+ - Prata med Robert om SDD:n vid nästa handledningsmöte.
+
+
+## Reports (15 min) from previous meeting
+
+ - Albin har börjat refaktorisera och implementerat immutable patterns till klasser i modellen.
+
+ - Johan har särkopplat Store- och Cartfragment. 
+ - Johan Har hittat en lösning till att städa upp RecyclerViewen, men håller på att förfina koden.
+
+ - Gustav har tagit på sig User Story 16, och har hittat en lösning på problemet, men inte implementerat den än. 
+ - Gustav har löst buggarna som uppkom i tidigare User Story
+ 
+ - Morgan hade redan löst en kundvagnsklass sedan tidigare, ligger nu pushad till dev
+ - Morgan har gjort klart refaktoriseringen av alla fragments och activities och pushat upp till dev.
+ - Morgan har gjort klart User Story 15.
+
+ - David har gjort hela modellen Parcelable.
+ - David håller på kommenteringen av modellen och dess tester.
+ 
+
+## Discussion items (35 min)
+
+ - Nu är det mesta av skelettet klart, de två tunga grejerna som är kvar är ett inloggningssystem och en ordercheckout. Annars är övriga user stories ganska simpla att implementera. 
+ - Diskuterar hur vi skall lösa databasen. Jobba på persistent storage, och flytta från hårdkodat till GSON.
+
+
+## Outcomes and assignments (5 min)
+
+ - Morgan har många Javarader nu, och kan därför ta på sig ansvaret att göra en databas. 
+ 
+ - Albin forsätter göra modellens klasser immutable
+ - Albin skall påbörja User Story 36, att göra ett inloggningssystem.
+ 
+ - Johan fortsätter städa up RecyclerViewen. Ett fungerande utkast finns, men är inte riktigt nöjd med lösningen än.
+ 
+ - David skall skriva tester och kommentera koden i modellen.
+
+ - Gustav skriver klart sin lösning på User Story 16, och pushar upp detta tillsammans med buggfixen för filtreringen.
+ - Gustav tar upp en ny User Story när han är klar med #16
+
+## Wrap up
+ 
+ - Nästa möte Måndag 7/10 kl. 14:00
