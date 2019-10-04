@@ -2,10 +2,12 @@ package com.dit212.group1.koskenkiosken;
 
 
 
+import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
+import android.view.MenuItem;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.View;
@@ -19,13 +21,17 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import android.widget.AdapterView;
+import android.widget.ArrayAdapter;
+import android.widget.ListView;
+
+import com.dit212.group1.koskenkiosken.Model.ComparatorIProduct;
 import com.dit212.group1.koskenkiosken.Model.IProduct;
 import com.dit212.group1.koskenkiosken.Model.Model;
 
-import org.w3c.dom.Text;
-
-import java.util.ArrayList;
 import java.util.List;
+import java.util.ArrayList;
+
 
 
 /**
@@ -40,6 +46,8 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     private ProductFeedRecyclerAdapter pAdapter;
     private List<IProduct> originalProducts;
     private TextView cartBubble;
+    private View parentView;
+
 
     public StoreFragment() {
     }
@@ -59,7 +67,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
      * Listener interface that will handle notify all classes that implements this interface.
      */
     public interface FragmentStoreListener {
-        void onInputStoreSent(ArrayList<IProduct> input);
+        void onInputStoreSent(List<IProduct> input);
     }
 
     @Override
@@ -68,8 +76,6 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         // Inflate the layout for this fragment
         setHasOptionsMenu(true);
         return inflater.inflate(R.layout.fragment_store, container, false);
-
-
     }
 
     /**
@@ -86,8 +92,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         rv.setAdapter(pAdapter);
         rv.setLayoutManager(llm);
         cartBubble = getActivity().findViewById(R.id.cart_size);
-
-
+        parentView = view;
     }
 
     /**
@@ -107,9 +112,17 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
      */
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
-        inflater.inflate(R.menu.menu_topbar_store, menu);
-        SearchView search = (SearchView) menu.findItem(R.id.search).getActionView();
+        inflater.inflate(R.menu.menu_actionbar, menu);
+        bindSearchButton(menu);
+        bindSortByButton(menu);
+    }
 
+    /**
+     * binds behaviour of the search button
+     * @param menu the menu of which the search button lies.
+     */
+    private void bindSearchButton(@NonNull Menu menu){
+        SearchView search = (SearchView) menu.findItem(R.id.search).getActionView();
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
@@ -125,11 +138,54 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         });
     }
 
-    @Override
-    public void onStart(){
-        super.onStart();
+    /**
+     * binds the behaviour of the Sort-By button
+     * @param menu the menu of which the Sort-By button lies.
+     */
+    private void bindSortByButton(@NonNull Menu menu) {
+        MenuItem button = menu.findItem(R.id.sort_button);
+        final Dialog dialog = new Dialog(getContext());
+        ListView listview = new ListView(getContext());
+        String[] strArr = getResources().getStringArray(R.array.sorting_option);
+        ArrayAdapter<String> modeAdapter = new ArrayAdapter<>(getContext(), android.R.layout.simple_list_item_1, android.R.id.text1, strArr);
+        listview.setAdapter(modeAdapter);
+        dialog.setContentView(listview);
+
+        button.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem menuItem) {
+                dialog.show();
+                return false;
+            }
+        });
+        bindDialogueListOptions(listview);
     }
 
+    private void bindDialogueListOptions(ListView lv) {
+        lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
+            @Override
+            public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
+                switch (i) {
+                    case 0: {
+                        pAdapter.updateList(m.sortProducts(ComparatorIProduct.nameAscendingOrder()));
+                        break;
+                    }
+                    case 1: {
+                        pAdapter.updateList(m.sortProducts(ComparatorIProduct.nameDescendingOrder()));
+                        break;
+                    }
+                    case 2: {
+                        pAdapter.updateList(m.sortProducts(ComparatorIProduct.priceAscendingOrder()));
+                        break;
+                    }
+                    case 3: {
+                        pAdapter.updateList(m.sortProducts(ComparatorIProduct.priceDescendingOrder()));
+                        break;
+                    }
+                }
+            }
+        });
+    }
 
     /**
      * When a product is pressed this function will start a new activity and pass the product.
@@ -138,7 +194,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     @Override
     public void onProductClick(int position) {
         Intent intent = new Intent(getActivity(), ProductPressedView.class);
-        intent.putExtra("product",products.get(position));
+        intent.putExtra("product", products.get(position));
         startActivity(intent);
     }
 
@@ -151,18 +207,17 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     @Override
     public void onAddToCartClick(int position) {
         m.addToCart(products.get(position));
-        listener.onInputStoreSent(new ArrayList<>(m.getCart().viewCart()));
+        listener.onInputStoreSent(m.getCart().viewCart());
         int x = m.getSizeOfCart();
         String s = Integer.toString(x);
         cartBubble.setText(s);
         cartBubble.setVisibility(View.VISIBLE);
-
     }
 
     //TODO currently unused method and there is no button for this in the design.
     @Override
     public void onRemoveFromCartClick(int position) {
-        listener.onInputStoreSent(new ArrayList<>(m.getCart().viewCart()));
+        listener.onInputStoreSent(m.getCart().viewCart());
         if (m.getSizeOfCart() == 0) {
         cartBubble.setVisibility(View.INVISIBLE);
         }
@@ -171,7 +226,6 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
             String s = Integer.toString(x);
             cartBubble.setText(s);
         }
-
     }
 
     @Override
