@@ -13,6 +13,7 @@ import android.view.MenuInflater;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.SearchView;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -29,6 +30,8 @@ import com.dit212.group1.koskenkiosken.Model.IProduct;
 import com.dit212.group1.koskenkiosken.Model.Model;
 
 import java.util.List;
+import java.util.ArrayList;
+
 
 
 /**
@@ -41,7 +44,10 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     private Model m;
     private FragmentStoreListener listener;
     private ProductFeedRecyclerAdapter pAdapter;
+    private List<IProduct> originalProducts;
+    private TextView cartBubble;
     private View parentView;
+
 
     public StoreFragment() {
     }
@@ -54,6 +60,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     StoreFragment(Model m){
         this.m = m;
         this.products = m.listOfProducts();
+        this.originalProducts = products;
     }
 
     /**
@@ -84,6 +91,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         pAdapter = new ProductFeedRecyclerAdapter(products, this);
         rv.setAdapter(pAdapter);
         rv.setLayoutManager(llm);
+        cartBubble = getActivity().findViewById(R.id.cart_size);
         parentView = view;
     }
 
@@ -91,8 +99,10 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
      * Adds all the products that is a substring of the search string in a new list.
      * @param search        The input string from the ActionBar in StoreFragment
      */
-    private void sortString(String search) {
+    private List<IProduct> sortString(String search) {
         pAdapter.updateList(m.filterListByString(search));
+        products = m.filterListByString(search);
+        return products;
     }
 
     /**
@@ -121,6 +131,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
 
             @Override
             public boolean onQueryTextChange(String newText) {
+                products = originalProducts;
                 sortString(newText);
                 return false;
             }
@@ -197,13 +208,24 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     public void onAddToCartClick(int position) {
         m.addToCart(products.get(position));
         listener.onInputStoreSent(m.getCart().viewCart());
+        int x = m.getSizeOfCart();
+        String s = Integer.toString(x);
+        cartBubble.setText(s);
+        cartBubble.setVisibility(View.VISIBLE);
     }
 
     //TODO currently unused method and there is no button for this in the design.
     @Override
     public void onRemoveFromCartClick(int position) {
-
         listener.onInputStoreSent(m.getCart().viewCart());
+        if (m.getSizeOfCart() == 0) {
+        cartBubble.setVisibility(View.INVISIBLE);
+        }
+        else{
+            int x = m.getSizeOfCart();
+            String s = Integer.toString(x);
+            cartBubble.setText(s);
+        }
     }
 
     @Override

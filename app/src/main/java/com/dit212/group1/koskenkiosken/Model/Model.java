@@ -76,6 +76,10 @@ public class Model {
         cart.addToCart(product);
     }
 
+    public int getSizeOfCart(){
+        return cart.getSizeofCart();
+    }
+
     /**
      * returns a filtered version of the inventory.
      * @param filter the string filter of which to filter.
