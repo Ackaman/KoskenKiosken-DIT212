@@ -1,10 +1,22 @@
 package com.dit212.group1.koskenkiosken.DB;
 
+import android.os.Debug;
+import android.util.Log;
+
 import com.dit212.group1.koskenkiosken.Model.IDatabase;
 import com.dit212.group1.koskenkiosken.Model.IProduct;
 import com.dit212.group1.koskenkiosken.Model.ProductFactory;
+import com.google.gson.Gson;
+import com.google.gson.GsonBuilder;
+import com.google.gson.JsonArray;
+import com.google.gson.JsonElement;
+import com.google.gson.JsonObject;
+import com.google.gson.TypeAdapter;
+import com.google.gson.TypeAdapterFactory;
+import com.google.gson.reflect.TypeToken;
 
 import java.util.ArrayList;
+import java.util.Arrays;
 import java.util.List;
 
 /**
@@ -15,6 +27,7 @@ import java.util.List;
 public class DatabaseHelper implements IDatabase {
 
     private static DatabaseHelper dh;
+    private static IPersistentStorage database = new JSONparser<IProduct>();
 
     /**
      * hidden constructor for
@@ -27,12 +40,26 @@ public class DatabaseHelper implements IDatabase {
      */
     @Override
     public List<IProduct> readProducts() {
-        ArrayList<IProduct> productsList = new ArrayList<>();
-        productsList.add(ProductFactory.create("Chokladboll", 2, "description 1"));
-        productsList.add(ProductFactory.create("Nocco", 1,"description 2"));
-        productsList.add(ProductFactory.create("HariboNallar", 3,"description 3"));
-        productsList.add(ProductFactory.create("Kaffepaket", 4,"description 4"));
-        return productsList;
+        GsonBuilder builder = new GsonBuilder();
+        List<IProduct> out = new ArrayList<>();
+        String j = database.getJsonData();
+        Gson g = new Gson();
+        JsonElement je = g.fromJson(j, JsonElement.class);
+        JsonArray jo = je.getAsJsonArray();
+        for (int i = 0; i < jo.size(); i++)
+            out.add(IProductDeserializer.deserialize(jo.get(i)));
+
+        Log.i("HEEEEEEEEEEEEEEEEEEEEJ", out.toString());
+        Log.i("HEEEEEEEEEEEEEEEEEEEEJ", out.toString());
+        Log.i("HEEEEEEEEEEEEEEEEEEEEJ", out.toString());
+        Log.i("HEEEEEEEEEEEEEEEEEEEEJ", out.toString());
+        Log.i("HEEEEEEEEEEEEEEEEEEEEJ", out.toString());
+        Log.i("HEEEEEEEEEEEEEEEEEEEEJ", out.toString());
+        Log.i("HEEEEEEEEEEEEEEEEEEEEJ", out.toString());
+        Log.i("HEEEEEEEEEEEEEEEEEEEEJ", out.toString());
+        Log.i("HEEEEEEEEEEEEEEEEEEEEJ", out.toString());
+        Log.i("HEEEEEEEEEEEEEEEEEEEEJ", out.toString());
+        return out;
     }
 
     /**
