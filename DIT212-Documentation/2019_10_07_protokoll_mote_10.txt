@@ -1,0 +1,50 @@
+# Meeting Agenda
+
+Group: KlassFörakt
+Date: 2019-10-07
+Chair: Morgan Thowsen
+Participants: Morgan Thowsen, Albin Otterhäll, Johan Almroth, David Persson, Gustav Pihlquist
+
+
+## Objectives (5 min) 
+-- måste göra SDD och RAD denna veckan. den ligger lite väl långt efter.
+-- modell-testerna skall vara klara denna veckan så de ligger i fas.
+-- persistentstorage skall fixas "bättre".
+
+
+## Reports (15 min) from previous meeting
+-- Morgan har haft mycket i annan kurs och inte gjort mycket alls.
+    - har pratat med robert så det är inga frågetecken om hur
+      implementationen av en förbättrad persistentstorage skall gå till.
+-- albin har gjort delar av modellen immutable
+-- albin arbetar med inloggnings-userstory
+    -precis påbörjad.
+-- Johan är klar med recyclerview refaktorisering, push kommer senare idag
+-- David har gjort klart tester. kommer pusha alla tester idag.
+-- Gustav har gjort klart userstory 16.
+-- Gustav har åtgärdat bugg i produktsökning.
+-- Gustav har inte tagit en ny userstory ännu.
+
+## Discussion items (35 min)
+-- inte mycket att diskutera detta möte. 
+-- Morgan har lite frågor om hur en första implementation av check-out ska fungera.
+-- diskussioner om att sätta oss ihop imorgon (tisdag 8'de oktober) och fixa RAD & SDD 
+
+## Outcomes and assignments (5 min)
+-- Albin skall göra klart userstory36 (inloggning)
+    -som sagt tidigare så är den påbörjad men i tidigt stadie.
+-- Morgan skall göra flytta hårdkodad mock-db till GSON (första steg mot DB) och arbeta
+    på abstraktioner.
+-- Morgan skall påbörja och göra klart userstory för checkout
+-- David skall plocka en userstory och arbeta på
+-- David tar ansvar för att vi arbetar på RAD & SDD.
+-- Gustav skall plocka en userstory och arbeta på
+-- Gustav skall skriva tester till Model klassen.
+-- Johan skall pusha recyclerview 
+-- Johan skall göra klart de två Userstories (1 & 2) han har i trello.
+    -förändra antalet produkter i varukorgen
+    -ta bort antalet produkter i varukorgen.
+
+## Wrap up
+ 
+ - Nästa möte Onsdag 9/10 kl. 13:00
