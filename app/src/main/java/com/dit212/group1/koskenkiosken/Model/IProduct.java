@@ -2,11 +2,13 @@ package com.dit212.group1.koskenkiosken.Model;
 
 import android.os.Parcelable;
 
+import java.io.Serializable;
+
 /**
  * Author: created by thowsen, 2019-09-24
  * Description: simple product abstraction. Outside actors should not have access to methods they don't use.
  */
-public interface IProduct extends Parcelable {
+public interface IProduct extends Parcelable, Serializable {
     /**
      * get the name of the product
      * @return the name of the product
