@@ -6,6 +6,7 @@ import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.Menu;
@@ -194,7 +195,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     @Override
     public void onProductClick(int position) {
         Intent intent = new Intent(getActivity(), ProductPressedView.class);
-        intent.putExtra("product", products.get(position));
+        intent.putExtra("product", (Parcelable) products.get(position));
         startActivity(intent);
     }
 

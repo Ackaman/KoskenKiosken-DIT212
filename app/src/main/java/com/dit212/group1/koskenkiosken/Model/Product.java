@@ -5,11 +5,13 @@ import android.os.Parcelable;
 
 import androidx.annotation.NonNull;
 
+import java.io.Serializable;
+
 /**
  * Description: representation of a product.
  */
 
-class Product implements IProduct, Parcelable {
+class Product implements IProduct, Parcelable, Serializable {
 
     final private String name;
     final private int price;
