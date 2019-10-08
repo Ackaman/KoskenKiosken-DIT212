@@ -2,6 +2,7 @@ package com.dit212.group1.koskenkiosken.Model;
 
 import android.os.Debug;
 import android.util.Log;
+import android.view.Display;
 
 import org.junit.Before;
 import org.junit.Test;
@@ -55,15 +56,81 @@ public class ModelTest {
     }
 
     @Test
-    public void getLoggedInUser() {
+    public void getLoggedInUserNotNull() {
+        Model m = new Model();
+        User u = Mockito.mock(User.class);
+        m.setLoggedInUser(u);
+        assertTrue(m.getLoggedInUser() != null);
     }
 
     @Test
-    public void getCart() {
+    public void getLoggedInUserIsUser() {
+        Model m = new Model();
+        User u = Mockito.mock(User.class);
+        m.setLoggedInUser(u);
+        assertEquals(u,m.getLoggedInUser());
     }
 
     @Test
-    public void addToCart() {
+    public void getCartWithOneItem() {
+        Model m = new Model();
+        m.addToCart(products.get(0));
+        assertEquals(1, m.getCart().viewCart().size());
+    }
+
+    @Test
+    public void getCartWithOneItemAndCheckThatItReturnsCorrectItem() {
+        Model m = new Model();
+        m.addToCart(products.get(0));
+        assertEquals(products.get(0), m.getCart().viewCart().get(0));
+    }
+
+    @Test
+    public void getCartWithMoreThanOneItemAndCheckThatItReturnsAllItemsInTheRightOrder() {
+        Model m = new Model();
+        m.addToCart(products.get(0));
+        m.addToCart(products.get(1));
+        assertTrue(products.get(0) == m.getCart().viewCart().get(0)
+                && products.get(1) == m.getCart().viewCart().get(1));
+    }
+
+    @Test
+    public void getCartWithMoreThanOneItem() {
+        Model m = new Model();
+        m.addToCart(products.get(0));
+        m.addToCart(products.get(1));
+        assertEquals(2, m.getCart().viewCart().size());
+    }
+
+    @Test
+    public void addToCartAddOneItem() {
+        Model m = new Model();
+        m.addToCart(products.get(0));
+        assertEquals(1, m.getCart().viewCart().size());
+    }
+
+    @Test
+    public void addToCartAddCheckThatItemAddedIsTheSameItemInCart() {
+        Model m = new Model();
+        m.addToCart(products.get(0));
+        assertEquals(products.get(0), m.getCart().viewCart().get(0));
+    }
+
+    @Test
+    public void addToCartAddMoreThanOneItem() {
+        Model m = new Model();
+        m.addToCart(products.get(0));
+        m.addToCart(products.get(1));
+        assertEquals(2, m.getCart().viewCart().size());
+    }
+
+    @Test
+    public void addToCartAddMoreThanOneItemAndCheckThatItemsAddedIsInCartInCorrectOrder() {
+        Model m = new Model();
+        m.addToCart(products.get(2));
+        m.addToCart(products.get(3));
+        assertTrue(products.get(2) == m.getCart().viewCart().get(0) &&
+                products.get(3) == m.getCart().viewCart().get(1));
     }
 
     @Test

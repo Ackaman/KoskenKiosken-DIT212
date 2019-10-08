@@ -63,7 +63,7 @@ public class CartTest {
      * Tests if product added to cart is the same product that is in the cart.
      */
     @Test
-    public void addToCartAdd() {
+    public void addToCartAddCheckIfSameProduct() {
         cart.addToCart(products.get(0));
         assertTrue(products.get(0) == cart.viewCart().get(0));
     }
@@ -88,35 +88,6 @@ public class CartTest {
     }
 
     /**
-     * Tests if one a product can be removed from cart.
-     * Tests if a product in the middle of the list can be removed.
-     * Tests that size of cart still is 0 after we remove a product from an empty cart.
-     * Tests if multiple products can be removed from cart.
-     */
-    @Test
-    public void removeFromCart() {
-        cart.addToCart(null);
-        cart.removeFromCart(null);
-        assertEquals(0,cart.viewCart().size());
-        cart.addToCart(products.get(0));
-        cart.removeFromCart(products.get(0));
-        assertEquals(0, cart.viewCart().size());
-        cart.addToCart(products.get(0));
-        cart.addToCart(products.get(1));
-        cart.addToCart(products.get(2));
-        cart.addToCart(products.get(3));
-        cart.removeFromCart(products.get(2));
-        assertTrue(!cart.viewCart().contains(products.get(2)));
-        assertEquals(3, cart.viewCart().size());
-        cart.removeFromCart(products.get(0));
-        cart.removeFromCart(products.get(1));
-        cart.removeFromCart(products.get(3));
-        assertEquals(0, cart.viewCart().size());
-        cart.removeFromCart(products.get(0));
-        assertEquals(0, cart.viewCart().size());
-    }
-
-    /**
      * Tests if null can be removed from cart
      */
     @Test
@@ -126,6 +97,9 @@ public class CartTest {
         assertEquals(0,cart.viewCart().size());
     }
 
+    /**
+     * Tests that one product is removed from cart.
+     */
     @Test
     public void removeFromCartOneProduct() {
         cart.addToCart(products.get(0));
@@ -134,7 +108,7 @@ public class CartTest {
     }
 
     /**
-     *
+     * Tests that the removed product is no longer in cart.
      */
     @Test
     public void removeFromCartRemovedProductIsRemoved() {
@@ -168,7 +142,6 @@ public class CartTest {
 
     /**
      * Tests if a Cart filled with multiple products can be replaces with a empty Cart
-     * Tests if a empty Cart can be replaced with a empty cart.
      */
     @Test
     public void emptyCartWriteOverCartWithMoreThanOneItem() {
@@ -178,34 +151,103 @@ public class CartTest {
         cart.addToCart(products.get(3));
         cart.emptyCart();
         assertEquals(0, cart.viewCart().size());
+    }
+
+    /**
+     * Tests if a empty Cart can be replaced with a empty cart.
+     */
+    @Test
+    public void emptyCartWriteOverEmptyCartWithEmptyCart() {
         cart.emptyCart();
         assertEquals(0, cart.viewCart().size());
     }
 
+    /**
+     * Tests that price is correct if one product is added to cart
+     */
     @Test
-    public void emptyCart() {
-        cart.addToCart(products.get(0));
-        cart.addToCart(products.get(1));
-        cart.addToCart(products.get(2));
-        cart.addToCart(products.get(3));
-        cart.emptyCart();
-        assertEquals(0, cart.viewCart().size());
-        cart.emptyCart();
-        assertEquals(0, cart.viewCart().size());
-    }
-
-    @Test
-    public void getPrice() {
+    public void getPriceForOneProductInCart() {
         cart.addToCart(products.get(0));
         assertEquals(5,cart.getPrice());
-
     }
 
+    /**
+     * Tests that price is correct if one product is added to cart
+     */
     @Test
-    public void viewCart() {
+    public void getPriceForMoreThanOneProductInCart() {
+        cart.addToCart(products.get(0));
+        cart.addToCart(products.get(1));
+        assertEquals(13,cart.getPrice());
     }
 
+    /**
+     * Tests that price is 0 on a empty cart.
+     */
     @Test
-    public void setCart() {
+    public void getPriceOnEmptyCart() {
+        assertEquals(0,cart.getPrice());
+    }
+
+    /**
+     * Tests that viewCart returns what is in cart.
+     */
+    @Test
+    public void viewCartHasOneProduct() {
+        cart.addToCart(products.get(0));
+        assertTrue(cart.viewCart() != null);
+    }
+
+    /**
+     * Tests that viewCart returns an empty list when cart is empty
+     */
+    @Test
+    public void viewCartHasMoreThanOneObject() {
+        cart.addToCart(products.get(0));
+        cart.addToCart(products.get(1));
+        assertEquals(2,cart.viewCart().size());
+    }
+
+    /**
+     * Tests that viewCart returns an empty list when cart is empty
+     */
+    @Test
+    public void viewCartWhenCartIsEmptyReturnEmptyList() {
+        assertTrue(cart.viewCart().isEmpty());
+    }
+
+    /**
+     * Tests that a Cart with one item can be set to a cart with another item
+     */
+    @Test
+    public void setCartWithOneProductToAnotherListWithAnotherProduct() {
+        ArrayList<IProduct> testList = new ArrayList<>();
+        testList.add(products.get(0));
+        cart.addToCart(products.get(1));
+        cart.setCart(testList);
+        assertTrue(cart.viewCart().contains(products.get(0)));
+    }
+
+    /**
+     * Tests if a empty cart can be set to another ArrayList with more than one product in it
+     * and checks if the products are in the cart.
+     */
+    @Test
+    public void setCartEmptyCartToAnotherListWithMoreThanOneProductInIt() {
+        ArrayList<IProduct> testList = new ArrayList<>();
+        testList.add(products.get(0));
+        testList.add(products.get(1));
+        cart.setCart(testList);
+        assertTrue(cart.viewCart().contains(products.get(0)) && cart.viewCart().contains(products.get(1)));
+    }
+
+    /**
+     * Tests if a empty cart can be set to another empty ArrayList
+     */
+    @Test
+    public void setCartEmptyCartToAnotherEmptyList() {
+        ArrayList<IProduct> testList = new ArrayList<>();
+        cart.setCart(testList);
+        assertTrue(cart.viewCart().isEmpty());
     }
 }
