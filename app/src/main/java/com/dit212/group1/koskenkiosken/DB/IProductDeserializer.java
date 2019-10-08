@@ -7,11 +7,18 @@ import com.google.gson.JsonParseException;
 
 /**
  * Created by morgan on 2019-10-07
- * <p>
- * TODO , add comment
+ *
+ * class for delegating creation of IProduct with Factory.
  */
 class IProductDeserializer {
 
+    /**
+     * method for deserializing Json-IProducts via ProductFactory.
+     *
+     * @param jsonElement a Json-object representation of an IProduct.
+     * @return deserialized IProduct
+     * @throws JsonParseException throw exception if JSON-file was invalid.
+     */
     static IProduct deserialize(JsonElement jsonElement) throws JsonParseException {
         String name = jsonElement.getAsJsonObject().get("name").getAsString();
         int price = jsonElement.getAsJsonObject().get("price").getAsInt();

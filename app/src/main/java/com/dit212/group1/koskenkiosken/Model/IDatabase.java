@@ -16,5 +16,5 @@ public interface IDatabase {
     /**
      * writes products to persistent storage.
      */
-    void writeProducts();
+    void writeProducts(List<IProduct> pr);
 }
