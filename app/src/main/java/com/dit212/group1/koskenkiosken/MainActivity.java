@@ -1,5 +1,6 @@
 package com.dit212.group1.koskenkiosken;
 
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -13,7 +14,8 @@ import androidx.fragment.app.FragmentTransaction;
 import com.dit212.group1.koskenkiosken.DB.DatabaseHelper;
 import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
 import com.dit212.group1.koskenkiosken.Model.Model;
-import com.dit212.group1.koskenkiosken.Model.User.UserFactory;
+import com.dit212.group1.koskenkiosken.Model.UserFactory;
+import com.dit212.group1.koskenkiosken.ui.login.LoginActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
@@ -44,6 +46,10 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
+        Intent loginIntent = new Intent(this, LoginActivity.class);
+        startActivity(loginIntent);
+
         setContentView(R.layout.activity_main);
 
         bnv = findViewById(R.id.bottom_navigation);
