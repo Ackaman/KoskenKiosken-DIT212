@@ -1,0 +1,49 @@
+# Meeting Agenda
+
+Group: KlassFörakt
+Date: 2019-10-09
+Chair: Gustav Pihlquist
+Participants: Gustav Pihlquist, David Persson, Morgan Thowsen, Johan Almroth, Albin Otterhäll
+
+
+## Objectives (5 min) 
+
+ - Senaste refaktoriseringen gjorde att flera tester behöver skrivas om
+ - Vi behöver sätta oss in i SDD och RAD:en
+ - Behöver göra projektstrukturen mer intuitiv genom att skapa flera directories. 
+
+
+## Reports (15 min) from previous meeting
+
+ - Albin har gjort framsteg i User Story 36, inloggningssystemet. 
+ - Morgan har refaktoriserat databasen enligt Single Responsibility Principle.
+ - Morgan ligger i fas för veckan.
+ - David har börjat kolla på RAD och SDD:n och bestämt att vi sätter oss med detta tillsammans efter mötet.
+ - Gustav har nästan skrivit klart testerna till modellen, men har en metod kvar att testa.
+ - Pga belastning i annan kurs har Johan inte hunnit arbeta på projektet sedan i måndags.
+
+
+
+## Discussion items (35 min)
+
+ - Refaktoriseringen som gjorde modellklasserna immutable påverkar testerna som David skrivit.
+   David har ca: 250 rader kod som behöver skrivas om i viss mån.
+ - Vi sätter oss tillsammans med RAD och SDD efter mötet, så att vi har någonting till det första utkastet till på fredag.
+   Vi har ännu inget UML och ser detta som en prioritet att fixa.
+ - I nuläget har vi en projektstruktur med 12 klasser under Model, och vi vill istället lägga t.ex. Product och IProduct under directory "Product" 
+   för att göra det mer intuitivt. 
+
+## Outcomes and assignments (5 min)
+
+ - Morgan modulariserar projektet och skapar directories.
+ - Morgan fortsätter med UserStory för checkout.
+ - David skriver om testerna som fallerade av refaktoriseringen i modellen och cart.
+ - David tar upp en User Story när detta är klart, om inget annat i projektet behöver prioriteras.
+ - Gustav skriver klart testerna till modellen.
+ - Gustav tar upp en User Story när detta är klart, om inget annat i projektet behöver prioriteras.
+ - Johan fortsätter med User Story 1 och 2, samt pushar upp recyclerview-refaktoriseringen.
+ - Albin fortsätter på inloggningssystemet, User Story 36. Albin skall justera den automatgenerade koden efter vårt behov.
+
+## Wrap up
+
+ - Nästa möte måndag 14/10 13:00
