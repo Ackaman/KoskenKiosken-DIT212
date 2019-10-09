@@ -8,6 +8,8 @@ import com.dit212.group1.koskenkiosken.data.LoginDataSource;
 import com.dit212.group1.koskenkiosken.data.LoginRepository;
 
 /**
+ * @author Albin Otterhäll <gusalbiot@student.gu.se>
+ *
  * ViewModel provider factory to instantiate LoginViewModel.
  * Required given LoginViewModel has a non-empty constructor
  */

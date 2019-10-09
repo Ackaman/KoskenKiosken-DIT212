@@ -26,6 +26,10 @@ import com.dit212.group1.koskenkiosken.R;
 import com.dit212.group1.koskenkiosken.ui.login.LoginViewModel;
 import com.dit212.group1.koskenkiosken.ui.login.LoginViewModelFactory;
 
+/**
+ * @author Albin Otterhäll <gusalbiot@student.gu.se>
+ */
+
 public class LoginActivity extends AppCompatActivity {
 
     private LoginViewModel loginViewModel;

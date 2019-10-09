@@ -11,6 +11,10 @@ import com.dit212.group1.koskenkiosken.data.Result;
 import com.dit212.group1.koskenkiosken.data.model.LoggedInUser;
 import com.dit212.group1.koskenkiosken.R;
 
+/**
+ * @author Albin Otterhäll <gusalbiot@student.gu.se>
+ */
+
 public class LoginViewModel extends ViewModel {
 
     private MutableLiveData<LoginFormState> loginFormState = new MutableLiveData<>();

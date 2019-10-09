@@ -3,6 +3,8 @@ package com.dit212.group1.koskenkiosken.ui.login;
 import androidx.annotation.Nullable;
 
 /**
+ * @author Albin Otterhäll <gusalbiot@student.gu.se>
+ *
  * Data validation state of the login form.
  */
 class LoginFormState {

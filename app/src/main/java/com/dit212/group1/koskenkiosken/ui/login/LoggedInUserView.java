@@ -1,6 +1,8 @@
 package com.dit212.group1.koskenkiosken.ui.login;
 
 /**
+ * @author Albin Otterhäll <gusalbiot@student.gu.se>
+ *
  * Class exposing authenticated user details to the UI.
  */
 class LoggedInUserView {
