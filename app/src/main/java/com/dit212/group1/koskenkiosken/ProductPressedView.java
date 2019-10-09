@@ -4,9 +4,8 @@ import android.content.Intent;
 import android.os.Bundle;
 import android.widget.EditText;
 import android.widget.TextView;
-import android.widget.Toast;
 
-import com.dit212.group1.koskenkiosken.Model.IProduct;
+import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
 
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;

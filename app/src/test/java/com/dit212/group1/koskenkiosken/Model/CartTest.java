@@ -1,18 +1,19 @@
 package com.dit212.group1.koskenkiosken.Model;
 
-import org.junit.Assert;
+import com.dit212.group1.koskenkiosken.Model.Cart.Cart;
+import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
-import java.util.List;
 
 import static org.junit.Assert.*;
 
 public class CartTest {
 
-    ArrayList<Product> products;
+    ArrayList<IProduct> products;
     Cart cart;
 
     /**
@@ -23,22 +24,22 @@ public class CartTest {
     @Before
     public void init(){
         products = new ArrayList<>();
-        Product p1mock = Mockito.mock(Product.class);
+        IProduct p1mock = Mockito.mock(IProduct.class);
         Mockito.when(p1mock.getName()).thenReturn("Äpple");
         Mockito.when(p1mock.getPrice()).thenReturn(5);
 
 
-        Product p2mock = Mockito.mock(Product.class);
+        IProduct p2mock = Mockito.mock(IProduct.class);
         Mockito.when(p2mock.getName()).thenReturn("Päron");
         Mockito.when(p2mock.getPrice()).thenReturn(8);
 
 
-        Product p3mock = Mockito.mock(Product.class);
+        IProduct p3mock = Mockito.mock(IProduct.class);
         Mockito.when(p3mock.getName()).thenReturn("Kitkat");
         Mockito.when(p3mock.getPrice()).thenReturn(15);
 
 
-        Product p4mock = Mockito.mock(Product.class);
+        IProduct p4mock = Mockito.mock(IProduct.class);
         Mockito.when(p4mock.getName()).thenReturn("Kaffe");
         Mockito.when(p4mock.getPrice()).thenReturn(2);
 
@@ -160,33 +161,6 @@ public class CartTest {
     public void emptyCartWriteOverEmptyCartWithEmptyCart() {
         cart.emptyCart();
         assertEquals(0, cart.viewCart().size());
-    }
-
-    /**
-     * Tests that price is correct if one product is added to cart
-     */
-    @Test
-    public void getPriceForOneProductInCart() {
-        cart.addToCart(products.get(0));
-        assertEquals(5,cart.getPrice());
-    }
-
-    /**
-     * Tests that price is correct if one product is added to cart
-     */
-    @Test
-    public void getPriceForMoreThanOneProductInCart() {
-        cart.addToCart(products.get(0));
-        cart.addToCart(products.get(1));
-        assertEquals(13,cart.getPrice());
-    }
-
-    /**
-     * Tests that price is 0 on a empty cart.
-     */
-    @Test
-    public void getPriceOnEmptyCart() {
-        assertEquals(0,cart.getPrice());
     }
 
     /**

@@ -12,7 +12,7 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.dit212.group1.koskenkiosken.Model.ICart;
+import com.dit212.group1.koskenkiosken.Model.Cart.ICart;
 
 
 public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter.ProductClickListener {

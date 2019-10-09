@@ -1,7 +1,6 @@
 package com.dit212.group1.koskenkiosken;
 
 
-import android.app.ActionBar;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.View;
@@ -12,8 +11,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.dit212.group1.koskenkiosken.Model.IAccount;
-import com.dit212.group1.koskenkiosken.Model.UserFactory;
+import com.dit212.group1.koskenkiosken.Model.User.IAccount;
+import com.dit212.group1.koskenkiosken.Model.User.UserFactory;
 
 
 /**

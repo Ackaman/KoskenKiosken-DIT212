@@ -1,4 +1,4 @@
-package com.dit212.group1.koskenkiosken.Model;
+package com.dit212.group1.koskenkiosken.Model.User;
 
 /**
  * representation of a user.

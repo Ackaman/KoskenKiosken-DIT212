@@ -1,5 +1,8 @@
 package com.dit212.group1.koskenkiosken.Model;
 
+import com.dit212.group1.koskenkiosken.Model.Product.ComparatorIProduct;
+import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
+
 import org.junit.Before;
 import org.junit.Test;
 import org.mockito.Mockito;

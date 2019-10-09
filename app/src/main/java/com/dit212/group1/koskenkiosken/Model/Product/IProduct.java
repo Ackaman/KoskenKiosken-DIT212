@@ -1,4 +1,4 @@
-package com.dit212.group1.koskenkiosken.Model;
+package com.dit212.group1.koskenkiosken.Model.Product;
 
 import android.os.Parcelable;
 

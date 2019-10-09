@@ -1,5 +1,8 @@
 package com.dit212.group1.koskenkiosken.Model;
 
+import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
+import com.dit212.group1.koskenkiosken.Model.Product.ProductFactory;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -11,7 +14,7 @@ public class ProductTest {
 
     @Before
     public void setUp() throws Exception {
-        product = new Product("Produkt 1", 20, "Placeholder");
+        product = ProductFactory.create("Produkt 1", 20, "Placeholder");
     }
 
     @Test

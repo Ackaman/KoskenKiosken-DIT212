@@ -1,5 +1,8 @@
 package com.dit212.group1.koskenkiosken.Model;
 
+import com.dit212.group1.koskenkiosken.Model.User.IAccount;
+import com.dit212.group1.koskenkiosken.Model.User.UserFactory;
+
 import org.junit.Before;
 import org.junit.Test;
 
@@ -15,7 +18,7 @@ public class NormalUserTest {
 
     @Before
     public void setUp() throws Exception {
-        user = new User("John Smith", 100);
+        user = UserFactory.create("John Smith", 100);
     }
 
     @Test
