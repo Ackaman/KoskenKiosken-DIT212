@@ -1,5 +1,8 @@
 package com.dit212.group1.koskenkiosken.Model;
 
+import com.dit212.group1.koskenkiosken.Model.User.IAccount;
+import com.dit212.group1.koskenkiosken.Model.User.UserFactory;
+
 import org.junit.Before;
 import org.junit.Test;
 

@@ -26,13 +26,11 @@ import android.widget.AdapterView;
 import android.widget.ArrayAdapter;
 import android.widget.ListView;
 
-import com.dit212.group1.koskenkiosken.Model.ComparatorIProduct;
-import com.dit212.group1.koskenkiosken.Model.IProduct;
+import com.dit212.group1.koskenkiosken.Model.Product.ComparatorIProduct;
+import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
 import com.dit212.group1.koskenkiosken.Model.Model;
 
 import java.util.List;
-import java.util.ArrayList;
-
 
 
 /**

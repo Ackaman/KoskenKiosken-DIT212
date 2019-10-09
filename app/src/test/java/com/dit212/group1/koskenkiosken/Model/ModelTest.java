@@ -1,12 +1,11 @@
 package com.dit212.group1.koskenkiosken.Model;
 
-import android.os.Debug;
-import android.util.Log;
-import android.view.Display;
+import com.dit212.group1.koskenkiosken.Model.Product.ComparatorIProduct;
+import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
+import com.dit212.group1.koskenkiosken.Model.User.IAccount;
 
 import org.junit.Before;
 import org.junit.Test;
-import org.mockito.Mock;
 import org.mockito.Mockito;
 
 import java.util.ArrayList;
@@ -25,23 +24,22 @@ public class ModelTest {
     @Before
     public void init(){
         products = new ArrayList<>();
-
-        Product p1mock = Mockito.mock(Product.class);
+        IProduct p1mock = Mockito.mock(IProduct.class);
         Mockito.when(p1mock.getName()).thenReturn("Äpple");
         Mockito.when(p1mock.getPrice()).thenReturn(5);
 
 
-        Product p2mock = Mockito.mock(Product.class);
+        IProduct p2mock = Mockito.mock(IProduct.class);
         Mockito.when(p2mock.getName()).thenReturn("Päron");
         Mockito.when(p2mock.getPrice()).thenReturn(8);
 
 
-        Product p3mock = Mockito.mock(Product.class);
+        IProduct p3mock = Mockito.mock(IProduct.class);
         Mockito.when(p3mock.getName()).thenReturn("Kitkat");
         Mockito.when(p3mock.getPrice()).thenReturn(15);
 
 
-        Product p4mock = Mockito.mock(Product.class);
+        IProduct p4mock = Mockito.mock(IProduct.class);
         Mockito.when(p4mock.getName()).thenReturn("Kaffe");
         Mockito.when(p4mock.getPrice()).thenReturn(2);
 
@@ -61,7 +59,7 @@ public class ModelTest {
     @Test
     public void getLoggedInUserNotNull() {
         Model m = new Model();
-        User u = Mockito.mock(User.class);
+        IAccount u = Mockito.mock(IAccount.class);
         m.setLoggedInUser(u);
         assertTrue(m.getLoggedInUser() != null);
     }
@@ -72,7 +70,7 @@ public class ModelTest {
     @Test
     public void getLoggedInUserIsUser() {
         Model m = new Model();
-        User u = Mockito.mock(User.class);
+        IAccount u = Mockito.mock(IAccount.class);
         m.setLoggedInUser(u);
         assertEquals(u,m.getLoggedInUser());
     }

@@ -1,19 +1,19 @@
-package com.dit212.group1.koskenkiosken.Model;
+package com.dit212.group1.koskenkiosken.Model.Cart;
 
 import java.util.List;
 
-public interface ICart {
+public interface ICart<T> {
     /**
      * adds a product to the cart
-     * @param product the product to add to the cart.
+     * @param item the product to add to the cart.
      */
-    void addToCart(IProduct product);
+    void addToCart(T item);
 
     /**
      * removes a product in the cart.
-     * @param product the product to remove.
+     * @param item the product to remove.
      */
-    void removeFromCart(IProduct product);
+    void removeFromCart(T item);
 
     /**
      * empties the cart.
@@ -21,22 +21,16 @@ public interface ICart {
     void emptyCart();
 
     /**
-     * the total price of products in the cart
-     * @return the total price of products in the cart.
-     */
-    int  getPrice();
-
-    /**
      * gives a list of all the products in the cart
      * @return a list of all the products in the cart.
      */
-    List<IProduct> viewCart();
+    List<T> viewCart();
 
     /**
      * sets the cart "inventory" to a new one.
      * @param list the list of products of which to replace the cart with.
      */
-    void setCart(List<IProduct> list);
+    void setCart(List<T> list);
 
     /**
      * gives the number of products in the cart

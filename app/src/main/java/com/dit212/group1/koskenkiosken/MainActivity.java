@@ -1,7 +1,6 @@
 package com.dit212.group1.koskenkiosken;
 
 import android.os.Bundle;
-import android.view.Menu;
 import android.view.MenuItem;
 
 import androidx.annotation.NonNull;
@@ -10,12 +9,11 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.dit212.group1.koskenkiosken.DB.DatabaseHelper;
-import com.dit212.group1.koskenkiosken.Model.IProduct;
+import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
 import com.dit212.group1.koskenkiosken.Model.Model;
-import com.dit212.group1.koskenkiosken.Model.UserFactory;
+import com.dit212.group1.koskenkiosken.Model.User.UserFactory;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**

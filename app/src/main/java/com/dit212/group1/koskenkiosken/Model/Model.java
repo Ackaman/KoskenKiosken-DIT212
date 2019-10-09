@@ -2,15 +2,20 @@ package com.dit212.group1.koskenkiosken.Model;
 
 import android.util.Log;
 
+import com.dit212.group1.koskenkiosken.Model.Cart.Cart;
+import com.dit212.group1.koskenkiosken.Model.Cart.ICart;
+import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
+import com.dit212.group1.koskenkiosken.Model.User.IAccount;
+
 import java.util.ArrayList;
 import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
 public class Model {
-    private final ArrayList<Product> productList;
-    private Cart cart;
-    private User loggedInUser;
+    private final ArrayList<IProduct> productList;
+    private Cart<IProduct> cart;
+    private IAccount loggedInUser;
 
     /**
      * constructor
@@ -18,7 +23,7 @@ public class Model {
 
     public Model(){
         productList = new ArrayList<>();
-        cart = new Cart();
+        cart = new Cart<>();
     }
 
     /**
@@ -27,7 +32,7 @@ public class Model {
      */
 
     public void setLoggedInUser(IAccount user){
-        this.loggedInUser = (User) user;
+        this.loggedInUser = user;
     }
 
     /**
@@ -38,8 +43,7 @@ public class Model {
     public void parseFromIDatabase(IDatabase db){
         List<IProduct> listFromDB =  db.readProducts();
         for (IProduct p: listFromDB) {
-            Product p2 = (Product) p;
-            productList.add(p2);
+            productList.add(p);
         }
     }
 
@@ -107,4 +111,18 @@ public class Model {
         Log.i("MODEL",products.toString());
         return products;
     }
+
+
+    /**
+     * sums the price of all items in cart.
+     * @return the sum of all item prices in cart.
+     */
+    public int getPrice() {
+        int sum = 0;
+        List<IProduct> products = cart.viewCart();
+        for (IProduct p : products)
+            sum = sum + p.getPrice();
+        return sum;
+    }
+
 }

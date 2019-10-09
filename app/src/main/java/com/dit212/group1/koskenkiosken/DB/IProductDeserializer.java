@@ -1,7 +1,7 @@
 package com.dit212.group1.koskenkiosken.DB;
 
-import com.dit212.group1.koskenkiosken.Model.IProduct;
-import com.dit212.group1.koskenkiosken.Model.ProductFactory;
+import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
+import com.dit212.group1.koskenkiosken.Model.Product.ProductFactory;
 import com.google.gson.JsonElement;
 import com.google.gson.JsonParseException;
 
