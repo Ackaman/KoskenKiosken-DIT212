@@ -55,6 +55,9 @@ public class ModelTest {
     public void listOfProducts() {
     }
 
+    /**
+     * Tests that when getting user that user is not null.
+     */
     @Test
     public void getLoggedInUserNotNull() {
         Model m = new Model();
@@ -63,6 +66,9 @@ public class ModelTest {
         assertTrue(m.getLoggedInUser() != null);
     }
 
+    /**
+     * Tests that getLoggedInUser returns the actual user that has been set.
+     */
     @Test
     public void getLoggedInUserIsUser() {
         Model m = new Model();
@@ -71,6 +77,9 @@ public class ModelTest {
         assertEquals(u,m.getLoggedInUser());
     }
 
+    /**
+     * Tests that a cart with one item has one item in it when getting cart.
+     */
     @Test
     public void getCartWithOneItem() {
         Model m = new Model();
@@ -78,6 +87,9 @@ public class ModelTest {
         assertEquals(1, m.getCart().viewCart().size());
     }
 
+    /**
+     * Tests that when getting cart with one item has the correct item in it.
+     */
     @Test
     public void getCartWithOneItemAndCheckThatItReturnsCorrectItem() {
         Model m = new Model();
@@ -85,6 +97,9 @@ public class ModelTest {
         assertEquals(products.get(0), m.getCart().viewCart().get(0));
     }
 
+    /**
+     * Tests that a cart with more than one item returns the correct items in the cart in the correct order.
+     */
     @Test
     public void getCartWithMoreThanOneItemAndCheckThatItReturnsAllItemsInTheRightOrder() {
         Model m = new Model();
@@ -94,6 +109,9 @@ public class ModelTest {
                 && products.get(1) == m.getCart().viewCart().get(1));
     }
 
+    /**
+     * Tests that a cart with more than one item has the correct number ofo items in it.
+     */
     @Test
     public void getCartWithMoreThanOneItem() {
         Model m = new Model();
@@ -102,6 +120,9 @@ public class ModelTest {
         assertEquals(2, m.getCart().viewCart().size());
     }
 
+    /**
+     * Tests that adding one item adds just one item to the cart.
+     */
     @Test
     public void addToCartAddOneItem() {
         Model m = new Model();
@@ -109,6 +130,9 @@ public class ModelTest {
         assertEquals(1, m.getCart().viewCart().size());
     }
 
+    /**
+     * Tests that the one item added to cart is the correct (same) item that was added to cart.
+     */
     @Test
     public void addToCartAddCheckThatItemAddedIsTheSameItemInCart() {
         Model m = new Model();
@@ -116,6 +140,9 @@ public class ModelTest {
         assertEquals(products.get(0), m.getCart().viewCart().get(0));
     }
 
+    /**
+     * Tests that adding more than one item to cart adds the correct amount of items.
+     */
     @Test
     public void addToCartAddMoreThanOneItem() {
         Model m = new Model();
@@ -124,6 +151,9 @@ public class ModelTest {
         assertEquals(2, m.getCart().viewCart().size());
     }
 
+    /**
+     * Tests that adding more than one item adds the correct items in the correct order in the cart.
+     */
     @Test
     public void addToCartAddMoreThanOneItemAndCheckThatItemsAddedIsInCartInCorrectOrder() {
         Model m = new Model();
@@ -132,6 +162,7 @@ public class ModelTest {
         assertTrue(products.get(2) == m.getCart().viewCart().get(0) &&
                 products.get(3) == m.getCart().viewCart().get(1));
     }
+
 
     @Test
     public void filterListByString() {
