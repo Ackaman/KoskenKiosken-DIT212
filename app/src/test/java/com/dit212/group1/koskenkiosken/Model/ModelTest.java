@@ -1,5 +1,6 @@
 package com.dit212.group1.koskenkiosken.Model;
 
+import com.dit212.group1.koskenkiosken.Model.Cart.ICart;
 import com.dit212.group1.koskenkiosken.Model.Product.ComparatorIProduct;
 import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
 import com.dit212.group1.koskenkiosken.Model.User.IAccount;
@@ -43,14 +44,28 @@ public class ModelTest {
         Mockito.when(p4mock.getName()).thenReturn("Kaffe");
         Mockito.when(p4mock.getPrice()).thenReturn(2);
 
+        IProduct p5mock = Mockito.mock(IProduct.class);
+        Mockito.when(p5mock.getName()).thenReturn("Öl");
+        Mockito.when(p5mock.getPrice()).thenReturn(10);
+
         products.add(p1mock);
         products.add(p2mock);
         products.add(p3mock);
         products.add(p4mock);
+        products.add(p5mock);
     }
 
+    /**
+     * Tests that the listOfProduct reads properly from the database
+     */
     @Test
     public void listOfProducts() {
+        Model m = new Model();
+        IDatabase db = Mockito.mock(IDatabase.class);
+        Mockito.when(db.readProducts()).thenReturn(products);
+        m.parseFromIDatabase(db);
+        assertEquals(products, m.listOfProducts());
+
     }
 
     /**
@@ -161,9 +176,76 @@ public class ModelTest {
                 products.get(3) == m.getCart().viewCart().get(1));
     }
 
-
+    /**
+     * Tests that the empty string in the search field always has the same size as the inventory
+     */
     @Test
-    public void filterListByString() {
+    public void filterListByStringEmptyStringShouldAlwaysHaveTheSameSizeAsTheOriginalProductList() {
+        Model m = new Model();
+        IDatabase db = Mockito.mock(IDatabase.class);
+        Mockito.when(db.readProducts()).thenReturn(products);
+        m.parseFromIDatabase(db);
+        assertEquals(products.size(), m.filterListByString("").size());
+    }
+
+    /**
+     * Tests that the empty string in the search field always has the same products as the inventory
+     */
+    @Test
+    public void filterListByStringEmptyStringShouldAlwaysReturnOriginalProductList() {
+        Model m = new Model();
+        IDatabase db = Mockito.mock(IDatabase.class);
+        Mockito.when(db.readProducts()).thenReturn(products);
+        m.parseFromIDatabase(db);
+        assertEquals(products, m.filterListByString(""));
+    }
+
+    /**
+     * Tests that "ö" and "o" doesn't return the same list
+     */
+    @Test
+    public void filterListByStringSwedishAlphabetLastCharacterOShouldNotBeARegularO() {
+        Model m = new Model();
+        IDatabase db = Mockito.mock(IDatabase.class);
+        Mockito.when(db.readProducts()).thenReturn(products);
+        m.parseFromIDatabase(db);
+        assertNotEquals(m.filterListByString("o"), m.filterListByString("ö"));
+
+    }
+
+    /**
+     * Tests that the filter method isn't case sensitive
+     */
+    @Test
+    public void filterListByStringMethodShouldNotBeCaseSensitive() {
+        Model m = new Model();
+        IDatabase db = Mockito.mock(IDatabase.class);
+        Mockito.when(db.readProducts()).thenReturn(products);
+        m.parseFromIDatabase(db);
+        assertEquals(m.filterListByString("kitkat"), m.filterListByString("KITKAT"));
+
+    }
+
+    /**
+     * Tests that the filter method returns all products with substrings of the search string
+     */
+    @Test
+    public void filterListByStringEverySubstringShouldBeReturned() {
+        Model m = new Model();
+        IDatabase db = Mockito.mock(IDatabase.class);
+        Mockito.when(db.readProducts()).thenReturn(products);
+        m.parseFromIDatabase(db);
+        List<IProduct> expectedResult = new ArrayList<>();
+        //"ka" should return KAffe and kitKAt
+        String s = "ka";
+        for(IProduct p : products){
+            if(p.getName().toLowerCase().contains(s.toLowerCase())){
+                expectedResult.add(p);
+            }
+        }
+        assertEquals(expectedResult, m.filterListByString(s));
+
+
     }
 
     @Test
@@ -204,5 +286,71 @@ public class ModelTest {
         for (int i = 1; i < productsSorted.size(); i++){
             assertTrue(productsSorted.get(i-1).getName().compareTo(productsSorted.get(i).getName()) >= 0);
         }
+    }
+
+    /**
+     * Tests that the price is 0 when the cart is empty
+     */
+    @Test
+    public void getPriceWhenCartIsEmpty() {
+        Model m = new Model();
+        m.getCart().emptyCart();
+        assertEquals(0, m.getPrice());
+    }
+
+    /**
+     * Tests that adding an apple to the cart makes the price of the cart equal to 5
+     */
+    @Test
+    public void getPriceWhenCartHasOneItem() {
+        Model m = new Model();
+        m.addToCart(products.get(0));
+        assertEquals(5, m.getPrice());
+    }
+
+    /**
+     * Tests that the total price is correct when adding 5 products to the cart
+     */
+    @Test
+    public void getPriceWhenCartIsFull() {
+        Model m = new Model();
+        int expectedPrice = 0;
+        for (IProduct p : products){
+            m.addToCart(p);
+            expectedPrice += p.getPrice();
+        }
+        assertEquals(expectedPrice, m.getPrice());
+    }
+
+    /**
+     * Tests that the size of the cart is 0 when the cart is empty
+     */
+    @Test
+    public void getSizeOfCartWhenCartIsEmpty() {
+        Model m = new Model();
+        m.getCart().emptyCart();
+        assertEquals(0, m.getSizeOfCart());
+    }
+
+    /**
+     * Tests that the size of the cart is 1 when the cart has one item in it
+     */
+    @Test
+    public void getSizeOfCartWhenCartHasOneItem() {
+        Model m = new Model();
+        m.addToCart(products.get(0));
+        assertEquals(1, m.getSizeOfCart());
+    }
+
+    /**
+     * Tests that the size of the cart is 3 after adding 3 items to it
+     */
+    @Test
+    public void getSizeOfCartWhenCartHasMoreThenOneItem(){
+        Model m = new Model();
+        m.addToCart(products.get(0));
+        m.addToCart(products.get(1));
+        m.addToCart(products.get(2));
+        assertEquals(3, m.getSizeOfCart());
     }
 }
