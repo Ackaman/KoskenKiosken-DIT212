@@ -19,8 +19,9 @@
         android:layout_marginTop="96dp"
         android:layout_marginEnd="24dp"
 
-        android:hint="@string/prompt_email"
-        android:inputType="textEmailAddress"
+        android:hint="@string/prompt_username"
+        android:inputType="text"
+        android:imeOptions="actionNext"
         android:selectAllOnFocus="true"
         app:layout_constraintEnd_toEndOf="parent"
         app:layout_constraintStart_toStartOf="parent"

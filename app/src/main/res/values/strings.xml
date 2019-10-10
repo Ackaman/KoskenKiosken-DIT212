@@ -34,7 +34,7 @@
         <item>Price - descending</item>
     </string-array>
     <string name="title_activity_login">Logga in</string>
-    <string name="prompt_email">E-mejl</string>
+    <string name="prompt_username">Användarnamn</string>
     <string name="prompt_password">Lösenord</string>
     <string name="action_sign_in">Logga in eller skapa konto</string>
     <string name="action_sign_in_short">Logga in</string>
