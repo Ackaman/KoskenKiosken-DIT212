@@ -353,4 +353,34 @@ public class ModelTest {
         m.addToCart(products.get(2));
         assertEquals(3, m.getSizeOfCart());
     }
+
+    /**
+     * Tests that price is correct if one product is added to cart
+     */
+    @Test
+    public void getPriceForOneProductInCart() {
+        Model m = new Model();
+        m.addToCart(products.get(0));
+        assertEquals(5,m.getPrice());
+    }
+
+    /**
+     * Tests that price is correct if one product is added to cart
+     */
+    @Test
+    public void getPriceForMoreThanOneProductInCart() {
+        Model m = new Model();
+        m.addToCart(products.get(0));
+        m.addToCart(products.get(1));
+        assertEquals(13,m.getPrice());
+    }
+
+    /**
+     * Tests that price is 0 on a empty cart.
+     */
+    @Test
+    public void getPriceOnEmptyCart() {
+        Model m = new Model();
+        assertEquals(0,m.getPrice());
+    }
 }
