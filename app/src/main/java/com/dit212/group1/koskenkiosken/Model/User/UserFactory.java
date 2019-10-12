@@ -2,8 +2,9 @@ package com.dit212.group1.koskenkiosken.Model.User;
 
 
 /**
- * Author: created by thowsen, 2019-09-24
- * Description:
+ * @author Albin Otterhäll <gusalbiot@student.gu.se>
+ *
+ * A factory class that create objects of the `User` class.
  */
 public class UserFactory implements IAccountFactory {
 
