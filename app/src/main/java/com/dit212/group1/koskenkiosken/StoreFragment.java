@@ -36,7 +36,7 @@ import java.util.List;
  * Description: Store page "controller". feeds product-specific textfields and/or buttons of the
  * view to data and functions from a list of products.
  */
-public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapter.ProductClickListener {
+public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapter.StoreProductClickListener {
     private List<IProduct> products;
     private Model m;
     private FragmentStoreListener listener;
@@ -180,6 +180,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         });
     }
 
+
     /**
      * When a product is pressed this function will start a new activity and pass the product.
      * @param position Objects position in list
@@ -203,22 +204,6 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         listener.onInputStoreSent(m.getCart().viewCart());
     }
 
-    //TODO currently unused method and there is no button for this in the design.
-    @Override
-    public void onRemoveFromCartClick(int position) {
-        listener.onInputStoreSent(m.getCart().viewCart());
-
-    }
-
-    @Override
-    public void increment(int position) {
-
-    }
-
-    @Override
-    public void decrement(int position) {
-
-    }
 
     @Override
     public void onAttach(@NonNull Context context) {
@@ -236,13 +221,6 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         listener = null;
     }
 
-    private void removeFromCartBubble(){
-
-    }
-
-    private void addToCartBubble(){
-
-    }
 }
 
 

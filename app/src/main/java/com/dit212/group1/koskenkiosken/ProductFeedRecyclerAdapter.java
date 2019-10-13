@@ -6,6 +6,7 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,23 +22,26 @@ import java.util.List;
 public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeedRecyclerAdapter.GenericViewHolder> {
 
     private List<IProduct> products;
-    private ProductClickListener productClickListener;
-    private ProductClickListener addToCartClickListener;
-    private ProductClickListener increment;
-    private ProductClickListener decrement;
+    private CartProductClickListener cartListener;
+    private StoreProductClickListener storeListener;
     private int fragmentType;
 
     /**
      * Constructor
      * @param products list of items to be shown in RecyclerView.
      */
-    ProductFeedRecyclerAdapter(List<IProduct> products, ProductClickListener productClickListener, int type){
+    ProductFeedRecyclerAdapter(List<IProduct> products, CartProductClickListener productClickListener){
         this.products = products;
-        this.productClickListener = productClickListener;
-        this.addToCartClickListener = productClickListener;
-        this.decrement = productClickListener;
-        this.increment = productClickListener;
-        this.fragmentType = type;
+        this.cartListener = productClickListener;
+        this.fragmentType = 1;
+
+    }
+
+    ProductFeedRecyclerAdapter(List<IProduct> products, StoreProductClickListener productClickListener){
+        this.products = products;
+        this.storeListener = productClickListener;
+        this.fragmentType = 0;
+
     }
 
 
@@ -58,7 +62,7 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
                     RecyclerView.LayoutParams.MATCH_PARENT,
                     RecyclerView.LayoutParams.WRAP_CONTENT);
             view.setLayoutParams(lp);
-            return new CartViewHolder(view, productClickListener,decrement, increment);
+            return new CartViewHolder(view, cartListener);
         }
         //Store (fragmentType == 0)
         else if (fragmentType == 0){
@@ -67,7 +71,7 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
                     RecyclerView.LayoutParams.MATCH_PARENT,
                     RecyclerView.LayoutParams.WRAP_CONTENT);
             view.setLayoutParams(lp);
-            return new StoreViewHolder(view, productClickListener, addToCartClickListener);
+            return new StoreViewHolder(view, storeListener);
         }
         else return null;
     }
@@ -125,10 +129,10 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         public final TextView productPrice;
         public final ImageButton addToCart_button;
 
-        ProductClickListener productClickListener;
-        ProductClickListener addToCartClickListener;
+        StoreProductClickListener productClickListener;
+        StoreProductClickListener addToCartClickListener;
 
-        public StoreViewHolder(@NonNull View itemView, ProductClickListener productClickListener, ProductClickListener plusButtonListener){
+        public StoreViewHolder(@NonNull View itemView, StoreProductClickListener productClickListener){
             super(itemView);
             mView = itemView;
             productName  = mView.findViewById(R.id.product_name);
@@ -138,7 +142,7 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
             this.productClickListener = productClickListener;
             itemView.setOnClickListener(this);
 
-            this.addToCartClickListener = plusButtonListener;
+            this.addToCartClickListener = productClickListener;
             addToCart_button.setOnClickListener(this);
 
         }
@@ -160,6 +164,7 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
 
         @Override
         public void onClick(View v) {
+
             if(v.getId() == addToCart_button.getId()){
                 addToCartClickListener.onAddToCartClick(getAdapterPosition());
             }
@@ -177,11 +182,11 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
 
         ImageButton decrementButton;
         ImageButton incrementButton;
-        ProductClickListener productClickListener;
-        ProductClickListener incrementListener;
-        ProductClickListener decrementListener;
+        CartProductClickListener productClickListener;
+        CartProductClickListener incrementListener;
+        CartProductClickListener decrementListener;
 
-        public CartViewHolder(@NonNull View itemView, ProductClickListener productClickListener, ProductClickListener incrementListener, ProductClickListener decrementListener){
+        public CartViewHolder(@NonNull View itemView, CartProductClickListener productClickListener){
             super(itemView);
             mView = itemView;
             productName = mView.findViewById(R.id.cart_product_name);
@@ -192,10 +197,10 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
             this.productClickListener = productClickListener;
             itemView.setOnClickListener(this);
 
-            this.decrementListener = decrementListener;
+            this.decrementListener = productClickListener;
             decrementButton.setOnClickListener(this);
 
-            this.incrementListener = incrementListener;
+            this.incrementListener = productClickListener;
             incrementButton.setOnClickListener(this);
         }
 
@@ -209,11 +214,13 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
 
         @Override
         public void onClick(View v) {
+            String test = Integer.toString(getLayoutPosition());
+            Toast.makeText(v.getContext(), test,Toast.LENGTH_SHORT).show();
             if(v.getId() == decrementButton.getId()){
-                decrementListener.decrement(getAdapterPosition());
+                decrementListener.onDecrementClick(getAdapterPosition());
             }
             else if(v.getId() == incrementButton.getId()){
-                incrementListener.increment(getAdapterPosition());
+                incrementListener.onIncrementClick(getAdapterPosition());
             }
 
             else productClickListener.onProductClick(getAdapterPosition());
@@ -226,12 +233,20 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
      * Interface for OnClickListeners  for each object of product view.
      * Add more methods if more buttons/listeners are needed.
      */
-    public interface ProductClickListener{
+    public interface ProductClickListener {
         void onProductClick(int position);
+    }
+
+    public interface StoreProductClickListener extends ProductClickListener{
         void onAddToCartClick(int position);
+        void onProductClick(int position);
+    }
+
+    public interface CartProductClickListener extends ProductClickListener{
+        void onIncrementClick(int position);
+        void onDecrementClick(int position);
         void onRemoveFromCartClick(int position);
-        void increment(int position);
-        void decrement(int position);
+        void onProductClick(int position);
     }
 
 

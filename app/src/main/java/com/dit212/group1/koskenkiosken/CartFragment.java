@@ -21,7 +21,7 @@ import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
 import java.util.List;
 
 
-public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter.ProductClickListener {
+public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter.CartProductClickListener {
 
     private ICart cart;
     private ProductFeedRecyclerAdapter pAdapter;
@@ -67,13 +67,6 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
     public void onProductClick(int position) {
         Toast.makeText(getContext(),"onProductClick", Toast.LENGTH_SHORT).show();
 
-    }
-
-    @Override
-    public void onAddToCartClick(int position) {
-        Toast.makeText(getContext(),"onAddToCartClick", Toast.LENGTH_SHORT).show();
-
-        pAdapter.updateList(cart.viewCart());
 
     }
 
@@ -85,7 +78,7 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
     }
 
     @Override
-    public void increment(int position) {
+    public void onIncrementClick(int position) {
         cart.addToCart(cart.viewCart().get(position));
         Toast.makeText(getContext(),"increment", Toast.LENGTH_SHORT).show();
         pAdapter.updateList(cart.viewCart());
@@ -94,7 +87,7 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
     }
 
     @Override
-    public void decrement(int position) {
+    public void onDecrementClick(int position) {
         cart.removeFromCart(cart.viewCart().get(position));
         Toast.makeText(getContext(),"decrement", Toast.LENGTH_SHORT).show();
         pAdapter.updateList(cart.viewCart());
