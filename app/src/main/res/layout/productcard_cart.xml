@@ -1,5 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <LinearLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:app="http://schemas.android.com/apk/res-auto"
     android:layout_width="match_parent"
     android:layout_height="match_parent">
 
@@ -14,6 +15,16 @@
         <RelativeLayout
             android:layout_width="match_parent"
             android:layout_height="match_parent">
+
+            <ImageButton
+                android:id="@+id/decrementButton"
+                android:layout_width="38dp"
+                android:layout_height="29dp"
+                android:layout_below="@+id/incrementButton"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="370dp"
+                android:layout_marginTop="0dp"
+                app:srcCompat="@android:drawable/arrow_down_float" />
 
             <TextView
                 android:id="@+id/cart_product_name"
@@ -33,6 +44,14 @@
                 android:layout_marginEnd="63dp"
                 android:layout_toEndOf="@+id/cart_product_name"
                 android:text="@string/placeholder_product_price" />
+
+            <ImageButton
+                android:id="@+id/incrementButton"
+                android:layout_width="38dp"
+                android:layout_height="29dp"
+                android:layout_alignParentStart="true"
+                android:layout_marginStart="370dp"
+                app:srcCompat="@android:drawable/arrow_up_float" />
 
         </RelativeLayout>
     </androidx.cardview.widget.CardView>
