@@ -24,7 +24,7 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
     private List<IProduct> products;
     private CartProductClickListener cartListener;
     private StoreProductClickListener storeListener;
-    private int fragmentType;
+    private FragmentType fragType;
 
     /**
      * Constructor
@@ -33,14 +33,14 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
     ProductFeedRecyclerAdapter(List<IProduct> products, CartProductClickListener productClickListener){
         this.products = products;
         this.cartListener = productClickListener;
-        this.fragmentType = 1;
+        this.fragType = FragmentType.CART;
 
     }
 
     ProductFeedRecyclerAdapter(List<IProduct> products, StoreProductClickListener productClickListener){
         this.products = products;
         this.storeListener = productClickListener;
-        this.fragmentType = 0;
+        this.fragType = FragmentType.STORE;
 
     }
 
@@ -56,7 +56,7 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
     @Override
     public GenericViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
         View view;
-        if (fragmentType == 1) {
+        if (fragType == FragmentType.CART) {
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.productcard_cart, parent, false);
             RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(
                     RecyclerView.LayoutParams.MATCH_PARENT,
@@ -65,7 +65,7 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
             return new CartViewHolder(view, cartListener);
         }
         //Store (fragmentType == 0)
-        else if (fragmentType == 0){
+        else if (fragType == FragmentType.STORE){
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.productcard_store,parent,false);
             RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(
                     RecyclerView.LayoutParams.MATCH_PARENT,
@@ -249,8 +249,10 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         void onProductClick(int position);
     }
 
-
-
+    enum FragmentType{
+        CART,
+        STORE
+    }
 
 
 
