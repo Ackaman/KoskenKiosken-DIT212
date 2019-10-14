@@ -2,68 +2,87 @@ package com.dit212.group1.koskenkiosken;
 
 import android.os.Bundle;
 import android.view.MenuItem;
-import android.widget.Toast;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
 import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
-import com.dit212.group1.koskenkiosken.Model.Product;
-import com.dit212.group1.koskenkiosken.Model.User;
+import com.dit212.group1.koskenkiosken.DB.DatabaseHelper;
+import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
+import com.dit212.group1.koskenkiosken.Model.Model;
+import com.dit212.group1.koskenkiosken.Model.User.UserFactory;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
-import java.util.ArrayList;
 
+import java.util.List;
 
-public class MainActivity extends AppCompatActivity {
+/**
+ * Author: created by -, on -
+ * Description: main controller switching between fragments and binding non-fragment specific buttons.
+ * also delegates pieces of the model to fragments.
+ */
+
+public class MainActivity extends AppCompatActivity implements FragmentListener {
 
     private AccountFragment accountFragment;
     private StoreFragment storeFragment;
-    private User currentUser;
-    private ArrayList<Product> productsList;
-
+    private CartFragment cartFragment;
+    private BottomNavigationView bnv;
+    private Model m;
+    private TextView cartBubble;
 
 
     /**
+     * runs when activity is started.
+     * checks for previous model before creating a new.
      *
-     * @param savedInstanceState standard definition of onCreate.
-     * Initiates a user that will act as logged in user until login is implemented.
-     * Also creating the fragments for store and account.
-     *
+     * @param savedInstanceState saved objects and flags from previous activities. not used.
      */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
-        generateProducts();
-        generateUser();
 
-        accountFragment = new AccountFragment(currentUser);
-        storeFragment = new StoreFragment(productsList);
-        setStartFragment();
+        bnv = findViewById(R.id.bottom_navigation);
 
+        setModel(savedInstanceState);
+        initFragments(m);
 
-        BottomNavigationView bottomNavigationView = findViewById(R.id.bottom_navigation);
-        bottomNavigationView.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
-            @Override
-            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
-                switch (item.getItemId()) {
-                    case R.id.account:
-                        Toast.makeText(MainActivity.this, "Logged in as: " + currentUser.getUserName(), Toast.LENGTH_SHORT).show();
-                        setFragment(accountFragment);
-                        break;
-                    case R.id.store:
-                        setFragment(storeFragment);
-                        break;
-                }
-                return true;
-            }
+        setFragment(storeFragment);
+        setBottomNavigationBarListener();
+        cartBubble = findViewById(R.id.cart_size);
 
+    }
 
+    private void initFragments(Model m){
+        if (accountFragment == null) accountFragment = new AccountFragment(m.getLoggedInUser());
+        if (storeFragment == null) storeFragment = new StoreFragment(m);
+        if (cartFragment == null) cartFragment = new CartFragment(m);
+    }
 
-        });
+    /**
+     * Updates the cart in Model.
+     * @param input products in cart.
+     */
+    @Override
+    public void onInputStoreSent(List<IProduct> input) {
+        if (m.getSizeOfCart() == 0) {
+            cartBubble.setVisibility(View.INVISIBLE);
         }
+        m.getCart().setCart(input);
+        int x = m.getSizeOfCart();
+        String s = Integer.toString(x);
+        cartBubble.setText(s);
+        cartBubble.setVisibility(View.VISIBLE);
 
+    }
+
+    /**
+     * switches the fragment in activity view.
+     * @param fragment the fragment to switch to.
+     */
     private void setFragment(Fragment fragment) {
         FragmentTransaction fragmentTransaction = getSupportFragmentManager().beginTransaction();
         fragmentTransaction.replace(R.id.main_frame, fragment);
@@ -71,31 +90,45 @@ public class MainActivity extends AppCompatActivity {
     }
 
     /**
-     * Method to generate a list of products that will be passed to Store fragment
+     * binds buttons for bottom navigation bar
      */
-    private void generateProducts(){
-        this.productsList = new ArrayList<>();
 
-        productsList.add(new Product("Chokladboll", 2, 5, 10));
-        productsList.add(new Product("Nocco", 1, 15, 10));
-        productsList.add(new Product("HariboNallar", 3, 2, 10));
-        productsList.add(new Product("Kaffepaket", 4, 20, 10));
+    private void setBottomNavigationBarListener(){
+        bnv.setOnNavigationItemSelectedListener(new BottomNavigationView.OnNavigationItemSelectedListener() {
+            @Override
+            public boolean onNavigationItemSelected(@NonNull MenuItem item) {
+                switch (item.getItemId()) {
+                    case R.id.account:
+                        setFragment(accountFragment);
+                        break;
+                    case R.id.store:
+                        setFragment(storeFragment);
+                        break;
+                    case R.id.cart_bottom:
+                        setFragment(cartFragment);
+                        break;
+                }
+                return true;
+            }
+        });
     }
 
     /**
-     * Generate mock user until database is implemented that will be passed to User fragment
-     * */
-    private void generateUser(){
-        this.currentUser = new User();
+     * sets the model. creates a new if a previous model isnt stored in saved instance state.
+     * @param savedInstanceState the bundle of which to look for a prior model.
+     */
+
+    private void setModel(Bundle savedInstanceState){
+        if (m != null) return;
+        if (savedInstanceState != null) m = savedInstanceState.getParcelable("Model");
+        if (m == null){
+            m = new Model();
+            m.setLoggedInUser(UserFactory.createMockUser());
+            m.parseFromIDatabase(DatabaseHelper.getDatabaseHelper());
+        }
     }
 
-    /**
-     * Helper method to set start fragment in MainActivity.
-     * Change this to desired fragment, it is called by onCreate
-     */
-    private void setStartFragment(){
-        setFragment(storeFragment);
-    }
+
 
 
 }

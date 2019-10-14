@@ -11,34 +11,41 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
 
-import com.dit212.group1.koskenkiosken.Model.User;
+import com.dit212.group1.koskenkiosken.Model.User.IAccount;
+import com.dit212.group1.koskenkiosken.Model.User.UserFactory;
 
 
 /**
- * A simple {@link Fragment} subclass.
+ * Author: created by -, on -
+ * Description: Account page "controller". feeds user-specific textfields and/or buttons of the
+ * view to data and functions from controller.
  */
 public class AccountFragment extends Fragment {
 
-    private User userID;
+    private IAccount userID;
     private TextView credits;
     private TextView user;
-    private View rootView;
 
+    /**
+     * empty constructor required by platform.
+     */
     public AccountFragment() {
         // Required empty public constructor
     }
 
-
-    AccountFragment(User currentUser){
+    /**
+     * constructor for fragment
+     * @param currentUser user to display information from.
+     */
+    AccountFragment(IAccount currentUser){
         this.userID = currentUser;
     }
-
 
     @Override
     public View onCreateView(@NonNull LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
 
         if (savedInstanceState != null){
-            userID = new User();
+            userID = UserFactory.createMockUser();
         }
 
         return inflater.inflate(R.layout.fragment_account, container, false);
@@ -53,11 +60,8 @@ public class AccountFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        rootView = view;
-        credits = rootView.findViewById(R.id.current_credits);
-        user  = rootView.findViewById(R.id.current_user);
-
-
+        credits = view.findViewById(R.id.current_credits);
+        user  = view.findViewById(R.id.current_user);
 
     }
 
@@ -67,22 +71,14 @@ public class AccountFragment extends Fragment {
     @Override
     public void onStart(){
     super.onStart();
-    View view = getView();
-    if (view != null){
-        String usernameLine = getResources().getString(R.string.username,getUserName());
+    View v = getView();
+    if (v != null){
+        String usernameLine = getResources().getString(R.string.username,userID.getUserName());
         user.setText(usernameLine);
-        user.append(getUserName());
-        String creditsLine = getResources().getString(R.string.credits,getCredits());
+        user.append(userID.getUserName());
+        String creditsLine = getResources().getString(R.string.credits,userID.getCredits());
         credits.setText(creditsLine);
         }
 
     }
-
-
-
-    // Currently returning string
-    private int getCredits(){
-        return userID.getCredits();
-    }
-    private String getUserName(){return userID.getUserName();}
 }
