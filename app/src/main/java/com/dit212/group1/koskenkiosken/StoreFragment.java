@@ -7,6 +7,7 @@ import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
 import android.os.Parcelable;
+import android.os.SystemClock;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -102,6 +103,8 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         inflater.inflate(R.menu.menu_actionbar, menu);
         bindSearchButton(menu);
         bindSortByButton(menu);
+        bindProductRecommendationsButton(menu);
+
     }
 
     /**
@@ -146,6 +149,24 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
             }
         });
         bindDialogueListOptions(listview);
+    }
+    private void bindProductRecommendationsButton(@NonNull Menu menu){
+        MenuItem button = menu.findItem(R.id.reccomendations);
+        button.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                openProductRecommendationsActivity();
+                return false;
+            }
+        });
+
+
+
+
+    }
+    private void openProductRecommendationsActivity(){
+        Intent intent = new Intent(getActivity(), ProductRecommendationsActivity.class);
+        startActivity(intent);
     }
 
     private void bindDialogueListOptions(ListView lv) {
