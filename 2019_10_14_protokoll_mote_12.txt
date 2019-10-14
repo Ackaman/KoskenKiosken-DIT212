@@ -1,0 +1,75 @@
+# Meeting Agenda
+
+Group: KlassFörakt
+Date: 2019-10-14
+Chair: Johan Almroth
+Participants: Johan Almroth, Albin Otterhäll, Gustav Pihlquist, Morgan Thowsen, David Persson
+
+
+## Objectives (5 min) 
+- Gruppen har lite svårt att välja user stories då många implementationer nu beror på varandra.
+	Det har lett till att produktiviteten gått ned.
+	
+- Gruppen har allmänt haft mycket annat att göra utanför kursen. Vilket också lett till att utvecklingen stangerat.
+
+
+## Reports (15 min) from previous meeting
+
+- Johan: Har avslutat uppdateringen av recyclerview samt fortsatt försökt hitta en lösning på implementaion av user story 1.
+User story 2 är starkt beroende av att vi löser 1 men är väldigt enkel att implementera när 1 är på plats.
+
+Skrev ihop RAD.
+
+- Gustav: Har skrivit klar testerna för metoder i model-klassen. Gjorde UML till RAD.
+
+- Albin: Fortsatt jobba på User story 36. Albin har implemneterat Lösenordshantering.
+
+- David: Pushat upp tester för Cart och Model. Jobbat på RAD/SDD men inte hunnit koda något pga belastning av annan kurs. 
+
+- Morgan: Har refaktoriserat modulerna i projectet och städat upp mappstrukturen. Började göra utkast-UML till RAD.
+                modellen består nu av ett antal untuitiva paket f. respektive del av aggregatet.
+
+
+## Discussion items (35 min)
+
+- Vi behöver hitta en lösning för Cart/Cartfragment. I dagsläget består Cart av en lista av produkter.
+Denna lista används för att bygga upp vyn i CartFragment. Vi vill dock representera produkterna annorlunda i CartFragment.
+Då behöver vi skicka en annan lista till productFeedRecyclerViewAdapter än den vi har nu.
+Detta ställer till det lite för sättet vi implementerat onClicklisteners.
+
+- Gruppen har lite svårt att leverera kod då komplexiteten för projektet har ökat.
+Vi har svårt att besluta vad som ska implementeras härnäst.
+
+- Vi behöver lägga in en delay på produktclick för att lösa en bugg som gör att flera vyer kan öppnas om man trycker fort.
+
+
+## Outcomes and assignments (5 min)
+
+Gruppen ska inte vara rädda för att skapa fler user stories om ingen existerande passar att implementera. 	
+
+- Albin siktar på att slutföra sin user story (36)
+Om inte all implementaion är färdig kommer han att pull requesta till dev så övriga ser hur långt vi kommit.
+
+- Gustav ska ska lösa buggen med delay i productvyerna.
+Gustav ska även påbörja en implementaion av user story 24 - "Rekommendera produkter att köpa in".
+
+- Johan Ska försöka komma på en lösning för user story 1 och 2. Kommer eventuellt ta hjälp av övriga gruppmedlemmar.
+Kommer eventuellt ta en user story som är mer för design(XML) än kod.
+
+- Morgan skall faktiskt göra klart sin userstory denna veckan som har dragit ut mycket på tiden pga belastning från annan kurs. siktar att bli klar tills på söndag.
+
+- Morgan tar i mån av tid på sig en till userstory. också mål till söndag.
+
+- David ska börja med user story 19 - "produktbilder". Den ger inte många javarader men bör vara enkel att implementera.
+Kommer eventuallt också att skriva fler tester om det behövs.
+
+
+
+- Outcomes from discussion items. Write down what's decided and why it was 
+  decided. Sync with other documentation (add terms to wordbook).
+- (re)Assign to each group member which issues to solve.
+
+
+## Wrap up
+
+- Nästa möte 16/10 13:00. 
