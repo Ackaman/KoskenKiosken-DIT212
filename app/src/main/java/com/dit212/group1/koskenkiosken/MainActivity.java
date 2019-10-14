@@ -2,6 +2,8 @@ package com.dit212.group1.koskenkiosken;
 
 import android.os.Bundle;
 import android.view.MenuItem;
+import android.view.View;
+import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.appcompat.app.AppCompatActivity;
@@ -22,13 +24,14 @@ import java.util.List;
  * also delegates pieces of the model to fragments.
  */
 
-public class MainActivity extends AppCompatActivity implements StoreFragment.FragmentStoreListener {
+public class MainActivity extends AppCompatActivity implements FragmentListener {
 
     private AccountFragment accountFragment;
     private StoreFragment storeFragment;
     private CartFragment cartFragment;
     private BottomNavigationView bnv;
     private Model m;
+    private TextView cartBubble;
 
 
     /**
@@ -49,12 +52,14 @@ public class MainActivity extends AppCompatActivity implements StoreFragment.Fra
 
         setFragment(storeFragment);
         setBottomNavigationBarListener();
+        cartBubble = findViewById(R.id.cart_size);
+
     }
 
     private void initFragments(Model m){
         if (accountFragment == null) accountFragment = new AccountFragment(m.getLoggedInUser());
         if (storeFragment == null) storeFragment = new StoreFragment(m);
-        if (cartFragment == null) cartFragment = new CartFragment(m.getCart());
+        if (cartFragment == null) cartFragment = new CartFragment(m);
     }
 
     /**
@@ -63,7 +68,15 @@ public class MainActivity extends AppCompatActivity implements StoreFragment.Fra
      */
     @Override
     public void onInputStoreSent(List<IProduct> input) {
+        if (m.getSizeOfCart() == 0) {
+            cartBubble.setVisibility(View.INVISIBLE);
+        }
         m.getCart().setCart(input);
+        int x = m.getSizeOfCart();
+        String s = Integer.toString(x);
+        cartBubble.setText(s);
+        cartBubble.setVisibility(View.VISIBLE);
+
     }
 
     /**
@@ -114,6 +127,8 @@ public class MainActivity extends AppCompatActivity implements StoreFragment.Fra
             m.parseFromIDatabase(DatabaseHelper.getDatabaseHelper());
         }
     }
+
+
 
 
 }
