@@ -24,7 +24,7 @@ import java.util.List;
  * also delegates pieces of the model to fragments.
  */
 
-public class MainActivity extends AppCompatActivity implements StoreFragment.FragmentStoreListener, CartFragment.FragmentStoreListener {
+public class MainActivity extends AppCompatActivity implements FragmentListener {
 
     private AccountFragment accountFragment;
     private StoreFragment storeFragment;

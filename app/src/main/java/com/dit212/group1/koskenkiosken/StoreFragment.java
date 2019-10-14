@@ -39,7 +39,7 @@ import java.util.List;
 public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapter.StoreProductClickListener {
     private List<IProduct> products;
     private Model m;
-    private FragmentStoreListener listener;
+    private FragmentListener listener;
     private ProductFeedRecyclerAdapter pAdapter;
     private List<IProduct> originalProducts;
 
@@ -58,12 +58,6 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         this.originalProducts = products;
     }
 
-    /**
-     * Listener interface that will handle notify all classes that implements this interface.
-     */
-    public interface FragmentStoreListener {
-        void onInputStoreSent(List<IProduct> input);
-    }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -204,17 +198,21 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         listener.onInputStoreSent(m.getCart().viewCart());
     }
 
-
+    /**
+     * Used for FragmentListeners
+     */
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if(context instanceof FragmentStoreListener){
-            listener = (FragmentStoreListener) context;
+        if(context instanceof FragmentListener){
+            listener = (FragmentListener) context;
         } else {
-            throw new RuntimeException(context.toString() +" must implement FragmentStoreListener");
+            throw new RuntimeException(context.toString() +" must implement FragmentListener");
         }
     }
-
+    /**
+     * Used for FragmentListeners
+     */
     @Override
     public void onDetach() {
         super.onDetach();

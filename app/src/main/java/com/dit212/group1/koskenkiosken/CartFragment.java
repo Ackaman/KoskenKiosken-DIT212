@@ -16,16 +16,13 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.dit212.group1.koskenkiosken.Model.Cart.ICart;
 import com.dit212.group1.koskenkiosken.Model.Model;
-import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
-
-import java.util.List;
 
 
 public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter.CartProductClickListener {
 
     private ICart cart;
     private ProductFeedRecyclerAdapter pAdapter;
-    private FragmentStoreListener listener;
+    private FragmentListener listener;
     private Model m;
 
 
@@ -63,6 +60,10 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
         rv.setLayoutManager(llm);
     }
 
+    /**
+     *
+     * @param position Returns the index of the clicked view.
+     */
     @Override
     public void onProductClick(int position) {
         Toast.makeText(getContext(),"onProductClick", Toast.LENGTH_SHORT).show();
@@ -70,6 +71,10 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
 
     }
 
+    /**
+     *
+     * Method is not yet used but logic goes here once implemented.
+     */
     @Override
     public void onRemoveFromCartClick(int position) {
         Toast.makeText(getContext(),"onRemoveFromCartClick", Toast.LENGTH_SHORT).show();
@@ -77,6 +82,10 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
         pAdapter.updateList(cart.viewCart());
     }
 
+    /**
+     * increases the amount of the clicked item by one.
+     * @param position
+     */
     @Override
     public void onIncrementClick(int position) {
         cart.addToCart(cart.viewCart().get(position));
@@ -86,6 +95,10 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
 
     }
 
+    /**
+     * decreases the amount of the clicked item by one.
+     * @param position
+     */
     @Override
     public void onDecrementClick(int position) {
         cart.removeFromCart(cart.viewCart().get(position));
@@ -94,20 +107,24 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
         listener.onInputStoreSent(m.getCart().viewCart());
     }
 
-    public interface FragmentStoreListener {
-        void onInputStoreSent(List<IProduct> input);
-    }
 
+    /**
+     * Used for FragmentListeners
+     * @param context
+     */
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
-        if(context instanceof FragmentStoreListener){
-            listener = (FragmentStoreListener) context;
+        if(context instanceof FragmentListener){
+            listener = (FragmentListener) context;
         } else {
-            throw new RuntimeException(context.toString() +" must implement FragmentStoreListener");
+            throw new RuntimeException(context.toString() +" must implement FragmentListener");
         }
     }
 
+    /**
+     * Used for FragmentListeners
+     */
     @Override
     public void onDetach() {
         super.onDetach();
