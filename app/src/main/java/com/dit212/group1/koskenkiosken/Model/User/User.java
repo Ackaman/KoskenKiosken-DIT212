@@ -1,5 +1,8 @@
 package com.dit212.group1.koskenkiosken.Model.User;
 
+import com.dit212.group1.koskenkiosken.Model.AuthenticationStrategies.AuthenticationStrategy;
+import com.dit212.group1.koskenkiosken.Model.AuthenticationStrategies.UsernamePasswordStrategyFactory;
+
 /**
  * Immutable representation of a user.
  *
@@ -8,6 +11,7 @@ class User implements IAccount {
 
     final private String userName;
     final private int credits;
+    private AuthenticationStrategy authenticationStrategy;
 
     /**
      * constructor
@@ -52,7 +56,17 @@ class User implements IAccount {
      * @param sum the sum of which to check
      * @return false if user has insufficient funds.
      */
-    public boolean canMakePurchase(int sum){
+    public boolean canMakePurchase(int sum) {
         return sum <= credits;
+    }
+
+    /**
+     * The strategy used to authenticate the user.
+     *
+     * @param password The user's password
+     * @param eMailAddress The user's e-mail address
+     */
+    public void setAuthenticationStrategy(String password, String eMailAddress) {
+        this.authenticationStrategy = UsernamePasswordStrategyFactory.create(password, eMailAddress);
     }
 }

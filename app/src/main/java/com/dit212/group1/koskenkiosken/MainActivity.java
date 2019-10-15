@@ -14,7 +14,7 @@ import androidx.fragment.app.FragmentTransaction;
 import com.dit212.group1.koskenkiosken.DB.DatabaseHelper;
 import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
 import com.dit212.group1.koskenkiosken.Model.Model;
-import com.dit212.group1.koskenkiosken.Model.UserFactory;
+import com.dit212.group1.koskenkiosken.Model.User.UserFactory;
 import com.dit212.group1.koskenkiosken.ui.login.LoginActivity;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
