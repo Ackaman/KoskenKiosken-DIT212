@@ -4,8 +4,9 @@ import com.dit212.group1.koskenkiosken.Model.AuthenticationStrategies.Authentica
 import com.dit212.group1.koskenkiosken.Model.AuthenticationStrategies.UsernamePasswordStrategyFactory;
 
 /**
- * Immutable representation of a user.
+ * @author Albin Otterhäll
  *
+ * Immutable representation of a user.
  */
 class User implements IAccount {
 
