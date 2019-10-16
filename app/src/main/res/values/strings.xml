@@ -16,6 +16,10 @@
     <string name="cart_button">Cart</string>
     <string name="add_to_cart_button_content_desc">Add to cart</string>
     <string name="produktrekommendation">Produktrekommendation</string>
+    <string name="produktrekommendationer">Produktrekommendationer</string>
+    <string name="produkt_att_rekommendera">Produkt att rekommendera</string>
+    <string name="rekommendera_produkt">Rekommendera Produkt</string>
+    <string name="who_recommended">Namn</string>
 
     <string-array name="sorting_option">
         <item>Name - ascending</item>

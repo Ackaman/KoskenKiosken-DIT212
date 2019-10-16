@@ -46,9 +46,13 @@ public class Model {
             productList.add(p);
         }
     }
+    //SendToDataBase?
+    public void queryRecommendedProductToDatabase(IDatabase db, String productToRecommend, String whoRecommended){
+        db.writeRecommendedProductToDatabase(productToRecommend, whoRecommended);
+    }
 
     /**
-     * converts Products to IProduct for incapsulation purposes and returns the full list.
+     * converts Products to IProduct for encapsulation purposes and returns the full list.
      * @return a list of IProducts mirrored from internal productList
      */
 
@@ -92,7 +96,7 @@ public class Model {
 
     public List<IProduct> filterListByString(String filter){
         ArrayList<IProduct> sortedProduct = new ArrayList<>();
-        for (IProduct product : productList) {
+        for (IProduct product : listOfProducts()) {
             if (product.getName().toLowerCase().contains(filter.toLowerCase())) {
                 sortedProduct.add(product);
             }

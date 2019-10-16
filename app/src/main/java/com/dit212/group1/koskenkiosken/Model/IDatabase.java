@@ -19,4 +19,5 @@ public interface IDatabase {
      * writes products to persistent storage.
      */
     void writeProducts(List<IProduct> pr);
+    void writeRecommendedProductToDatabase(String productToRecommend, String name);
 }
