@@ -63,8 +63,9 @@ public class DatabaseHelper implements IDatabase {
     public void writeRecommendedProductToDatabase(String productToRecommend, String name) {
         System.out.println("Rekommenderad produkt: " + productToRecommend);
         System.out.println("Namn: " + name);
-        //String json = g.toJson(productToRecommend);
-        //database.writeToDB(json);
+        String[] s = {productToRecommend, name};
+        String json = g.toJson(s);
+        database.writeRecommendedProductToDb(json);
     }
 
     /**

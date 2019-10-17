@@ -19,4 +19,12 @@ public interface IPersistentStorage {
      * @param json data in json-format to write to persistent storage
      */
     void writeToDB(String json);
+
+    /**
+     * Writes data with the user and the recommended product to persistent storage
+     * @param json data in json-format to write to persistent storage
+     */
+    void writeRecommendedProductToDb(String json);
+
+    String getRecommendedProductJsonData();
 }

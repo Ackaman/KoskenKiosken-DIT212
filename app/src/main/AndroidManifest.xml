@@ -21,7 +21,7 @@
             </intent-filter>
         </activity>
     <activity android:name=".ProductPressedView"/>
-        <activity android:name=".ProductRecommendationsActivity"/>
+        <activity android:name=".ProductRecommendationsFragment"/>
 
     </application>
 
