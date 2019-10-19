@@ -1,7 +1,7 @@
 package com.dit212.group1.koskenkiosken.Dialogs.Checkout;
 
 /**
- * Author: created by thowsen, 2019-10-20
+ * Author: created by thowsen, 2019-10-19
  * Description: data provider for text fields in checkout-dialog
  */
 

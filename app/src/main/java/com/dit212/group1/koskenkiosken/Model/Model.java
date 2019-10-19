@@ -145,4 +145,12 @@ public class Model {
         cart.emptyCart();
     }
 
+    /**
+     * aggregation method for cart operation viewCart
+     * @return a list of products in the cart.
+     */
+    public List<IProduct> viewCart(){
+        return cart.viewCart();
+    }
+
 }

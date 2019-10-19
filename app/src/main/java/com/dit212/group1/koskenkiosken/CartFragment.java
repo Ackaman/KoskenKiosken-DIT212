@@ -180,8 +180,8 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
      */
     private void Purchase(){
         m.purchase();
-        pAdapter.updateList(m.getCart().viewCart());
-        listener.onInputStoreSent(m.getCart().viewCart());
+        pAdapter.updateList(m.viewCart());
+        listener.onInputStoreSent(m.viewCart());
 
         // for feedback.
         Toast.makeText(getContext(),"Tack för ditt köp", Toast.LENGTH_SHORT).show();

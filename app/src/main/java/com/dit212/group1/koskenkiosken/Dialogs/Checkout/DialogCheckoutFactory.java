@@ -5,6 +5,7 @@ import android.content.Context;
 import androidx.annotation.NonNull;
 
 /**
+ * Author: created by thowsen, 2019-10-19
  * factory pattern for Dialog Checkout.
  */
 public class DialogCheckoutFactory {

@@ -15,17 +15,17 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Author: created by thowsen, 2019-10-20
+ * Author: created by thowsen, 2019-10-19
  * Description: Dialog window for checkout  (buying products in cart).
+ * package private! alterations are done from factory method in separate class. IDialogCheckout
+ * is exposed.
  */
 
 class DialogCheckout extends Dialog implements IDialogCheckout{
     private final Context c;
-
     private Button positiveButton;
     private TextView negativeButton;
     private TextView textMessage;
-
     private ICheckoutData data;
     private final List<ICheckoutResponseListener> listeners;
 
@@ -40,8 +40,17 @@ class DialogCheckout extends Dialog implements IDialogCheckout{
         listeners = new LinkedList<>();
     }
 
+    /**
+     * sets a provider for information to the text fields within the dialog.
+     * @param data the data provider.
+     */
+
     public void setDataProvider(ICheckoutData data){ this.data = data;}
 
+    /**
+     * oncreate. binds buttons to buttons in xml and calls init and bind functions.
+     * @param savedInstanceState not used.
+     */
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
