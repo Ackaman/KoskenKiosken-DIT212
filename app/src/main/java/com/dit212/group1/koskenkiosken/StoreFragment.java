@@ -98,8 +98,8 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
 
     /**
      * Creates the "actionbar" menu on the top of the screen in StoreFragment
-     * @param menu      menu
-     * @param inflater      inflater
+     * @param menu menu
+     * @param inflater inflater that inflates the layout
      */
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
@@ -109,6 +109,11 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         bindProductRecommendationsButton(menu);
 
     }
+
+    /**
+     * Initializes the fragment/s that is found within the StoreFragment
+     * @param m A reference to the model
+     */
     private void initFragment(Model m){
         if (productRecommendationsFragment == null){
             productRecommendationsFragment = new ProductRecommendationsFragment(m);
@@ -161,7 +166,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
 
     /**
      * Binds the button in the actionbar and handles the event when it's clicked
-     * @param menu
+     * @param menu menu
      */
     private void bindProductRecommendationsButton(@NonNull Menu menu){
         MenuItem button = menu.findItem(R.id.reccomendations);
@@ -217,7 +222,6 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
      */
     @Override
     public void onProductClick(int position) {
-
         Intent intent = new Intent(getActivity(), ProductPressedView.class);
         intent.putExtra("product", (Parcelable) products.get(position));
         startActivity(intent);
@@ -234,6 +238,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     public void onAddToCartClick(int position) {
         m.addToCart(products.get(position));
         listener.onInputStoreSent(m.getCart().viewCart());
+
     }
 
     /**

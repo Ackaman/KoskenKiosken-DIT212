@@ -46,7 +46,14 @@ public class Model {
             productList.add(p);
         }
     }
-    //SendToDataBase?
+
+    /**
+     * Sends data containing the product that was recommended, and the name of the logged in user
+     * who recommended the product to the persistent storage
+     * @param db the persistent storage where we send the data
+     * @param productToRecommend The product that was recommended
+     * @param whoRecommended The logged in user who recommended the product
+     */
     public void queryRecommendedProductToDatabase(IDatabase db, String productToRecommend, String whoRecommended){
         db.writeRecommendedProductToDatabase(productToRecommend, whoRecommended);
     }

@@ -29,12 +29,19 @@ public class ProductRecommendationsFragment extends Fragment {
 
     /**
      * Passes the model to the fragment
-     * @param m     The reference to the model
+     * @param m The reference to the model
      */
     ProductRecommendationsFragment(Model m){
         this.m = m;
     }
 
+    /**
+     * Attaches the correct layout to the fragment
+     * @param inflater inflater that inflates the layout
+     * @param container container
+     * @param savedInstanceState settings from previous activites/fragments
+     * @return
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -43,6 +50,11 @@ public class ProductRecommendationsFragment extends Fragment {
 
     }
 
+    /**
+     *  References for the buttons and textviews
+     * @param view the view to attach the fragment to
+     * @param savedInstanceState settings from previous activites/fragments
+     */
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
@@ -61,7 +73,7 @@ public class ProductRecommendationsFragment extends Fragment {
      * Sends data of the product that got recommended and the logged in user who
      * recommended it to the model
      */
-    public void insertDataToDb(){
+    private void insertDataToDb(){
         String recommendedProduct = productToRecommend.getText().toString();
         String nameOfUser = m.getLoggedInUser().getUserName();
         m.queryRecommendedProductToDatabase(DatabaseHelper.getDatabaseHelper(), recommendedProduct, nameOfUser);

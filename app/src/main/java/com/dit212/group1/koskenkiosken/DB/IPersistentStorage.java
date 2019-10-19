@@ -26,5 +26,9 @@ public interface IPersistentStorage {
      */
     void writeRecommendedProductToDb(String json);
 
+    /**
+     * Gets the recommended product in JSON-format
+     * @return String in JSON-format of the recommended product
+     */
     String getRecommendedProductJsonData();
 }
