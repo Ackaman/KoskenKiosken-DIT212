@@ -21,6 +21,8 @@ import android.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -42,6 +44,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     private FragmentListener listener;
     private ProductFeedRecyclerAdapter pAdapter;
     private List<IProduct> originalProducts;
+    private ProductRecommendationsFragment productRecommendationsFragment;
 
 
     public StoreFragment() {
@@ -80,6 +83,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         pAdapter = ProductFeedRecyclerAdapterFactory.createStoreFragment(products, this);
         rv.setAdapter(pAdapter);
         rv.setLayoutManager(llm);
+        initFragment(m);
     }
 
     /**
@@ -94,14 +98,26 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
 
     /**
      * Creates the "actionbar" menu on the top of the screen in StoreFragment
-     * @param menu      menu
-     * @param inflater      inflater
+     * @param menu menu
+     * @param inflater inflater that inflates the layout
      */
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_actionbar, menu);
         bindSearchButton(menu);
         bindSortByButton(menu);
+        bindProductRecommendationsButton(menu);
+
+    }
+
+    /**
+     * Initializes the fragment/s that is found within the StoreFragment
+     * @param m A reference to the model
+     */
+    private void initFragment(Model m){
+        if (productRecommendationsFragment == null){
+            productRecommendationsFragment = new ProductRecommendationsFragment(m);
+        }
     }
 
     /**
@@ -148,6 +164,31 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         bindDialogueListOptions(listview);
     }
 
+    /**
+     * Binds the button in the actionbar and handles the event when it's clicked
+     * @param menu menu
+     */
+    private void bindProductRecommendationsButton(@NonNull Menu menu){
+        MenuItem button = menu.findItem(R.id.reccomendations);
+        button.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
+            @Override
+            public boolean onMenuItemClick(MenuItem item) {
+                openProductRecommendationsFragment();
+                return false;
+            }
+        });
+    }
+
+    /**
+     * Opens the ProductRecommendationFragment
+     */
+    private void openProductRecommendationsFragment(){
+        FragmentManager fm = getFragmentManager();
+        FragmentTransaction ft = fm.beginTransaction();
+        ft.replace(R.id.main_frame, productRecommendationsFragment);
+        ft.commit();
+    }
+
     private void bindDialogueListOptions(ListView lv) {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
@@ -184,6 +225,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         Intent intent = new Intent(getActivity(), ProductPressedView.class);
         intent.putExtra("product", (Parcelable) products.get(position));
         startActivity(intent);
+
     }
 
 
@@ -196,6 +238,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     public void onAddToCartClick(int position) {
         m.addToCart(products.get(position));
         listener.onInputStoreSent(m.getCart().viewCart());
+
     }
 
     /**
@@ -218,7 +261,6 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         super.onDetach();
         listener = null;
     }
-
 }
 
 

@@ -8,6 +8,7 @@ package com.dit212.group1.koskenkiosken.DB;
  */
 public class JSONparser implements IPersistentStorage{
     private String json;
+    private String recommendedProductJson;
 
     /**
      * constructor
@@ -26,6 +27,8 @@ public class JSONparser implements IPersistentStorage{
                 "{\"description\":\"description 4\",\"name\":\"Singoalla\",\"price\":9}," +
                 "{\"description\":\"description 4\",\"name\":\"Naja\",\"price\":15}," +
                 "{\"description\":\"description 4\",\"name\":\"Cola\",\"price\":10}]";
+
+        recommendedProductJson = "[{\"recommendedProduct\":\"Banan\",\"user\":\"John Smith}]";
     }
 
     /**
@@ -43,6 +46,25 @@ public class JSONparser implements IPersistentStorage{
      */
     @Override
     public void writeToDB(String json) {
+    }
+
+    /**
+     * Empty method since no API is used
+     * @param json data in json-format to write to persistent storage
+     */
+    @Override
+    public void writeRecommendedProductToDb(String json) {
+        System.out.println(json);
+
+    }
+
+    /**
+     * returns the recommended products together with the user who recommended it.
+     * @return json string containing the data
+     */
+    @Override
+    public String getRecommendedProductJsonData() {
+        return recommendedProductJson;
     }
 
 

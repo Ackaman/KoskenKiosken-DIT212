@@ -48,7 +48,18 @@ public class Model {
     }
 
     /**
-     * converts Products to IProduct for incapsulation purposes and returns the full list.
+     * Sends data containing the product that was recommended, and the name of the logged in user
+     * who recommended the product to the persistent storage
+     * @param db the persistent storage where we send the data
+     * @param productToRecommend The product that was recommended
+     * @param whoRecommended The logged in user who recommended the product
+     */
+    public void queryRecommendedProductToDatabase(IDatabase db, String productToRecommend, String whoRecommended){
+        db.writeRecommendedProductToDatabase(productToRecommend, whoRecommended);
+    }
+
+    /**
+     * converts Products to IProduct for encapsulation purposes and returns the full list.
      * @return a list of IProducts mirrored from internal productList
      */
 
@@ -92,7 +103,7 @@ public class Model {
 
     public List<IProduct> filterListByString(String filter){
         ArrayList<IProduct> sortedProduct = new ArrayList<>();
-        for (IProduct product : productList) {
+        for (IProduct product : listOfProducts()) {
             if (product.getName().toLowerCase().contains(filter.toLowerCase())) {
                 sortedProduct.add(product);
             }
