@@ -17,7 +17,6 @@ import androidx.fragment.app.Fragment;
 
 public class ProductRecommendationsFragment extends Fragment {
 
-    private Button btnRecommendProducts;
     private EditText productToRecommend;
     private Model m;
 
@@ -40,7 +39,7 @@ public class ProductRecommendationsFragment extends Fragment {
      * @param inflater inflater that inflates the layout
      * @param container container
      * @param savedInstanceState settings from previous activites/fragments
-     * @return
+     * @return finished View
      */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
@@ -58,7 +57,7 @@ public class ProductRecommendationsFragment extends Fragment {
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        btnRecommendProducts = view.findViewById(R.id.btnRecommendProduct);
+        Button btnRecommendProducts = view.findViewById(R.id.btnRecommendProduct);
         productToRecommend = view.findViewById(R.id.productToRecommend);
         btnRecommendProducts.setOnClickListener(new View.OnClickListener() {
             @Override

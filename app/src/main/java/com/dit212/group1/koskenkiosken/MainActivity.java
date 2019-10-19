@@ -73,7 +73,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         if (m.getSizeOfCart() == 0) {
             cartBubble.setVisibility(View.INVISIBLE);
         }
-        m.getCart().setCart(input);
+        m.setCart(input);
         int x = m.getSizeOfCart();
         String s = Integer.toString(x);
         cartBubble.setText(s);

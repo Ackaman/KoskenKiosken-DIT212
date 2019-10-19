@@ -21,8 +21,6 @@ import android.widget.SearchView;
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
-import androidx.fragment.app.FragmentManager;
-import androidx.fragment.app.FragmentTransaction;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
@@ -45,7 +43,9 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     private ProductFeedRecyclerAdapter pAdapter;
     private List<IProduct> originalProducts;
 
-
+    /**
+     * empty constructor needed by Fragment super class.
+     */
     public StoreFragment() {
     }
 
@@ -60,7 +60,13 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         this.originalProducts = products;
     }
 
-
+    /**
+     * returns an inflated fragment within the view and puts it in the viewgroup accordingly.
+     * @param inflater the inflater used for inflating local layout within fragment.
+     * @param container the container of which to put the inflated fragment.
+     * @param savedInstanceState not used.
+     * @return finished inflated view containing fragment.
+     */
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container,
                              Bundle savedInstanceState) {
@@ -88,10 +94,9 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
      * Adds all the products that is a substring of the search string in a new list.
      * @param search        The input string from the ActionBar in StoreFragment
      */
-    private List<IProduct> sortString(String search) {
+    private void sortString(String search) {
         pAdapter.updateList(m.filterListByString(search));
         products = m.filterListByString(search);
-        return products;
     }
 
     /**
@@ -151,6 +156,11 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         bindDialogueListOptions(listview);
     }
 
+    /**
+     * switch statement on index of pressed sorting option.
+     * updates the list accordingly.
+     * @param lv list view of sorting options
+     */
 
     private void bindDialogueListOptions(ListView lv) {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
@@ -200,7 +210,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     @Override
     public void onAddToCartClick(int position) {
         m.addToCart(products.get(position));
-        listener.onInputStoreSent(m.getCart().viewCart());
+        listener.onInputStoreSent(m.viewCart());
 
     }
 

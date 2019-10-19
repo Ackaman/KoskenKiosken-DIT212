@@ -17,4 +17,10 @@ public interface IAccount {
      * @return the number of credits the user has
      */
     int getCredits();
+
+    /**
+     * Debits the user an amount of credits for a purchase
+     * @param sumOfPrice the sum of which to debit.
+     */
+    IAccount purchase(int sumOfPrice);
 }

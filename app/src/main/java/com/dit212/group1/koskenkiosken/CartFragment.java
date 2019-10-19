@@ -1,6 +1,5 @@
 package com.dit212.group1.koskenkiosken;
 
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,14 +13,17 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.dit212.group1.koskenkiosken.Model.Cart.ICart;
+import com.dit212.group1.koskenkiosken.Dialogs.Checkout.DialogCheckoutFactory;
+import com.dit212.group1.koskenkiosken.Dialogs.Checkout.ICheckoutData;
+import com.dit212.group1.koskenkiosken.Dialogs.Checkout.ICheckoutResponseListener;
+import com.dit212.group1.koskenkiosken.Dialogs.Checkout.IDialogCheckout;
 import com.dit212.group1.koskenkiosken.Model.Model;
-
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter.CartProductClickListener {
 
-    private ICart cart;
     private ProductFeedRecyclerAdapter pAdapter;
+    private FloatingActionButton fab;
     private FragmentListener listener;
     private Model m;
 
@@ -33,14 +35,13 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
      * constructor takes a list of products as argument.
      */
     CartFragment(Model m){
-        this.cart = m.getCart();
         this.m = m;
     }
 
     @Override
     public View onCreateView(LayoutInflater inflater, ViewGroup container, Bundle savedInstanceState) {
         setHasOptionsMenu(true);
-        return inflater.inflate(R.layout.fragment_store, container, false);
+        return inflater.inflate(R.layout.fragment_cart, container, false);
     }
 
     /**
@@ -52,10 +53,12 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        RecyclerView rv = view.findViewById(R.id.recyclerview);
+        fab = view.findViewById(R.id.cart_fab_checkout);
+        bindFab();
 
+        RecyclerView rv = view.findViewById(R.id.recyclerview);
         RecyclerView.LayoutManager llm = new LinearLayoutManager(getContext());
-        pAdapter = (ProductFeedRecyclerAdapterFactory.createCartFragment(cart.viewCart(), this));
+        pAdapter = (ProductFeedRecyclerAdapterFactory.createCartFragment(m.viewCart(), this));
         rv.setAdapter(pAdapter);
         rv.setLayoutManager(llm);
     }
@@ -79,38 +82,38 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
     public void onRemoveFromCartClick(int position) {
         Toast.makeText(getContext(),"onRemoveFromCartClick", Toast.LENGTH_SHORT).show();
 
-        pAdapter.updateList(cart.viewCart());
+        pAdapter.updateList(m.viewCart());
     }
 
     /**
      * increases the amount of the clicked item by one.
-     * @param position
+     * @param position the index of the product to increment.
      */
     @Override
     public void onIncrementClick(int position) {
-        cart.addToCart(cart.viewCart().get(position));
+        m.addToCart(m.viewCart().get(position));
         Toast.makeText(getContext(),"increment", Toast.LENGTH_SHORT).show();
-        pAdapter.updateList(cart.viewCart());
-        listener.onInputStoreSent(m.getCart().viewCart());
+        pAdapter.updateList(m.viewCart());
+        listener.onInputStoreSent(m.viewCart());
 
     }
 
     /**
      * decreases the amount of the clicked item by one.
-     * @param position
+     * @param position the index of the product to decrement.
      */
     @Override
     public void onDecrementClick(int position) {
-        cart.removeFromCart(cart.viewCart().get(position));
+        m.removeFromCart(m.viewCart().get(position));
         Toast.makeText(getContext(),"decrement", Toast.LENGTH_SHORT).show();
-        pAdapter.updateList(cart.viewCart());
-        listener.onInputStoreSent(m.getCart().viewCart());
+        pAdapter.updateList(m.viewCart());
+        listener.onInputStoreSent(m.viewCart());
     }
 
 
     /**
      * Used for FragmentListeners
-     * @param context
+     * @param context the context of which the attach occurs.
      */
     @Override
     public void onAttach(@NonNull Context context) {
@@ -129,5 +132,55 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
     public void onDetach() {
         super.onDetach();
         listener = null;
+    }
+
+    /**
+     * binds the floating action button to the creation fo a dialog.
+     */
+    private void bindFab(){
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+
+                // buy button listener.
+                ICheckoutResponseListener listener = new ICheckoutResponseListener() {
+                    @Override
+                    public void actOnPositiveResponse() {
+                        Purchase();
+                    }
+                };
+
+                // dataprovider for textfields.
+                ICheckoutData data = new ICheckoutData() {
+                    @Override
+                    public int getQuantity() {
+                        return m.getSizeOfCart();
+                    }
+
+                    @Override
+                    public int getSum() {
+                        return m.getPrice();
+                    }
+                };
+
+                // create via factory
+                IDialogCheckout dc = DialogCheckoutFactory.create(v.getContext(), listener,data);
+
+                // create and inflate.
+                dc.show();
+            }
+        });
+    }
+
+    /**
+     * makes a single purchase. will have to be redone in future with an external transaction handler.
+     */
+    private void Purchase(){
+        m.purchase();
+        pAdapter.updateList(m.viewCart());
+        listener.onInputStoreSent(m.viewCart());
+
+        // for feedback.
+        Toast.makeText(getContext(),"Tack för ditt köp", Toast.LENGTH_SHORT).show();
     }
 }

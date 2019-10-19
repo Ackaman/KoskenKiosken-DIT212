@@ -42,9 +42,7 @@ public class Model {
 
     public void parseFromIDatabase(IDatabase db){
         List<IProduct> listFromDB =  db.readProducts();
-        for (IProduct p: listFromDB) {
-            productList.add(p);
-        }
+        productList.addAll(listFromDB);
     }
 
     /**
@@ -64,7 +62,7 @@ public class Model {
      */
 
     public List<IProduct> listOfProducts(){
-        return new ArrayList<IProduct>(productList);
+        return new ArrayList<>(productList);
     }
 
     /**
@@ -91,6 +89,10 @@ public class Model {
         cart.addToCart(product);
     }
 
+    /**
+     * get the size of cart.
+     * @return the size of the cart.
+     */
     public int getSizeOfCart(){
         return cart.getSizeofCart();
     }
@@ -136,4 +138,34 @@ public class Model {
         return sum;
     }
 
+    /**
+     * user makes a purchase of items. The cart is then emptied.
+     */
+
+    public void purchase(){
+        loggedInUser = loggedInUser.purchase(getPrice());
+        cart.emptyCart();
+    }
+
+    /**
+     * aggregation method for cart operation viewCart
+     * @return a list of products in the cart.
+     */
+    public List<IProduct> viewCart(){
+        return cart.viewCart();
+    }
+
+    /**
+     * aggregation method for removing a product from cart.
+     * @param product product to remove.
+     */
+    public void removeFromCart(IProduct product){
+        cart.removeFromCart(product);
+    }
+
+    /**
+     * aggregation method for setting the cart.
+     * @param list the list of products of which to put in the cart.
+     */
+    public void setCart(List<IProduct> list){cart.setCart(list);}
 }
