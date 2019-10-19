@@ -13,9 +13,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.dit212.group1.koskenkiosken.Dialogs.Checkout.DialogCheckout;
+import com.dit212.group1.koskenkiosken.Dialogs.Checkout.DialogCheckoutFactory;
 import com.dit212.group1.koskenkiosken.Dialogs.Checkout.ICheckoutData;
 import com.dit212.group1.koskenkiosken.Dialogs.Checkout.ICheckoutResponseListener;
+import com.dit212.group1.koskenkiosken.Dialogs.Checkout.IDialogCheckout;
 import com.dit212.group1.koskenkiosken.Model.Cart.ICart;
 import com.dit212.group1.koskenkiosken.Model.Model;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
@@ -137,13 +138,23 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
     }
 
     /**
-     * binds the floating action button to dialog for checkout.
+     * binds the floating action button to the creation fo a dialog.
      */
     private void bindFab(){
         fab.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                DialogCheckout dc = new DialogCheckout(v.getContext(), new ICheckoutData() {
+
+                // buy button listener.
+                ICheckoutResponseListener listener = new ICheckoutResponseListener() {
+                    @Override
+                    public void actOnPositiveResponse() {
+                        Purchase();
+                    }
+                };
+
+                // dataprovider for textfields.
+                ICheckoutData data = new ICheckoutData() {
                     @Override
                     public int getQuantity() {
                         return m.getSizeOfCart();
@@ -153,21 +164,12 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
                     public int getSum() {
                         return m.getPrice();
                     }
-                });
-                dc.addResponseListener(new ICheckoutResponseListener() {
-                    @Override
-                    public void actOnPositiveResponse() {
-                        Purchase();
-                    }
+                };
 
-                    @Override
-                    public void actOnNegativeResponse() {
-                        /*
-                        not implemented
-                         */
-                    }
-                });
+                // create via factory
+                IDialogCheckout dc = DialogCheckoutFactory.create(v.getContext(), listener,data);
 
+                // create and inflate.
                 dc.show();
             }
         });

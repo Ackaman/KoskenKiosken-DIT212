@@ -11,9 +11,4 @@ public interface ICheckoutResponseListener {
      * action on positive button press in dialog.
      */
     void actOnPositiveResponse();
-
-    /**
-     * action on negative button press in dialog
-     */
-    void actOnNegativeResponse();
 }

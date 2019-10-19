@@ -19,28 +19,28 @@ import java.util.List;
  * Description: Dialog window for checkout  (buying products in cart).
  */
 
-public class DialogCheckout extends Dialog {
+class DialogCheckout extends Dialog implements IDialogCheckout{
     private final Context c;
 
     private Button positiveButton;
     private TextView negativeButton;
     private TextView textMessage;
 
-    private final ICheckoutData data;
+    private ICheckoutData data;
     private final List<ICheckoutResponseListener> listeners;
 
 
     /**
      * constructor
      * @param context context of which the dialog is loaded.
-     * @param data data provider for stringvariables in textfields.
      */
-    public DialogCheckout(@NonNull Context context,  ICheckoutData data) {
+    DialogCheckout(@NonNull Context context) {
         super(context);
         this.c = context;
-        this.data = data;
         listeners = new LinkedList<>();
     }
+
+    public void setDataProvider(ICheckoutData data){ this.data = data;}
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -52,7 +52,7 @@ public class DialogCheckout extends Dialog {
         this.negativeButton = findViewById(R.id.negative_response_text_field);
         this.textMessage = findViewById(R.id.text_message_checkout);
 
-        initTexts();
+        initTexts(data);
         bindButtons();
     }
 
@@ -60,7 +60,7 @@ public class DialogCheckout extends Dialog {
      * sets all text fields in dialog, including header/title.
      */
 
-    private void initTexts(){
+    private void initTexts(@NonNull ICheckoutData data){
         this.setTitle("Checkout");
         String quantity = Integer.toString(data.getQuantity());
         String sumPrice = Integer.toString(data.getSum());
@@ -77,7 +77,6 @@ public class DialogCheckout extends Dialog {
         negativeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {
-                notifyListenersNegative();
                 dismiss();
             }
         });
@@ -109,11 +108,4 @@ public class DialogCheckout extends Dialog {
             l.actOnPositiveResponse();
     }
 
-    /**
-     * notifies potential listeners that negative button has been pressed.
-     */
-    private void notifyListenersNegative(){
-        for (ICheckoutResponseListener l : listeners)
-            l.actOnNegativeResponse();
-    }
 }
