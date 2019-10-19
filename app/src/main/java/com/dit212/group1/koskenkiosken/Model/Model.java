@@ -156,10 +156,16 @@ public class Model {
     }
 
     /**
-     * removes a product from cart.
+     * aggregation method for removing a product from cart.
      * @param product product to remove.
      */
     public void removeFromCart(IProduct product){
         cart.removeFromCart(product);
     }
+
+    /**
+     * aggregation method for setting the cart.
+     * @param list the list of products of which to put in the cart.
+     */
+    public void setCart(List<IProduct> list){cart.setCart(list);}
 }

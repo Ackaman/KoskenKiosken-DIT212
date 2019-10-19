@@ -15,7 +15,7 @@ public class ProductPressedView extends AppCompatActivity {
     /**
      * runs when activity is started.
      * checks for previous model before creating a new.
-     * @param savedInstanceState
+     * @param savedInstanceState not used.
      */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
@@ -26,7 +26,7 @@ public class ProductPressedView extends AppCompatActivity {
 
         if (product != null) {
             String productName = product.getName();
-            Integer productPrice = product.getPrice();
+            int productPrice = product.getPrice();
             String productDescription = product.getDescription();
             String productPriceKr = productPrice + " Kr";
 
