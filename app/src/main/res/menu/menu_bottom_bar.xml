@@ -8,6 +8,11 @@
         android:title="@string/actionbar_store"
         app:showAsAction="always"/>
     <item
+        android:id="@+id/recommendations"
+        android:icon="@drawable/ic_star_black_24dp"
+        android:title="@string/rekommendera_produkt"
+        app:showAsAction="always"/>
+    <item
         android:id="@+id/account"
         android:icon="@drawable/ic_action_account_icon"
         android:title="@string/actionbar_account"
@@ -17,5 +22,6 @@
         android:id="@+id/cart_bottom"
         android:icon="@drawable/bottom_bar_checkout"
         android:title="@string/cart_button"
-        app:showAsAction="ifRoom"/>
+        app:showAsAction="ifRoom"
+        />
 </menu>
