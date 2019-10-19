@@ -2,6 +2,7 @@ package com.dit212.group1.koskenkiosken.Dialogs.Checkout;
 
 import android.app.Dialog;
 import android.content.Context;
+import android.os.Bundle;
 import android.view.View;
 import android.widget.Button;
 import android.widget.TextView;
@@ -21,9 +22,9 @@ import java.util.List;
 public class DialogCheckout extends Dialog {
     private final Context c;
 
-    private final Button positiveButton;
-    private final Button negativeButton;
-    private final TextView textMessage;
+    private Button positiveButton;
+    private TextView negativeButton;
+    private TextView textMessage;
 
     private final ICheckoutData data;
     private final List<ICheckoutResponseListener> listeners;
@@ -38,12 +39,17 @@ public class DialogCheckout extends Dialog {
         super(context);
         this.c = context;
         this.data = data;
-
         listeners = new LinkedList<>();
+    }
 
-        // bind components
+    @Override
+    protected void onCreate(Bundle savedInstanceState) {
+        super.onCreate(savedInstanceState);
+        setContentView(R.layout.dialog_checkout);
+
+
         this.positiveButton = findViewById(R.id.positive_response_button);
-        this.negativeButton = findViewById(R.id.negative_response_button);
+        this.negativeButton = findViewById(R.id.negative_response_text_field);
         this.textMessage = findViewById(R.id.text_message_checkout);
 
         initTexts();
@@ -67,6 +73,7 @@ public class DialogCheckout extends Dialog {
      */
 
     private void bindButtons(){
+
         negativeButton.setOnClickListener(new View.OnClickListener() {
             @Override
             public void onClick(View v) {

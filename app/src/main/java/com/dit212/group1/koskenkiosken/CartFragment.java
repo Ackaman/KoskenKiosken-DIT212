@@ -1,6 +1,5 @@
 package com.dit212.group1.koskenkiosken;
 
-
 import android.content.Context;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -14,14 +13,18 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
+import com.dit212.group1.koskenkiosken.Dialogs.Checkout.DialogCheckout;
+import com.dit212.group1.koskenkiosken.Dialogs.Checkout.ICheckoutData;
+import com.dit212.group1.koskenkiosken.Dialogs.Checkout.ICheckoutResponseListener;
 import com.dit212.group1.koskenkiosken.Model.Cart.ICart;
 import com.dit212.group1.koskenkiosken.Model.Model;
-
+import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter.CartProductClickListener {
 
     private ICart cart;
     private ProductFeedRecyclerAdapter pAdapter;
+    private FloatingActionButton fab;
     private FragmentListener listener;
     private Model m;
 
@@ -52,8 +55,10 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
 
-        RecyclerView rv = view.findViewById(R.id.recyclerview);
+        fab = view.findViewById(R.id.cart_fab_checkout);
+        bindFab();
 
+        RecyclerView rv = view.findViewById(R.id.recyclerview);
         RecyclerView.LayoutManager llm = new LinearLayoutManager(getContext());
         pAdapter = (ProductFeedRecyclerAdapterFactory.createCartFragment(cart.viewCart(), this));
         rv.setAdapter(pAdapter);
@@ -129,5 +134,54 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
     public void onDetach() {
         super.onDetach();
         listener = null;
+    }
+
+    /**
+     * binds the floating action button to dialog for checkout.
+     */
+    private void bindFab(){
+        fab.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                DialogCheckout dc = new DialogCheckout(v.getContext(), new ICheckoutData() {
+                    @Override
+                    public int getQuantity() {
+                        return m.getSizeOfCart();
+                    }
+
+                    @Override
+                    public int getSum() {
+                        return m.getPrice();
+                    }
+                });
+                dc.addResponseListener(new ICheckoutResponseListener() {
+                    @Override
+                    public void actOnPositiveResponse() {
+                        Purchase();
+                    }
+
+                    @Override
+                    public void actOnNegativeResponse() {
+                        /*
+                        not implemented
+                         */
+                    }
+                });
+
+                dc.show();
+            }
+        });
+    }
+
+    /**
+     * makes a single purchase. will have to be redone in future with an external transaction handler.
+     */
+    private void Purchase(){
+        m.purchase();
+        pAdapter.updateList(m.getCart().viewCart());
+        listener.onInputStoreSent(m.getCart().viewCart());
+
+        // for feedback.
+        Toast.makeText(getContext(),"Tack för ditt köp", Toast.LENGTH_SHORT).show();
     }
 }
