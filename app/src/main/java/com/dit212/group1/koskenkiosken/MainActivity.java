@@ -29,6 +29,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
     private AccountFragment accountFragment;
     private StoreFragment storeFragment;
     private CartFragment cartFragment;
+    private ProductRecommendationsFragment recommendationFragment;
     private BottomNavigationView bnv;
     private Model m;
     private TextView cartBubble;
@@ -60,6 +61,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         if (accountFragment == null) accountFragment = new AccountFragment(m.getLoggedInUser());
         if (storeFragment == null) storeFragment = new StoreFragment(m);
         if (cartFragment == null) cartFragment = new CartFragment(m);
+        if (recommendationFragment == null) recommendationFragment = new ProductRecommendationsFragment(m);
     }
 
     /**
@@ -107,6 +109,8 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
                     case R.id.cart_bottom:
                         setFragment(cartFragment);
                         break;
+                    case  R.id.recommendations:
+                        setFragment(recommendationFragment);
                 }
                 return true;
             }

@@ -44,7 +44,6 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     private FragmentListener listener;
     private ProductFeedRecyclerAdapter pAdapter;
     private List<IProduct> originalProducts;
-    private ProductRecommendationsFragment productRecommendationsFragment;
 
 
     public StoreFragment() {
@@ -83,7 +82,6 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         pAdapter = ProductFeedRecyclerAdapterFactory.createStoreFragment(products, this);
         rv.setAdapter(pAdapter);
         rv.setLayoutManager(llm);
-        initFragment(m);
     }
 
     /**
@@ -106,18 +104,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         inflater.inflate(R.menu.menu_actionbar, menu);
         bindSearchButton(menu);
         bindSortByButton(menu);
-        bindProductRecommendationsButton(menu);
 
-    }
-
-    /**
-     * Initializes the fragment/s that is found within the StoreFragment
-     * @param m A reference to the model
-     */
-    private void initFragment(Model m){
-        if (productRecommendationsFragment == null){
-            productRecommendationsFragment = new ProductRecommendationsFragment(m);
-        }
     }
 
     /**
@@ -164,30 +151,6 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         bindDialogueListOptions(listview);
     }
 
-    /**
-     * Binds the button in the actionbar and handles the event when it's clicked
-     * @param menu menu
-     */
-    private void bindProductRecommendationsButton(@NonNull Menu menu){
-        MenuItem button = menu.findItem(R.id.reccomendations);
-        button.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
-            @Override
-            public boolean onMenuItemClick(MenuItem item) {
-                openProductRecommendationsFragment();
-                return false;
-            }
-        });
-    }
-
-    /**
-     * Opens the ProductRecommendationFragment
-     */
-    private void openProductRecommendationsFragment(){
-        FragmentManager fm = getFragmentManager();
-        FragmentTransaction ft = fm.beginTransaction();
-        ft.replace(R.id.main_frame, productRecommendationsFragment);
-        ft.commit();
-    }
 
     private void bindDialogueListOptions(ListView lv) {
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {

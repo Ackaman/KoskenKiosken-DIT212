@@ -17,13 +17,5 @@
         android:visible="true"
         app:actionViewClass="android.widget.SearchView"
         app:showAsAction="always" />
-    <item
-        android:id="@+id/reccomendations"
-        android:enabled="true"
-        android:icon="@drawable/ic_filter_list_black_24dp"
-        android:title="@string/produktrekommendation"
-        android:visible="true"
-
-        app:showAsAction="always" />
 
 </menu>
