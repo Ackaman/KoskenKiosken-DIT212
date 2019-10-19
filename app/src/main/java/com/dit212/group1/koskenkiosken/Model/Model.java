@@ -136,4 +136,13 @@ public class Model {
         return sum;
     }
 
+    /**
+     * user makes a purchase of items. The cart is then emptied.
+     */
+
+    public void purchase(){
+        loggedInUser = loggedInUser.purchase(getPrice());
+        cart.emptyCart();
+    }
+
 }

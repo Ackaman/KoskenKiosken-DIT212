@@ -1,7 +1,8 @@
 package com.dit212.group1.koskenkiosken.Model.User;
 
 /**
- * representation of a user.
+ * Immutable representation of a user.
+ *
  */
 class User implements IAccount {
 
@@ -33,5 +34,15 @@ class User implements IAccount {
 
     public int getCredits() {
         return credits;
+    }
+
+    /**
+     * debits the user an amount of credits.
+     * @param sumOfPrice the sum of which to debit.
+     * @return a new object with drawn credits.
+     */
+    @Override
+    public IAccount purchase(int sumOfPrice) {
+        return new User(userName, credits - sumOfPrice);
     }
 }
