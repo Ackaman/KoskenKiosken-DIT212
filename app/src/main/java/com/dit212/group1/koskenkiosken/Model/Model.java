@@ -42,9 +42,7 @@ public class Model {
 
     public void parseFromIDatabase(IDatabase db){
         List<IProduct> listFromDB =  db.readProducts();
-        for (IProduct p: listFromDB) {
-            productList.add(p);
-        }
+        productList.addAll(listFromDB);
     }
 
     /**
@@ -64,7 +62,7 @@ public class Model {
      */
 
     public List<IProduct> listOfProducts(){
-        return new ArrayList<IProduct>(productList);
+        return new ArrayList<>(productList);
     }
 
     /**
@@ -91,6 +89,10 @@ public class Model {
         cart.addToCart(product);
     }
 
+    /**
+     * get the size of cart.
+     * @return the size of the cart.
+     */
     public int getSizeOfCart(){
         return cart.getSizeofCart();
     }
@@ -153,4 +155,11 @@ public class Model {
         return cart.viewCart();
     }
 
+    /**
+     * removes a product from cart.
+     * @param product product to remove.
+     */
+    public void removeFromCart(IProduct product){
+        cart.removeFromCart(product);
+    }
 }
