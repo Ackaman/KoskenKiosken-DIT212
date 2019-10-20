@@ -21,60 +21,66 @@ public class Model {
      * constructor
      */
 
-    public Model(){
+    public Model() {
         productList = new ArrayList<>();
         cart = new Cart<>();
     }
 
     /**
      * sets a logged in user.
+     *
      * @param user the user to be logged in
      */
 
-    public void setLoggedInUser(IAccount user){
+    public void setLoggedInUser(IAccount user) {
         this.loggedInUser = user;
     }
 
     /**
      * parses IProducts from a persistent storage.
+     *
      * @param db the persistent storage of which to parse data from.
      */
 
-    public void parseFromIDatabase(IDatabase db){
-        List<IProduct> listFromDB =  db.readProducts();
+    public void parseFromIDatabase(IDatabase db) {
+        List<IProduct> listFromDB = db.readProducts();
         productList.addAll(listFromDB);
     }
 
     /**
      * Sends data containing the product that was recommended, and the name of the logged in user
      * who recommended the product to the persistent storage
-     * @param db the persistent storage where we send the data
+     *
+     * @param db                 the persistent storage where we send the data
      * @param productToRecommend The product that was recommended
-     * @param whoRecommended The logged in user who recommended the product
+     * @param whoRecommended     The logged in user who recommended the product
      */
-    public void queryRecommendedProductToDatabase(IDatabase db, String productToRecommend, String whoRecommended){
+    public void queryRecommendedProductToDatabase(IDatabase db, String productToRecommend, String whoRecommended) {
         db.writeRecommendedProductToDatabase(productToRecommend, whoRecommended);
     }
 
     /**
      * converts Products to IProduct for encapsulation purposes and returns the full list.
+     *
      * @return a list of IProducts mirrored from internal productList
      */
 
-    public List<IProduct> listOfProducts(){
+    public List<IProduct> listOfProducts() {
         return new ArrayList<>(productList);
     }
 
     /**
      * returns the currently logged in User.
+     *
      * @return the logged in user.
      */
-    public IAccount getLoggedInUser(){
+    public IAccount getLoggedInUser() {
         return loggedInUser;
     }
 
     /**
      * get the cart from the model
+     *
      * @return the shopping cart in the model.
      */
     public ICart getCart() {
@@ -83,27 +89,30 @@ public class Model {
 
     /**
      * add product to cart.
+     *
      * @param product product to add to cart.
      */
-    public void addToCart(IProduct product){
+    public void addToCart(IProduct product) {
         cart.addToCart(product);
     }
 
     /**
      * get the size of cart.
+     *
      * @return the size of the cart.
      */
-    public int getSizeOfCart(){
+    public int getSizeOfCart() {
         return cart.getSizeofCart();
     }
 
     /**
      * returns a filtered version of the inventory.
+     *
      * @param filter the string filter of which to filter.
      * @return the filtered list.
      */
 
-    public List<IProduct> filterListByString(String filter){
+    public List<IProduct> filterListByString(String filter) {
         ArrayList<IProduct> sortedProduct = new ArrayList<>();
         for (IProduct product : listOfProducts()) {
             if (product.getName().toLowerCase().contains(filter.toLowerCase())) {
@@ -115,19 +124,21 @@ public class Model {
 
     /**
      * returns a sorted product list.
+     *
      * @param comp the comparator of which to use to sort.
      * @return a sorted list.
      */
-    public List<IProduct> sortProducts(Comparator<IProduct> comp){
+    public List<IProduct> sortProducts(Comparator<IProduct> comp) {
         List<IProduct> products = new ArrayList<>(listOfProducts());
-        Collections.sort(products,comp);
-        Log.i("MODEL",products.toString());
+        Collections.sort(products, comp);
+        Log.i("MODEL", products.toString());
         return products;
     }
 
 
     /**
      * sums the price of all items in cart.
+     *
      * @return the sum of all item prices in cart.
      */
     public int getPrice() {
@@ -142,30 +153,40 @@ public class Model {
      * user makes a purchase of items. The cart is then emptied.
      */
 
-    public void purchase(){
-        loggedInUser = loggedInUser.purchase(getPrice());
-        cart.emptyCart();
+    public boolean purchase() {
+        int sum = getPrice();
+        if (loggedInUser.canMakePurchase(sum)) {
+            loggedInUser = loggedInUser.purchase(getPrice());
+            cart.emptyCart();
+            return true;
+        } else
+            return false;
     }
 
     /**
      * aggregation method for cart operation viewCart
+     *
      * @return a list of products in the cart.
      */
-    public List<IProduct> viewCart(){
+    public List<IProduct> viewCart() {
         return cart.viewCart();
     }
 
     /**
      * aggregation method for removing a product from cart.
+     *
      * @param product product to remove.
      */
-    public void removeFromCart(IProduct product){
+    public void removeFromCart(IProduct product) {
         cart.removeFromCart(product);
     }
 
     /**
      * aggregation method for setting the cart.
+     *
      * @param list the list of products of which to put in the cart.
      */
-    public void setCart(List<IProduct> list){cart.setCart(list);}
+    public void setCart(List<IProduct> list) {
+        cart.setCart(list);
+    }
 }
