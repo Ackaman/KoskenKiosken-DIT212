@@ -67,7 +67,7 @@ class Product implements IProduct, Parcelable, Serializable {
      */
 
     public IProduct setName(String name) {
-        return ProductFactory.create(name, this.price, this.description);
+        return new Product(name, price, description);
     }
 
     /**
@@ -92,7 +92,7 @@ class Product implements IProduct, Parcelable, Serializable {
      * @param description the description ot give the product (ex. kolsyrad dryck)
      */
     public IProduct setDescription(String description) {
-        return ProductFactory.create(this.name, this.price, description);
+        return new Product(name, price, description);
     }
 
     /**
@@ -101,11 +101,7 @@ class Product implements IProduct, Parcelable, Serializable {
      */
     @Override
     public IProduct setPrice(int price) {
-        return ProductFactory.create(this.name, price, this.description);
-    }
-
-    public Product getObject() {
-        return this;
+        return new Product(name, price, description);
     }
 
     @Override
