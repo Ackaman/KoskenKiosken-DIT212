@@ -383,4 +383,96 @@ public class ModelTest {
         Model m = new Model();
         assertEquals(0,m.getPrice());
     }
+
+    /**
+     * Tests that viewCart returns one product.
+     */
+    @Test
+    public void viewCartWithOneProduct() {
+        Model m = new Model();
+        m.addToCart(products.get(0));
+        assertEquals(m.viewCart().size(),1);
+    }
+
+    /**
+     * Tests that viewCart returns more than one product.
+     */
+    @Test
+    public void viewCartWithMoreThanOneProduct() {
+        Model m = new Model();
+        m.addToCart(products.get(0));
+        m.addToCart(products.get(0));
+        assertEquals(m.viewCart().size(),2);
+    }
+
+    /**
+     * Tests that viewCart returns empty when cart is empty.
+     */
+    @Test
+    public void viewCartWithNoItemsReturnsTheEmptyList() {
+        Model m = new Model();
+        assertTrue(m.viewCart().isEmpty());
+    }
+
+    /**
+     * Tests that setCart can set a cart with one item to an empty list.
+     */
+    @Test
+    public void setCartWithOneProductToAnEmptyList() {
+        Model m = new Model();
+        m.addToCart(products.get(0));
+        ArrayList productsEmpty = new ArrayList<>();
+        m.setCart(productsEmpty);
+        assertTrue(m.viewCart().isEmpty());
+    }
+
+    /**
+     * Tests that setCart can set a cart with more than one item to an empty list.
+     */
+    @Test
+    public void setCartWithMoreThanOneProductToAnEmptyList() {
+        Model m = new Model();
+        m.addToCart(products.get(0));
+        m.addToCart(products.get(1));
+        m.addToCart(products.get(2));
+        ArrayList productsEmpty = new ArrayList<>();
+        m.setCart(productsEmpty);
+        assertTrue(m.viewCart().isEmpty());
+    }
+
+    /**
+     * Tests that setCart can set a empty cart to a cart with more than one item.
+     */
+    @Test
+    public void setCartEmptyCartToEmptyCart() {
+        Model m = new Model();
+        ArrayList productsEmpty = new ArrayList<>();
+        m.setCart(productsEmpty);
+        m.setCart(products);
+        assertEquals(m.viewCart(), products);
+    }
+
+    /**
+     * Tests that cart with one item can remove the item.
+     */
+    @Test
+    public void removeFromCartOneItem() {
+        Model m = new Model();
+        m.addToCart(products.get(0));
+        m.removeFromCart(m.viewCart().get(0));
+        assertTrue(m.viewCart().isEmpty());
+    }
+
+    /**
+     * Tests that cart with more than one item can remove the items.
+     */
+    @Test
+    public void removeFromCartMoreThanOneItem() {
+        Model m = new Model();
+        m.addToCart(products.get(3));
+        m.addToCart(products.get(2));
+        m.removeFromCart(m.viewCart().get(0));
+        m.removeFromCart(m.viewCart().get(0));
+        assertTrue(m.viewCart().isEmpty());
+    }
 }
