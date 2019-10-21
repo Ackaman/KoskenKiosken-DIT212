@@ -47,9 +47,6 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
 
-        Intent loginIntent = new Intent(this, LoginActivity.class);
-        startActivity(loginIntent);
-
         setContentView(R.layout.activity_main);
 
         bnv = findViewById(R.id.bottom_navigation);
