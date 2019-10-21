@@ -1,6 +1,8 @@
 package com.dit212.group1.koskenkiosken.data;
 
 /**
+ * @author Albin Otterhäll <gusalbiot@student.gu.se>
+ *
  * A generic class that holds a result success w/ data or an error exception.
  */
 public class Result<T> {
