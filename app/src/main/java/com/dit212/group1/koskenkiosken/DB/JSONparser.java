@@ -20,7 +20,7 @@ public class JSONparser implements IPersistentStorage{
                 "{\"description\":\"description 2\",\"name\":\"Nocco\",\"price\":1}," +
                 "{\"description\":\"description 3\",\"name\":\"HariboNallar\",\"price\":3}," +
                 "{\"description\":\"description 4\",\"name\":\"Kaffepaket\",\"price\":4}," +
-                "{\"description\":\"description 4\",\"name\":\"Öl\",\"price\":15}," +
+                "{\"description\":\"description 4\",\"name\":\"Carlsberg\",\"price\":15}," +
                 "{\"description\":\"description 4\",\"name\":\"Kaffe\",\"price\":2}," +
                 "{\"description\":\"description 4\",\"name\":\"Tuggummi\",\"price\":8}," +
                 "{\"description\":\"description 4\",\"name\":\"Ballerina\",\"price\":15}," +

@@ -39,10 +39,20 @@ class User implements IAccount {
     /**
      * debits the user an amount of credits.
      * @param sumOfPrice the sum of which to debit.
-     * @return a new object with drawn credits.
+     * @return a new object with drawn credits if purchase could be done.
      */
     @Override
     public IAccount purchase(int sumOfPrice) {
+        if (!canMakePurchase(sumOfPrice)) return this;
         return new User(userName, credits - sumOfPrice);
+    }
+
+    /**
+     * checks if an account has enough credits to make a purchase
+     * @param sum the sum of which to check
+     * @return false if user has insufficient funds.
+     */
+    public boolean canMakePurchase(int sum){
+        return sum <= credits;
     }
 }
