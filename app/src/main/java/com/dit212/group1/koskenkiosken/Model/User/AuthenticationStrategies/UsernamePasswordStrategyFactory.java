@@ -1,4 +1,4 @@
-package com.dit212.group1.koskenkiosken.Model.AuthenticationStrategies;
+package com.dit212.group1.koskenkiosken.Model.User.AuthenticationStrategies;
 
 /**
  * @author Albin Otterhäll

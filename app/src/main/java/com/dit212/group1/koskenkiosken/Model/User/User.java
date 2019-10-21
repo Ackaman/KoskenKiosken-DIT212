@@ -1,7 +1,7 @@
 package com.dit212.group1.koskenkiosken.Model.User;
 
-import com.dit212.group1.koskenkiosken.Model.AuthenticationStrategies.AuthenticationStrategy;
-import com.dit212.group1.koskenkiosken.Model.AuthenticationStrategies.UsernamePasswordStrategyFactory;
+import com.dit212.group1.koskenkiosken.Model.User.AuthenticationStrategies.AuthenticationStrategy;
+import com.dit212.group1.koskenkiosken.Model.User.AuthenticationStrategies.UsernamePasswordStrategyFactory;
 
 /**
  * @author Albin Otterhäll
