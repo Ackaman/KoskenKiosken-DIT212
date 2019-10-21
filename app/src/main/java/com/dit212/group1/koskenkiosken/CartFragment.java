@@ -173,14 +173,17 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
     }
 
     /**
-     * makes a single purchase. will have to be redone in future with an external transaction handler.
+     * tries to make a single purchase. will have to be redone in future with an external transaction handler.
      */
     private void Purchase(){
-        m.purchase();
-        pAdapter.updateList(m.viewCart());
-        listener.onInputStoreSent(m.viewCart());
-
-        // for feedback.
-        Toast.makeText(getContext(),"Tack för ditt köp", Toast.LENGTH_SHORT).show();
+        boolean transactionCompleted = m.purchase();
+        if (transactionCompleted) {
+            pAdapter.updateList(m.viewCart());
+            listener.onInputStoreSent(m.viewCart());
+            // for feedback.
+            Toast.makeText(getContext(), "Tack för ditt köp", Toast.LENGTH_SHORT).show();
+        } else {
+            Toast.makeText(getContext(), "Inte nog med credits", Toast.LENGTH_SHORT).show();
+        }
     }
 }

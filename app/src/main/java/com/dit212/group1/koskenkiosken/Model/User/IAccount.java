@@ -23,4 +23,11 @@ public interface IAccount {
      * @param sumOfPrice the sum of which to debit.
      */
     IAccount purchase(int sumOfPrice);
+
+    /**
+     * checks if an account has enough credits to make a purchase
+     * @param sum the sum of which to check
+     * @return false if user has insufficient funds.
+     */
+    boolean canMakePurchase(int sum);
 }
