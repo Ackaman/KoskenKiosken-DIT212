@@ -7,12 +7,9 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
-
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
-
 import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
-
 import java.util.List;
 
 /**
@@ -53,8 +50,9 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
      * @return an empty GenericViewHolder object.
      */
 
-    @Override
+    @NonNull
     public GenericViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType){
+
         View view;
         if (fragType == FragmentType.CART) {
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.productcard_cart, parent, false);
@@ -64,8 +62,9 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
             view.setLayoutParams(lp);
             return new CartViewHolder(view, cartListener);
         }
-        //Store (fragmentType == 0)
-        else if (fragType == FragmentType.STORE){
+        //else if(fragType == FragmentType.STORE)
+
+        else{
             view = LayoutInflater.from(parent.getContext()).inflate(R.layout.productcard_store,parent,false);
             RecyclerView.LayoutParams lp = new RecyclerView.LayoutParams(
                     RecyclerView.LayoutParams.MATCH_PARENT,
@@ -73,8 +72,10 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
             view.setLayoutParams(lp);
             return new StoreViewHolder(view, storeListener);
         }
-        else return null;
+
+
     }
+
 
     /**
      * Binds product content to a ViewHolder (EG. Card). P
@@ -114,7 +115,7 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
      * I.e Store View holder & Cart View holder
      */
     public abstract class GenericViewHolder extends RecyclerView.ViewHolder implements View.OnClickListener{
-        public GenericViewHolder(View itemView){
+        GenericViewHolder(View itemView){
             super(itemView);
         }
         public abstract void setDataOnView(int position);
@@ -124,15 +125,15 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
      * Defines the viewholder for the list in StoreFragment
      */
     public class StoreViewHolder extends GenericViewHolder{
-        public final View mView;
-        public final TextView productName;
-        public final TextView productPrice;
-        public final ImageButton addToCart_button;
+        final View mView;
+        final TextView productName;
+        final TextView productPrice;
+        final ImageButton addToCart_button;
 
         StoreProductClickListener productClickListener;
         StoreProductClickListener addToCartClickListener;
 
-        public StoreViewHolder(@NonNull View itemView, StoreProductClickListener productClickListener){
+        StoreViewHolder(@NonNull View itemView, StoreProductClickListener productClickListener){
             super(itemView);
             mView = itemView;
             productName  = mView.findViewById(R.id.product_name);
@@ -153,7 +154,8 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
                 String name = products.get(position).getName();
                 if(name != null){
                     this.productName.setText(name);
-                    this.productPrice.setText(Integer.toString(products.get(position).getPrice()));
+                    String productPrice = Integer.toString(products.get(position).getPrice());
+                    this.productPrice.setText(productPrice);
                 }
 
             }catch(Exception e){
@@ -176,9 +178,9 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
      * Defines the viewholder for the list in CartFragment
      */
     public class CartViewHolder extends GenericViewHolder{
-        public final View mView;
-        public final TextView productName;
-        public final TextView productPrice;
+        final View mView;
+        final TextView productName;
+        final TextView productPrice;
 
         ImageButton decrementButton;
         ImageButton incrementButton;
@@ -186,7 +188,7 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         CartProductClickListener incrementListener;
         CartProductClickListener decrementListener;
 
-        public CartViewHolder(@NonNull View itemView, CartProductClickListener productClickListener){
+        CartViewHolder(@NonNull View itemView, CartProductClickListener productClickListener){
             super(itemView);
             mView = itemView;
             productName = mView.findViewById(R.id.cart_product_name);
@@ -208,7 +210,8 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
             String name = products.get(position).getName();
             if(name != null){
                 this.productName.setText(name);
-                this.productPrice.setText(Integer.toString(products.get(position).getPrice()));
+                String productPrice = Integer.toString(products.get(position).getPrice());
+                this.productPrice.setText(productPrice);
             }
         }
 
@@ -233,19 +236,15 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
      * Interface for OnClickListeners  for each object of product view.
      * Add more methods if more buttons/listeners are needed.
      */
-    public interface ProductClickListener {
-        void onProductClick(int position);
-    }
 
-    public interface StoreProductClickListener extends ProductClickListener{
+    public interface StoreProductClickListener{
         void onAddToCartClick(int position);
         void onProductClick(int position);
     }
 
-    public interface CartProductClickListener extends ProductClickListener{
+    public interface CartProductClickListener{
         void onIncrementClick(int position);
         void onDecrementClick(int position);
-        void onRemoveFromCartClick(int position);
         void onProductClick(int position);
     }
 

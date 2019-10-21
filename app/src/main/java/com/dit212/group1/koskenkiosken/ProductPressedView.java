@@ -1,10 +1,7 @@
 package com.dit212.group1.koskenkiosken;
 
 import android.content.Intent;
-import android.graphics.drawable.Drawable;
-import android.media.Image;
 import android.os.Bundle;
-import android.widget.EditText;
 import android.widget.ImageView;
 import android.widget.TextView;
 
@@ -45,8 +42,16 @@ public class ProductPressedView extends AppCompatActivity {
             text3.setText(productDescription);
 
             ImageView imageview = findViewById(R.id.expandedProductImageView);
-            Integer a = getApplicationContext().getResources().getIdentifier(productName.toLowerCase(),"drawable",getPackageName());
+            int a = getApplicationContext().getResources().getIdentifier(productName.toLowerCase(),"drawable",getPackageName());
             imageview.setImageResource(a);
         }
+        
+    }
+
+    @Override
+    protected void onStop() {
+        super.onStop();
+        getDelegate().onStop();
+        finish();
     }
 }

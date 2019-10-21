@@ -7,12 +7,14 @@ import java.util.List;
 
     class ProductFeedRecyclerAdapterFactory {
 
-        static ProductFeedRecyclerAdapter createCartFragment(List<IProduct> products, ProductFeedRecyclerAdapter.CartProductClickListener productClickListener){
-            return new ProductFeedRecyclerAdapter(products,productClickListener);
+        static ProductFeedRecyclerAdapter createCartFragment(List<IProduct> products, ProductFeedRecyclerAdapter.CartProductClickListener productClickListener) {
+            return new ProductFeedRecyclerAdapter(products, productClickListener);
         }
 
-        static ProductFeedRecyclerAdapter createStoreFragment(List<IProduct> products, ProductFeedRecyclerAdapter.StoreProductClickListener productClickListener){
-            return new ProductFeedRecyclerAdapter(products,productClickListener);
+        static ProductFeedRecyclerAdapter createStoreFragment(List<IProduct> products, ProductFeedRecyclerAdapter.StoreProductClickListener productClickListener) {
+            return new ProductFeedRecyclerAdapter(products, productClickListener);
         }
     }
+
+
 
