@@ -58,14 +58,4 @@ public class JSONparser implements IPersistentStorage{
 
     }
 
-    /**
-     * returns the recommended products together with the user who recommended it.
-     * @return json string containing the data
-     */
-    @Override
-    public String getRecommendedProductJsonData() {
-        return recommendedProductJson;
-    }
-
-
 }
