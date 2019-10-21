@@ -137,8 +137,4 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
             m.parseFromIDatabase(DatabaseHelper.getDatabaseHelper());
         }
     }
-
-
-
-
 }
