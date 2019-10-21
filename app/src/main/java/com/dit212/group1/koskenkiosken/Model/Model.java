@@ -1,7 +1,5 @@
 package com.dit212.group1.koskenkiosken.Model;
 
-import android.util.Log;
-
 import com.dit212.group1.koskenkiosken.Model.Cart.Cart;
 import com.dit212.group1.koskenkiosken.Model.Cart.ICart;
 import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
@@ -83,7 +81,7 @@ public class Model {
      *
      * @return the shopping cart in the model.
      */
-    public ICart getCart() {
+    ICart getCart() {
         return cart;
     }
 
@@ -131,7 +129,6 @@ public class Model {
     public List<IProduct> sortProducts(Comparator<IProduct> comp) {
         List<IProduct> products = new ArrayList<>(listOfProducts());
         Collections.sort(products, comp);
-        Log.i("MODEL", products.toString());
         return products;
     }
 
