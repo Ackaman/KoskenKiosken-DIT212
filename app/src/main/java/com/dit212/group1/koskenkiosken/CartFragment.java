@@ -75,17 +75,6 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
     }
 
     /**
-     *
-     * Method is not yet used but logic goes here once implemented.
-     */
-    @Override
-    public void onRemoveFromCartClick(int position) {
-        Toast.makeText(getContext(),"onRemoveFromCartClick", Toast.LENGTH_SHORT).show();
-
-        pAdapter.updateList(m.viewCart());
-    }
-
-    /**
      * increases the amount of the clicked item by one.
      * @param position the index of the product to increment.
      */
