@@ -61,14 +61,7 @@ class Product implements IProduct, Parcelable, Serializable {
         return name;
     }
 
-    /**
-     * set the name of a given product
-     * @param name the name to set of a given product
-     */
 
-    public IProduct setName(String name) {
-        return new Product(name, price, description);
-    }
 
     /**
      * get the price of a given product
@@ -87,22 +80,6 @@ class Product implements IProduct, Parcelable, Serializable {
         return description;
     }
 
-    /**
-     * updated the description of a product.
-     * @param description the description ot give the product (ex. kolsyrad dryck)
-     */
-    public IProduct setDescription(String description) {
-        return new Product(name, price, description);
-    }
-
-    /**
-     * updates the price of a product
-     * @param price the price of which to give the product.
-     */
-    @Override
-    public IProduct setPrice(int price) {
-        return new Product(name, price, description);
-    }
 
     @Override
     public int describeContents() {
