@@ -11,11 +11,11 @@ class User implements IAccount {
      * The user's username.
      */
     final private String userName;
-    final private int credits;
 
     /**
-     * The user's password in plaintext
+     * The amount of credits the user have.
      */
+    final private int credits;
 
     /**
      * The user's password in plaintext
