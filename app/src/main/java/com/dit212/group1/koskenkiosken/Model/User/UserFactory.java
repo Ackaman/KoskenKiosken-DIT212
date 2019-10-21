@@ -16,8 +16,8 @@ public class UserFactory implements IAccountFactory {
      *
      * @return A `User` object
      */
-    public static IAccount create(String name, int credits, String password, String eMailAddress){
-        return new User(name, credits, password, eMailAddress);
+    public static IAccount create(String name, int credits, String password){
+        return new User(name, credits, password);
     }
 
     /**
@@ -30,7 +30,6 @@ public class UserFactory implements IAccountFactory {
         return new User(
                 "FirstUser",
                 10,
-                "password",
-                "fakemail@student.gu.se");
+                "password");
     }
 }
