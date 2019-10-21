@@ -6,7 +6,6 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
@@ -19,7 +18,6 @@ import java.util.List;
  * hidden constructor.
  */
 public class DatabaseHelper implements IDatabase {
-    private static String TAG = "DatabaseHelper"; // used for debugging
     private static DatabaseHelper dh;
     private static IPersistentStorage database = new JSONparser();
     private static Gson g = new Gson();
@@ -35,13 +33,10 @@ public class DatabaseHelper implements IDatabase {
      */
     @Override
     public List<IProduct> readProducts() {
-        List<IProduct> out = new ArrayList<>();
         String j = database.getJsonData();
         JsonElement je = g.fromJson(j, JsonElement.class);
         JsonArray jo = je.getAsJsonArray();
-        for (int i = 0; i < jo.size(); i++)
-            out.add(IProductDeserializer.deserialize(jo.get(i)));
-        return out;
+        return IProductDeserializer.deserialize(jo);
     }
 
     /**
