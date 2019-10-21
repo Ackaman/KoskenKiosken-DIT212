@@ -24,6 +24,8 @@
     <string name="dialog_checkout_positive_button">Ja!</string>
     <string name="dialog_checkout_negative_button">Nej</string>
     <string name="dialog_checkout_text_message">Köpa %1$s varor för %2$skr?</string>
+    <string name="increment">Increment</string>
+    <string name="decrement">Decrement</string>
 
     <string-array name="sorting_option">
         <item>Name - ascending</item>

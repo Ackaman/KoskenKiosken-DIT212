@@ -2,7 +2,6 @@ package com.dit212.group1.koskenkiosken;
 
 import android.content.Intent;
 import android.os.Bundle;
-import android.widget.EditText;
 import android.widget.TextView;
 
 import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
@@ -12,9 +11,11 @@ import androidx.appcompat.app.AppCompatActivity;
 
 public class ProductPressedView extends AppCompatActivity {
 
+
     /**
      * runs when activity is started.
      * checks for previous model before creating a new.
+     *
      * @param savedInstanceState not used.
      */
     @Override
@@ -33,7 +34,7 @@ public class ProductPressedView extends AppCompatActivity {
             TextView text1 = findViewById(R.id.productName2);
             text1.setText(productName);
 
-            EditText text2 = findViewById(R.id.productPrice2);
+            TextView text2 = findViewById(R.id.productPrice2);
             text2.setText(productPriceKr);
 
             TextView text3 = findViewById(R.id.productDescription);
