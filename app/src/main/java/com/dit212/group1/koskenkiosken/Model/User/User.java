@@ -1,8 +1,5 @@
 package com.dit212.group1.koskenkiosken.Model.User;
 
-import com.dit212.group1.koskenkiosken.Model.User.AuthenticationStrategies.AuthenticationStrategy;
-import com.dit212.group1.koskenkiosken.Model.User.AuthenticationStrategies.UsernamePasswordStrategyFactory;
-
 /**
  * @author Albin Otterhäll
  *
@@ -12,16 +9,29 @@ class User implements IAccount {
 
     final private String userName;
     final private int credits;
-    private AuthenticationStrategy authenticationStrategy;
+
+    /**
+     * The user's password in plaintext
+     */
+    final private String password;
+
+    /**
+     * The user's e-mail address in plaintext
+     */
+    final private String eMailAddress;
 
     /**
      * constructor
      * @param userName the name to set of the constructed user.
      * @param credits the number of credits to give the contructed user.
+     * @param password TODO
+     * @param eMailAddress TODO
      */
-    User(String userName, int credits) {
+    User(String userName, int credits, String password, String eMailAddress) {
         this.userName = userName;
         this.credits = credits;
+        this.password = password;
+        this.eMailAddress = eMailAddress;
     }
 
     /**
@@ -49,7 +59,7 @@ class User implements IAccount {
     @Override
     public IAccount purchase(int sumOfPrice) {
         if (!canMakePurchase(sumOfPrice)) return this;
-        return new User(userName, credits - sumOfPrice);
+        return new User(userName, credits - sumOfPrice, this.password, this.eMailAddress);
     }
 
     /**
@@ -61,13 +71,23 @@ class User implements IAccount {
         return sum <= credits;
     }
 
-    /**
-     * The strategy used to authenticate the user.
-     *
-     * @param password The user's password
-     * @param eMailAddress The user's e-mail address
-     */
-    public void setAuthenticationStrategy(String password, String eMailAddress) {
-        this.authenticationStrategy = UsernamePasswordStrategyFactory.create(password, eMailAddress);
+    @Override
+    public String getPassword() {
+        return this.password;
+    }
+
+    @Override
+    public String getEMailAddress() {
+        return this.eMailAddress;
+    }
+
+    @Override
+    public IAccount setPassword(String password) {
+        return UserFactory.create(this.userName, this.credits, password, this.eMailAddress);
+    }
+
+    @Override
+    public IAccount setEMailAddress(String eMailAddress) {
+        return UserFactory.create(this.userName, this.credits, this.password, eMailAddress);
     }
 }
