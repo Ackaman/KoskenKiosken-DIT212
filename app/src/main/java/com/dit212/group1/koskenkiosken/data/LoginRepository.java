@@ -1,6 +1,11 @@
 package com.dit212.group1.koskenkiosken.data;
 
+import com.dit212.group1.koskenkiosken.Model.User.IAccount;
+import com.dit212.group1.koskenkiosken.Model.User.UserFactory;
 import com.dit212.group1.koskenkiosken.data.model.LoggedInUser;
+import com.dit212.group1.koskenkiosken.ui.login.LoginViewModel;
+
+import java.io.IOException;
 
 /**
  * Class that requests authentication and user information from the remote data source and
@@ -28,8 +33,17 @@ public class LoginRepository {
         return instance;
     }
 
+    /**
+     * Check if there is a user logged in.
+     *
+     * @return Whether a user is logged in or not
+     */
     public boolean isLoggedIn() {
         return user != null;
+    }
+
+    public LoggedInUser getLoggedInUser() {
+        return user;
     }
 
     private void setLoggedInUser(LoggedInUser user) {
@@ -38,12 +52,18 @@ public class LoginRepository {
         // @see https://developer.android.com/training/articles/keystore
     }
 
-    public Result<LoggedInUser> login(String username, String password) {
+    public Result login(String username, String password) {
         // handle login
-        Result<LoggedInUser> result = dataSource.login(username, password);
-        if (result instanceof Result.Success) {
-            setLoggedInUser(((Result.Success<LoggedInUser>) result).getData());
+        Result result = dataSource.login(username, password);
+
+        if (result == Result.SUCCESS) {
+            LoggedInUser loggedInMockUser =
+                    new LoggedInUser(
+                            java.util.UUID.randomUUID().toString(),
+                            LoginViewModel.mockUser.getUserName());
+            setLoggedInUser(loggedInMockUser);
         }
+
         return result;
     }
 }

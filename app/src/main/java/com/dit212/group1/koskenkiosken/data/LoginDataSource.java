@@ -1,6 +1,9 @@
 package com.dit212.group1.koskenkiosken.data;
 
+import com.dit212.group1.koskenkiosken.Model.User.IAccount;
+import com.dit212.group1.koskenkiosken.Model.User.UserFactory;
 import com.dit212.group1.koskenkiosken.data.model.LoggedInUser;
+import com.dit212.group1.koskenkiosken.ui.login.LoginViewModel;
 
 import java.io.IOException;
 
@@ -9,17 +12,13 @@ import java.io.IOException;
  */
 public class LoginDataSource {
 
-    public Result<LoggedInUser> login(String username, String password) {
+    public Result login(String username, String password) {
 
-        try {
-            // TODO: handle loggedInUser authentication
-            LoggedInUser fakeUser =
-                    new LoggedInUser(
-                            java.util.UUID.randomUUID().toString(),
-                            "Jane Doe");
-            return new Result.Success<>(fakeUser);
-        } catch (Exception e) {
-            return new Result.Error(new IOException("Error logging in", e));
+        if (username.toLowerCase().equals(LoginViewModel.mockUser.getUserName().toLowerCase())
+                && password.equals(LoginViewModel.mockUser.getPassword())) {
+            return Result.SUCCESS;
+        } else {
+            return Result.ERROR;
         }
     }
 

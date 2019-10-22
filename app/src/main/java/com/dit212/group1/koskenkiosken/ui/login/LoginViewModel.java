@@ -6,6 +6,8 @@ import androidx.lifecycle.ViewModel;
 
 import android.util.Patterns;
 
+import com.dit212.group1.koskenkiosken.Model.User.IAccount;
+import com.dit212.group1.koskenkiosken.Model.User.UserFactory;
 import com.dit212.group1.koskenkiosken.data.LoginRepository;
 import com.dit212.group1.koskenkiosken.data.Result;
 import com.dit212.group1.koskenkiosken.data.model.LoggedInUser;
@@ -13,9 +15,15 @@ import com.dit212.group1.koskenkiosken.R;
 
 /**
  * @author Albin Otterhäll <gusalbiot@student.gu.se>
+ *
+ * The state storage for when logging in.
  */
-
 public class LoginViewModel extends ViewModel {
+
+    /**
+     * A global mockup user. This solution isn't very nice.
+     */
+    public static IAccount mockUser = UserFactory.createMockUser();
 
     private MutableLiveData<LoginFormState> loginFormState = new MutableLiveData<>();
     private MutableLiveData<LoginResult> loginResult = new MutableLiveData<>();
@@ -34,11 +42,10 @@ public class LoginViewModel extends ViewModel {
     }
 
     public void login(String username, String password) {
-        // can be launched in a separate asynchronous job
-        Result<LoggedInUser> result = loginRepository.login(username, password);
+        Result result = loginRepository.login(username, password);
 
-        if (result instanceof Result.Success) {
-            LoggedInUser data = ((Result.Success<LoggedInUser>) result).getData();
+        if (result == Result.SUCCESS) {
+            LoggedInUser data = loginRepository.getLoggedInUser();
             loginResult.setValue(new LoginResult(new LoggedInUserView(data.getDisplayName())));
         } else {
             loginResult.setValue(new LoginResult(R.string.login_failed));

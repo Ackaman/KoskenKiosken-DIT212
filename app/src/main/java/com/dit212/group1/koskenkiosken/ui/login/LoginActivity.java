@@ -5,6 +5,7 @@ import android.app.Activity;
 import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProviders;
 
+import android.content.Intent;
 import android.os.Bundle;
 
 import androidx.annotation.Nullable;
@@ -22,18 +23,29 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
+import com.dit212.group1.koskenkiosken.MainActivity;
 import com.dit212.group1.koskenkiosken.R;
 import com.dit212.group1.koskenkiosken.ui.login.LoginViewModel;
 import com.dit212.group1.koskenkiosken.ui.login.LoginViewModelFactory;
 
 /**
  * @author Albin Otterhäll <gusalbiot@student.gu.se>
+ *
+ * An login acitivy that's shown at startup.
  */
 
 public class LoginActivity extends AppCompatActivity {
 
+    /**
+     * The ViewModel for the authentication system.
+     */
     private LoginViewModel loginViewModel;
 
+    /**
+     * The method that builds up the login activity
+     *
+     * @param savedInstanceState The activity's previous state
+     */
     @Override
     public void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
@@ -65,20 +77,20 @@ public class LoginActivity extends AppCompatActivity {
         loginViewModel.getLoginResult().observe(this, new Observer<LoginResult>() {
             @Override
             public void onChanged(@Nullable LoginResult loginResult) {
+
                 if (loginResult == null) {
                     return;
                 }
-                loadingProgressBar.setVisibility(View.GONE);
                 if (loginResult.getError() != null) {
                     showLoginFailed(loginResult.getError());
                 }
                 if (loginResult.getSuccess() != null) {
                     updateUiWithUser(loginResult.getSuccess());
+
+                    //Complete and destroy login activity once successful
+                    finish();
                 }
                 setResult(Activity.RESULT_OK);
-
-                //Complete and destroy login activity once successful
-                finish();
             }
         });
 
@@ -119,16 +131,33 @@ public class LoginActivity extends AppCompatActivity {
                 loadingProgressBar.setVisibility(View.VISIBLE);
                 loginViewModel.login(usernameEditText.getText().toString(),
                         passwordEditText.getText().toString());
+                loadingProgressBar.setVisibility(View.INVISIBLE);
             }
         });
+        loginButton.setEnabled(true);
+
     }
 
+    /**
+     * The UI changes when successfully logging in.
+     *
+     * @param model The
+     */
     private void updateUiWithUser(LoggedInUserView model) {
-        String welcome = getString(R.string.welcome) + model.getDisplayName();
-        // TODO : initiate successful logged in experience
+        String welcome = getString(R.string.welcome);
+
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();
+
+        Intent loggedInUserIntent = new Intent(this, MainActivity.class);
+
+        startActivity(loggedInUserIntent);
     }
 
+    /**
+     * What to show when logging in unsuccessfully.
+     *
+     * @param errorString
+     */
     private void showLoginFailed(@StringRes Integer errorString) {
         Toast.makeText(getApplicationContext(), errorString, Toast.LENGTH_SHORT).show();
     }
