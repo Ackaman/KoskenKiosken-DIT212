@@ -101,10 +101,11 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
      * Updates the current list of sorted products in the adapter
      * @param products        The list of sorted products from method sortString in StoreFragment
      */
-    void updateList(List<IProduct> products){
+    List<IProduct> updateList(List<IProduct> products){
         this.products = products;
         Log.i("RECYCLERADAPTER", products.toString());
         notifyDataSetChanged();
+        return products;
 
     }
 

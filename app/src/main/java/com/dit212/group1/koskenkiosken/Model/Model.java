@@ -130,9 +130,9 @@ public class Model {
      */
     public List<IProduct> sortProducts(Comparator<IProduct> comp) {
         List<IProduct> products = new ArrayList<>(listOfProducts());
-        Collections.sort(products, comp);
+        Collections.sort(this.productList, comp);
         Log.i("MODEL", products.toString());
-        return products;
+        return productList;
     }
 
 
