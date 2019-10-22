@@ -101,6 +101,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.account:
+                        accountFragment.updateUser(m.getLoggedInUser());
                         setFragment(accountFragment);
                         break;
                     case R.id.store:

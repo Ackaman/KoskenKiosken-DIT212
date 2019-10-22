@@ -75,10 +75,15 @@ public class AccountFragment extends Fragment {
     if (v != null){
         String usernameLine = getResources().getString(R.string.username,userID.getUserName());
         user.setText(usernameLine);
-        user.append(userID.getUserName());
         String creditsLine = getResources().getString(R.string.credits,userID.getCredits());
         credits.setText(creditsLine);
         }
-
     }
+
+    /**
+     * updates user information source. (IAccount being immutable)
+     * @param user the user of which to update.
+     */
+
+    public void updateUser(IAccount user){this.userID = user;}
 }
