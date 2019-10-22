@@ -127,9 +127,8 @@ public class Model {
      * @return a sorted list.
      */
     public List<IProduct> sortProducts(Comparator<IProduct> comp) {
-        List<IProduct> products = new ArrayList<>(listOfProducts());
-        Collections.sort(products, comp);
-        return products;
+        Collections.sort(this.productList, comp);
+        return productList;
     }
 
 

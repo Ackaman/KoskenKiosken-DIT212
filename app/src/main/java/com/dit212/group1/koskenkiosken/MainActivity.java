@@ -70,14 +70,16 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
      */
     @Override
     public void onInputStoreSent(List<IProduct> input) {
-        if (m.getSizeOfCart() == 0) {
+        if (m.getSizeOfCart() <= 0) {
             cartBubble.setVisibility(View.INVISIBLE);
         }
-        m.setCart(input);
-        int x = m.getSizeOfCart();
-        String s = Integer.toString(x);
-        cartBubble.setText(s);
-        cartBubble.setVisibility(View.VISIBLE);
+        else {
+            m.setCart(input);
+            int x = m.getSizeOfCart();
+            String s = Integer.toString(x);
+            cartBubble.setText(s);
+            cartBubble.setVisibility(View.VISIBLE);
+        }
 
     }
 

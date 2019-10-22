@@ -11,6 +11,7 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -92,45 +93,51 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
 
     /**
      * Adds all the products that is a substring of the search string in a new list.
-     * @param search        The input string from the ActionBar in StoreFragment
+     * @param search The input string from the ActionBar in StoreFragment
      */
-    private void sortString(String search) {
-        pAdapter.updateList(m.filterListByString(search));
-        products = m.filterListByString(search);
+    private void filterString(String search) {
+        products = pAdapter.updateList(m.filterListByString(search));
     }
 
     /**
      * Creates the "actionbar" menu on the top of the screen in StoreFragment
-     * @param menu menu
+     * @param menu the actionbar menu on the top of StoreFragment
      * @param inflater inflater that inflates the layout
      */
     @Override
     public void onCreateOptionsMenu(@NonNull Menu menu, MenuInflater inflater) {
         inflater.inflate(R.menu.menu_actionbar, menu);
-        bindSearchButton(menu);
+        bindFilterButton(menu);
         bindSortByButton(menu);
-
     }
 
     /**
      * binds behaviour of the search button
      * @param menu the menu of which the search button lies.
      */
-    private void bindSearchButton(@NonNull Menu menu){
-        SearchView search = (SearchView) menu.findItem(R.id.search).getActionView();
+    private void bindFilterButton(@NonNull Menu menu){
+        final SearchView search = (SearchView) menu.findItem(R.id.search).getActionView();
+        search.setOnSearchClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View v) {
+                filterString("");
+            }
+        });
         search.setOnQueryTextListener(new SearchView.OnQueryTextListener() {
             @Override
             public boolean onQueryTextSubmit(String query) {
+                search.onActionViewCollapsed();
+                filterString(query);
                 return false;
             }
 
             @Override
             public boolean onQueryTextChange(String newText) {
-                products = originalProducts;
-                sortString(newText);
+                filterString(newText);
                 return false;
             }
         });
+
     }
 
     /**
@@ -139,6 +146,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
      */
     private void bindSortByButton(@NonNull Menu menu) {
         MenuItem button = menu.findItem(R.id.sort_button);
+        final SearchView search = (SearchView) menu.findItem(R.id.search).getActionView();
         final Dialog dialog = new Dialog(getContext());
         ListView listview = new ListView(getContext());
         String[] strArr = getResources().getStringArray(R.array.sorting_option);
@@ -149,11 +157,12 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         button.setOnMenuItemClickListener(new MenuItem.OnMenuItemClickListener() {
             @Override
             public boolean onMenuItemClick(MenuItem menuItem) {
+                search.onActionViewCollapsed();
                 dialog.show();
                 return false;
             }
         });
-        bindDialogueListOptions(listview);
+        bindDialogueListOptions(listview, dialog);
     }
 
     /**
@@ -162,28 +171,30 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
      * @param lv list view of sorting options
      */
 
-    private void bindDialogueListOptions(ListView lv) {
+    private void bindDialogueListOptions(ListView lv, final Dialog dialog) {
+        lv.requestFocus();
         lv.setOnItemClickListener(new AdapterView.OnItemClickListener() {
             @Override
             public void onItemClick(AdapterView<?> adapterView, View view, int i, long l) {
                 switch (i) {
                     case 0: {
-                        pAdapter.updateList(m.sortProducts(ComparatorIProduct.nameAscendingOrder()));
+                        products = pAdapter.updateList(m.sortProducts(ComparatorIProduct.nameAscendingOrder()));
                         break;
                     }
                     case 1: {
-                        pAdapter.updateList(m.sortProducts(ComparatorIProduct.nameDescendingOrder()));
+                        products = pAdapter.updateList(m.sortProducts(ComparatorIProduct.nameDescendingOrder()));
                         break;
                     }
                     case 2: {
-                        pAdapter.updateList(m.sortProducts(ComparatorIProduct.priceAscendingOrder()));
+                        products = pAdapter.updateList(m.sortProducts(ComparatorIProduct.priceAscendingOrder()));
                         break;
                     }
                     case 3: {
-                        pAdapter.updateList(m.sortProducts(ComparatorIProduct.priceDescendingOrder()));
+                        products = pAdapter.updateList(m.sortProducts(ComparatorIProduct.priceDescendingOrder()));
                         break;
                     }
                 }
+                dialog.cancel();
             }
         });
     }
@@ -198,7 +209,6 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
         Intent intent = new Intent(getActivity(), ProductPressedView.class);
         intent.putExtra("product", (Parcelable) products.get(position));
         startActivity(intent);
-
     }
 
 
@@ -220,6 +230,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     @Override
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
+        products = originalProducts;
         if(context instanceof FragmentListener){
             listener = (FragmentListener) context;
         } else {
