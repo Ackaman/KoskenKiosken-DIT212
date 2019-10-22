@@ -71,7 +71,7 @@ public class ComparatorIProductTest {
     @Test
     public void nameAscendingOrderSwedishCharactersReadCorrectly() {
         Comparator<IProduct> comp = ComparatorIProduct.nameAscendingOrder();
-        assertTrue(comp.compare(products.get(1), products.get(0)) > 0);
+        assertTrue(comp.compare(products.get(1), products.get(0)) < 0);
     }
 
     /**
@@ -81,7 +81,7 @@ public class ComparatorIProductTest {
     @Test
     public void nameAscendingOrderKAisBeforeKI() {
         Comparator<IProduct> comp = ComparatorIProduct.nameAscendingOrder();
-        assertTrue(comp.compare(products.get(3), products.get(2)) > 0);
+        assertTrue(comp.compare(products.get(3), products.get(2)) < 0);
     }
 
     /**
@@ -91,7 +91,7 @@ public class ComparatorIProductTest {
     @Test
     public void nameDescendingOrderSameProductProducesAZero() {
         Comparator<IProduct> comp = ComparatorIProduct.nameDescendingOrder();
-        assertTrue(comp.compare(products.get(3), products.get(1)) < 0);
+        assertTrue(comp.compare(products.get(3), products.get(1)) > 0);
     }
 
     /**
@@ -101,7 +101,7 @@ public class ComparatorIProductTest {
     @Test
     public void nameDescendingOrderSwedishCharactersReadCorrectly() {
         Comparator<IProduct> comp = ComparatorIProduct.nameDescendingOrder();
-        assertTrue(comp.compare(products.get(1), products.get(0)) < 0);
+        assertTrue(comp.compare(products.get(1), products.get(0)) > 0);
     }
 
     /**
@@ -111,7 +111,7 @@ public class ComparatorIProductTest {
     @Test
     public void nameDescendingOrderKAisAfterKI() {
         Comparator<IProduct> comp = ComparatorIProduct.nameDescendingOrder();
-        assertTrue(comp.compare(products.get(3), products.get(2)) < 0);
+        assertTrue(comp.compare(products.get(3), products.get(2)) > 0);
     }
 
     /**
@@ -131,7 +131,7 @@ public class ComparatorIProductTest {
     @Test
     public void priceDescendingOrder15isBefore2() {
         Comparator<IProduct> comp = ComparatorIProduct.priceDescendingOrder();
-        assertTrue(comp.compare(products.get(2),products.get(3)) > 0);
+        assertTrue(comp.compare(products.get(2),products.get(3)) < 0);
     }
 
     /**
@@ -141,7 +141,7 @@ public class ComparatorIProductTest {
     @Test
     public void priceDescendingOrder2isAfter5() {
         Comparator<IProduct> comp = ComparatorIProduct.priceDescendingOrder();
-        assertTrue(comp.compare(products.get(3),products.get(0)) < 0);
+        assertTrue(comp.compare(products.get(3),products.get(0)) > 0);
     }
 
     /**
@@ -150,7 +150,7 @@ public class ComparatorIProductTest {
 
     @Test
     public void priceAscendingOrderSameProductProducesAZero() {
-        Comparator<IProduct> comp = ComparatorIProduct.priceDescendingOrder();
+        Comparator<IProduct> comp = ComparatorIProduct.priceAscendingOrder();
         assertEquals(0, comp.compare(products.get(0),products.get(0)));
     }
 
@@ -160,7 +160,7 @@ public class ComparatorIProductTest {
 
     @Test
     public void priceAscendingOrderOrder15isAfter2() {
-        Comparator<IProduct> comp = ComparatorIProduct.priceDescendingOrder();
+        Comparator<IProduct> comp = ComparatorIProduct.priceAscendingOrder();
         assertTrue(comp.compare(products.get(3),products.get(2)) < 0);
     }
 
@@ -170,9 +170,8 @@ public class ComparatorIProductTest {
 
     @Test
     public void priceAscendingOrder2isBefore5() {
-        Comparator<IProduct> comp = ComparatorIProduct.priceDescendingOrder();
+        Comparator<IProduct> comp = ComparatorIProduct.priceAscendingOrder();
         assertTrue(comp.compare(products.get(3),products.get(0)) < 0);
     }
-
 
 }
