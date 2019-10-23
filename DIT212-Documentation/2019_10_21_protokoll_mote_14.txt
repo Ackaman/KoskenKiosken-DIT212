@@ -1,0 +1,45 @@
+# Meeting Agenda
+
+Group: KlassFörakt
+Date: 2019-10-21
+Chair: Gustav Pihlquist
+Participants: Gustav Pihlquist, Johan Almroth, Albin Otterhäll, Morgan Thowsen, David Persson
+
+
+## Objectives (5 min) 
+
+ - Vi måste arbeta på RAD och SDD
+	UML-diagrammet lär ta tid så det är prioriterat att börja på.
+ - Åtgärda eventuella enklare klagomål från peer reviewen när den kommer.
+ - Albin måste pusha sin kod till dev så vi kan påbörja slutrefaktoriseringen.
+
+## Reports (15 min) from previous meeting
+
+ - Vi har tillsammans slutfört Peer Reviewen till Haqerbois
+ - Albin har gjort framsteg i sin user story, men buggar gör att den inte är redo för en dev push än.
+ - Gustav har gjort klart User Story 24, produktrekommendationer.
+ - Johan har slutfört User Story 1, att ändra antal produkter i cart innan checkout.
+ - Morgan har slutfört User Story 11, att kunna betala för valda produkter i varukorgen.
+ - David la fokus på Peer Review sen senaste protokollet.
+
+
+## Discussion items (35 min)
+
+ - Vi diskuterar hur vi skall lägga upp arbetsuppgifterna i RAD/SDD.
+	Morgan tar t.ex. hand om UML:et i första hand, och några av oss fokuserar på att fortsätta skriva kod.
+	Annars hjälper alla till med RAD/SDD i den mån de kan.
+
+## Outcomes and assignments (5 min)
+
+ - Alla i gruppen skriver tillsammans på SDD/RAD i den mån de kan.
+ - Morgan börjar med ett UML-diagram.
+ - Gustav fixar buggar som tillkommit av konflikter mellan sort- och filtermetoderna.
+ - Gustav skriver mer tester till nya metoder som tillkommit i Model och Product.
+ - Albin är nästan klar med inloggningssystemet, och pushar upp detta till dev absolut senast onsdag.
+ - David skriver tester till nya metoder som tillkommit i Model.
+ - Johan letar buggar i appen och åtgärdar dessa.
+
+
+## Wrap up
+
+ - Nästa möte onsdag 23/10 kl. 13:00
