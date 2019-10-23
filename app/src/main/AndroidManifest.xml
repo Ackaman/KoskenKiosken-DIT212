@@ -21,11 +21,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
+            android:name=".Controllers.MainController.MainActivity"
             android:parentActivityName=".Controllers.AuthenticationController.LoginActivity"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".ProductPressedView" />
-        <activity android:name=".ProductRecommendationsFragment" />
+        <activity android:name=".Controllers.MainController.ProductPressedView" />
+        <activity android:name=".Controllers.MainController.ProductRecommendationsFragment" />
 
     </application>
 

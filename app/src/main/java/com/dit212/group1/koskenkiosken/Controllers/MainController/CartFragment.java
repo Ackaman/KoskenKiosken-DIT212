@@ -1,4 +1,4 @@
-package com.dit212.group1.koskenkiosken;
+package com.dit212.group1.koskenkiosken.Controllers.MainController;
 
 import android.content.Context;
 import android.os.Bundle;
@@ -18,6 +18,7 @@ import com.dit212.group1.koskenkiosken.Dialogs.Checkout.ICheckoutData;
 import com.dit212.group1.koskenkiosken.Dialogs.Checkout.ICheckoutResponseListener;
 import com.dit212.group1.koskenkiosken.Dialogs.Checkout.IDialogCheckout;
 import com.dit212.group1.koskenkiosken.Model.Model;
+import com.dit212.group1.koskenkiosken.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter.CartProductClickListener {

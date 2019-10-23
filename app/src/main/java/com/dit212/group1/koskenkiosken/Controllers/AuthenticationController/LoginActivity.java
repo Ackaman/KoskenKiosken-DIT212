@@ -23,7 +23,7 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dit212.group1.koskenkiosken.MainActivity;
+import com.dit212.group1.koskenkiosken.Controllers.MainController.MainActivity;
 import com.dit212.group1.koskenkiosken.R;
 
 /**
