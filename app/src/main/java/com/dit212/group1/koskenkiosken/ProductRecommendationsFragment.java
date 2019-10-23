@@ -75,7 +75,7 @@ public class ProductRecommendationsFragment extends Fragment {
     private void insertDataToDb(){
         String recommendedProduct = productToRecommend.getText().toString();
         String nameOfUser = m.getLoggedInUser().getName();
-        m.queryRecommendedProductToDatabase(DatabaseHelper.getDatabaseHelper(), recommendedProduct, nameOfUser);
+        m.queryProductRecommendation(DatabaseHelper.getDatabaseHelper(), recommendedProduct, nameOfUser);
     }
 
 

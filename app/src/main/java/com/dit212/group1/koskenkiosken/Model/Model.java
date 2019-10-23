@@ -50,11 +50,11 @@ public class Model {
      * who recommended the product to the persistent storage
      *
      * @param db                 the persistent storage where we send the data
-     * @param productToRecommend The product that was recommended
-     * @param whoRecommended     The logged in user who recommended the product
+     * @param product The product that was recommended
+     * @param user     The logged in user who recommended the product
      */
-    public void queryRecommendedProductToDatabase(IDatabase db, String productToRecommend, String whoRecommended) {
-        db.writeProductRecommendation(productToRecommend, whoRecommended);
+    public void queryProductRecommendation(IDatabase db, String product, String user) {
+        db.writeProductRecommendation(product, user);
     }
 
     /**
