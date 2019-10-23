@@ -17,8 +17,8 @@ public class NormalUserTest {
     private IAccount user;
 
     @Before
-    public void setUp(){
-        user = UserFactory.create("John Smith", 100);
+    public void setUp() throws Exception {
+        user = UserFactory.create("John Smith", 100, "password");
     }
 
     @Test

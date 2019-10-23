@@ -2,27 +2,34 @@ package com.dit212.group1.koskenkiosken.Model.User;
 
 
 /**
- * Author: created by thowsen, 2019-09-24
- * Description:
+ * @author Albin Otterhäll <gusalbiot@student.gu.se>
+ *
+ * A factory class that create objects of the `User` class.
  */
 public class UserFactory implements IAccountFactory {
 
     /**
-     * factory method to create IAccount
-     * @param name the name to give the constructed user.
-     * @param credits the number of credits to give the constructed user.
-     * @return the constructed user.
+     * Factory method for `User` objects
+     *
+     * @param name The account's username.
+     * @param credits The amount of credits the `User` should have at creation.
+     *
+     * @return A `User` object
      */
-    public static IAccount create(String name, int credits){
-        return new User(name, credits);
+    public static IAccount create(String name, int credits, String password){
+        return new User(name, credits, password);
     }
 
     /**
-     * factory method to create mock IAccount
-     * @return a constructed mockUser.
+     * Factory for a user account with predefined values.
+     *
+     * @return a `User` object with predefined values.
      */
 
     public static IAccount createMockUser(){
-        return new User("FirstUser", 10);
+        return new User(
+                "FirstUser",
+                10,
+                "password");
     }
 }
