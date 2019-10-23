@@ -1,4 +1,4 @@
-package com.dit212.group1.koskenkiosken.data.model;
+package com.dit212.group1.koskenkiosken.Model.Authentication;
 
 /**
  * @author Albin Otterhäll <gusalbiot@student.gu.se>

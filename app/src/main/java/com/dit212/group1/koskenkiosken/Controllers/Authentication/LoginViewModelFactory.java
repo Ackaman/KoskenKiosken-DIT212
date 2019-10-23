@@ -4,8 +4,8 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.annotation.NonNull;
 
-import com.dit212.group1.koskenkiosken.data.LoginDataSource;
-import com.dit212.group1.koskenkiosken.data.LoginRepository;
+import com.dit212.group1.koskenkiosken.Model.Authentication.LoginDataSource;
+import com.dit212.group1.koskenkiosken.Model.Authentication.LoginRepository;
 
 /**
  * @author Albin Otterhäll <gusalbiot@student.gu.se>

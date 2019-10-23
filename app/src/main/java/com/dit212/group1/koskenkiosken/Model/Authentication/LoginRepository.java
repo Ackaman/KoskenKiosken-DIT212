@@ -1,6 +1,5 @@
-package com.dit212.group1.koskenkiosken.data;
+package com.dit212.group1.koskenkiosken.Model.Authentication;
 
-import com.dit212.group1.koskenkiosken.data.model.LoggedInUser;
 import com.dit212.group1.koskenkiosken.Controllers.Authentication.LoginViewModel;
 
 /**
