@@ -1,7 +1,9 @@
 package com.dit212.group1.koskenkiosken;
 
 import android.content.Context;
+import android.content.Intent;
 import android.os.Bundle;
+import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -69,9 +71,9 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
      */
     @Override
     public void onProductClick(int position) {
-        Toast.makeText(getContext(),"onProductClick", Toast.LENGTH_SHORT).show();
-
-
+        Intent intent = new Intent(getActivity(), ProductPressedView.class);
+        intent.putExtra("product", (Parcelable) m.viewCart().get(position));
+        startActivity(intent);
     }
 
     /**
@@ -81,7 +83,6 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
     @Override
     public void onIncrementClick(int position) {
         m.addToCart(m.viewCart().get(position));
-        Toast.makeText(getContext(),"increment", Toast.LENGTH_SHORT).show();
         pAdapter.updateList(m.viewCart());
         listener.onInputStoreSent(m.viewCart());
 
@@ -94,7 +95,6 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
     @Override
     public void onDecrementClick(int position) {
         m.removeFromCart(m.viewCart().get(position));
-        Toast.makeText(getContext(),"decrement", Toast.LENGTH_SHORT).show();
         pAdapter.updateList(m.viewCart());
         listener.onInputStoreSent(m.viewCart());
     }
