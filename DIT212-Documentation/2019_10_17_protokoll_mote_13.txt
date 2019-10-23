@@ -8,8 +8,7 @@ Participants: Gustav Pihlquist, Albin Otterhäll, David Persson, Morgan Thowsen,
 
 ## Objectives (5 min) 
 
- - Fokus nu ligger på att skriva Peer Review
- - 
+ - Fokus nu ligger på att skriva Peer Review. Allt annat flyter på i bra takt, och alla är med på vad som skall göras.
 
 ## Reports (15 min) from previous meeting
 
@@ -27,22 +26,30 @@ Participants: Gustav Pihlquist, Albin Otterhäll, David Persson, Morgan Thowsen,
  - Morgan - samma som föregående mötesprotokoll
 
  - Johan - samma som föregående mötesprotokoll
+ 
+ - Gruppen har tillsammans suttit med Peer Review, men den är inte helt klar än.
 
 
 ## Discussion items (35 min)
 
-- Discuss the identified issues, and possibly new or more general issues (very
-  short notes and/or keywords).
-
+ - Vi har inte så mycket att diskutera detta möte. Istället lägger vi tid på att tillsammans sitta med Peer Review, och fortsätta skriva kod.
+  
 
 ## Outcomes and assignments (5 min)
 
-- Outcomes from discussion items. Write down what's decided and why it was 
-  decided. Sync with other documentation (add terms to wordbook).
-- (re)Assign to each group member which issues to solve.
+ - Alla i gruppen slutför tillsammans Peer Review imorgon.
 
+ - Albin gör klart inloggningssystemet och pushar upp detta till dev, förhoppningsvis senast söndag.
+
+ - David testar koden Albin skickar upp till dev, för inloggningssystemet
+ 
+ - Gustav slutför User Story 24 och pushar upp detta till dev, förmodligen idag eller imorgon.
+ - Gustav skriver tester till inloggningssystemet som Albin pushar upp till dev.
+ 
+ - Morgan - samma som tidigare mötesprotokoll.
+ 
+ - Johan - samma som tidigare mötesprotokoll.
 
 ## Wrap up
 
-- Write down any unresolved issues for next meeting. 
-- Decide a time and location for next meeting.
+ - Nästa möte måndag 21/10 kl. 13:00
