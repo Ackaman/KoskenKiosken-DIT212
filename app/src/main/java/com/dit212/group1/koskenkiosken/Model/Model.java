@@ -54,7 +54,7 @@ public class Model {
      * @param whoRecommended     The logged in user who recommended the product
      */
     public void queryRecommendedProductToDatabase(IDatabase db, String productToRecommend, String whoRecommended) {
-        db.writeRecommendedProductToDatabase(productToRecommend, whoRecommended);
+        db.writeProductRecommendation(productToRecommend, whoRecommended);
     }
 
     /**

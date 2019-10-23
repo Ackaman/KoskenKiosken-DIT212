@@ -18,6 +18,12 @@ public interface IDatabase {
     /**
      * writes products to persistent storage.
      */
-    void writeProducts(List<IProduct> pr);
-    void writeRecommendedProductToDatabase(String productToRecommend, String name);
+    void writeProducts(List<IProduct> products);
+
+    /**
+     * write product recommendation to persistent storage.
+     * @param product the product to recommend
+     * @param user name of the user making the request.
+     */
+    void writeProductRecommendation(String product, String user);
 }

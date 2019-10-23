@@ -55,7 +55,7 @@ public class DatabaseHelper implements IDatabase {
      * @param name      The name of the user who recommended the product
      */
     @Override
-    public void writeRecommendedProductToDatabase(String productToRecommend, String name) {
+    public void writeProductRecommendation(String productToRecommend, String name) {
         String[] s = {productToRecommend, name};
         String json = g.toJson(s);
         database.writeRecommendedProductToDb(json);
