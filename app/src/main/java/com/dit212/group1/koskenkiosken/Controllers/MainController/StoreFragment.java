@@ -1,4 +1,4 @@
-package com.dit212.group1.koskenkiosken;
+package com.dit212.group1.koskenkiosken.Controllers.MainController;
 
 
 
@@ -11,7 +11,6 @@ import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.view.MotionEvent;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.AdapterView;
@@ -28,6 +27,7 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.dit212.group1.koskenkiosken.Model.Model;
 import com.dit212.group1.koskenkiosken.Model.Product.ComparatorIProduct;
 import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
+import com.dit212.group1.koskenkiosken.R;
 
 import java.util.List;
 

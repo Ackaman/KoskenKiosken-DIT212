@@ -1,6 +1,5 @@
-package com.dit212.group1.koskenkiosken;
+package com.dit212.group1.koskenkiosken.Controllers.MainController;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,7 +14,7 @@ import com.dit212.group1.koskenkiosken.DB.DatabaseHelper;
 import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
 import com.dit212.group1.koskenkiosken.Model.Model;
 import com.dit212.group1.koskenkiosken.Model.User.UserFactory;
-import com.dit212.group1.koskenkiosken.ui.login.LoginActivity;
+import com.dit212.group1.koskenkiosken.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;

@@ -1,4 +1,4 @@
-package com.dit212.group1.koskenkiosken;
+package com.dit212.group1.koskenkiosken.Controllers.MainController;
 
 
 import android.os.Bundle;
@@ -13,6 +13,7 @@ import androidx.fragment.app.Fragment;
 
 import com.dit212.group1.koskenkiosken.Model.User.IAccount;
 import com.dit212.group1.koskenkiosken.Model.User.UserFactory;
+import com.dit212.group1.koskenkiosken.R;
 
 
 /**

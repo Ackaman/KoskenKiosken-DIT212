@@ -1,4 +1,4 @@
-package com.dit212.group1.koskenkiosken.Dialogs.Checkout;
+package com.dit212.group1.koskenkiosken.Controllers.MainController.Dialogs.Checkout;
 
 /**
  * Author: created by thowsen, 2019-10-19
