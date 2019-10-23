@@ -1,0 +1,41 @@
+# Meeting Agenda
+
+Group: KlassFörakt
+Date: 2019-10-23
+Chair: Gustav Pihlquist
+Participants: Gustav Pihlquist, Morgan Thowsen, Albin Otterhäll, Johan Almroth, David Persson
+
+
+## Objectives (5 min) 
+
+ - Måste ske en refaktorisering innan fredag.
+ - Måste skriva klart RAD/SDD.
+
+## Reports (15 min) from previous meeting
+
+ - Morgan Johan och David har jobbat med RAD/SDD.
+ - Morgan har arbetat med att ta fram ett UML. (Inte helt klart än)
+ - Gustav har fixat buggar som tillkommit av konflikter mellan sort- och filtermetoderna.
+ - Gustav har skrivit ytterliggare tester till Model och Product
+ - Albin har pushat upp user story 36 till dev, inloggningssystemet.
+ - David har skrivit mer tester till Model.
+ - Johan har fixat buggar i StoreFragment.
+
+## Discussion items (35 min)
+
+ - Inga nya implementationer behöver ske i projektet. Det vi behöver göra kodmässigt är att fixa buggar, skriva Javadoc och allmän refaktorisering.
+ - Alla user stories är migrerade till RAD:en. 
+ - Vi har ett bra skelett på RAD och SDD, men det är fortfarande en hel del kvar att göra. T.ex. är UML-diagrammet ganska omfattande.
+	Vi känner dock att vi ligger bra i fas, och ser inte något problem med att hinna klart i tid.
+
+
+## Outcomes and assignments (5 min)
+
+ - Morgan gör klart UML-diagrammet på modell och activity/fragment-nivå.
+ - Albin skriver UML till autentiseringsfunktionen, alltså det som tillkom från user story 36.
+ - Gustav och David gör ett state-diagram för UI:t
+ - Alla hjälps tillsammans åt med resternade delar i RAD och SDD.
+
+## Wrap up
+
+ - Detta är vårt sista interna möte! 
