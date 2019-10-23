@@ -1,11 +1,6 @@
-package com.dit212.group1.koskenkiosken.data;
+package com.dit212.group1.koskenkiosken.Model.Authentication;
 
-import com.dit212.group1.koskenkiosken.Model.User.IAccount;
-import com.dit212.group1.koskenkiosken.Model.User.UserFactory;
-import com.dit212.group1.koskenkiosken.data.model.LoggedInUser;
-import com.dit212.group1.koskenkiosken.ui.login.LoginViewModel;
-
-import java.io.IOException;
+import com.dit212.group1.koskenkiosken.Controllers.Authentication.LoginViewModel;
 
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.

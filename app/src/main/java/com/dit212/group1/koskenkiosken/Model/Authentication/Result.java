@@ -1,6 +1,4 @@
-package com.dit212.group1.koskenkiosken.data;
-
-import com.dit212.group1.koskenkiosken.data.model.LoggedInUser;
+package com.dit212.group1.koskenkiosken.Model.Authentication;
 
 /**
  * @author Albin Otterhäll <gusalbiot@student.gu.se>
