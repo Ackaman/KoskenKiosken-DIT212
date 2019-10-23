@@ -13,10 +13,10 @@ import androidx.fragment.app.Fragment;
 import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 
-import com.dit212.group1.koskenkiosken.Dialogs.Checkout.DialogCheckoutFactory;
-import com.dit212.group1.koskenkiosken.Dialogs.Checkout.ICheckoutData;
-import com.dit212.group1.koskenkiosken.Dialogs.Checkout.ICheckoutResponseListener;
-import com.dit212.group1.koskenkiosken.Dialogs.Checkout.IDialogCheckout;
+import com.dit212.group1.koskenkiosken.Controllers.MainController.Dialogs.Checkout.DialogCheckoutFactory;
+import com.dit212.group1.koskenkiosken.Controllers.MainController.Dialogs.Checkout.ICheckoutData;
+import com.dit212.group1.koskenkiosken.Controllers.MainController.Dialogs.Checkout.ICheckoutResponseListener;
+import com.dit212.group1.koskenkiosken.Controllers.MainController.Dialogs.Checkout.IDialogCheckout;
 import com.dit212.group1.koskenkiosken.Model.Model;
 import com.dit212.group1.koskenkiosken.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
