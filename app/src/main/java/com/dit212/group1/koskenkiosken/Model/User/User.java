@@ -10,7 +10,7 @@ class User implements IAccount {
     /**
      * The user's username.
      */
-    final private String userName;
+    final private String name;
 
     /**
      * The amount of credits the user have.
@@ -25,12 +25,12 @@ class User implements IAccount {
     /**
      * The constructor for creating a user.
      *
-     * @param userName the name to set of the constructed user.
+     * @param name the name to set of the constructed user.
      * @param credits  the number of credits to give the contructed user.
      * @param password The new user's password
      */
-    User(String userName, int credits, String password) {
-        this.userName = userName;
+    User(String name, int credits, String password) {
+        this.name = name;
         this.credits = credits;
         this.password = password;
     }
@@ -40,8 +40,8 @@ class User implements IAccount {
      *
      * @return the name of a given user.
      */
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
     /**
@@ -56,13 +56,13 @@ class User implements IAccount {
     /**
      * debits the user an amount of credits.
      *
-     * @param sumOfPrice the sum of which to debit.
+     * @param sum the sum of which to debit.
      * @return a new object with drawn credits if purchase could be done.
      */
     @Override
-    public IAccount purchase(int sumOfPrice) {
-        if (!canMakePurchase(sumOfPrice)) return this;
-        return new User(userName, credits - sumOfPrice, this.password);
+    public IAccount purchase(int sum) {
+        if (!canMakePurchase(sum)) return this;
+        return new User(name, credits - sum, this.password);
     }
 
     /**

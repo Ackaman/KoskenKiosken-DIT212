@@ -1,11 +1,7 @@
 package com.dit212.group1.koskenkiosken.data;
 
-import com.dit212.group1.koskenkiosken.Model.User.IAccount;
-import com.dit212.group1.koskenkiosken.Model.User.UserFactory;
 import com.dit212.group1.koskenkiosken.data.model.LoggedInUser;
 import com.dit212.group1.koskenkiosken.ui.login.LoginViewModel;
-
-import java.io.IOException;
 
 /**
  * @author Albin Otterhäll <gusalbiot@student.gu.se>
@@ -71,7 +67,7 @@ public class LoginRepository {
             LoggedInUser loggedInMockUser =
                     new LoggedInUser(
                             java.util.UUID.randomUUID().toString(),
-                            LoginViewModel.mockUser.getUserName());
+                            LoginViewModel.mockUser.getName());
             setLoggedInUser(loggedInMockUser);
         }
 
