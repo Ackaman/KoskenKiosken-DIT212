@@ -1,4 +1,4 @@
-package com.dit212.group1.koskenkiosken;
+package com.dit212.group1.koskenkiosken.Controllers.MainController;
 
 import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
 

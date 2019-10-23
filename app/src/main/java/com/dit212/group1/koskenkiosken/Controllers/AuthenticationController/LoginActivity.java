@@ -1,4 +1,4 @@
-package com.dit212.group1.koskenkiosken.ui.login;
+package com.dit212.group1.koskenkiosken.Controllers.AuthenticationController;
 
 import android.app.Activity;
 
@@ -23,10 +23,8 @@ import android.widget.ProgressBar;
 import android.widget.TextView;
 import android.widget.Toast;
 
-import com.dit212.group1.koskenkiosken.MainActivity;
+import com.dit212.group1.koskenkiosken.Controllers.MainController.MainActivity;
 import com.dit212.group1.koskenkiosken.R;
-import com.dit212.group1.koskenkiosken.ui.login.LoginViewModel;
-import com.dit212.group1.koskenkiosken.ui.login.LoginViewModelFactory;
 
 /**
  * @author Albin Otterhäll <gusalbiot@student.gu.se>

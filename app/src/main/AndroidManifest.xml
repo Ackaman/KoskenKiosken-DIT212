@@ -11,7 +11,7 @@
         android:supportsRtl="true"
         android:theme="@style/AppTheme">
         <activity
-            android:name=".ui.login.LoginActivity"
+            android:name=".Controllers.AuthenticationController.LoginActivity"
             android:label="@string/title_activity_login">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
@@ -21,11 +21,11 @@
             </intent-filter>
         </activity>
         <activity
-            android:name=".MainActivity"
-            android:parentActivityName=".ui.login.LoginActivity"
+            android:name=".Controllers.MainController.MainActivity"
+            android:parentActivityName=".Controllers.AuthenticationController.LoginActivity"
             android:screenOrientation="portrait"></activity>
-        <activity android:name=".ProductPressedView" />
-        <activity android:name=".ProductRecommendationsFragment" />
+        <activity android:name=".Controllers.MainController.ProductPressedView" />
+        <activity android:name=".Controllers.MainController.ProductRecommendationsFragment" />
 
     </application>
 
