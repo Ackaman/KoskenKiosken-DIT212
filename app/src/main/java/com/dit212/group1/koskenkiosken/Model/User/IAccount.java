@@ -21,6 +21,7 @@ public interface IAccount {
     /**
      * Debits the user an amount of credits for a purchase
      * @param sum the sum of which to debit.
+     * @return copy of user with updated credits.
      */
     IAccount purchase(int sum);
 
