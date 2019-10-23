@@ -18,7 +18,7 @@ public class UserFactoryTest {
 
     @Before
     public void setUp() throws Exception {
-        user = UserFactory.create("John Doe", 100);
+        user = UserFactory.create("John Doe", 100, "password");
     }
 
     @Test
