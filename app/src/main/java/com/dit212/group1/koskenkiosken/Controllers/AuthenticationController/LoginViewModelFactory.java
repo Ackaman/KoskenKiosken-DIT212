@@ -1,4 +1,4 @@
-package com.dit212.group1.koskenkiosken.Controllers.Authentication;
+package com.dit212.group1.koskenkiosken.Controllers.AuthenticationController;
 
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;

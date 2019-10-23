@@ -1,6 +1,6 @@
 package com.dit212.group1.koskenkiosken.Model.Authentication;
 
-import com.dit212.group1.koskenkiosken.Controllers.Authentication.LoginViewModel;
+import com.dit212.group1.koskenkiosken.Controllers.AuthenticationController.LoginViewModel;
 
 /**
  * Class that handles authentication w/ login credentials and retrieves user information.
