@@ -11,7 +11,7 @@ import java.util.Comparator;
 import java.util.List;
 
 public class Model {
-    private final ArrayList<IProduct> productList;
+    private final List<IProduct> productList;
     private Cart<IProduct> cart;
     private IAccount loggedInUser;
 
