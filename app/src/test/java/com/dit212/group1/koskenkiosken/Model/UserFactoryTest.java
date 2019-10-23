@@ -23,7 +23,7 @@ public class UserFactoryTest {
 
     @Test
     public void checkName() {
-        assertThat(user.getUserName(), equalTo("John Doe"));
+        assertThat(user.getName(), equalTo("John Doe"));
     }
 
     @Test

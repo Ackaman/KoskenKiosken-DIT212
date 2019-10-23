@@ -6,16 +6,16 @@ package com.dit212.group1.koskenkiosken.Model.User;
  */
 class User implements IAccount {
 
-    final private String userName;
+    final private String name;
     final private int credits;
 
     /**
      * constructor
-     * @param userName the name to set of the constructed user.
+     * @param name the name to set of the constructed user.
      * @param credits the number of credits to give the contructed user.
      */
-    User(String userName, int credits) {
-        this.userName = userName;
+    User(String name, int credits) {
+        this.name = name;
         this.credits = credits;
     }
 
@@ -23,8 +23,8 @@ class User implements IAccount {
      * get the name of a given user.
      * @return the name of a given user.
      */
-    public String getUserName() {
-        return userName;
+    public String getName() {
+        return name;
     }
 
     /**
@@ -38,13 +38,13 @@ class User implements IAccount {
 
     /**
      * debits the user an amount of credits.
-     * @param sumOfPrice the sum of which to debit.
+     * @param sum the sum of which to debit.
      * @return a new object with drawn credits if purchase could be done.
      */
     @Override
-    public IAccount purchase(int sumOfPrice) {
-        if (!canMakePurchase(sumOfPrice)) return this;
-        return new User(userName, credits - sumOfPrice);
+    public IAccount purchase(int sum) {
+        if (!canMakePurchase(sum)) return this;
+        return new User(name, credits - sum);
     }
 
     /**

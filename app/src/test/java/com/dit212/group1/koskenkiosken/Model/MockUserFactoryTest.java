@@ -23,7 +23,7 @@ public class MockUserFactoryTest {
 
     @Test
     public void defaultNameIsCorrect() {
-        String mockUserName = mockUser.getUserName();
+        String mockUserName = mockUser.getName();
         assertThat(mockUserName, equalTo("FirstUser"));
     }
 

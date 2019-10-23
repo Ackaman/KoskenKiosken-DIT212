@@ -10,7 +10,7 @@ public interface IAccount {
      * the name of the user
      * @return the name of the user.
      */
-    String getUserName();
+    String getName();
 
     /**
      * the number of credits the user has
@@ -20,9 +20,9 @@ public interface IAccount {
 
     /**
      * Debits the user an amount of credits for a purchase
-     * @param sumOfPrice the sum of which to debit.
+     * @param sum the sum of which to debit.
      */
-    IAccount purchase(int sumOfPrice);
+    IAccount purchase(int sum);
 
     /**
      * checks if an account has enough credits to make a purchase

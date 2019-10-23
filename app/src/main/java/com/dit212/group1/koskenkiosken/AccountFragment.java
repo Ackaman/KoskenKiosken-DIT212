@@ -73,7 +73,7 @@ public class AccountFragment extends Fragment {
     super.onStart();
     View v = getView();
     if (v != null){
-        String usernameLine = getResources().getString(R.string.username,userID.getUserName());
+        String usernameLine = getResources().getString(R.string.username,userID.getName());
         user.setText(usernameLine);
         String creditsLine = getResources().getString(R.string.credits,userID.getCredits());
         credits.setText(creditsLine);

@@ -23,7 +23,7 @@ public class NormalUserTest {
 
     @Test
     public void nameIsCorrect() {
-        assertThat(user.getUserName(), equalTo("John Smith"));
+        assertThat(user.getName(), equalTo("John Smith"));
     }
 
     @Test
