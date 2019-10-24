@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ProductPressedView extends AppCompatActivity {
+    private static boolean isActive = false;
 
 
     /**
@@ -54,5 +55,14 @@ public class ProductPressedView extends AppCompatActivity {
         super.onStop();
         getDelegate().onStop();
         finish();
+    }
+
+    private void setIsActive(boolean liveState){
+        isActive = liveState;
+
+    }
+
+    static boolean isActive(){
+        return isActive;
     }
 }
