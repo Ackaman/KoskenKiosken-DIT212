@@ -5,8 +5,9 @@ import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
 import java.util.List;
 
 /**
- * Author: created by thowsen, 2019-09-23
- * Description: simplified persistant storage solution. used for looser coupling between model and storage implementation.
+ * @author Morgan Thowsen 2019-09-23
+ * Responsibility: persistentstorage to model that outside classes may depend on and parse items to model.
+ * Uses: None
  */
 public interface IDatabase {
     /**

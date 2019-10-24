@@ -3,9 +3,9 @@ package com.dit212.group1.koskenkiosken.Model.Product;
 import java.util.Comparator;
 
 /**
- * Created by morgan on 2019-09-30
- *
- * Description: class provides predefined product comparators.
+ * @author Morgan Thowsen 2019-09-30
+ * Responsibility: Collection of comparators for IProduct.
+ * Uses: IProduct
  */
 public class ComparatorIProduct {
 

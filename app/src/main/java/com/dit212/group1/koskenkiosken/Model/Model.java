@@ -10,6 +10,15 @@ import java.util.Collections;
 import java.util.Comparator;
 import java.util.List;
 
+/**
+ * @author David Persson, Morgan Thowsen, Gustav Pihlquist, Albin Otterhäll & Johan Almroth
+ * Responsibility: aggregate for the model at this stage, also holds the inventory.
+ * Uses: IProduct, Cart, ICart, ComparatorIProduct, IAccount, IDatabase
+ * comments: the inventory will be moved in the future into a separate generic package.
+ *            Also handles some operations which will be moved so that the model is a pure
+ *             aggregate
+ */
+
 public class Model {
     private final List<IProduct> productList;
     private Cart<IProduct> cart;

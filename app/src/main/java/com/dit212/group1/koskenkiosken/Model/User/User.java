@@ -2,9 +2,13 @@ package com.dit212.group1.koskenkiosken.Model.User;
 
 /**
  * @author Albin Otterhäll
- * <p>
- * Immutable representation of a user.
+ * Responsibility: User representation in the model. holds the name, password and credits.
+ *                 At this stage, it also deals with the transaction. this is a temporary solution
+ *                 before an actual paymenthandler is implemented.
+ * Uses: IAccount
+ * Description: Immutable representation of a user.
  */
+
 class User implements IAccount {
 
     /**

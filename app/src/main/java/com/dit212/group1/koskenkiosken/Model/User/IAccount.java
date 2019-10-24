@@ -1,7 +1,9 @@
 package com.dit212.group1.koskenkiosken.Model.User;
 
 /**
- * Author: created by thowsen, 2019-09-24
+ * @author Morgan Thowsen, 2019-09-24
+ * Responsibility: public interface for the package private Account class.
+ * Uses: None
  * Description: simple user abstraction. Outside actors should not have access to methods they don't use.
  */
 public interface IAccount {

@@ -3,10 +3,11 @@ package com.dit212.group1.koskenkiosken.Model.User;
 
 /**
  * @author Albin Otterhäll <gusalbiot@student.gu.se>
- *
- * A factory class that create objects of the `User` class.
+ * Responsibility: creation of a User into IAccount public interface.
+ * Uses: IAccount, User
  */
-public class UserFactory implements IAccountFactory {
+
+public class UserFactory {
 
     /**
      * Factory method for `User` objects

@@ -1,4 +1,0 @@
-package com.dit212.group1.koskenkiosken.Model.User;
-
-public interface IAccountFactory {
-}

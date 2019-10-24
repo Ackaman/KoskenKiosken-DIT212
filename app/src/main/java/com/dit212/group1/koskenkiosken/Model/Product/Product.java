@@ -3,7 +3,10 @@ package com.dit212.group1.koskenkiosken.Model.Product;
 import java.io.Serializable;
 
 /**
- * Description: Immutable representation of a product.
+ * @author Morgan Thowsen 2019-09-24
+ * Responsibility: simple product abstraction. Exposing a portion of internal structure of Product
+ * Uses: None (Serializable)
+ * Description: Immutable
  */
 
 class Product implements IProduct, Serializable {

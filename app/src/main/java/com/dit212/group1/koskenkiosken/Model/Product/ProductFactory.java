@@ -1,8 +1,10 @@
 package com.dit212.group1.koskenkiosken.Model.Product;
 
 /**
- * Author: created by thowsen, 2019-09-24
- * Description: Factory class for product.
+ * @author Morgan Thowsen 2019-09-24
+ * Responsibility: creation of a product to public IProduct interface.
+ * Uses: IProduct, Product
+ * Description: Factory class for Product.
  */
 public class ProductFactory {
 
