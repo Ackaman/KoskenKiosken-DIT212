@@ -11,7 +11,7 @@ public class LoginDataSource {
     /**
      * A global mockup user. This solution isn't very nice.
      */
-    public static IAccount mockUser = UserFactory.createMockUser();
+    public IAccount mockUser = UserFactory.createMockUser();
 
     public Result login(String username, String password) {
 

@@ -64,7 +64,7 @@ public class LoginRepository {
             LoggedInUser loggedInMockUser =
                     new LoggedInUser(
                             java.util.UUID.randomUUID().toString(),
-                            LoginDataSource.mockUser.getName());
+                            dataSource.mockUser.getName());
             setLoggedInUser(loggedInMockUser);
         }
 
