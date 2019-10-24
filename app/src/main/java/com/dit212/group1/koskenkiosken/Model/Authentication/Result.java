@@ -8,6 +8,6 @@ package com.dit212.group1.koskenkiosken.Model.Authentication;
 public enum Result {
 
     SUCCESS,
-    ERROR;
+    ERROR
 
 }

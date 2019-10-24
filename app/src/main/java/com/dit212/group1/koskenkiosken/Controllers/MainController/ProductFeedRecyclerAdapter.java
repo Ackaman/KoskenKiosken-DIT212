@@ -7,8 +7,10 @@ import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
 import android.widget.Toast;
+
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
+
 import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
 import com.dit212.group1.koskenkiosken.R;
 
@@ -170,10 +172,11 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         @Override
         public void onClick(View v) {
 
-            if(v.getId() == addToCart_button.getId()){
-                addToCartClickListener.onAddToCartClick(getAdapterPosition());
+            if (!ProductPressedView.isActive()){
+                if (v.getId() == addToCart_button.getId()) {
+                    addToCartClickListener.onAddToCartClick(getAdapterPosition());
+                } else productClickListener.onProductClick(getAdapterPosition());
             }
-            else productClickListener.onProductClick(getAdapterPosition());
         }
     }
 

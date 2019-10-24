@@ -1,12 +1,10 @@
 package com.dit212.group1.koskenkiosken.Controllers.MainController;
 
 
-
 import android.app.Dialog;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
 import android.view.LayoutInflater;
 import android.view.Menu;
 import android.view.MenuInflater;
@@ -207,7 +205,9 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     @Override
     public void onProductClick(int position) {
         Intent intent = new Intent(getActivity(), ProductPressedView.class);
-        intent.putExtra("product", (Parcelable) products.get(position));
+        intent.putExtra("name", products.get(position).getName());
+        intent.putExtra("price", products.get(position).getPrice());
+        intent.putExtra("description", products.get(position).getDescription());
         startActivity(intent);
     }
 

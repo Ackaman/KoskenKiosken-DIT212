@@ -3,7 +3,7 @@ package com.dit212.group1.koskenkiosken.Controllers.MainController;
 import android.content.Context;
 import android.content.Intent;
 import android.os.Bundle;
-import android.os.Parcelable;
+import android.util.Log;
 import android.view.LayoutInflater;
 import android.view.View;
 import android.view.ViewGroup;
@@ -20,8 +20,11 @@ import com.dit212.group1.koskenkiosken.Controllers.MainController.Dialogs.Checko
 import com.dit212.group1.koskenkiosken.Controllers.MainController.Dialogs.Checkout.ICheckoutResponseListener;
 import com.dit212.group1.koskenkiosken.Controllers.MainController.Dialogs.Checkout.IDialogCheckout;
 import com.dit212.group1.koskenkiosken.Model.Model;
+import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
 import com.dit212.group1.koskenkiosken.R;
 import com.google.android.material.floatingactionbutton.FloatingActionButton;
+
+import java.util.List;
 
 public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter.CartProductClickListener {
 
@@ -29,6 +32,7 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
     private FloatingActionButton fab;
     private FragmentListener listener;
     private Model m;
+    private final String TAG = getClass().getName();
 
 
     public CartFragment() {
@@ -72,9 +76,14 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
      */
     @Override
     public void onProductClick(int position) {
-        Intent intent = new Intent(getActivity(), ProductPressedView.class);
-        intent.putExtra("product", (Parcelable) m.viewCart().get(position));
-        startActivity(intent);
+        if (!ProductPressedView.isActive()) {
+            Intent intent = new Intent(getActivity(), ProductPressedView.class);
+            List<IProduct> products = m.viewCart();
+            intent.putExtra("name", products.get(position).getName());
+            intent.putExtra("price", products.get(position).getPrice());
+            intent.putExtra("description", products.get(position).getDescription());
+            startActivity(intent);
+        }
     }
 
     /**
@@ -83,9 +92,14 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
      */
     @Override
     public void onIncrementClick(int position) {
-        m.addToCart(m.viewCart().get(position));
-        pAdapter.updateList(m.viewCart());
-        listener.onInputStoreSent(m.viewCart());
+        try {
+            m.addToCart(m.viewCart().get(position));
+            pAdapter.updateList(m.viewCart());
+            listener.onInputStoreSent(m.viewCart());
+        }
+        catch (Exception e){
+            Log.e(TAG, "IndexOutOfBounds");
+        }
 
     }
 
@@ -95,10 +109,16 @@ public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter
      */
     @Override
     public void onDecrementClick(int position) {
-        m.removeFromCart(m.viewCart().get(position));
-        pAdapter.updateList(m.viewCart());
-        listener.onInputStoreSent(m.viewCart());
+        try {
+            m.removeFromCart(m.viewCart().get(position));
+            pAdapter.updateList(m.viewCart());
+            listener.onInputStoreSent(m.viewCart());
+        }
+        catch (Exception e){
+            Log.e(TAG, "IndexOutOfBounds");
+        }
     }
+
 
 
     /**

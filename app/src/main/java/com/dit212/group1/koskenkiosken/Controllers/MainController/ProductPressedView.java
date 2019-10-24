@@ -1,17 +1,16 @@
 package com.dit212.group1.koskenkiosken.Controllers.MainController;
 
-import android.content.Intent;
 import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
-import com.dit212.group1.koskenkiosken.R;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
+import com.dit212.group1.koskenkiosken.R;
+
 public class ProductPressedView extends AppCompatActivity {
+    private static boolean isActive = false;
 
 
     /**
@@ -22,15 +21,16 @@ public class ProductPressedView extends AppCompatActivity {
      */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setIsActive(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product_pressed_view);
-        Intent intent = getIntent();
-        IProduct product = intent.getParcelableExtra("product");
+        Bundle bundle = getIntent().getExtras();
 
-        if (product != null) {
-            String productName = product.getName();
-            int productPrice = product.getPrice();
-            String productDescription = product.getDescription();
+        if (bundle != null) {
+            String productName = bundle.getString("name");
+            int productPrice = bundle.getInt("price");
+            String productDescription = bundle.getString("description");
+
             String productPriceKr = productPrice + " Kr";
 
             TextView text1 = findViewById(R.id.productName2);
@@ -53,6 +53,16 @@ public class ProductPressedView extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         getDelegate().onStop();
+        setIsActive(false);
         finish();
+    }
+
+    private void setIsActive(boolean liveState){
+        isActive = liveState;
+
+    }
+
+    static boolean isActive(){
+        return isActive;
     }
 }
