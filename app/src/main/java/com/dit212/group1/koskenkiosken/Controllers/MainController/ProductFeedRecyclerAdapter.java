@@ -170,10 +170,11 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         @Override
         public void onClick(View v) {
 
-            if(v.getId() == addToCart_button.getId()){
-                addToCartClickListener.onAddToCartClick(getAdapterPosition());
+            if (!ProductPressedView.isActive()){
+                if (v.getId() == addToCart_button.getId()) {
+                    addToCartClickListener.onAddToCartClick(getAdapterPosition());
+                } else productClickListener.onProductClick(getAdapterPosition());
             }
-            else productClickListener.onProductClick(getAdapterPosition());
         }
     }
 

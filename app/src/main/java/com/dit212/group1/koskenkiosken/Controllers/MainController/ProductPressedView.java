@@ -12,6 +12,7 @@ import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
 
 public class ProductPressedView extends AppCompatActivity {
+    private static boolean isActive = false;
 
 
     /**
@@ -22,6 +23,7 @@ public class ProductPressedView extends AppCompatActivity {
      */
     @Override
     protected void onCreate(@Nullable Bundle savedInstanceState) {
+        setIsActive(true);
         super.onCreate(savedInstanceState);
         setContentView(R.layout.product_pressed_view);
         Intent intent = getIntent();
@@ -53,6 +55,16 @@ public class ProductPressedView extends AppCompatActivity {
     protected void onStop() {
         super.onStop();
         getDelegate().onStop();
+        setIsActive(false);
         finish();
+    }
+
+    private void setIsActive(boolean liveState){
+        isActive = liveState;
+
+    }
+
+    static boolean isActive(){
+        return isActive;
     }
 }
