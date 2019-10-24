@@ -1,7 +1,5 @@
 package com.dit212.group1.koskenkiosken.Model.Authentication;
 
-import com.dit212.group1.koskenkiosken.Controllers.AuthenticationController.LoginViewModel;
-
 /**
  * @author Albin Otterhäll <gusalbiot@student.gu.se>
  *
@@ -66,7 +64,7 @@ public class LoginRepository {
             LoggedInUser loggedInMockUser =
                     new LoggedInUser(
                             java.util.UUID.randomUUID().toString(),
-                            LoginViewModel.mockUser.getName());
+                            dataSource.mockUser.getName());
             setLoggedInUser(loggedInMockUser);
         }
 

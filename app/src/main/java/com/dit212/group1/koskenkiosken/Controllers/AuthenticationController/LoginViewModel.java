@@ -4,11 +4,9 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.dit212.group1.koskenkiosken.Model.Authentication.LoggedInUser;
 import com.dit212.group1.koskenkiosken.Model.Authentication.LoginRepository;
 import com.dit212.group1.koskenkiosken.Model.Authentication.Result;
-import com.dit212.group1.koskenkiosken.Model.User.IAccount;
-import com.dit212.group1.koskenkiosken.Model.User.UserFactory;
+import com.dit212.group1.koskenkiosken.Model.Authentication.LoggedInUser;
 import com.dit212.group1.koskenkiosken.R;
 
 /**
@@ -17,11 +15,6 @@ import com.dit212.group1.koskenkiosken.R;
  * The state storage for when logging in.
  */
 public class LoginViewModel extends ViewModel {
-
-    /**
-     * A global mockup user. This solution isn't very nice.
-     */
-    public static IAccount mockUser = UserFactory.createMockUser();
 
     private MutableLiveData<LoginFormState> loginFormState = new MutableLiveData<>();
     private MutableLiveData<LoginResult> loginResult = new MutableLiveData<>();
