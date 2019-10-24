@@ -4,10 +4,10 @@ import android.os.Bundle;
 import android.widget.ImageView;
 import android.widget.TextView;
 
-import com.dit212.group1.koskenkiosken.R;
-
 import androidx.annotation.Nullable;
 import androidx.appcompat.app.AppCompatActivity;
+
+import com.dit212.group1.koskenkiosken.R;
 
 public class ProductPressedView extends AppCompatActivity {
     private static boolean isActive = false;

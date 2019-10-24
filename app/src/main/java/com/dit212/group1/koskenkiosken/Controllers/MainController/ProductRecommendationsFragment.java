@@ -8,13 +8,13 @@ import android.widget.Button;
 import android.widget.EditText;
 import android.widget.Toast;
 
-import com.dit212.group1.koskenkiosken.DB.DatabaseHelper;
-import com.dit212.group1.koskenkiosken.Model.Model;
-import com.dit212.group1.koskenkiosken.R;
-
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.fragment.app.Fragment;
+
+import com.dit212.group1.koskenkiosken.DB.DatabaseHelper;
+import com.dit212.group1.koskenkiosken.Model.Model;
+import com.dit212.group1.koskenkiosken.R;
 
 public class ProductRecommendationsFragment extends Fragment {
 

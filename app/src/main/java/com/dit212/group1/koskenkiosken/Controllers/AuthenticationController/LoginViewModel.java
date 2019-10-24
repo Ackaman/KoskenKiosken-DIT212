@@ -4,11 +4,11 @@ import androidx.lifecycle.LiveData;
 import androidx.lifecycle.MutableLiveData;
 import androidx.lifecycle.ViewModel;
 
-import com.dit212.group1.koskenkiosken.Model.User.IAccount;
-import com.dit212.group1.koskenkiosken.Model.User.UserFactory;
+import com.dit212.group1.koskenkiosken.Model.Authentication.LoggedInUser;
 import com.dit212.group1.koskenkiosken.Model.Authentication.LoginRepository;
 import com.dit212.group1.koskenkiosken.Model.Authentication.Result;
-import com.dit212.group1.koskenkiosken.Model.Authentication.LoggedInUser;
+import com.dit212.group1.koskenkiosken.Model.User.IAccount;
+import com.dit212.group1.koskenkiosken.Model.User.UserFactory;
 import com.dit212.group1.koskenkiosken.R;
 
 /**

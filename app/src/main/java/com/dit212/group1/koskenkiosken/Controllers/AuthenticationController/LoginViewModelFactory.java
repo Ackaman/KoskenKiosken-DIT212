@@ -1,8 +1,8 @@
 package com.dit212.group1.koskenkiosken.Controllers.AuthenticationController;
 
+import androidx.annotation.NonNull;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
-import androidx.annotation.NonNull;
 
 import com.dit212.group1.koskenkiosken.Model.Authentication.LoginDataSource;
 import com.dit212.group1.koskenkiosken.Model.Authentication.LoginRepository;
