@@ -3,9 +3,9 @@ package com.dit212.group1.koskenkiosken.Model.Product;
 import java.util.Comparator;
 
 /**
- * Created by morgan on 2019-09-30
- *
- * Description: class provides predefined product comparators.
+ * @author Morgan Thowsen 2019-09-30
+ * Responsibility: Collection of comparators for IProduct.
+ * Uses: IProduct
  */
 public class ComparatorIProduct {
 
@@ -33,7 +33,7 @@ public class ComparatorIProduct {
             @Override
             public int compare(IProduct p1, IProduct p2) {
                 {
-                    return p2.getName().compareTo(p1.getName());
+                    return p1.getName().compareTo(p2.getName());
                 }
             }
         };
@@ -52,7 +52,8 @@ public class ComparatorIProduct {
         nameDescendingOrder = new Comparator<IProduct>() {
             @Override
             public int compare(IProduct p1, IProduct p2) {
-                return p1.getName().compareTo(p2.getName());
+                return p2.getName().compareTo(p1.getName());
+
             }
         };
         return nameDescendingOrder;
@@ -70,7 +71,7 @@ public class ComparatorIProduct {
         priceDescendingOrder = new Comparator<IProduct>() {
             @Override
             public int compare(IProduct p1, IProduct p2) {
-                return Integer.valueOf(p1.getPrice()).compareTo(p2.getPrice());
+                return Integer.valueOf(p2.getPrice()).compareTo(p1.getPrice());
             }
         };
         return priceDescendingOrder;
@@ -89,7 +90,7 @@ public class ComparatorIProduct {
             @Override
             public int compare(IProduct p1, IProduct p2) {
                 {
-                    return Integer.valueOf(p2.getPrice()).compareTo(p1.getPrice());
+                    return Integer.valueOf(p1.getPrice()).compareTo(p2.getPrice());
                 }
             }
         };

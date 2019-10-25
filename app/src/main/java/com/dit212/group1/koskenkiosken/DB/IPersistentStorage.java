@@ -1,9 +1,9 @@
 package com.dit212.group1.koskenkiosken.DB;
 
 /**
- * Created by morgan on 2019-10-07
- *
- * Interface for abstracting implementation of persistent storage solutions.
+ * @author Morgan Thowsen
+ * Uses: none.
+ * Description: Interface for abstracting implementation of persistent storage solutions.
  */
 public interface IPersistentStorage {
 
@@ -19,4 +19,10 @@ public interface IPersistentStorage {
      * @param json data in json-format to write to persistent storage
      */
     void writeToDB(String json);
+
+    /**
+     * Writes data with the user and the recommended product to persistent storage
+     * @param json data in json-format to write to persistent storage
+     */
+    void writeRecommendedProductToDb(String json);
 }

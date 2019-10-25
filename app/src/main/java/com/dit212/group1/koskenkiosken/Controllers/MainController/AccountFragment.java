@@ -1,4 +1,4 @@
-package com.dit212.group1.koskenkiosken;
+package com.dit212.group1.koskenkiosken.Controllers.MainController;
 
 
 import android.os.Bundle;
@@ -13,10 +13,12 @@ import androidx.fragment.app.Fragment;
 
 import com.dit212.group1.koskenkiosken.Model.User.IAccount;
 import com.dit212.group1.koskenkiosken.Model.User.UserFactory;
+import com.dit212.group1.koskenkiosken.R;
 
 
 /**
- * Author: created by -, on -
+ * Author: created by Johan Almroth.
+ * Uses: IAccount, UserFactory.
  * Description: Account page "controller". feeds user-specific textfields and/or buttons of the
  * view to data and functions from controller.
  */
@@ -73,12 +75,17 @@ public class AccountFragment extends Fragment {
     super.onStart();
     View v = getView();
     if (v != null){
-        String usernameLine = getResources().getString(R.string.username,userID.getUserName());
+        String usernameLine = getResources().getString(R.string.username,userID.getName());
         user.setText(usernameLine);
-        user.append(userID.getUserName());
         String creditsLine = getResources().getString(R.string.credits,userID.getCredits());
         credits.setText(creditsLine);
         }
-
     }
+
+    /**
+     * updates user information source. (IAccount being immutable)
+     * @param user the user of which to update.
+     */
+
+    public void updateUser(IAccount user){this.userID = user;}
 }

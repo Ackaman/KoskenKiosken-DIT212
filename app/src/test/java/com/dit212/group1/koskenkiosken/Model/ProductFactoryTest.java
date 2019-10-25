@@ -9,6 +9,11 @@ import org.junit.Test;
 import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.*;
 
+/**
+ * @author Albin Otterhäll <gusalbiot@student.gu.se>
+ * Uses: IProduct, ProductFactory.
+ */
+
 public class ProductFactoryTest {
 
     IProduct product;

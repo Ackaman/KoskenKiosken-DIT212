@@ -1,0 +1,40 @@
+<?xml version="1.0" encoding="utf-8"?>
+<!--
+@author: Morgan Thowsen
+Description: Dialog view layout for checkout.
+ -->
+<RelativeLayout xmlns:android="http://schemas.android.com/apk/res/android"
+    android:layout_width="wrap_content"
+    android:layout_height="200dp"
+    android:padding="16dp">
+
+    <Button
+        android:id="@+id/positive_response_button"
+        android:layout_width="64dp"
+        android:layout_height="wrap_content"
+        android:layout_alignParentEnd="true"
+        android:layout_alignParentBottom="true"
+        android:background="@color/colorAccent"
+        android:text="@string/dialog_checkout_positive_button" />
+
+    <TextView
+        android:id="@+id/negative_response_text_field"
+        android:layout_width="64dp"
+        android:layout_height="32dp"
+        android:layout_alignTop="@id/positive_response_button"
+        android:layout_alignBottom="@id/positive_response_button"
+        android:layout_toStartOf="@+id/positive_response_button"
+        android:clickable="true"
+        android:focusable="true"
+        android:gravity="center"
+        android:text="@string/dialog_checkout_negative_button"
+        android:textAlignment="center" />
+
+    <TextView
+        android:id="@+id/text_message_checkout"
+        android:layout_width="wrap_content"
+        android:layout_height="wrap_content"
+        android:layout_centerHorizontal="true"
+        android:layout_centerVertical="true"
+        android:text="@string/dialog_checkout_text_message" />
+</RelativeLayout>

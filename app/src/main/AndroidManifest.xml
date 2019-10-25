@@ -4,13 +4,14 @@
 
     <application
         android:allowBackup="true"
+        android:fullBackupContent="true"
         android:icon="@mipmap/ic_launcher"
         android:label="@string/app_name"
         android:roundIcon="@mipmap/ic_launcher_round"
         android:supportsRtl="true"
-        android:theme="@style/AppTheme"
-        android:fullBackupContent="true">
-        <activity android:name=".MainActivity">
+        android:theme="@style/AppTheme">
+        <activity
+            android:name=".Controllers.AuthenticationController.LoginActivity">
             <intent-filter>
                 <action android:name="android.intent.action.MAIN" />
                 <action android:name="android.intent.action.VIEW" />
@@ -18,7 +19,13 @@
                 <category android:name="android.intent.category.LAUNCHER" />
             </intent-filter>
         </activity>
-    <activity android:name=".ProductPressedView"/>
+        <activity
+            android:name=".Controllers.MainController.MainActivity"
+            android:parentActivityName=".Controllers.AuthenticationController.LoginActivity"
+            android:screenOrientation="portrait"></activity>
+        <activity android:name=".Controllers.MainController.ProductPressedView" />
+        <activity android:name=".Controllers.MainController.ProductRecommendationsFragment" />
+
     </application>
 
 </manifest>

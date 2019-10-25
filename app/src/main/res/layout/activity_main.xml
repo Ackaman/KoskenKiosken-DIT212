@@ -1,4 +1,8 @@
 <?xml version="1.0" encoding="utf-8"?>
+<!--
+@author: Johan Almroth
+Description: Mainactivity view aggregate layout.
+ -->
 <RelativeLayout
     xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
@@ -16,7 +20,7 @@
         app:menu="@menu/menu_bottom_bar" >
 
         <androidx.constraintlayout.widget.ConstraintLayout
-            android:layout_width="400dp"
+            android:layout_width="match_parent"
             android:layout_height="match_parent">
 
             <TextView

@@ -1,0 +1,110 @@
+<?xml version="1.0" encoding="UTF-8" standalone="no"?>
+<!DOCTYPE svg PUBLIC "-//W3C//DTD SVG 1.0//EN" "http://www.w3.org/TR/2001/PR-SVG-20010719/DTD/svg10.dtd">
+<svg width="38cm" height="21cm" viewBox="-26 34 745 412" xmlns="http://www.w3.org/2000/svg" xmlns:xlink="http://www.w3.org/1999/xlink">
+  <g>
+    <rect style="fill: #ffffff" x="290" y="233" width="66.5" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #1a1a1a" x="290" y="233" width="66.5" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="323.25" y="254.2">Kiosk</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="-24" y="234" width="105" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #1a1a1a" x="-24" y="234" width="105" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="28.5" y="255.2">Inventarie</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="505" y="378" width="89.6" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #1a1a1a" x="505" y="378" width="89.6" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="549.8" y="399.2">Kundvagn</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="80" y="409" width="81.9" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #1a1a1a" x="80" y="409" width="81.9" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="120.95" y="430.2">Produkt</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="376" y="123" width="97.3" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #1a1a1a" x="376" y="123" width="97.3" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="424.65" y="144.2">Användare</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="637" y="85" width="66.5" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #1a1a1a" x="637" y="85" width="66.5" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="670.25" y="106.2">Inlog</text>
+  </g>
+  <g>
+    <rect style="fill: #ffffff" x="233" y="35" width="135.8" height="36"/>
+    <rect style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #1a1a1a" x="233" y="35" width="135.8" height="36"/>
+    <text font-size="12.8" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="300.9" y="56.2">Rekommendation</text>
+  </g>
+  <g>
+    <polygon style="fill: #ffffff" points="649.002,250.93 680.552,232 712.102,250.93 680.552,269.86 "/>
+    <polygon style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #1a1a1a" points="649.002,250.93 680.552,232 712.102,250.93 680.552,269.86 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="643.002" y="244.93"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="718.102" y="244.93"></text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="680.552" y="254.93">Köp</text>
+  </g>
+  <text font-size="12.7998" style="fill: #1a1a1a;text-anchor:start;font-family:sans-serif;font-style:normal;font-weight:normal" x="300.002" y="404">
+    <tspan x="300.002" y="404"></tspan>
+  </text>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #1a1a1a" points="81.839,252 203.002,252 203.002,251 289.005,251 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="205.002" y="247.5">Har ett</text>
+    <polygon style="fill: #1a1a1a" points="201.002,247.5 201.002,239.5 193.002,243.5 "/>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #1a1a1a" points="28.5,271.006 28.5,352 120.95,352 120.95,408.012 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="74.725" y="348">Består av</text>
+    <polygon style="fill: #1a1a1a" points="36.075,348 36.075,340 28.075,344 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="32.5" y="283.006">1</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="124.95" y="404.012">n</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #1a1a1a" points="162.905,427 333.45,427 333.45,396 503.994,396 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="335.45" y="407.5">Består av</text>
+    <polygon style="fill: #1a1a1a" points="406.75,407.5 406.75,399.5 414.75,403.5 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="166.905" y="415"> n</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="499.994" y="384"> 1</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #1a1a1a" points="549.8,377.023 549.8,344.93 680.552,344.93 680.552,270.862 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="615.176" y="340.93">består av</text>
+    <polygon style="fill: #1a1a1a" points="576.526,340.93 576.526,332.93 568.526,336.93 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="553.8" y="373.023">1</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="684.552" y="282.862">1</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #1a1a1a" points="474.306,141 555.149,141 555.149,103 635.992,103 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="557.149" y="118">har ett</text>
+    <polygon style="fill: #1a1a1a" points="613.049,118 613.049,110 621.049,114 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="478.306" y="137">1</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="631.992" y="99">1</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #1a1a1a" points="357.508,251 502.757,251 502.757,250.93 648.007,250.93 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="504.757" y="246.965">registrerar ett</text>
+    <polygon style="fill: #1a1a1a" points="622.257,246.965 622.257,238.965 630.257,242.965 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="361.508" y="247">1</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:end;font-family:monospace;font-style:normal;font-weight:normal" x="644.007" y="246.93">1</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #1a1a1a" points="300.9,72.0093 300.9,97 424.65,97 424.65,121.991 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="362.775" y="93">Skapar en</text>
+    <polygon style="fill: #1a1a1a" points="324.125,93 324.125,85 316.125,89 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="304.9" y="84.0093">n</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="428.65" y="117.991">1</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #1a1a1a" points="323.25,231.991 323.25,196 424.65,196 424.65,160.009 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="373.95" y="192">Har en</text>
+    <polygon style="fill: #1a1a1a" points="399.05,192 399.05,184 407.05,188 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="327.25" y="227.991">1</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="428.65" y="172.009">1</text>
+  </g>
+  <g>
+    <polyline style="fill: none; fill-opacity:0; stroke-width: 2; stroke: #1a1a1a" points="473.3,159 473.3,194.995 680.552,194.995 680.552,230.99 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:middle;font-family:monospace;font-style:normal;font-weight:normal" x="576.926" y="190.995">Utför ett</text>
+    <polygon style="fill: #1a1a1a" points="613.576,190.995 613.576,182.995 621.576,186.995 "/>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="477.3" y="171"> 1</text>
+    <text font-size="12.7998" style="fill: #000000;text-anchor:start;font-family:monospace;font-style:normal;font-weight:normal" x="684.552" y="226.99"> 1</text>
+  </g>
+</svg>

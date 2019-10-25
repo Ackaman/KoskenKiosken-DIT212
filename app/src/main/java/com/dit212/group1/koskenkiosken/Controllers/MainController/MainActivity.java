@@ -1,4 +1,4 @@
-package com.dit212.group1.koskenkiosken;
+package com.dit212.group1.koskenkiosken.Controllers.MainController;
 
 import android.os.Bundle;
 import android.view.MenuItem;
@@ -11,15 +11,18 @@ import androidx.fragment.app.Fragment;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.dit212.group1.koskenkiosken.DB.DatabaseHelper;
-import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
 import com.dit212.group1.koskenkiosken.Model.Model;
+import com.dit212.group1.koskenkiosken.Model.Product.IProduct;
 import com.dit212.group1.koskenkiosken.Model.User.UserFactory;
+import com.dit212.group1.koskenkiosken.R;
 import com.google.android.material.bottomnavigation.BottomNavigationView;
 
 import java.util.List;
 
 /**
- * Author: created by -, on -
+ * @author David Persson, Morgan Thowsen, Gustav Pihlquist, Albin Otterhäll & Johan Almroth
+ * Uses: DatabaseHelper, Model, IProduct, UserFactory, AccountFragment, StoreFragment, CartFragment
+ * ProductRecommendationsFragment.
  * Description: main controller switching between fragments and binding non-fragment specific buttons.
  * also delegates pieces of the model to fragments.
  */
@@ -29,6 +32,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
     private AccountFragment accountFragment;
     private StoreFragment storeFragment;
     private CartFragment cartFragment;
+    private ProductRecommendationsFragment recommendationFragment;
     private BottomNavigationView bnv;
     private Model m;
     private TextView cartBubble;
@@ -43,9 +47,11 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
         super.onCreate(savedInstanceState);
+
         setContentView(R.layout.activity_main);
 
         bnv = findViewById(R.id.bottom_navigation);
+        disableHomeButton();
 
         setModel(savedInstanceState);
         initFragments(m);
@@ -56,10 +62,15 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
 
     }
 
+    /**
+     * Initialises fragments.
+     * @param m The model used by fragments.
+     */
     private void initFragments(Model m){
         if (accountFragment == null) accountFragment = new AccountFragment(m.getLoggedInUser());
         if (storeFragment == null) storeFragment = new StoreFragment(m);
         if (cartFragment == null) cartFragment = new CartFragment(m);
+        if (recommendationFragment == null) recommendationFragment = new ProductRecommendationsFragment(m);
     }
 
     /**
@@ -68,14 +79,16 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
      */
     @Override
     public void onInputStoreSent(List<IProduct> input) {
-        if (m.getSizeOfCart() == 0) {
+        if (m.getSizeOfCart() <= 0) {
             cartBubble.setVisibility(View.INVISIBLE);
         }
-        m.getCart().setCart(input);
-        int x = m.getSizeOfCart();
-        String s = Integer.toString(x);
-        cartBubble.setText(s);
-        cartBubble.setVisibility(View.VISIBLE);
+        else {
+            m.setCart(input);
+            int x = m.getSizeOfCart();
+            String s = Integer.toString(x);
+            cartBubble.setText(s);
+            cartBubble.setVisibility(View.VISIBLE);
+        }
 
     }
 
@@ -99,6 +112,7 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
             public boolean onNavigationItemSelected(@NonNull MenuItem item) {
                 switch (item.getItemId()) {
                     case R.id.account:
+                        accountFragment.updateUser(m.getLoggedInUser());
                         setFragment(accountFragment);
                         break;
                     case R.id.store:
@@ -107,6 +121,8 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
                     case R.id.cart_bottom:
                         setFragment(cartFragment);
                         break;
+                    case  R.id.recommendations:
+                        setFragment(recommendationFragment);
                 }
                 return true;
             }
@@ -128,7 +144,15 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
         }
     }
 
-
-
-
+    /**
+     * disables the back button.
+     */
+    private void disableHomeButton(){
+        androidx.appcompat.app.ActionBar ab = getSupportActionBar();
+        if (ab != null) {
+            ab.setHomeButtonEnabled(false); // disable the button
+            ab.setDisplayHomeAsUpEnabled(false); // remove the left caret
+            ab.setDisplayShowHomeEnabled(false); // remove the icon
+        }
+    }
 }

@@ -10,7 +10,8 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.*;
 
 /**
- * Primary author: Albin Otterhäll <gusalbiot@student.gu.se>
+ * @author: Albin Otterhäll <gusalbiot@student.gu.se>
+ * Uses: IAccount, UserFactory.
  */
 
 public class UserFactoryTest {
@@ -18,12 +19,12 @@ public class UserFactoryTest {
 
     @Before
     public void setUp() throws Exception {
-        user = UserFactory.create("John Doe", 100);
+        user = UserFactory.create("John Doe", 100, "password");
     }
 
     @Test
     public void checkName() {
-        assertThat(user.getUserName(), equalTo("John Doe"));
+        assertThat(user.getName(), equalTo("John Doe"));
     }
 
     @Test

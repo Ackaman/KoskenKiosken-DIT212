@@ -6,20 +6,18 @@ import com.google.gson.Gson;
 import com.google.gson.JsonArray;
 import com.google.gson.JsonElement;
 
-import java.util.ArrayList;
 import java.util.List;
 
 /**
- * Author: created by thowsen, 2019-09-23
+ * @author Morgan Thowsen
  *
  * Description: singleton class that simulates a persistent storage for products.
  * could've been static but it's not permitted until API24. therefor, singleton.
- *
+ * Uses: IDatabase, IProduct, JSONparser, IProductDeserializer, IPersistentStorage.
  * delegates deserialization to IProductDeserializer because of Factory Pattern and
  * hidden constructor.
  */
 public class DatabaseHelper implements IDatabase {
-    private static String TAG = "DatabaseHelper"; // used for debugging
     private static DatabaseHelper dh;
     private static IPersistentStorage database = new JSONparser();
     private static Gson g = new Gson();
@@ -35,13 +33,10 @@ public class DatabaseHelper implements IDatabase {
      */
     @Override
     public List<IProduct> readProducts() {
-        List<IProduct> out = new ArrayList<>();
         String j = database.getJsonData();
         JsonElement je = g.fromJson(j, JsonElement.class);
         JsonArray jo = je.getAsJsonArray();
-        for (int i = 0; i < jo.size(); i++)
-            out.add(IProductDeserializer.deserialize(jo.get(i)));
-        return out;
+        return IProductDeserializer.deserialize(jo);
     }
 
     /**
@@ -52,6 +47,18 @@ public class DatabaseHelper implements IDatabase {
         IProduct[] arr = (IProduct[]) pr.toArray();
         String json = g.toJson(arr);
         database.writeToDB(json);
+    }
+
+    /**
+     * Writes the recommended product to the Database
+     * @param productToRecommend    The product which the user recommends
+     * @param name      The name of the user who recommended the product
+     */
+    @Override
+    public void writeProductRecommendation(String productToRecommend, String name) {
+        String[] s = {productToRecommend, name};
+        String json = g.toJson(s);
+        database.writeRecommendedProductToDb(json);
     }
 
     /**

@@ -17,6 +17,8 @@ public class CartTest {
     Cart cart;
 
     /**
+     * @author David Persson.
+     * Uses: Cart, IProduct.
      * creates a mock List of Product and an empty Cart. with mocks we can eliminate bugs from IProduct to affect
      * our tests.
      */

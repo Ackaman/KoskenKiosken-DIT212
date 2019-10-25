@@ -3,6 +3,12 @@ package com.dit212.group1.koskenkiosken.Model.Cart;
 import java.util.ArrayList;
 import java.util.List;
 
+/**
+ * @author Morgan Thowsen
+ * Responsibility: representation of a cart. A small interface of the internal structure.
+ * Uses: none
+ */
+
 public class Cart<T> implements ICart<T> {
     private ArrayList<T> items;
 

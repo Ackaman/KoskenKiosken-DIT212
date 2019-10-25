@@ -1,17 +1,15 @@
 package com.dit212.group1.koskenkiosken.Model.Product;
 
-import android.os.Parcel;
-import android.os.Parcelable;
-
-import androidx.annotation.NonNull;
-
 import java.io.Serializable;
 
 /**
- * Description: representation of a product.
+ * @author Morgan Thowsen 2019-09-24
+ * Responsibility: simple product abstraction. Exposing a portion of internal structure of Product
+ * Uses: None (Serializable)
+ * Description: Immutable
  */
 
-class Product implements IProduct, Parcelable, Serializable {
+class Product implements IProduct, Serializable {
 
     final private String name;
     final private int price;
@@ -30,28 +28,6 @@ class Product implements IProduct, Parcelable, Serializable {
         this.description = description;
     }
 
-    private Product(Parcel in) {
-        name = in.readString();
-        price = in.readInt();
-        description = in.readString();
-    }
-
-    /**
-     * parcelable constructor
-     */
-
-    public static final Creator<Product> CREATOR = new Creator<Product>() {
-        @Override
-        public Product createFromParcel(Parcel in) {
-            return new Product(in);
-        }
-
-        @Override
-        public Product[] newArray(int size) {
-            return new Product[size];
-        }
-    };
-
     /**
      * get the name of a given product.
      * @return the name of a given product
@@ -59,15 +35,6 @@ class Product implements IProduct, Parcelable, Serializable {
 
     public String getName() {
         return name;
-    }
-
-    /**
-     * set the name of a given product
-     * @param name the name to set of a given product
-     */
-
-    public IProduct setName(String name) {
-        return ProductFactory.create(name, this.price, this.description);
     }
 
     /**
@@ -88,48 +55,9 @@ class Product implements IProduct, Parcelable, Serializable {
     }
 
     /**
-     * updated the description of a product.
-     * @param description the description ot give the product (ex. kolsyrad dryck)
+     * returns the name of the product.
+     * @return the name of the product.
      */
-    public IProduct setDescription(String description) {
-        return ProductFactory.create(this.name, this.price, description);
-    }
-
-    /**
-     * updates the price of a product
-     * @param price the price of which to give the product.
-     */
-    @Override
-    public IProduct setPrice(int price) {
-        return ProductFactory.create(this.name, price, this.description);
-    }
-
-    public Product getObject() {
-        return this;
-    }
-
-    @Override
-    public int describeContents() {
-        return 0;
-    }
-
-    /**
-     * flattening a product to a serialized object.
-     * @param dest the container of which to put the flattened product.
-     * @param flags not used.
-     */
-    @Override
-    public void writeToParcel(Parcel dest, int flags) {
-        dest.writeString(name);
-        dest.writeInt(price);
-        dest.writeString(description);
-    }
-    
-    /**
-     * simple to string.
-     * @return to string.
-     */
-    @NonNull
     @Override
     public String toString() {
         return getName();

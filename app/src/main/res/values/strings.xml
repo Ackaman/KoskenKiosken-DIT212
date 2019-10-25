@@ -1,3 +1,7 @@
+<!--
+@author: Morgan Thowsen, Johan Almroth, Gustav Pihlquist.
+Description: string resources for the application. (strings printed to screen).
+ -->
 <resources>
     <string name="app_name">KoskenKiosken</string>
     <string name="actionbar_store">Store</string>
@@ -15,6 +19,17 @@
     <string name="search">Sök</string>
     <string name="cart_button">Cart</string>
     <string name="add_to_cart_button_content_desc">Add to cart</string>
+    <string name="produktrekommendation">Produktrekommendation</string>
+    <string name="produktrekommendationer">Produktrekommendationer</string>
+    <string name="produkt_att_rekommendera">Produkt att rekommendera</string>
+    <string name="rekommendera_produkt">Rekommendera Produkt</string>
+    <string name="who_recommended">Namn</string>
+
+    <string name="dialog_checkout_positive_button">Ja!</string>
+    <string name="dialog_checkout_negative_button">Nej</string>
+    <string name="dialog_checkout_text_message">Köpa %1$s varor för %2$skr?</string>
+    <string name="increment">Increment</string>
+    <string name="decrement">Decrement</string>
 
     <string-array name="sorting_option">
         <item>Name - ascending</item>
@@ -22,4 +37,13 @@
         <item>Price - ascending</item>
         <item>Price - descending</item>
     </string-array>
+    <string name="title_activity_login">Logga in</string>
+    <string name="prompt_username">Användarnamn</string>
+    <string name="prompt_password">Lösenord</string>
+    <string name="action_sign_in">Logga in</string>
+    <string name="action_sign_in_short">Logga in</string>
+    <string name="welcome">"Välkommen!"</string>
+    <string name="invalid_username">Ogiltigt användarnamn</string>
+    <string name="invalid_password">Lösenord måste vara >5 tecken långt</string>
+    <string name="login_failed">"Inloggning misslyckades"</string>
 </resources>

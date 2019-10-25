@@ -2,6 +2,12 @@ package com.dit212.group1.koskenkiosken.Model.Cart;
 
 import java.util.List;
 
+/**
+ * @author Morgan Thowsen
+ * Uses: none
+ * Responsibility: public interface of a cart. A small interface of the internal structure.
+ */
+
 public interface ICart<T> {
     /**
      * adds a product to the cart

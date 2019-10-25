@@ -14,8 +14,8 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
- * Created by morgan on 2019-09-30
- *
+ * @author Morgan Thowsen.
+ * Uses: ComparatorIProduct, IProduct.
  * Description: tests comparatorIProduct in model. uses Mockito-lib to pinpoint comparator-class. so that no
  * bugs in IProduct affects these tests.
  */
@@ -24,6 +24,7 @@ public class ComparatorIProductTest {
     private List<IProduct> products;
 
     /**
+     * @author Morgan Thowsen
      * creates a mock List of IProduct. with mocks we can eliminate bugs from IProduct to affect
      * our tests.
      */
@@ -71,7 +72,7 @@ public class ComparatorIProductTest {
     @Test
     public void nameAscendingOrderSwedishCharactersReadCorrectly() {
         Comparator<IProduct> comp = ComparatorIProduct.nameAscendingOrder();
-        assertTrue(comp.compare(products.get(1), products.get(0)) > 0);
+        assertTrue(comp.compare(products.get(1), products.get(0)) < 0);
     }
 
     /**
@@ -81,7 +82,7 @@ public class ComparatorIProductTest {
     @Test
     public void nameAscendingOrderKAisBeforeKI() {
         Comparator<IProduct> comp = ComparatorIProduct.nameAscendingOrder();
-        assertTrue(comp.compare(products.get(3), products.get(2)) > 0);
+        assertTrue(comp.compare(products.get(3), products.get(2)) < 0);
     }
 
     /**
@@ -91,7 +92,7 @@ public class ComparatorIProductTest {
     @Test
     public void nameDescendingOrderSameProductProducesAZero() {
         Comparator<IProduct> comp = ComparatorIProduct.nameDescendingOrder();
-        assertTrue(comp.compare(products.get(3), products.get(1)) < 0);
+        assertTrue(comp.compare(products.get(3), products.get(1)) > 0);
     }
 
     /**
@@ -101,7 +102,7 @@ public class ComparatorIProductTest {
     @Test
     public void nameDescendingOrderSwedishCharactersReadCorrectly() {
         Comparator<IProduct> comp = ComparatorIProduct.nameDescendingOrder();
-        assertTrue(comp.compare(products.get(1), products.get(0)) < 0);
+        assertTrue(comp.compare(products.get(1), products.get(0)) > 0);
     }
 
     /**
@@ -111,7 +112,7 @@ public class ComparatorIProductTest {
     @Test
     public void nameDescendingOrderKAisAfterKI() {
         Comparator<IProduct> comp = ComparatorIProduct.nameDescendingOrder();
-        assertTrue(comp.compare(products.get(3), products.get(2)) < 0);
+        assertTrue(comp.compare(products.get(3), products.get(2)) > 0);
     }
 
     /**
@@ -131,7 +132,7 @@ public class ComparatorIProductTest {
     @Test
     public void priceDescendingOrder15isBefore2() {
         Comparator<IProduct> comp = ComparatorIProduct.priceDescendingOrder();
-        assertTrue(comp.compare(products.get(2),products.get(3)) > 0);
+        assertTrue(comp.compare(products.get(2),products.get(3)) < 0);
     }
 
     /**
@@ -141,7 +142,7 @@ public class ComparatorIProductTest {
     @Test
     public void priceDescendingOrder2isAfter5() {
         Comparator<IProduct> comp = ComparatorIProduct.priceDescendingOrder();
-        assertTrue(comp.compare(products.get(3),products.get(0)) < 0);
+        assertTrue(comp.compare(products.get(3),products.get(0)) > 0);
     }
 
     /**
@@ -150,7 +151,7 @@ public class ComparatorIProductTest {
 
     @Test
     public void priceAscendingOrderSameProductProducesAZero() {
-        Comparator<IProduct> comp = ComparatorIProduct.priceDescendingOrder();
+        Comparator<IProduct> comp = ComparatorIProduct.priceAscendingOrder();
         assertEquals(0, comp.compare(products.get(0),products.get(0)));
     }
 
@@ -160,7 +161,7 @@ public class ComparatorIProductTest {
 
     @Test
     public void priceAscendingOrderOrder15isAfter2() {
-        Comparator<IProduct> comp = ComparatorIProduct.priceDescendingOrder();
+        Comparator<IProduct> comp = ComparatorIProduct.priceAscendingOrder();
         assertTrue(comp.compare(products.get(3),products.get(2)) < 0);
     }
 
@@ -170,9 +171,8 @@ public class ComparatorIProductTest {
 
     @Test
     public void priceAscendingOrder2isBefore5() {
-        Comparator<IProduct> comp = ComparatorIProduct.priceDescendingOrder();
+        Comparator<IProduct> comp = ComparatorIProduct.priceAscendingOrder();
         assertTrue(comp.compare(products.get(3),products.get(0)) < 0);
     }
-
 
 }

@@ -1,14 +1,13 @@
 package com.dit212.group1.koskenkiosken.Model.Product;
-
-import android.os.Parcelable;
-
 import java.io.Serializable;
 
-/**
- * Author: created by thowsen, 2019-09-24
- * Description: simple product abstraction. Outside actors should not have access to methods they don't use.
+
+ /**
+ * @author Morgan Thowsen 2019-09-24
+ * Responsibility: simple product abstraction. Exposing a portion of internal structure of Product
+ * Uses: None (Serializable).
  */
-public interface IProduct extends Parcelable, Serializable {
+public interface IProduct extends Serializable {
     /**
      * get the name of the product
      * @return the name of the product
@@ -26,6 +25,4 @@ public interface IProduct extends Parcelable, Serializable {
      * @return the description of a given product.
      */
     String getDescription();
-    IProduct setName(String name);
-    IProduct setPrice(int price);
 }
