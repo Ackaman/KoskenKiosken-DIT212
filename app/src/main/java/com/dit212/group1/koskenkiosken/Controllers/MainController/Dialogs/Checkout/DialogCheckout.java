@@ -16,6 +16,7 @@ import java.util.List;
 
 /**
  * Author: created by thowsen, 2019-10-19
+ * Uses: ICheckoutResponseListener, IDialogCheckout.
  * Description: Dialog window for checkout  (buying products in cart).
  * package private! alterations are done from factory method in separate class. IDialogCheckout
  * is exposed.

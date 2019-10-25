@@ -20,7 +20,9 @@ import com.google.android.material.bottomnavigation.BottomNavigationView;
 import java.util.List;
 
 /**
- * Author: created by -, on -
+ * @author David Persson, Morgan Thowsen, Gustav Pihlquist, Albin Otterhäll & Johan Almroth
+ * Uses: DatabaseHelper, Model, IProduct, UserFactory, AccountFragment, StoreFragment, CartFragment
+ * ProductRecommendationsFragment.
  * Description: main controller switching between fragments and binding non-fragment specific buttons.
  * also delegates pieces of the model to fragments.
  */
@@ -60,6 +62,10 @@ public class MainActivity extends AppCompatActivity implements FragmentListener 
 
     }
 
+    /**
+     * Initialises fragments.
+     * @param m The model used by fragments.
+     */
     private void initFragments(Model m){
         if (accountFragment == null) accountFragment = new AccountFragment(m.getLoggedInUser());
         if (storeFragment == null) storeFragment = new StoreFragment(m);

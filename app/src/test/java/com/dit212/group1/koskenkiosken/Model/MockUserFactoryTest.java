@@ -10,7 +10,9 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.hamcrest.MatcherAssert.assertThat;
 
 /**
- * Primary author: Albin Otterhäll <gusalbiot@student.gu.se>
+ *
+ * @author Albin Otterhäll <gusalbiot@student.gu.se>
+ * Uses: IAccount, UserFactory.
  */
 
 public class MockUserFactoryTest {

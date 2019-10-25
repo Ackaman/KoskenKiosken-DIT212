@@ -5,7 +5,7 @@ import java.io.Serializable;
  /**
  * @author Morgan Thowsen 2019-09-24
  * Responsibility: simple product abstraction. Exposing a portion of internal structure of Product
- * Uses: None (Serializable)
+ * Uses: None (Serializable).
  */
 public interface IProduct extends Serializable {
     /**

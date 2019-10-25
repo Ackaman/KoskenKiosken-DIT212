@@ -25,7 +25,7 @@ import com.dit212.group1.koskenkiosken.R;
 
 /**
  * @author Albin Otterhäll <gusalbiot@student.gu.se>
- *
+ * Uses: MainActivity, LoginViewModel, LoginViewModelFactory, LoginFormState, LoginResult, LoggedInUserView.
  * An login acitivy that's shown at startup.
  */
 

@@ -9,6 +9,12 @@ import androidx.appcompat.app.AppCompatActivity;
 
 import com.dit212.group1.koskenkiosken.R;
 
+/**
+ * @author David Persson
+ * Uses: none.
+ * Description: Expanded view for a product. Grabs information from provided intent.
+ */
+
 public class ProductPressedView extends AppCompatActivity {
     private static boolean isActive = false;
 
@@ -43,12 +49,15 @@ public class ProductPressedView extends AppCompatActivity {
             text3.setText(productDescription);
 
             ImageView imageview = findViewById(R.id.expandedProductImageView);
-            int a = getApplicationContext().getResources().getIdentifier(productName.toLowerCase(),"drawable",getPackageName());
+            int a = getApplicationContext().getResources().getIdentifier(productName.toLowerCase(), "drawable", getPackageName());
             imageview.setImageResource(a);
         }
-        
+
     }
 
+    /**
+     * Runs when activity terminates
+     */
     @Override
     protected void onStop() {
         super.onStop();
@@ -57,12 +66,22 @@ public class ProductPressedView extends AppCompatActivity {
         finish();
     }
 
-    private void setIsActive(boolean liveState){
+    /**
+     * Set state of activity.
+     *
+     * @param liveState true if active.
+     */
+    private void setIsActive(boolean liveState) {
         isActive = liveState;
 
     }
 
-    static boolean isActive(){
+    /**
+     * Returns state of current activity.
+     *
+     * @return returns boolean true if active.
+     */
+    static boolean isActive() {
         return isActive;
     }
 }

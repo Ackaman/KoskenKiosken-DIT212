@@ -1,4 +1,9 @@
 <?xml version="1.0" encoding="utf-8"?>
+
+<!--
+@author: Morgan Thowsen.
+Description: colors used by application.
+ -->
 <resources>
     <color name="colorPrimary">#3d8ce5</color>
     <color name="colorPrimaryDark">#00574B</color>

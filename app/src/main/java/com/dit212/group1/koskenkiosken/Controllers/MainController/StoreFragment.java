@@ -31,9 +31,10 @@ import java.util.List;
 
 
 /**
- * Author: created by -, on -
+ * Author: Johan Almroth, Gustav Pihlquist, David Persson.
+ * Uses: Model, ComparatorIProduct, IProduct, FragmentListener, ProductFeedRecyclerAdapter (& innerclasses)
  * Description: Store page "controller". feeds product-specific textfields and/or buttons of the
- * view to data and functions from a list of products.
+ * view to data and functions from a list of products. Delegates sorting and filtering to model.
  */
 public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapter.StoreProductClickListener {
     private List<IProduct> products;
@@ -51,9 +52,10 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     /**
      * constructor takes a list of products as argument.
      * As of now we only use one product hence we only take the first element in the list.
+     *
      * @param m the model.
      */
-    StoreFragment(Model m){
+    StoreFragment(Model m) {
         this.m = m;
         this.products = m.listOfProducts();
         this.originalProducts = products;
@@ -61,8 +63,9 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
 
     /**
      * returns an inflated fragment within the view and puts it in the viewgroup accordingly.
-     * @param inflater the inflater used for inflating local layout within fragment.
-     * @param container the container of which to put the inflated fragment.
+     *
+     * @param inflater           the inflater used for inflating local layout within fragment.
+     * @param container          the container of which to put the inflated fragment.
      * @param savedInstanceState not used.
      * @return finished inflated view containing fragment.
      */
@@ -76,7 +79,8 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
 
     /**
      * References for the Text in this view.
-     * @param view view to attach fragment to.
+     *
+     * @param view               view to attach fragment to.
      * @param savedInstanceState settings from previous activites/fragments
      */
     @Override
@@ -91,6 +95,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
 
     /**
      * Adds all the products that is a substring of the search string in a new list.
+     *
      * @param search The input string from the ActionBar in StoreFragment
      */
     private void filterString(String search) {
@@ -99,7 +104,8 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
 
     /**
      * Creates the "actionbar" menu on the top of the screen in StoreFragment
-     * @param menu the actionbar menu on the top of StoreFragment
+     *
+     * @param menu     the actionbar menu on the top of StoreFragment
      * @param inflater inflater that inflates the layout
      */
     @Override
@@ -111,9 +117,10 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
 
     /**
      * binds behaviour of the search button
+     *
      * @param menu the menu of which the search button lies.
      */
-    private void bindFilterButton(@NonNull Menu menu){
+    private void bindFilterButton(@NonNull Menu menu) {
         final SearchView search = (SearchView) menu.findItem(R.id.search).getActionView();
         search.setOnSearchClickListener(new View.OnClickListener() {
             @Override
@@ -140,6 +147,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
 
     /**
      * binds the behaviour of the Sort-By button
+     *
      * @param menu the menu of which the Sort-By button lies.
      */
     private void bindSortByButton(@NonNull Menu menu) {
@@ -166,6 +174,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     /**
      * switch statement on index of pressed sorting option.
      * updates the list accordingly.
+     *
      * @param lv list view of sorting options
      */
 
@@ -200,6 +209,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
 
     /**
      * When a product is pressed this function will start a new activity and pass the product.
+     *
      * @param position Objects position in list
      */
     @Override
@@ -215,6 +225,7 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     /**
      * add to cart button.
      * This method handles what we do when a product is to be added to the cart.
+     *
      * @param position the position in recycleview-list and will correspond to a product in our product list.
      */
     @Override
@@ -231,12 +242,13 @@ public class StoreFragment extends Fragment implements ProductFeedRecyclerAdapte
     public void onAttach(@NonNull Context context) {
         super.onAttach(context);
         products = originalProducts;
-        if(context instanceof FragmentListener){
+        if (context instanceof FragmentListener) {
             listener = (FragmentListener) context;
         } else {
-            throw new RuntimeException(context.toString() +" must implement FragmentListener");
+            throw new RuntimeException(context.toString() + " must implement FragmentListener");
         }
     }
+
     /**
      * Used for FragmentListeners
      */

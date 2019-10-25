@@ -2,8 +2,9 @@ package com.dit212.group1.koskenkiosken.DB;
 
 
 /**
- * Created by morgan on 2019-10-07
- *
+ /**
+ * @author Morgan Thowsen
+ * Uses: none.
  * Mock-class for handling the implementation of a DB.
  */
 public class JSONparser implements IPersistentStorage{

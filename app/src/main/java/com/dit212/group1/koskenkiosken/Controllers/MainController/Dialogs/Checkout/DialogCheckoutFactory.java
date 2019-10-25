@@ -6,6 +6,7 @@ import androidx.annotation.NonNull;
 
 /**
  * Author: created by thowsen, 2019-10-19
+ * Uses: ICheckoutResponseListener, ICheckoutData, DialogCheckout, IDialogCheckout.
  * factory pattern for Dialog Checkout.
  */
 public class DialogCheckoutFactory {

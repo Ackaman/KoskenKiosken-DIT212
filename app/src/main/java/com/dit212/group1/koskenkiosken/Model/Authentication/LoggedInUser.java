@@ -2,7 +2,7 @@ package com.dit212.group1.koskenkiosken.Model.Authentication;
 
 /**
  * @author Albin Otterhäll <gusalbiot@student.gu.se>
- *
+ * Uses: none.
  * Data class that captures user information for logged in users retrieved from LoginRepository
  */
 public class LoggedInUser {

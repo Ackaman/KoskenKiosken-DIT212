@@ -10,7 +10,8 @@ import static org.hamcrest.CoreMatchers.equalTo;
 import static org.junit.Assert.*;
 
 /**
- * Primary author: Albin Otterhäll <gusalbiot@student.gu.se>
+ * @author Albin Otterhäll, Gustav Pihlquist.
+ * Uses: IAccount, UserFactory
  */
 
 public class NormalUserTest {

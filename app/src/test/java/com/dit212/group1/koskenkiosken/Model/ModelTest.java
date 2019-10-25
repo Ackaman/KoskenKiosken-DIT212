@@ -16,7 +16,8 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
- * Created by morgan on 2019-10-01
+ * @author David Persson, Morgan Thowsen, Gustav Pihlquist.
+ * Uses: ComparatorIProduct, IProduct, IAccount, UserFactory.
  * <p>
  * TODO , add comment
  */

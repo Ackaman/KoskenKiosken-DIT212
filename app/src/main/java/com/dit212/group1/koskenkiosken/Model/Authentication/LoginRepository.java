@@ -2,7 +2,7 @@ package com.dit212.group1.koskenkiosken.Model.Authentication;
 
 /**
  * @author Albin Otterhäll <gusalbiot@student.gu.se>
- *
+ * Uses: Result, LoggedInUser, LoginDataSource
  * Class that requests authentication and user information from the remote data source and
  * maintains an in-memory cache of login status and user credentials information.
  */

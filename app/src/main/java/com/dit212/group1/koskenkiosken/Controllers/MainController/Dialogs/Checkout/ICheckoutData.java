@@ -2,6 +2,7 @@ package com.dit212.group1.koskenkiosken.Controllers.MainController.Dialogs.Check
 
 /**
  * Author: created by thowsen, 2019-10-19
+ * Uses: none.
  * Description: data provider for text fields in checkout-dialog
  */
 

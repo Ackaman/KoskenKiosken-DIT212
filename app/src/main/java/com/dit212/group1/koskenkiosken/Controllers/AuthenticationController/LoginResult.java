@@ -4,7 +4,7 @@ import androidx.annotation.Nullable;
 
 /**
  * @author Albin Otterhäll <gusalbiot@student.gu.se>
- *
+ * Uses: LoggedInUserView.
  * Authentication result : success (user details) or error message.
  */
 class LoginResult {

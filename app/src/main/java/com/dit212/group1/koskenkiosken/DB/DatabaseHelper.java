@@ -9,11 +9,11 @@ import com.google.gson.JsonElement;
 import java.util.List;
 
 /**
- * Author: created by thowsen, 2019-09-23
+ * @author Morgan Thowsen
  *
  * Description: singleton class that simulates a persistent storage for products.
  * could've been static but it's not permitted until API24. therefor, singleton.
- *
+ * Uses: IDatabase, IProduct, JSONparser, IProductDeserializer, IPersistentStorage.
  * delegates deserialization to IProductDeserializer because of Factory Pattern and
  * hidden constructor.
  */

@@ -14,8 +14,8 @@ import java.util.List;
 import static org.junit.Assert.*;
 
 /**
- * Created by morgan on 2019-09-30
- *
+ * @author Morgan Thowsen.
+ * Uses: ComparatorIProduct, IProduct.
  * Description: tests comparatorIProduct in model. uses Mockito-lib to pinpoint comparator-class. so that no
  * bugs in IProduct affects these tests.
  */
@@ -24,6 +24,7 @@ public class ComparatorIProductTest {
     private List<IProduct> products;
 
     /**
+     * @author Morgan Thowsen
      * creates a mock List of IProduct. with mocks we can eliminate bugs from IProduct to affect
      * our tests.
      */

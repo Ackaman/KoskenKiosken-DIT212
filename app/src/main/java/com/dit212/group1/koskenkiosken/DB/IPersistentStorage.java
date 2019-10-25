@@ -1,9 +1,9 @@
 package com.dit212.group1.koskenkiosken.DB;
 
 /**
- * Created by morgan on 2019-10-07
- *
- * Interface for abstracting implementation of persistent storage solutions.
+ * @author Morgan Thowsen
+ * Uses: none.
+ * Description: Interface for abstracting implementation of persistent storage solutions.
  */
 public interface IPersistentStorage {
 

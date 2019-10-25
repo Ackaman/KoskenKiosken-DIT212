@@ -4,8 +4,8 @@ import java.util.List;
 
 /**
  * @author Morgan Thowsen
- * Responsibility: public interface of a cart. A small interface of the internal structure.
  * Uses: none
+ * Responsibility: public interface of a cart. A small interface of the internal structure.
  */
 
 public interface ICart<T> {

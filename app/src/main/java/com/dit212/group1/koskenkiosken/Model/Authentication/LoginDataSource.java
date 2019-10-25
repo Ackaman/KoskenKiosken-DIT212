@@ -4,6 +4,8 @@ import com.dit212.group1.koskenkiosken.Model.User.IAccount;
 import com.dit212.group1.koskenkiosken.Model.User.UserFactory;
 
 /**
+ * @author Albin Otterhäll
+ * Uses: IAccount, UserFactory, Result.
  * Class that handles authentication w/ login credentials and retrieves user information.
  */
 public class LoginDataSource {

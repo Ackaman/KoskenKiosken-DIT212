@@ -17,7 +17,8 @@ import com.dit212.group1.koskenkiosken.R;
 
 
 /**
- * Author: created by -, on -
+ * Author: created by Johan Almroth.
+ * Uses: IAccount, UserFactory.
  * Description: Account page "controller". feeds user-specific textfields and/or buttons of the
  * view to data and functions from controller.
  */

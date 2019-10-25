@@ -17,8 +17,9 @@ import com.dit212.group1.koskenkiosken.R;
 import java.util.List;
 
 /**
- * Author: created by Morgan Thowsen, 2019-09-18
- * Description: fills a recycler view with content.
+ * @author Johan Almroth
+ * Uses: IProduct & Innerclasses
+ * Description: fills a recycler view with content. Converts IProduct to displayable card.
  */
 public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeedRecyclerAdapter.GenericViewHolder> {
 
@@ -28,8 +29,9 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
     private FragmentType fragType;
 
     /**
-     * Constructor
-     * @param products list of items to be shown in RecyclerView.
+     * constructor for Cart section of the recyclerview
+     * @param products products to display
+     * @param productClickListener listener for clicks.
      */
     ProductFeedRecyclerAdapter(List<IProduct> products, CartProductClickListener productClickListener){
         this.products = products;
@@ -37,6 +39,12 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         this.fragType = FragmentType.CART;
 
     }
+
+    /**
+     * constructor for Store section of the recyclerview
+     * @param products products to display
+     * @param productClickListener listener for clicks.
+     */
 
     ProductFeedRecyclerAdapter(List<IProduct> products, StoreProductClickListener productClickListener){
         this.products = products;
@@ -248,12 +256,19 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
         void onProductClick(int position);
     }
 
+    /**
+     * Interface for OnClickListeners  for each object of product view.
+     * Add more methods if more buttons/listeners are needed.
+     */
     public interface CartProductClickListener{
         void onIncrementClick(int position);
         void onDecrementClick(int position);
         void onProductClick(int position);
     }
 
+    /**
+     * emun respresenting different states in the recyclerview.
+     */
     enum FragmentType{
         CART,
         STORE

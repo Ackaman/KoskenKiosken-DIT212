@@ -16,6 +16,12 @@ import com.dit212.group1.koskenkiosken.DB.DatabaseHelper;
 import com.dit212.group1.koskenkiosken.Model.Model;
 import com.dit212.group1.koskenkiosken.R;
 
+/**
+ * @author Gustav Pihlquist.
+ * Uses: DatabaseHelper, Model.
+ * Description: Sends a userrecomendation to the database.
+ */
+
 public class ProductRecommendationsFragment extends Fragment {
 
     private EditText productToRecommend;

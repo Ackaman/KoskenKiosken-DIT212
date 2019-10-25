@@ -2,7 +2,7 @@ package com.dit212.group1.koskenkiosken.Controllers.AuthenticationController;
 
 /**
  * @author Albin Otterhäll <gusalbiot@student.gu.se>
- *
+ * Uses: none.
  * Class exposing authenticated user details to the UI.
  */
 class LoggedInUserView {

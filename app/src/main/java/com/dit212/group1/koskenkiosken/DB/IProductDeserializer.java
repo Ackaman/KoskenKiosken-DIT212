@@ -10,8 +10,9 @@ import java.util.LinkedList;
 import java.util.List;
 
 /**
- * Created by morgan on 2019-10-07
- *
+ /**
+ * @author Morgan Thowsen
+ * Uses: IProduct, ProductFactory.
  * class for delegating creation of IProduct with Factory.
  */
 class IProductDeserializer {

@@ -26,6 +26,15 @@ import com.google.android.material.floatingactionbutton.FloatingActionButton;
 
 import java.util.List;
 
+/**
+ * Author: created by Johan Almroth, Morgan Thowsen, David Persson.
+ * Uses: DialogCheckoutFactory, ICheckoutData, ICheckoutResponseListener, IDialogCheckout,
+ * Model, IProduct, ProductFeedRecyclerAdapterFactory, ProductFeedRecyclerAdapter, ProductPressedView
+ * FragmentListener.
+ * Description: Cart page "controller". feeds product-specific textfields and/or buttons of the
+ * view to data and functions from a list of products. Also handles purchase delegation to the model.
+ */
+
 public class CartFragment extends Fragment implements ProductFeedRecyclerAdapter.CartProductClickListener {
 
     private ProductFeedRecyclerAdapter pAdapter;

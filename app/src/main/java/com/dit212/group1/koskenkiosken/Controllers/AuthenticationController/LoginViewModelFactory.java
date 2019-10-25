@@ -9,7 +9,7 @@ import com.dit212.group1.koskenkiosken.Model.Authentication.LoginRepository;
 
 /**
  * @author Albin Otterhäll <gusalbiot@student.gu.se>
- *
+ * Uses: LoginDataSource, LoginRepository, LoginViewModel, LoginViewModelFactory.
  * ViewModel provider factory to instantiate LoginViewModel.
  * Required given LoginViewModel has a non-empty constructor
  */

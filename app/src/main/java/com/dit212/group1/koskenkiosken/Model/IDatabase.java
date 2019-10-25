@@ -7,7 +7,7 @@ import java.util.List;
 /**
  * @author Morgan Thowsen 2019-09-23
  * Responsibility: persistentstorage to model that outside classes may depend on and parse items to model.
- * Uses: None
+ * Uses: DatabaseHelper
  */
 public interface IDatabase {
     /**

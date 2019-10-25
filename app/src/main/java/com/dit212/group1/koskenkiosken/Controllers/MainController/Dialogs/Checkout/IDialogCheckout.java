@@ -2,6 +2,7 @@ package com.dit212.group1.koskenkiosken.Controllers.MainController.Dialogs.Check
 
 /**
  * Author: created by thowsen, 2019-10-19
+ * Uses: none.
  * heavily restricted public interface for an instance of a DialogCheckout.
  */
 public interface IDialogCheckout {
