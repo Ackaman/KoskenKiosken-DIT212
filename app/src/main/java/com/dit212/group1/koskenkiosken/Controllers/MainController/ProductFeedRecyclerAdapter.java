@@ -6,7 +6,6 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ImageButton;
 import android.widget.TextView;
-import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.recyclerview.widget.RecyclerView;
@@ -231,8 +230,6 @@ public class ProductFeedRecyclerAdapter extends RecyclerView.Adapter<ProductFeed
 
         @Override
         public void onClick(View v) {
-            String test = Integer.toString(getLayoutPosition());
-            Toast.makeText(v.getContext(), test,Toast.LENGTH_SHORT).show();
             if(v.getId() == decrementButton.getId()){
                 decrementListener.onDecrementClick(getAdapterPosition());
             }
