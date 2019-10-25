@@ -80,7 +80,7 @@ public class LoginActivity extends AppCompatActivity {
                     showLoginFailed(loginResult.getError());
                 }
                 if (loginResult.getSuccess() != null) {
-                    updateUiWithUser(loginResult.getSuccess());
+                    updateUiWithUser();
 
                     //Complete and destroy login activity once successful
                     finish();
@@ -138,7 +138,7 @@ public class LoginActivity extends AppCompatActivity {
      *
      * @param model The
      */
-    private void updateUiWithUser(LoggedInUserView model) {
+    private void updateUiWithUser() {
         String welcome = getString(R.string.welcome);
 
         Toast.makeText(getApplicationContext(), welcome, Toast.LENGTH_LONG).show();

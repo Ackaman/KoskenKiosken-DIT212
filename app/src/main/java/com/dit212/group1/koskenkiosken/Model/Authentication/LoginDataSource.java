@@ -15,6 +15,13 @@ public class LoginDataSource {
      */
     public IAccount mockUser = UserFactory.createMockUser();
 
+    /**
+     * This method compare the username and password to the mock user.
+     *
+     * @param username The name on the account the user try to authenticate
+     * @param password The password to the account that the user try to login to
+     * @return Either a success or an error
+     */
     public Result login(String username, String password) {
 
         if (username.toLowerCase().equals(mockUser.getName().toLowerCase())

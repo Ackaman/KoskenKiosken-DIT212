@@ -15,6 +15,12 @@ import com.dit212.group1.koskenkiosken.Model.Authentication.LoginRepository;
  */
 public class LoginViewModelFactory implements ViewModelProvider.Factory {
 
+    /**
+     * A factory method that create LoginViewModels.
+     *
+     * @param modelClass
+     * @return A LoginViewModel or something based on it
+     */
     @NonNull
     @Override
     @SuppressWarnings("unchecked")

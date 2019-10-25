@@ -19,7 +19,6 @@ import static org.junit.Assert.*;
  * @author David Persson, Morgan Thowsen, Gustav Pihlquist.
  * Uses: ComparatorIProduct, IProduct, IAccount, UserFactory.
  * <p>
- * TODO , add comment
  */
 public class ModelTest {
 

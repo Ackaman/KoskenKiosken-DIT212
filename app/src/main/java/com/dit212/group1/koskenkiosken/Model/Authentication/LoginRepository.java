@@ -21,15 +21,24 @@ public class LoginRepository {
     /**
      * A reference to the logged in user.
      */
-    // If user credentials will be cached in local storage, it is recommended it be encrypted
-    // @see https://developer.android.com/training/articles/keystore
     private LoggedInUser user = null;
 
-    // private constructor : singleton access
+    /**
+     * Creates an instance of this class with an reference to the authentication class.
+     *
+     * @param dataSource The class that handles the authentication.
+     */
     private LoginRepository(LoginDataSource dataSource) {
         this.dataSource = dataSource;
     }
 
+    /**
+     * Creates an instance of this object if there is no one already, or returns a reference if
+     * there is one already.
+     *
+     * @param dataSource The class that handles the authentication.
+     * @return Reference to the singelton object of this class
+     */
     public static LoginRepository getInstance(LoginDataSource dataSource) {
         if (instance == null) {
             instance = new LoginRepository(dataSource);
@@ -46,18 +55,34 @@ public class LoginRepository {
         return user != null;
     }
 
+    /**
+     * Returns an reference to the authenticated user, if there is one.
+     *
+     * @return Reference to a `User` object, or null.
+     */
     public LoggedInUser getLoggedInUser() {
         return user;
     }
 
+    /**
+     * When a user successfully authenticated a reference to the user should be saved.
+     *
+     * @param user Reference to authenticated user
+     */
     private void setLoggedInUser(LoggedInUser user) {
         this.user = user;
         // If user credentials will be cached in local storage, it is recommended it be encrypted
         // @see https://developer.android.com/training/articles/keystore
     }
 
+    /**
+     * Saves the state if the authentication is successful.
+     *
+     * @param username The account the user try to authenticate
+     * @param password The password to the account to the user try to authenticate
+     * @return
+     */
     public Result login(String username, String password) {
-        // handle login
         Result result = dataSource.login(username, password);
 
         if (result == Result.SUCCESS) {
